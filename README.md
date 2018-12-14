@@ -1,5 +1,12 @@
+# Dynamics 365 for Customer Engagement Apps Samples
 
-# Contributing
+Welcome to the samples repo for Dynamics 365 for Customer Engagement Apps.
+
+This repo provides samples for apps, solutions, and related services for Customer Engagement. For documentation, visit <https://docs.microsoft.com/en-us/dynamics365/customer-engagement/#apps-solutions-and-related-services>
+
+If you are looking for core samples for Customer Engagement platform, see the PowerApps Samples repo at <https://github.com/Microsoft/PowerApps-Samples>
+
+## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
