@@ -17,17 +17,17 @@ This document assumes a valid Azure subscription is available.
 
 ## Creating a Twilio function for use with the app service
 
-1. Follow the Twilio documentation to create a sample quickstart application: "https://www.twilio.com/docs/voice/client/javascript/quickstart"
-2. Use the code from section "Twilio - Client voice" below for the "client-voice" Twilio function
-3. Use the code from section "Twilio - Capability token" below for the "capability-token" Twilio function
-4. Note the URL for the Twilio "capability-token" function created above. In this sample, we will use "https://twilio-sample.twil.io/capability-token"
+1. Follow the Twilio documentation to create a sample quickstart application: https://www.twilio.com/docs/voice/client/javascript/quickstart.
+2. Use the code from section **Twilio - Client voice** below for the **client-voice** Twilio function.
+3. Use the code from section **Twilio - Capability token** below for the **capability-token** Twilio function.
+4. Note the URL for the Twilio **capability-token** function created above. In this sample, we will use https://twilio-sample.twil.io/capability-token.
 
 ## Configuring Dynamics 365 for using the sample app
 
-1. Note the base URL of the CRM org from where all webresources are served. For an online org, this should be of the form "https://<orgname>.crmXX.dynamics.com". In this sample, we will use "https://twiliosampleorg.crm10.dynamics.com"
-2. Install the solution "Dynamics 365 Channel Integration Framework"
-3. Open the UCI app "Channel Integration Framework"
-4. Click on "New" to create a new "Channel Provider"
+1. Note the base URL of the CRM org from where all webresources are served. For an online org, this should be of the form "https://<orgname>.crmXX.dynamics.com". In this sample, we will use https://twiliosampleorg.crm10.dynamics.com.
+2. Install the solution **Dynamics 365 Channel Integration Framework**.
+3. Open the UCI app **Channel Integration Framework**.
+4. Click on "New" to create a new **Channel Provider**.
 5. Provide a suitable name and label
 6. For Channel URL, provide the URL as <azure_app_service_url>?base=<crm_base_url>&twa=<twilio_capability_token_url>. In this sample, the URL would be "https://twiliosampleinteg.azurewebsites.net?base=https://twiliosampleorg.crm10.dynamics.com&twa=https://twilio-sample.twil.io/capability-token"
 7. For "Enable outbound communication", select "yes".
