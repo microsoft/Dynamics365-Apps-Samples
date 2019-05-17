@@ -1,4 +1,4 @@
-# Steps For deploying the Sample softphone for Channel Integration Framework 1.0
+# Steps for deploying the sample softphone for Channel Integration Framework 1.0
 
 This document assumes a valid Azure subscription is available.
 
