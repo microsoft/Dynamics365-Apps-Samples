@@ -124,3 +124,5 @@ exports.handler = function(context, event, callback) {
   callback(null, response);
 };
 ```
+
+More information: [Softphone integration using Channel Integration Framework](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/channel-integration-framework/sample-softphone-integration).
