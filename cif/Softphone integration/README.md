@@ -4,15 +4,15 @@ This document assumes a valid Azure subscription is available.
 
 ## Publishing the sample app to Azure
 
-1. Open the solution **TwilioSampleInteg.sln** using Visual Studio 2017
-2. In Solution Explorer, right-click on the solution and build the complete solution
-3. In Solution Explorer, right-click on the project **TwilioSampleInteg**  and select **Publish**
-4. Click on **Start** to launch the **Publish** wizard
-5. Choose **App Service** as the publish target
-6. Select **Create New** and click on **Publish**
-7. Provide a suitable appname. In this document we will assume **TwilioSampleInteg**
-8. Provide valid subscription, resource group and hosting plan details
-9. Click on **Create** to create the azure app service
+1. Open the solution **TwilioSampleInteg.sln** using Visual Studio 2017.
+2. In Solution Explorer, right-click on the solution and build the complete solution.
+3. In Solution Explorer, right-click on the project **TwilioSampleInteg**  and select **Publish**.
+4. Click on **Start** to launch the **Publish** wizard.
+5. Choose **App Service** as the publish target.
+6. Select **Create New** and click on **Publish**.
+7. Provide a suitable appname. In this document we will assume **TwilioSampleInteg**.
+8. Provide valid subscription, resource group and hosting plan details.
+9. Click on **Create** to create the azure app service.
 10. Note the app service URL. In this sample, we will use https://twiliosampleinteg.azurewebsites.net.
 
 ## Creating a Twilio function for use with the app service
@@ -24,17 +24,17 @@ This document assumes a valid Azure subscription is available.
 
 ## Configuring Dynamics 365 for using the sample app
 
-1. Note the base URL of the CRM org from where all webresources are served. For an online org, this should be of the form "https://<orgname>.crmXX.dynamics.com". In this sample, we will use https://twiliosampleorg.crm10.dynamics.com.
+1. Note the base URL of the CRM org from where all webresources are served. For an online org, this should be of the form **https://<orgname>.crmXX.dynamics.com**. In this sample, we will use https://twiliosampleorg.crm10.dynamics.com.
 2. Install the solution **Dynamics 365 Channel Integration Framework**.
 3. Open the UCI app **Channel Integration Framework**.
-4. Click on "New" to create a new **Channel Provider**.
-5. Provide a suitable name and label
-6. For Channel URL, provide the URL as <azure_app_service_url>?base=<crm_base_url>&twa=<twilio_capability_token_url>. In this sample, the URL would be "https://twiliosampleinteg.azurewebsites.net?base=https://twiliosampleorg.crm10.dynamics.com&twa=https://twilio-sample.twil.io/capability-token"
-7. For "Enable outbound communication", select "yes".
-8. Set channel order to "0"
-9. Select the UCI apps and user roles for which this sample softphone should be enabled
-10. Save all changes
-11. The softphone is now ready for testing
+4. Click on **New** to create a new **Channel Provider**.
+5. Provide a suitable name and label.
+6. For Channel URL, provide the URL as <azure_app_service_url>?base=<crm_base_url>&twa=<twilio_capability_token_url>. In this sample, the URL would be **https://twiliosampleinteg.azurewebsites.net?base=https://twiliosampleorg.crm10.dynamics.com&twa=https://twilio-sample.twil.io/capability-token**.
+7. For **Enable outbound communication**, select **yes**.
+8. Set channel order to **0**.
+9. Select the UCI apps and user roles for which this sample softphone should be enabled.
+10. Save all changes.
+11. The softphone is now ready for testing.
 
 ## Important considerations
 
