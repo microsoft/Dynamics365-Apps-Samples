@@ -13,7 +13,7 @@ This document assumes a valid Azure subscription is available.
 7. Provide a suitable appname. In this document we will assume **TwilioSampleInteg**.
 8. Provide valid subscription, resource group and hosting plan details.
 9. Click on **Create** to create the azure app service.
-10. Note the app service URL. In this sample, we will use https://twiliosampleinteg.azurewebsites.net.
+10. Note the app service URL. In this sample, we will use `https://twiliosampleinteg.azurewebsites.net`.
 
 ## Creating a Twilio function for use with the app service
 
@@ -29,7 +29,7 @@ This document assumes a valid Azure subscription is available.
 3. Open the UCI app **Channel Integration Framework**.
 4. Click on **New** to create a new **Channel Provider**.
 5. Provide a suitable name and label.
-6. For Channel URL, provide the URL as <azure_app_service_url>?base=<crm_base_url>&twa=<twilio_capability_token_url>. In this sample, the URL would be **https://twiliosampleinteg.azurewebsites.net?base=https://twiliosampleorg.crm10.dynamics.com&twa=https://twilio-sample.twil.io/capability-token**.
+6. For Channel URL, provide the URL as `<azure_app_service_url>?base=<crm_base_url>&twa=<twilio_capability_token_url>`. In this sample, the URL would be `https://twiliosampleinteg.azurewebsites.net?base=https://twiliosampleorg.crm10.dynamics.com&twa=https://twilio-sample.twil.io/capability-token`.
 7. For **Enable outbound communication**, select **yes**.
 8. Set channel order to **0**.
 9. Select the UCI apps and user roles for which this sample softphone should be enabled.
@@ -40,7 +40,7 @@ This document assumes a valid Azure subscription is available.
 
 1. All URLs must be https.
 2. If a self-signed certificate is used for the azure app or the CRM org, some browsers may silently reject the connection and fail to load the sample phone. As a workaround, open the azure app in a separate tab and accept the certificate once.
-3. Ensure microphone and speaker access is not blocked by browser policy
+3. Ensure microphone and speaker access is not blocked by browser policy.
 
 ## Twilio - Client voice
 
