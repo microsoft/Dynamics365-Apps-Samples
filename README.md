@@ -1,10 +1,11 @@
-# Dynamics 365 for Customer Engagement Apps Samples
+# Introduction
 
-Welcome to the samples repo for Dynamics 365 for Customer Engagement Apps.
+This repo provides samples for apps, solutions, and related services for Dynamics 365. For Dynamics 365 docs, visit <https://docs.microsoft.com/dynamics365>.
 
-This repo provides samples for apps, solutions, and related services for Customer Engagement. For related documentation, visit [Apps, Solutions and Related Services](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/#apps-solutions-and-related-services)
+## Related samples repos
 
-If you are looking for core samples for Customer Engagement platform, visit [PowerApps Samples repo](https://github.com/Microsoft/PowerApps-Samples).
+- AL language code samples for Dynamics 365 Business Central: <https://github.com/Microsoft/AL>
+- PowerApps and Coomon Data Service samples: <https://github.com/Microsoft/PowerApps-Samples>.
 
 ## Contributing
 
