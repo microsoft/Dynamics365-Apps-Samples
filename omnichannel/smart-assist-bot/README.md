@@ -32,14 +32,14 @@ LUIS language model setup, training, and application configuration steps can be 
 
 ## To try this sample
 
-- Clone the repository
+1. Clone the repository
 
     ```bash
     git clone https://github.com/microsoft/botbuilder-samples.git
     ```
 
-- In a terminal, navigate to `samples/csharp_dotnetcore/13.core-bot`
-- Run the bot from a terminal or from Visual Studio, choose option A or B.
+2. In a terminal, navigate to `samples/csharp_dotnetcore/13.core-bot`
+3. Run the bot from a terminal or from Visual Studio, choose option A or B.
 
   A) From a terminal
 
@@ -51,10 +51,10 @@ LUIS language model setup, training, and application configuration steps can be 
   B) Or from Visual Studio
 
   - Launch Visual Studio
-  - File -> Open -> Project/Solution
+  - **File** > **Open** > **Project/Solution**
   - Navigate to `samples/csharp_dotnetcore/13.core-bot` folder
   - Select `CoreBot.csproj` file
-  - Press `F5` to run the project
+  - Press **F5** to run the project
 
 ## Testing the bot using Bot Framework Emulator
 
