@@ -1,4 +1,4 @@
-# Smart assist bot
+# Build a custom smart assist bot
 
 This sample code for building a custom smart assist bot is built on top of the bot code that is generated when you create an Azure webapp bot. More information: [Create a bot with Azure Bot Service > Download code](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#download-code).
 
@@ -13,7 +13,7 @@ For more information about the smart assist feature and how you can build your o
     * Add appsettings for Dynamics and LUIS connections.
     * Add a package reference to adaptive cards. 
     * Register Smart assist bot and other operations in `ConfigureServices()` in Startup.
-4.	Fill the values in [appsettings.json](SmartAssistBot/appsettings.json).
+4.	Fill the values in [appsettings.json](SmartAssistBot/appsettings.json) file.
 
     There are 3 primary sections in appsettings.json that you will have to fill correctly for this sample code to work - 
       - **Bot settings**<br />
@@ -21,7 +21,7 @@ For more information about the smart assist feature and how you can build your o
       - **LUIS settings**<br />
         Follow [these instructions](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp) to add LUIS to your bot.
       - Once you have created a LUIS app, see [this section](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp#retrieve-application-information-from-the-luisai-portal) to get `LuisAppId`, `LuisAPIKey` and `LuiAPIHostName`.
-      - **CDS connection settings**
+      - **CDS connection settings**<br />
         You will first need to create an application user in CDS using which you can interact with it. Follow the steps given [here](https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication).
       * `DynamicsAppId` and `DynamicsAppSecret` are the application Id and client secret of the Azure Active Directory app that you have created in the previous step.
 
