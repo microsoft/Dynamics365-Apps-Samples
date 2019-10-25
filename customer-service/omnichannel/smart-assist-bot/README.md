@@ -8,11 +8,11 @@ For more information about the smart assist feature and how you can build your o
 
 1.	[Create a bot with Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0)
 2.	[Download the source code](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#download-code)
-3. 	Apply the changes similar to [this commit](https://dynamicscrm.visualstudio.com/OneCRM/_git/CRM.Omnichannel.CodeSamples/commit/429b3fa26a874be8a094031b73f255b2726514fc?path=%2FSmartAssistBot%2FStartup.cs&gridItemType=2&mpath=%2FSmartAssistBot%2FStartup.cs&opath=%2FSmartAssistBot%2FStartup.cs&mversion=GC429b3fa26a874be8a094031b73f255b2726514fc&oversion=GC797d4986a2e8b303ed7b4f2186e3d2321ac32b7d&_a=compare). At a high level, this means - 
-    * Copy the folder /SmartAssist into the SmartAssistBot folder.
-    * Add appsettings for Dynamics and LUIS connections.
-    * Add a package reference to adaptive cards. 
-    * Register Smart assist bot and other operations in `ConfigureServices()` in Startup.
+3. 	Once your bot source code is generated, do the following changes - 
+    * Copy the folder [/SmartAssist](https://github.com/microsoft/Dynamics365-Apps-Samples/tree/sushant-oc/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/SmartAssist) into the <Bot name> folder.
+    * Add appsettings for Dynamics and LUIS connections similar to [this file](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/sushant-oc/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/appsettings.json)
+    * Add a package reference to adaptive cards in the .csproj file similar to [this file](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/sushant-oc/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/CoreBot.csproj)
+    * Register Smart assist bot and other operations in `ConfigureServices()` in [Startup.cs](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/sushant-oc/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/Startup.cs). 
 4.	Fill the values in [appsettings.json](SmartAssistBot/appsettings.json) file.
 
     There are 3 primary sections in appsettings.json that you will have to fill correctly for this sample code to work - 
