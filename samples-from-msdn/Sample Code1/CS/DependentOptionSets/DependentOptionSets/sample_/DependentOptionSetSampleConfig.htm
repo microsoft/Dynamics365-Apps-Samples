@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+ <title>Dependent OptionSet Sample Configuration Page</title>
+ <script type="text/javascript" src="ClientGlobalContext.js.aspx"></script>
+ <script type="text/javascript">
+  
+  function openTicket() {
+   var parameters = {};
+   parameters["sample_name"] = "Dependent OptionSet Example";
+   Xrm.Utility.openEntityForm("sample_ticket", null, parameters);
+  }
+ </script>
+</head>
+<body style="background-color: White; font-family: Segoe UI;">
+ <h1>
+  Dependent OptionSet Sample</h1>
+ <p>
+  Use the <b>Open Ticket Form</b> button to open a new <b>Ticket</b> form. Observe how the <b>Category</b>, <b>Sub Category</b>, and <b>Type</b> option set fields are dependent on each other.</p>
+ <button onclick="openTicket()">
+  Open Ticket Form</button>
+</body>
+</html>

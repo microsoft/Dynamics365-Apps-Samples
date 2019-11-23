@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoRouteLead", "AutoRouteLead\AutoRouteLead.csproj", "{C0136DF0-AB21-4A58-B1F0-8D2294A70AB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddActivity", "AddActivity\AddActivity.csproj", "{8F442605-812E-4AC8-B817-9F2083105129}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomActivity", "CustomActivity\CustomActivity.csproj", "{12509443-F7D4-4528-AABB-6D4A4067AD3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateChecker", "DateChecker\DateChecker.csproj", "{23564419-12E2-4082-9412-7BDEEFB46BA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceCalculator", "DistanceCalculator\DistanceCalculator.csproj", "{A13650AE-A3EB-43EB-8769-C7450CE9F24F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostUrl", "PostUrl\PostUrl.csproj", "{8DD0BC00-1285-475E-A24B-23781A9FF5A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNet4Activity", "TestNet4Activity\TestNet4Activity.csproj", "{94AD8D8B-B1A4-48EF-B09D-F245695F9055}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0136DF0-AB21-4A58-B1F0-8D2294A70AB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0136DF0-AB21-4A58-B1F0-8D2294A70AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0136DF0-AB21-4A58-B1F0-8D2294A70AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0136DF0-AB21-4A58-B1F0-8D2294A70AB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F442605-812E-4AC8-B817-9F2083105129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F442605-812E-4AC8-B817-9F2083105129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F442605-812E-4AC8-B817-9F2083105129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F442605-812E-4AC8-B817-9F2083105129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12509443-F7D4-4528-AABB-6D4A4067AD3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12509443-F7D4-4528-AABB-6D4A4067AD3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12509443-F7D4-4528-AABB-6D4A4067AD3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12509443-F7D4-4528-AABB-6D4A4067AD3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23564419-12E2-4082-9412-7BDEEFB46BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23564419-12E2-4082-9412-7BDEEFB46BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23564419-12E2-4082-9412-7BDEEFB46BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23564419-12E2-4082-9412-7BDEEFB46BA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A13650AE-A3EB-43EB-8769-C7450CE9F24F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A13650AE-A3EB-43EB-8769-C7450CE9F24F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A13650AE-A3EB-43EB-8769-C7450CE9F24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A13650AE-A3EB-43EB-8769-C7450CE9F24F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DD0BC00-1285-475E-A24B-23781A9FF5A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD0BC00-1285-475E-A24B-23781A9FF5A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD0BC00-1285-475E-A24B-23781A9FF5A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD0BC00-1285-475E-A24B-23781A9FF5A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94AD8D8B-B1A4-48EF-B09D-F245695F9055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94AD8D8B-B1A4-48EF-B09D-F245695F9055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94AD8D8B-B1A4-48EF-B09D-F245695F9055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94AD8D8B-B1A4-48EF-B09D-F245695F9055}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

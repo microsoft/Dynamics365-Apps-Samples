@@ -1,0 +1,53 @@
+﻿DEPENDENCIES
+- Microsoft.IdentityModel.dll: This is the same assembly that is required by Micrososft.Xrm.Sdk.dll in order to 
+  authenticate against a claims environment.
+- DeviceIdManager.cs: Sample which manages Device credentials
+- WsdlTokenManager.cs: Sample that authenticates a user with CRM without a dependency on Microsoft.Xrm.Sdk.dll
+
+SERVICE REFERENCES
+Add the following service references, using your server name:
+
+1) Example URL: https://disco.crm.dynamics.com/XRMServices/2011/Discovery.svc?WSDL
+   Namespace: CrmSdk.Discovery
+   Notes: The URL may not resolve correctly in Visual Studio without the "?WSDL".
+2) Example URL: https://orgname.api.crm.dynamics.com/XRMServices/2011/Organization.svc?WSDL
+   Namespace: CrmSdk
+   Notes: The URL may not resolve correctly in Visual Studio without the "?WSDL".
+
+If you don't know the URL for the services, do the following:
+1) Launch the CRM Application in Internet Explorer
+2) Navigate to Settings -> Customizations
+3) Click Developer Resources
+4) Note down the URL for the Discovery Service and the Organization Service.
+
+Important: Starting with CRM Online 2015 Update 1 and later, the syntax for the URL's to use when creating a
+service reference has changed slightly. The end of the URL, which was "?WSDL", should be changed to 
+"?singleWSDL&sdkversion=7.1". 
+
+    For example: https://disco.crm.dynamics.com/XRMServices/2011/Discovery.svc?singleWSDL&sdkversion=7.1
+
+Failure to use this syntax may result in the following error:
+"Failed to generate code for the service reference with 
+'http://schemas.microsoft.com/xrm/7.1/Metadata:ArrayOfEntityKeyMetadata' is not declared"
+
+For more information see http://blogs.msdn.com/b/mbarbour/archive/2015/07/07/how-to-fix-building-a-strong-type-lib-for-crm-7-1-crm-2015-online-update-1-errors.aspx
+
+
+CONFIGURATION FILE CHANGES
+1) In the "<binding name="CustomBinding_IOrganizationService">" node, remove the commented sections.
+   NOTE: The TransportSecurityElement fails to generate because the Windows Live STS does not return
+         all of the correct metadata.
+2) If needed, update the addresses in the "<endpoint ...>" nodes for each service.
+
+CODE CHANGES
+1) Open Program.cs and update the UserName, UserPassword, DiscoveryServiceUrl, and OrganizationUniqueName constants.
+   NOTE: These values are only required in order to make the sample work.
+
+ADDITIONAL FILES
+- ClientBaseExtensions.cs: Additional file that will configure the ClientBase<T> classes for CRM Online.
+
+BUILD and RUN
+1) Right click on the Online project and choose Build.
+	(Warnings are expected and can be ignored.)
+2) Place a breakpoint after the WhoAmI call.
+3) Right click on the Online project and choose Debug.
