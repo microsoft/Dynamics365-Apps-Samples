@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetadataQuery", "MetadataQuery.csproj", "{01B6A189-4A1E-4716-B504-F0E3267B7192}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01B6A189-4A1E-4716-B504-F0E3267B7192}.Debug|x86.ActiveCfg = Debug|x86
+		{01B6A189-4A1E-4716-B504-F0E3267B7192}.Debug|x86.Build.0 = Debug|x86
+		{01B6A189-4A1E-4716-B504-F0E3267B7192}.Release|x86.ActiveCfg = Release|x86
+		{01B6A189-4A1E-4716-B504-F0E3267B7192}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
