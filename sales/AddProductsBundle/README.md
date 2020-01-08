@@ -1,4 +1,3 @@
-
 # Sample: Add products to a bundle
 
 This sample shows how to add products to a bundle. More information: [Bundles and kits](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/developer/create-manage-product-families-products-bundles-product-properties#BundlesKits).
