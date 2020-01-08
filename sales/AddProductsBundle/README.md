@@ -23,7 +23,3 @@ In order to simulate the scenario described in [What this sample does](#what-thi
 - Create price list items for the products.
 - Create price list item for the bundle
 - Add products to a bundle.
-
-### Demonstrate
-
-This sample demonstrates how to add products to a bundle.
