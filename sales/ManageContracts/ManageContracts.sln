@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageContracts", "ManageContracts\ManageContracts.csproj", "{DB1A7319-9955-4FC1-B683-CF4D52F1223D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB1A7319-9955-4FC1-B683-CF4D52F1223D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB1A7319-9955-4FC1-B683-CF4D52F1223D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB1A7319-9955-4FC1-B683-CF4D52F1223D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB1A7319-9955-4FC1-B683-CF4D52F1223D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38834AE3-97C5-499A-A40C-B0E20547AAFE}
+	EndGlobalSection
+EndGlobal
