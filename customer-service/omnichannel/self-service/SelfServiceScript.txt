@@ -1,0 +1,55 @@
+/* 
+
+(!) Important
+Microsoft provides the sample script as a guide only.  Using the sample script enables you to track the page navigation of your users through browser sessions.  You can then share that information with Dynamics 365 Customer Service.  Your collection of data from your users through the sample script is independent of Dynamics 365 Customer Service.
+
+Microsoft provides the sample script "as is," "with all faults," and without warranty of any kind.  Microsoft does not provide any support for your use of the sample script.  If Microsoft does elect to provide support for your use of the sample script, then such support is also provided "as is," "with all faults," and without warranty of any kind and may be discontinued at any time at Microsoft's sole discretion.
+ 
+If you use the sample script and enable data collection in your applications, you must comply with applicable law, including getting any required user consent before tracking (or otherwise collecting data from) your users, and maintain a prominent privacy policy that accurately informs users about how you use, collect, and share their data.  
+ 
+You can learn about Microsoft’s own data collection and use in the applicable product documentation and the Microsoft Privacy Statement at http://go.microsoft.com/fwlink/?LinkID=521839.  You agree to comply with all applicable provisions of the Microsoft Privacy Statement.
+
+
+*/
+
+<script type="text/javascript">
+    window.addEventListener("load", function() {
+
+        // Initialize SelfService using browser sessions
+        var SelfService;
+        var selfServiceString = sessionStorage.getItem("SelfService");
+        if (selfServiceString == null) {
+            SelfService = [];
+        }
+        else {
+            SelfService = JSON.parse(selfServiceString);
+            if (SelfService.length == 4) {
+                SelfService.pop();
+            }
+        }
+
+        // Add new link navigations to SelfService
+        var title = $('h1')[0];
+        var innerHTML = title.innerHTML;
+        var navigation = {
+            "msdyn_displaytitle": innerHTML,
+            "msdyn_url": window.location.href,
+            "msdyn_starttime": new Date().toISOString(),
+            "msdyn_type": "192350000" // Type used for page navigation
+        }
+        SelfService.unshift(navigation);
+        sessionStorage.setItem("SelfService", JSON.stringify(SelfService));
+    
+        // Handler for sending SelfService in Omnichannel for Customer Service context
+        if (Microsoft.Omnichannel) {
+            var occontext = Microsoft.Omnichannel.LiveChatWidget.SDK.getContextProvider();
+            Microsoft.Omnichannel.LiveChatWidget.SDK.setContextProvider(function contextProvider() {
+                var selfServiceTracked = sessionStorage.getItem("SelfService");
+                var ocSelfService = JSON.parse(selfServiceTracked);
+                return {
+                    'SelfService': { 'value': JSON.stringify(ocSelfService) }
+                };
+            });
+        }
+    });
+</script>

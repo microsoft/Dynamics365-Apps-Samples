@@ -1,0 +1,1 @@
+You can pass a customer's self service as context at the start of a conversation with that customer. This script shows how you can use the [setContextProvider](https://docs.microsoft.com/en-us/dynamics365/omnichannel/developer/reference/methods/setcontextprovider) method for this.
