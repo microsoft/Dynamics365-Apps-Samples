@@ -1,73 +1,80 @@
 # Build a custom smart assist bot
 
-## Getting Started
+### Getting Started
 Sample code provided in github contains smart bot implementation for KB article suggetion and natural language understanding(LUIS)
 
 1) Deploying a new Smart Assist Bot
 2) Integrating to an exisiting Azure Bot
 
-## Deploying a new Smart Assist Bot
+### 1. Deploying a new Smart Assist Bot
 
-To develop a WebApp based Smart Bot, Please follow the steps mentioned below.
+To develop a new WebApp based Smart Bot, Please follow the steps mentioned below
+Download the github sample and Open the code in visual studio 2017 or above and update the appsettings. This setup broadly contains 3 steps
 
-• Download the github code sample by clicking on Clone or Download link
-• Open the code in visual studio 2017 or above and update the appsettings. This setup broadly contains 3 steps<br />
-    - Fill the values in [appsettings.json](SmartAssistBot/appsettings.json) file<br />
-    - Publish the webapp to Azure<br />
-    - Update the Messaging endpoint in Bot channels registration<br />
+1) Fill the values in [appsettings.json](SmartAssistBot/appsettings.json) file<br />
+2) Publish the webapp to Azure<br />
+3) Update the Messaging endpoint in Bot channels registration<br />
 
 **Update App settings**<br />
-You need to update LUIS, Bot and CDS settings. LUIS app setting can be left blank if you are interested only in KB search
+You need to update LUIS, Bot and CDS settings.
+
+Follow the instructions mentioned in topic [Add natural language understanding to your bot](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp) to add LUIS to your bot. Once you have created a LUIS app, see [this section](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp#retrieve-application-information-from-the-luisai-portal) to get `LuisAppId`, `LuisAPIKey` and `LuiAPIHostName`
+
+**LUIS** app settings can be left blank if you are interested only in KB search
+    
     // LUIS connection settings
     "LuisAPIHostName": "westus.api.cognitive.microsoft.com",
     "LuisAPIKey": "",
     "LuisAppId": "",
 
+**BOT settings**
 1) Register a bot with Azure Bot Service and obtain the Microsoft App ID and a Client secret
     (a) App ID:
-        * Create registration resource following [this documentation](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#create-a-registration-resource)
-        * Go to the Azure App Service resource which is just created.
-        * In the right pane, in the resource blade, click on Settings. The resource Settings page opens up.
-        * From the Settings page, copy the generated Microsoft App ID
+        - Create registration resource following [this documentation](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#create-a-registration-resource)
+        - Go to the Azure App Service resource which is just created.
+        - In the right pane, in the resource blade, click on Settings. The resource Settings page opens up.
+        - From the Settings page, copy the generated Microsoft App ID
 
     (b) Client Secret:
-        * Generate Client secret or registration password like mentioned here
+        * Generate Client secret or registration password like mentioned [here](https://docs.microsoft.com/en-us/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)
 
-2) Update the App ID and secret in appsettings.json
+2) Update the Microsoft App ID and secret in appsettings.json
+    ```
     // Bot settings
     "MicrosoftAppId": "<Microsoft App Id as generated in step 1a>",
     "MicrosoftAppPassword": "<Microsoft App password as generated in step 1b>",
     "REMOTEDEBUGGINGVERSION": "15.0.28307.222",
-    "ScmType": "None"
+    "ScmType": "None"```
 
 3) Create an azure application to access dynamics CDS following [this link](https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration) and copy the Application (client) ID and client secret
 
 4) Update the CDS settings in appsettings.json
 
-     //Dynamics connection settings
+     ```//Dynamics connection settings
     "DynamicsAppId": "<Azure Application Id created in step 3, This enables Bot to talk to CDS>",
     "DynamicsAppSecret": "<App secret for CDS App Id creates in step 3>",
     "DynamicsOrgUrl": "<CDS Org Url>",
-    "TenantId": "<CDS Tenant Id>"
+    "TenantId": "<CDS Tenant Id>"```
 
 **Publish your WebApp to azure**<br />
 
-Build your code and publish from visual studio like mentioned in this [link](https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration)
-Copy the WebApps endpoint which opens up in a browser after publish say https://smartassistbot2020.azurewebsites.net/
+- Build your code and publish from visual studio like mentioned in this [link](https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration)
+- Copy the WebApp's endpoint which opens up in a browser after publishing say https://smartassistbot2020.azurewebsites.net/
 
 **Update Messaging endpoint of Bot channels registration**<br />
 
 - Now update the Messaging endpoint of Bot channels registration created in 3(a) with the WebApps  messaging endpoint created in previous step
-Messaging endpoint =  WebApp Endpoint + /api/messages  (i.e)  https://smartassistbot2020.azurewebsites.net/api/messages
+**Messaging endpoint will be ```WebApp Endpoint + /api/messages```**  (i.e)  
+_Example: https://smartassistbot2020.azurewebsites.net/api/messages_
 
-- Make sure to enable Teams channel and ‘Always ON’ settings
+- Lastly make sure to [enable Teams channel](https://docs.microsoft.com/en-us/azure/bot-service/channel-connect-teams?view=azure-bot-service-4.0).
 
-## Test your Smart bot
+### Test your Smart bot
 
-Test the bot. For more information on how to test the bot, see Test the bot.
+Test your bot online using ```Test in Web Chat``` option.
 If you are using trail org use keywords ‘travel’  or ‘book’ or ‘audio equipment’ to see the smart suggestions
 
-## Integrating Smart Assist to an exisiting Azure Bot
+### 2 . Integrating Smart Assist to an exisiting Azure Bot
 
 This sample code for building a custom smart assist bot is built on top of the bot code that is generated when you create an Azure webapp bot. More information: [Create a bot with Azure Bot Service > Download code](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#download-code).
 
