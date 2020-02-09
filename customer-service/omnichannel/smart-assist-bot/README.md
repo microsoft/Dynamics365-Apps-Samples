@@ -78,7 +78,7 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 **Test your Smart bot**
 
 - Test your bot online using ```Test in Web Chat``` option. See [here](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot) for more details. 
-- If you are using trail org use keywords `travel`’  or ‘book’ or ‘audio equipment’ to see the smart suggestions
+- If you are using trail org use keywords `travel`  or `book` or `audio equipment` to see the smart suggestions
 
 ### 2 . Integrating Smart Assist to an exisiting Azure Bot
 
