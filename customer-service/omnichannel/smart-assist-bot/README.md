@@ -19,6 +19,7 @@ Download the github sample and Open the code in visual studio 2017 or above and 
 5) Test your Bot online<br />
 
 **Update appsettings.json** <br />
+
 Appsettings.json contains LUIS, Bot and CDS settings.
 1) Follow the instructions mentioned in topic [Add natural language understanding to your bot](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp) to add LUIS to your bot. Once you have created a LUIS app, see [this section](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp#retrieve-application-information-from-the-luisai-portal) to get `LuisAppId`, `LuisAPIKey` and `LuiAPIHostName`
 
@@ -47,7 +48,9 @@ Appsettings.json contains LUIS, Bot and CDS settings.
     "REMOTEDEBUGGINGVERSION": "15.0.28307.222",
     "ScmType": "None"```
 
-4) Create an azure application to access dynamics CDS following [this link](https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration) and copy the Application (client) ID and client secret
+4) Login to Azure portal with CDS tenant admin credentials and Create an azure application to access dynamics CDS following [this link](https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration) and copy the Application (client) ID and client secret
+Please use the same app ID while [creating a bot user](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user) later. Also if your bot needs to search for knowledge base articles, then you need to provide either
+the **Customer Service Manager** or **Customer Service Representative** role to your bot user.
 
 5) Update the CDS settings
 
