@@ -1,4 +1,77 @@
 # Build a custom smart assist bot
+Sample code provided in github enables Smart Bot with KBSearch and natural language understanding(LUIS) capabilities.
+Either you can deploy a bot from the scratch or integrate to your exisiting bot.
+
+1) Deploying a new Smart Assist Bot
+2) Integrating to an exisiting Azure Bot
+
+## Deploying a new Smart Assist Bot
+
+To develop a WebApp based Smart Bot, Please follow the steps mentioned below.
+
+• Download the github code sample by clicking on Clone or Download link
+• Open the code in visual studio 2017 or above. This setup broadly contains 3 steps
+    * Fill the values in [appsettings.json](SmartAssistBot/appsettings.json) file
+    * Publish the webapp to Azure
+    * Update Messaging endpoint of Bot channels registration
+
+## Update App settings
+
+You need to update LUIS, Bot Channels registration and CDS settings. LUIS app setting can be left blank if you are interested only in KB search
+
+
+    // LUIS connection settings
+    "LuisAPIHostName": "westus.api.cognitive.microsoft.com",
+    "LuisAPIKey": "",
+    "LuisAppId": "",
+
+1) Register a bot with Azure Bot Service and obtain the Microsoft App ID and a Client secret
+    (a) App ID:
+        * Create registration resource following [this documentation](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#create-a-registration-resource)
+        * Go to the Azure App Service resource which is just created.
+        * In the right pane, in the resource blade, click on Settings. The resource Settings page opens up.
+        * From the Settings page, copy the generated Microsoft App ID
+
+    (b) Client Secret:
+        * Generate Client secret or registration password like mentioned here
+
+2) Update the App ID and secret in appsettings.json
+
+    // Bot settings
+    "MicrosoftAppId": "<Microsoft App Id as generated in step 1a>",
+    "MicrosoftAppPassword": "<Microsoft App password as generated in step 1b>",
+    "REMOTEDEBUGGINGVERSION": "15.0.28307.222",
+    "ScmType": "None"
+
+3) Create an azure application to access dynamics CDS following [this link](https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration) and copy the Application (client) ID and client secret
+
+4) Update the CDS settings in appsettings.json
+
+     //Dynamics connection settings
+    "DynamicsAppId": "<Azure Application Id created in step 3, This enables Bot to talk to CDS>",
+    "DynamicsAppSecret": "<App secret for CDS App Id creates in step 3>",
+    "DynamicsOrgUrl": "<CDS Org Url>",
+    "TenantId": "<CDS Tenant Id>"
+
+## Publish your WebApp to azure
+
+Build your code and publish from visual studio like mentioned in this [link](https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration)
+Copy the WebApps endpoint which opens up in a browser after publish say https://smartassistbot2020.azurewebsites.net/
+
+## Update Messaging endpoint of Bot channels registration
+
+- Now update the Messaging endpoint of Bot channels registration created in 3(a) with the WebApps  messaging endpoint created in previous step
+Messaging endpoint =  WebApp Endpoint + /api/messages  (i.e)  https://smartassistbot2020.azurewebsites.net/api/messages
+
+- Make sure to enable Teams channel and ‘Always ON’ settings
+
+## Test your Smart bot
+
+Test the bot. For more information on how to test the bot, see Test the bot. If you are using trail org use keywords ‘travel’  or ‘book’ or ‘audio equipment’
+
+## Integrating to an exisiting Azure Bot
+
+# Build a custom smart assist bot
 
 This sample code for building a custom smart assist bot is built on top of the bot code that is generated when you create an Azure webapp bot. More information: [Create a bot with Azure Bot Service > Download code](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#download-code).
 
@@ -6,9 +79,9 @@ For more information about the smart assist feature and how you can build your o
 
 ## Getting Started
 
-1.	[Create a bot with Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0).
-2.	[Download the source code](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#download-code).
-3. 	Once your bot source code is generated, make the changes given below. 
+1. [Create a bot with Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0).
+2. [Download the source code](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#download-code).
+3. Once your bot source code is generated, make the changes given below.
     * Copy the folder [SmartAssist](SmartAssistBot/SmartAssist) into the `<Bot name>` folder.
     * Add the required values for connecting to your Dynamics 365 organization and LUIS as shown in [appsettings.json](SmartAssistBot/appsettings.json) file.
     * Add a package reference to adaptive cards in the `.csproj` file similar to [CoreBot.csproj](SmartAssistBot/CoreBot.csproj) file.
