@@ -8,7 +8,8 @@ Sample code provided in github contains smart bot implementation for KB article 
 
 ### 1. Deploying a new Smart Assist Bot
 
-To develop a new WebApp based Smart Bot, Please follow the steps mentioned below
+To develop a new WebApp based Smart Bot, Please follow the steps mentioned below.
+
 Download the github sample and Open the code in visual studio 2017 or above and update the appsettings. This setup broadly contains the following steps.
 
 1) Update the values in appsettings.json (SmartAssistBot/appsettings.json) file<br />
@@ -17,7 +18,7 @@ Download the github sample and Open the code in visual studio 2017 or above and 
 4) Enable Teams channel<br />
 5) Test your Bot online<br />
 
-##### Update appsettings.json <br />
+**Update appsettings.json** <br />
 Appsettings.json contains LUIS, Bot and CDS settings.
 1) Follow the instructions mentioned in topic [Add natural language understanding to your bot](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp) to add LUIS to your bot. Once you have created a LUIS app, see [this section](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp#retrieve-application-information-from-the-luisai-portal) to get `LuisAppId`, `LuisAPIKey` and `LuiAPIHostName`
 
@@ -68,6 +69,7 @@ Appsettings.json contains LUIS, Bot and CDS settings.
 _In our Example, it will be : https://smartassistbot2020.azurewebsites.net/api/messages_
 
 **Enable Teams channel**
+
 Please make sure to enable Teams channel like mentioned in this [link](https://docs.microsoft.com/en-us/azure/bot-service/channel-connect-teams?view=azure-bot-service-4.0).
 
 **Test your Smart bot**
