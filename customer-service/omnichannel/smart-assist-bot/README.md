@@ -1,7 +1,7 @@
 # Build a custom smart assist bot
 
 ### Getting Started
-Sample code provided in github contains smart bot implementation for KB article suggetion and natural language understanding(LUIS)
+Sample code provided in github contains smart bot implementation for KB article suggetion and natural language understanding(LUIS) for appointment
 
 1) Deploying a new Smart Assist Bot
 2) Integrating to an exisiting Azure Bot
@@ -10,8 +10,11 @@ Sample code provided in github contains smart bot implementation for KB article 
 
 To develop a new WebApp based Smart Bot, Please follow the steps mentioned below.
 
-Download the github sample and Open the code in visual studio 2017 or above and update the appsettings. This setup broadly contains the following steps.
+- Download the github sample from [this page](https://github.com/microsoft/Dynamics365-Apps-Samples)
+- Go to directory **Dynamics365-Apps-Samples\customer-service\omnichannel\smart-assist-bot\SmartAssistBot**
+- Open the solution file [SmartBot.sln](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/CoreBot.sln) in visual studio 2017 or above
 
+This setup broadly consists of following steps
 1) Update the values in appsettings.json (SmartAssistBot/appsettings.json) file<br />
 2) Publish the webapp to Azure<br />
 3) Update the Messaging endpoint in Bot channels registration<br />
@@ -20,8 +23,10 @@ Download the github sample and Open the code in visual studio 2017 or above and 
 
 **Update appsettings.json** <br />
 
-Appsettings.json contains LUIS, Bot and CDS settings.
-1) Follow the instructions mentioned in topic [Add natural language understanding to your bot](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp) to add LUIS to your bot. Once you have created a LUIS app, see [this section](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp#retrieve-application-information-from-the-luisai-portal) to get `LuisAppId`, `LuisAPIKey` and `LuiAPIHostName`
+Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/appsettings.json) and update LUIS, Bot and CDS settings following the steps mentioned below.
+
+1) **LUIS Settings**
+Follow the instructions mentioned in topic [Add natural language understanding to your bot](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp) to add LUIS to your bot. Once you have created a LUIS app, see [this section](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp#retrieve-application-information-from-the-luisai-portal) to get `LuisAppId`, `LuisAPIKey` and `LuiAPIHostName`
 
     **LUIS** app settings can be left blank if you are interested only in KB search
     
@@ -30,39 +35,37 @@ Appsettings.json contains LUIS, Bot and CDS settings.
         "LuisAPIKey": "",
         "LuisAppId": "",
 
-2) Register a bot with Azure Bot Service and obtain the Microsoft App ID and a Client secret
-    (a) App ID:
-        - Create registration resource following [this documentation](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#create-a-registration-resource)
-        - Go to the Azure App Service resource which is just created.
-        - In the right pane, in the resource blade, click on Settings. The resource Settings page opens up.
-        - From the Settings page, copy the generated Microsoft App ID
-
-    (b) Client Secret:
-        * Generate Client secret or registration password like mentioned [here](https://docs.microsoft.com/en-us/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)
-
-3) Update the Microsoft App ID and secret in appsettings.json
+2) **BOT Settings**
+Register your bot with Azure Bot Service and obtain the Microsoft App ID and a Client secret like mentioned below 
+        a. Create registration resource following [this documentation](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#create-a-registration-resource)
+        b. Go to the resource which is just created and select settings from left pane and copy the generated Microsoft App Id  
+        c. Generate Client secret like mentioned [here](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#get-registration-password) and copy it separately
+        d. Now update both the Microsoft App ID and secret in appsettings.json
     ```
     // Bot settings
-    "MicrosoftAppId": "<Microsoft App Id as generated in step 1a>",
-    "MicrosoftAppPassword": "<Microsoft App password as generated in step 1b>",
+    "MicrosoftAppId": "<Microsoft App Id as generated in step 2b>",
+    "MicrosoftAppPassword": "<Microsoft App password as generated in step 2c>",
     "REMOTEDEBUGGINGVERSION": "15.0.28307.222",
     "ScmType": "None"```
 
-4) Login to Azure portal with CDS tenant admin credentials and Create an azure application to access dynamics CDS following [this link](https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration) and copy the Application (client) ID and client secret
-Please use the same app ID while [creating a bot user](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user) later. Also if your bot needs to search for knowledge base articles, then you need to provide either
-the **Customer Service Manager** or **Customer Service Representative** role to your bot user.
-
-5) Update the CDS settings
-
+3) **CDS settings**
+a. Login to Azure portal with CDS credentials
+b. Create an azure application to access dynamics CDS following [this link](https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration)
+c. Copy the Application (client) ID and client secret
+d. Update appsettings.json
      ```//Dynamics connection settings
-    "DynamicsAppId": "<Azure Application Id created in step 3, This enables Bot to talk to CDS>",
-    "DynamicsAppSecret": "<App secret for CDS App Id creates in step 3>",
+    "DynamicsAppId": "<Azure Application Id copied in step 3c, This enables Bot to talk to CDS>",
+    "DynamicsAppSecret": "<App secret for CDS App Id copied in step 3c>",
     "DynamicsOrgUrl": "<CDS Org Url>",
     "TenantId": "<CDS Tenant Id>"```
 
+Please use the same app ID while [creating a bot user](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user) later. Also if your bot needs to search for knowledge base articles, then you need to provide either
+the **Customer Service Manager** or **Customer Service Representative** role to your bot user.
+
+
 **Publish your WebApp to azure**<br />
 
-- Build your code and publish from visual studio like mentioned in this [link](https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration)
+- Build your code and publish from visual studio like mentioned in this [link](https://docs.microsoft.com/en-us/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)
 - Copy the WebApp's endpoint which opens up in a browser after publishing. For Instance, lets say webapp endpoint is https://smartassistbot2020.azurewebsites.net/
 
 **Update Messaging endpoint of Bot channels registration**<br />
