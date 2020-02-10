@@ -1,20 +1,18 @@
 # Build a custom smart assist bot
 
 ### Getting Started
-Sample code provided in github contains smart bot implementation for KB article suggetion and natural language understanding(LUIS) for appointment
-
-1) Deploying a new Smart Assist Bot
-2) Integrating to an exisiting Azure Bot
+This sample code contains custom smart bot implementation for suggesting KB articles and for Natural Language Understanding using [LUIS](https://www.luis.ai/home).
 
 ### 1. Deploying a new Smart Assist Bot
 
-To develop a new WebApp based Smart Bot, Please follow the steps mentioned below.
+To develop a new web application based smart-assist bot, follow the steps mentioned below.
 
 - Download the github sample from [this page](https://github.com/microsoft/Dynamics365-Apps-Samples)
 - Go to directory **Dynamics365-Apps-Samples\customer-service\omnichannel\smart-assist-bot\SmartAssistBot**
-- Open the solution file [SmartBot.sln](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/CoreBot.sln) in visual studio 2017 or above
+- Open the solution file [SmartBot.sln](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/CoreBot.sln) in Microsoft Visual Studio 2017 or above
 
-This setup broadly consists of following steps
+This setup broadly contains the following steps.
+
 1) Update the values in appsettings.json (SmartAssistBot/appsettings.json) file<br />
 2) Publish the webapp to Azure<br />
 3) Update the Messaging endpoint in Bot channels registration<br />
