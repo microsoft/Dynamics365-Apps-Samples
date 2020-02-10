@@ -1,16 +1,14 @@
 # Build a custom smart assist bot
 
 ### Getting Started
-Sample code provided in github contains smart bot implementation for KB article suggetion and natural language understanding(LUIS)
 
-1) Deploying a new Smart Assist Bot
-2) Integrating to an exisiting Azure Bot
+This sample code contains custom smart bot implementation for suggesting KB articles and for Natural Language Understanding using [LUIS](https://www.luis.ai/home).
 
 ### 1. Deploying a new Smart Assist Bot
 
-To develop a new WebApp based Smart Bot, Please follow the steps mentioned below.
+To develop a new web application based smart-assist bot, follow the steps mentioned below.
 
-Download the github sample and Open the code in visual studio 2017 or above and update the appsettings. This setup broadly contains the following steps.
+Download the sample code and open it in Microsoft Visual Studio 2017 or above. Then you will need to update the application settings. This setup broadly contains the following steps.
 
 1) Update the values in appsettings.json (SmartAssistBot/appsettings.json) file<br />
 2) Publish the webapp to Azure<br />
