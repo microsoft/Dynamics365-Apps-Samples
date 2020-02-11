@@ -1,0 +1,690 @@
+/* Copyright (c) Microsoft Corporation. All rights reserved.
+ Licensed under the MIT license.*/
+
+
+:root {
+    --sideBarWidth: 34px;
+    --expandedWidgetWidth: calc(100vw - var(--sideBarWidth));
+    --widgetAreaWidth: var(--expandedWidgetWidth);
+    --totalHeight: 97vh;
+}
+
+html {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+body {
+    height: 99%;
+    width: 99%;
+    margin: 0px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+#widgetContainer {
+    display: grid;
+    width: 100%;
+    height: var(--totalHeight);
+    grid-template-areas: "widgetArea sideBarArea";
+    grid-template-rows: 100%;
+    grid-template-columns: var(--widgetAreaWidth) var(--sideBarWidth);
+    margin: 0px;
+}
+    #widgetContainer > widgetArea {
+        grid-area: widgetArea;
+        background-color: #FFFFFF;
+    }
+
+    #widgetContainer > sideBarArea {
+        grid-area: sideBarArea;
+        background-color: #FFFFFF;
+        border: 1px solid #d8d8d8;
+        border-right: none;
+    }
+
+#widgetSection {
+    display: inline-grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas:    "headerLogoArea"
+                            "toastArea"
+                            "notesArea";
+    grid-template-rows: 42fr 273fr 405fr;
+    grid-template-columns: 1fr;
+    background-color: #F8F8F8;
+
+    
+}
+    #widgetSection > headerLogoArea {
+        grid-area: headerLogoArea;
+        background-color: #FFFFFF;
+    }
+
+    #widgetSection > toastArea {
+        grid-area: toastArea;
+        background-color: #FFFFFF;
+    }
+    #widgetSection > notesArea {
+        grid-area: notesArea;
+        background-color: #FFFFFF;
+    }
+
+#sideBarSection {
+    display: inline-grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas:    "sideBar" 
+                            "sideLogoArea";
+    grid-template-rows: 1fr 14.3vh;
+    grid-template-columns: 100%;
+    background-color: #FFFFFF;
+}
+    #sideBarSection > modeArea {
+        grid-area: modeArea;
+    }
+    #sideBarSection > sideBar {
+        grid-area: sideBar;
+        display: inline-grid;
+        width: 100%;
+        height: 100%;
+        grid-template-areas:    "dialPadArea"
+                                "timerArea"
+                                "ongoingCallArea"
+                                "emptyArea";
+        grid-template-rows: 4.86vh 4.86vh 4.86vh 1fr;
+        grid-row-gap: 2.9vh;
+        grid-template-columns: 100%;
+        align-items: center;
+        justify-items: center;
+    }
+    #sideBarSection > sideLogoArea {
+        grid-area: sideLogoArea;
+    }
+    #sideBarSection > sideBar > timerArea {
+        grid-area: timerArea;
+    }
+    #sideBarSection > sideBar > dialPadArea {
+        grid-area: dialPadArea;
+    }
+    #sideBarSection > sideBar > ongoingCallArea {
+        grid-area: ongoingCallArea;
+    }
+    #sideBarSection > sideBar > emptyArea {
+        grid-area: emptyArea;
+    }
+
+.sideBarIcon {
+    margin: auto;
+}
+
+.sideBarLogoIcon {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.headerLogoIcon {
+    margin: 0;
+    width: 87px;
+    height: 24px;
+    padding-left: 3%;
+}
+
+.expanded {
+    display: inline;
+}
+.collapsed {
+    display: inline;
+}
+#incomingCall {
+    display: inline-grid;
+    width: 90%;
+    height: 90%;
+    grid-template-areas:    "emptyArea1 emptyArea1 emptyArea1 iconArea iconArea emptyArea2 emptyArea2 emptyArea2"
+                            "emptyArea1 emptyArea1 emptyArea1 statusArea1 statusArea1 emptyArea2 emptyArea2 emptyArea2"
+                            "emptyArea3 emptyArea3 callerIdArea callerIdArea callerIdArea callerIdArea emptyArea4 emptyArea4"
+                            "emptyArea3 emptyArea3 statusArea2 statusArea2 statusArea2 statusArea2 emptyArea4 emptyArea4"
+                            "emptyArea6 leftButtonArea leftButtonArea leftButtonArea rightButtonArea rightButtonArea rightButtonArea emptyArea7";
+    grid-template-rows: 80fr 16fr 22fr 16fr 35fr;
+    grid-template-columns: 110fr 410fr 365fr 400fr 400fr 365fr 410fr 110fr;
+    align-items: center;
+    grid-row-gap: 0.56vh;
+    grid-column-gap: 0;
+    background-color: #333333;
+    padding-top: 0.97vh;
+    padding-bottom: 0.97vh;
+    margin: 5%;
+}
+
+    #incomingCall > iconArea {
+        grid-area: iconArea;
+        
+    }
+    #incomingCall > statusArea1 {
+        grid-area: statusArea1;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 1.67vh;
+        line-height: 2.22vh;
+        text-align: center;
+        color: #B3B3B3;
+    }
+    #incomingCall > callerIdArea {
+        grid-area: callerIdArea;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 2.22vh;
+        line-height: 2.92vh;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    #incomingCall > statusArea2 {
+        grid-area: statusArea2;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 1.67vh;
+        line-height: 2.22vh;
+        text-align: center;
+        color: #B3B3B3;
+    }
+    #incomingCall > leftButtonArea {
+        grid-area: leftButtonArea;
+    }
+    #incomingCall > rightButtonArea {
+        grid-area: rightButtonArea;
+    }
+
+.incomingCall {
+    display: none;
+}
+.incomingCallButton {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+}
+
+#outgoingCall {
+    display: inline-grid;
+    width: 90%;
+    height: 90%;
+    grid-template-areas:    "emptyArea1 iconArea iconArea emptyArea2"
+                            "statusArea1 statusArea1 statusArea1 statusArea1" 
+                            "callerIdArea callerIdArea callerIdArea callerIdArea" 
+                            "statusArea2 statusArea2 statusArea2 statusArea2" 
+                            "buttonArea buttonArea buttonArea buttonArea";
+    grid-template-rows: 80fr 16fr 22fr 16fr 35fr;
+    grid-template-columns: 75fr 40fr 40fr 75fr;
+    align-items: center;
+    grid-row-gap: 0.56vh;
+    grid-column-gap: 0;
+    background-color: #333333;
+    padding-top: 0.97vh;
+    padding-bottom: 0.97vh;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin: 2%;
+}
+
+    #outgoingCall > iconArea {
+        grid-area: iconArea;
+    }
+
+    #outgoingCall > statusArea1 {
+        grid-area: statusArea1;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 1.67vh;
+        line-height: 2.22vh;
+        text-align: center;
+        color: #B3B3B3;
+    }
+
+    #outgoingCall > callerIdArea {
+        grid-area: callerIdArea;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 2.22vh;
+        line-height: 2.92vh;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    #outgoingCall > statusArea2 {
+        grid-area: statusArea2;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 1.67vh;
+        line-height: 2.22vh;
+        text-align: center;
+        color: #B3B3B3;
+    }
+
+    #outgoingCall > buttonArea {
+        grid-area: buttonArea;
+    }
+
+.outgoingCall {
+    display: none;
+}
+
+.ongoingCallSidebar  {
+    display: none;
+}
+#ongoingCall {
+    display: inline-grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas:    "emptyArea0 emptyArea0 emptyArea0 emptyArea0 emptyArea0 emptyArea0" 
+                            "emptyArea1 emptyArea1 statusArea1 statusArea1 emptyArea2 emptyArea2"
+                            "emptyArea1 emptyArea1 statusArea2 statusArea2 emptyArea2 emptyArea2"
+                            "emptyArea3 menuArea menuArea menuArea menuArea emptyArea4" 
+                            "emptyArea3 menuArea menuArea menuArea menuArea emptyArea4" 
+                            "emptyArea3 buttonArea buttonArea buttonArea buttonArea emptyArea4"
+                            "emptyArea6 emptyArea6 emptyArea6 emptyArea6 emptyArea6 emptyArea6";
+    grid-template-rows: 1px 21fr 26fr 55fr 54fr 40fr 1px;
+    grid-template-columns: 14fr 23.5fr 74.5fr 74.5fr 23.5fr 14fr;
+    align-items: center;
+    justify-items: center;
+    background-color: #333333;
+}
+
+    #ongoingCall > statusArea1 {
+        grid-area: statusArea1;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 1.94vh;
+        line-height: 2.64vh;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    #ongoingCall > statusArea2 {
+        grid-area: statusArea2;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 3.33vh;
+        line-height: 4.44vh;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    #ongoingCall > menuArea {
+        grid-area: menuArea;        
+    }
+    #ongoingCall > buttonArea {
+        grid-area: buttonArea;
+        
+    }
+
+#ongoingCallMenu {
+    display: inline-grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas:    "holdArea muteArea dialerArea"
+                            "caseArea kbArea moreArea";
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 0;
+    border: none;
+    background-color: #333333;
+}
+    #ongoingCallMenu > holdArea {
+        grid-area: holdArea;
+    }
+    #ongoingCallMenu > muteArea {
+        grid-area: muteArea;
+    }
+    #ongoingCallMenu > dialerArea {
+        grid-area: dialerArea;
+    }
+    #ongoingCallMenu > caseArea {
+        grid-area: caseArea;
+    }
+    #ongoingCallMenu > kbArea {
+        grid-area: kbArea;
+    }
+    #ongoingCallMenu > moreArea {
+        grid-area: moreArea;
+    }
+
+.ongoingMenuLabel {
+    color: #D8D8D8;
+
+}
+.ongoingMenuItem:active{
+    background: #FFFFFF;
+}
+.ongoingCall {
+    display: none;
+}
+#idlePhone {
+    display: inline-grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas:    "dialerLabelArea emptyArea emptyArea"
+                            "dialerTextArea dialerTextArea dialerTextArea"
+                            "oneArea twoArea threeArea"
+                            "fourArea fiveArea sixArea"
+                            "sevenArea eightArea nineArea"
+                            "starArea zeroArea hashArea"
+                            "emptyArea2 callButtonArea emptyArea3";
+    grid-template-rows: 2fr 3fr 3fr 3fr 3fr 3fr 3fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    background-color:  #FFFFFF;
+}
+    #idlePhone > dialerLabelArea {
+        grid-area: dialerLabelArea;
+    }
+    #idlePhone > dialerTextArea {
+        grid-area: dialerTextArea;
+    }
+    #idlePhone > oneArea {
+        grid-area: oneArea;
+    }
+    #idlePhone > twoArea {
+        grid-area: twoArea;
+    }
+    #idlePhone > threeArea {
+        grid-area: threeArea;
+    }
+    #idlePhone > fourArea {
+        grid-area: fourArea;
+    }
+    #idlePhone > fiveArea {
+        grid-area: fiveArea;
+    }
+    #idlePhone > sixArea {
+        grid-area: sixArea;
+    }
+    #idlePhone > sevenArea {
+        grid-area: sevenArea;
+    }
+    #idlePhone > eightArea {
+        grid-area: eightArea;
+    }
+    #idlePhone > nineArea {
+        grid-area: nineArea;
+    }
+    #idlePhone > starArea {
+        grid-area: starArea;
+    }
+    #idlePhone > zeroArea {
+        grid-area: zeroArea;
+    }
+    #idlePhone > hashArea {
+        grid-area: hashArea;
+    }
+    #idlePhone > callButtonArea {
+        grid-area: callButtonArea;
+    }
+
+.dialerButton {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    font-size: 2.92vh;
+    color: #3B79B7;
+    margin: auto;
+}
+
+#dialerPhoneNumber {
+    width: 90%;
+    height: 90%;
+}
+
+#callSummary {
+    display: inline-grid;
+    width: 92%;
+    height: 94%;
+    grid-template-areas:    "titleArea titleArea titleArea"
+                            "contactIconArea contactTitleArea contactTitleArea"
+                            "contactIconArea contactNameArea contactNameArea"
+                            "separatorArea1 separatorArea1 separatorArea1"
+                            "channelLabelArea emptyArea1 channelNameArea"
+                            "separatorArea2 separatorArea2 separatorArea2"
+                            "timeLabelArea emptyArea2 timeSpentArea"
+                            "separatorArea3 separatorArea3 separatorArea3"
+                            "timeStartLabelArea emptyArea3 timeStartedArea"
+                            "separatorArea4 separatorArea4 separatorArea4"
+                            "activityLabelArea emptyArea4 activityLinkArea"
+                            "separatorArea5 separatorArea5 separatorArea5"
+                            "caseLabelArea emptyArea5 caseLinkArea"
+                            "separatorArea6 separatorArea6 separatorArea6";
+    grid-template-rows:  25fr 38fr 40fr 1px 45fr 1px 45fr 1px 45fr 1px 45fr 1px 45fr 1px;
+    grid-template-columns: 80fr 21fr 160fr;
+    background-color:#F8F8F8;
+    padding: 0% 4% 0% 4%;
+}
+
+    #callSummary > titleArea {
+        grid-area: titleArea;
+        font-family: Segoe UI;
+        font-style: normal;
+        font-weight: bold;
+        line-height: normal;
+        font-size: 1.94vh;
+        color: #000000;
+    }
+    #callSummary > contactIconArea {
+        grid-area: contactIconArea;
+        padding-top: 2%;
+        display: inline-flex;
+        align-items: center;
+    }
+    #callSummary > contactTitleArea {
+        grid-area: contactTitleArea;
+        padding-top: 2%;
+    }
+    #callSummary > contactNameArea {
+        grid-area: contactNameArea;
+        padding-top: 1%;
+    }
+    #callSummary > channelLabelArea {
+        grid-area: channelLabelArea;
+        display: inline-flex;
+        align-items: center;
+    }
+    #callSummary > channelNameArea {
+        grid-area: channelNameArea;
+        display: inline-flex;
+        align-items: center;
+    }
+    #callSummary > timeLabelArea {
+        grid-area: timeLabelArea;
+        display: inline-flex;
+        align-items: center;
+    }
+    #callSummary > timeSpentArea {
+        grid-area: timeSpentArea;
+        display: inline-flex;
+        align-items: center;
+    }
+    #callSummary > timeStartLabelArea {
+        grid-area: timeStartLabelArea;
+        display: inline-flex;
+        align-items: center;
+    }
+    #callSummary > timeStartedArea {
+        grid-area: timeStartedArea;
+        display: inline-flex;
+        align-items: center;
+    }
+    #callSummary > activityLabelArea {
+        grid-area: activityLabelArea;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    #callSummary > activityLinkArea {
+        grid-area: activityLinkArea;
+        display: inline-flex;
+        align-items: center;
+    }
+    #callSummary > caseLabelArea {
+        grid-area: caseLabelArea;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    #callSummary > caseLinkArea {
+        grid-area: caseLinkArea;
+        display: inline-flex;
+        align-items: center;
+    }
+    #callSummary > emptyArea1 {
+        grid-area: emptyArea1;
+    }
+    #callSummary > emptyArea2 {
+        grid-area: emptyArea2;
+    }
+    #callSummary > emptyArea3 {
+        grid-area: emptyArea3;
+    }
+    #callSummary > emptyArea4 {
+        grid-area: emptyArea4;
+    }
+    #callSummary > emptyArea5 {
+        grid-area: emptyArea5;
+    }
+    #callSummary > separatorArea1 {
+        grid-area: separatorArea1;
+        border-bottom: 1px solid #D8D8D8;
+    }
+    #callSummary > separatorArea2 {
+        grid-area: separatorArea2;
+        border-bottom: 1px solid #D8D8D8;
+    }
+    #callSummary > separatorArea3 {
+        grid-area: separatorArea3;
+        border-bottom: 1px solid #D8D8D8;
+    }
+    #callSummary > separatorArea4 {
+        grid-area: separatorArea4;
+        border-bottom: 1px solid #D8D8D8;
+    }
+    #callSummary > separatorArea5 {
+        grid-area: separatorArea5;
+        border-bottom: 1px solid #D8D8D8;
+    }
+    #callSummary > separatorArea6 {
+        grid-area: separatorArea6;
+        border-bottom: 1px solid #D8D8D8;
+    }
+.summaryMainIcon {
+    width: 6.67vh;
+    height: 6.67vh;
+    background-color: #C1EDEE;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.8;
+    font-size: 3.33vh;
+    color: #000000;
+    text-align: center;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.summaryLabel {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 1.94vh;
+    color: #666666;
+}
+
+.summaryData {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    font-size: 1.94vh;
+    color: #333333;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    width: 49vw;
+}
+
+.callerNameStyle {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 2.4vh;
+    color: #444444;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.activityLink {
+    color: Highlight;
+}
+
+.callSummary {
+    display: none;
+}
+
+#callNotes {
+    display: inline-grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas:    "emptyArea statusArea statusArea emptyArea2 emptyArea4" 
+                            "emptyArea noteTextArea noteTextArea noteTextArea emptyArea4" 
+                            "emptyArea menuArea1 emptyArea3 menuArea2 emptyArea4";
+    grid-template-rows: 10fr 75fr 15fr;
+    grid-template-columns: 14fr 81fr 81fr 81fr 14fr;
+}
+
+#callNotes > statusArea {
+    grid-area: statusArea;
+}
+    #callNotes > noteTextArea {
+        grid-area: noteTextArea;
+    }
+    #callNotes > menuArea1 {
+        grid-area: menuArea1;
+        display: inline-flex;
+    }
+    #callNotes > menuArea2 {
+        grid-area: menuArea2;
+        display: inline-flex;
+    }
+.notesLabel {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    color: #000000;
+    font-size: 1.94vh;
+}
+.callNotesField {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #D8D8D8;
+}
+.callNotesFieldEditable {
+    background: #FFFFFF;
+}
+.notesMenuItem:active {
+    background: #FFFFFF;
+}
+.callNotes {
+    display: none;
+}
