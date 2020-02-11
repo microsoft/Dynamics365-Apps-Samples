@@ -1,0 +1,141 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<div style="width: 100%; height: 100%; display: block;" id="topLevelContainer">
+    <section id="widgetContainer">
+        <widgetArea>
+            <div class="expanded">
+                <section id="widgetSection">
+                    <headerLogoArea><img src="~/images/logoHor.svg" class="headerLogoIcon" /></headerLogoArea>
+                    <toastArea>
+                        <div class="idlePhone">
+                            <section id="idlePhone">
+                                <dialerLabelArea><label>Dialer</label></dialerLabelArea>
+                                <dialerTextArea><input type="text" placeholder="Phone number" id="dialerPhoneNumber" /></dialerTextArea>
+                                <oneArea><label class="dialerButton">1</label></oneArea>
+                                <twoArea><label class="dialerButton">2</label></twoArea>
+                                <threeArea><label class="dialerButton">3</label></threeArea>
+                                <fourArea><label class="dialerButton">4</label></fourArea>
+                                <fiveArea><label class="dialerButton">5</label></fiveArea>
+                                <sixArea><label class="dialerButton">6</label></sixArea>
+                                <sevenArea><label class="dialerButton">7</label></sevenArea>
+                                <eightArea><label class="dialerButton">8</label></eightArea>
+                                <nineArea><label class="dialerButton">9</label></nineArea>
+                                <starArea><label class="dialerButton">*</label></starArea>
+                                <zeroArea><label class="dialerButton">0</label></zeroArea>
+                                <hashArea><label class="dialerButton">#</label></hashArea>
+                                <callButtonArea><img src="~/images/call.svg" id="placeCall" /></callButtonArea>
+                            </section>
+                        </div>
+                        <div class="incomingCall">
+                            <section id="incomingCall">
+                                <iconArea><img src="~/images/callAlert.svg" /></iconArea>
+                                <statusArea1><label>Voice call from</label></statusArea1>
+                                <callerIdArea><label class="callerName">Unknown</label></callerIdArea>
+                                <statusArea2><label class="timer">3.39</label></statusArea2>
+                                <leftButtonArea><img src="~/images/answer.svg" id="answerCall" class="incomingCallButton" /></leftButtonArea>
+                                <rightButtonArea><img src="~/images/decline.svg" id="declineCall" class="incomingCallButton" /></rightButtonArea>
+                            </section>
+                        </div>
+                        <div class="outgoingCall">
+                            <section id="outgoingCall">
+                                <iconArea><img src="~/images/callAlert.svg" /></iconArea>
+                                <statusArea1><label>Calling...</label></statusArea1>
+                                <callerIdArea><label class="callerName">Unknown</label></callerIdArea>
+                                <statusArea2><label class="timer">3.39</label></statusArea2>
+                                <buttonArea><img src="~/images/endCall.svg" class="hangupCall" id="endCall" /></buttonArea>
+                            </section>
+                        </div>
+                        <div class="ongoingCall">
+                            <section id="ongoingCall">
+                                <statusArea1><label class="callerName"></label></statusArea1>
+                                <statusArea2><label class="timer">3.39</label></statusArea2>
+                                <menuArea>
+                                    <section id="ongoingCallMenu">
+                                        <holdArea><img src="~/images/hold.svg" class="ongoingMenuItem" /></holdArea>
+                                        <muteArea><img src="~/images/mute.svg" class="ongoingMenuItem" /></muteArea>
+                                        <dialerArea><img src="~/images/dialpadWhite.svg" class="ongoingMenuItem" /></dialerArea>
+                                        <caseArea><img src="~/images/case.svg" class="ongoingMenuItem createCase" /></caseArea>
+                                        <kbArea><img src="~/images/kb.svg" class="ongoingMenuItem" /></kbArea>
+                                        <moreArea><img src="~/images/more.svg" class="ongoingMenuItem" /></moreArea>
+                                    </section>
+                                </menuArea>
+                                <buttonArea><img src="~/images/hangup.svg" class="hangupCall" id="hangupCall" /></buttonArea>
+                            </section>
+                        </div>
+                        <div class="callSummary">
+                            <section id="callSummary">
+                                <titleArea><label>Call Summary</label></titleArea>
+                                <contactIconArea><div class="summaryMainIcon circle callerInit">TB</div></contactIconArea>
+                                <contactTitleArea><label class="summaryLabel">Contact</label></contactTitleArea>
+                                <contactNameArea><label class="callerName callerNameStyle">Unknown</label></contactNameArea>
+                                <channelLabelArea><label class="summaryLabel">Channel</label></channelLabelArea>
+                                <channelNameArea><label class="summaryData">Contoso CTI</label></channelNameArea>
+                                <timeLabelArea><label class="summaryLabel">Time spent</label></timeLabelArea>
+                                <timeSpentArea><label class="summaryData timer">03:49</label></timeSpentArea>
+                                <timeStartLabelArea><label class="summaryLabel">Started On</label></timeStartLabelArea>
+                                <timeStartedArea><label class="summaryData timeStart">12:35 pm</label></timeStartedArea>
+                                <activityLabelArea><label class="summaryLabel">Activity</label></activityLabelArea>
+                                <activityLinkArea><a id="activityLink" class="activityLink summaryData" href="javascript:;">Phone call</a></activityLinkArea>
+                                <caseLabelArea><label class="summaryLabel">Case</label></caseLabelArea>
+                                <caseLinkArea><a id="caseLink" class="activityLink summaryData" href="javascript:;">Case details</a></caseLinkArea>
+                                <emptyArea1></emptyArea1>
+                                <emptyArea2></emptyArea2>
+                                <emptyArea3></emptyArea3>
+                                <emptyArea4></emptyArea4>
+                                <emptyArea5></emptyArea5>
+                                <separatorArea1></separatorArea1>
+                                <separatorArea2></separatorArea2>
+                                <separatorArea3></separatorArea3>
+                                <separatorArea4></separatorArea4>
+                                <separatorArea4></separatorArea4>
+                                <separatorArea5></separatorArea5>
+                            </section>
+                        </div>
+                    </toastArea>
+                    <div class="callNotes">
+                        <notesArea>
+                            <section id="callNotes">
+                                <statusArea><label class="notesLabel">Call Notes</label></statusArea>
+                                <noteTextArea><div class="callNotesField" id="callNotesField" contentEditable=true data-text="Enter call notes here"></div></noteTextArea>
+                                <menuArea1><img src="~/images/addNotes.svg" id="addNotes" class="notesMenuItem" /></menuArea1>
+                                <menuArea2><!--img src="~/images/cancel.svg"  class="notesMenuItem"/--></menuArea2>
+                            </section>
+                        </notesArea>
+                    </div>
+                </section>
+            </div>
+        </widgetArea>
+        <sideBarArea>
+            <div class="collapsed">
+                <section id="sideBarSection">
+                    <sideBar>
+
+                        <dialPadArea>
+
+                            <img id="dialpad" class="sideBarIcon" src="~/images/dialpad.svg" />
+                            <!--div><label class="callerInit ongoingCallSidebar"></label></div-->
+                        </dialPadArea>
+
+                        <timerArea>
+
+                            <img class="sideBarIcon" src="~/images/timer.svg" />
+                            <!--label class="timer ongoingCallSidebar">34</label-->
+                        </timerArea>
+                        <ongoingCallArea>
+
+                            <img class="sideBarIcon ongoingCallSidebar" src="~/images/ongoingCall.svg" />
+                            <!--label class="timer ongoingCallSidebar">34</label-->
+                        </ongoingCallArea>
+                        <emptyArea>
+                            <div class="form-control" contenteditable="false"></div>
+                        </emptyArea>
+                    </sideBar>
+                    <sideLogoArea><img src="~/images/logoVert.svg" class="sideBarLogoIcon" /></sideLogoArea>
+                </section>
+            </div>
+        </sideBarArea>
+    </section>
+</div>
