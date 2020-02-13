@@ -156,7 +156,7 @@ Create a CDS application user and provide security roles. Refer the below screen
 
 - [Add a smart assist bot to a workstream](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#step-3-add-a-smart-assist-bot-to-a-workstream)
 
-![](screenshots\workstream.png)
+![](screenshots/workstream.png)
 
 - [Enable the productivity pane](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#step-4-enable-the-productivity-pane)
 
