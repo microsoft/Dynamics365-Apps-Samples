@@ -117,14 +117,15 @@ Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/b
 
 - Build your code and publish from visual studio like mentioned in this [link](https://docs.microsoft.com/en-us/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)
 - Copy the WebApp's endpoint which opens up in a browser after publishing. For Instance, lets say webapp endpoint is https://smartassistbot2020.azurewebsites.net/
-- Or you can also copy the endpoint from azure portal. Got to your webapp -> Overview(see the screenshot below)
+- Or you can also copy the endpoint from azure portal.<br />
+Go to your webapp and select **Overview** from left pane (see the screenshot below).
 
 ![](screenshots/WebappsEndpoint.png)
 
 
 **Update Messaging endpoint of Bot channels registration**<br />
 
-- Now update the Messaging endpoint of Bot channels registration, created in 4(a) with the WebApps messaging endpoint created in previous step
+- Now update the Messaging endpoint of Bot channels registration, created in 2(a) with the WebApps messaging endpoint created in previous step
 **Messaging endpoint will be ```WebApp Endpoint + /api/messages```**  (i.e)  
 _In our Example, it will be : https://smartassistbot2020.azurewebsites.net/api/messages_
 
@@ -136,7 +137,7 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 ![](screenshots/channel1.png)
 
-![](screenshots/channel1.png)
+![](screenshots/Teams2.png)
 
 **Test your Smart bot**
 
