@@ -52,7 +52,7 @@ Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/b
 
     a. Create registration resource following [this documentation](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#create-a-registration-resource)<br />
 
-    ![](screenshots\Botsettings_bcr.png)
+    ![](screenshots\\Botsettings_bcr.png)
 
     b. Go to the resource which is just created and select settings from left pane and then click on Manage like shown below in the screenshots.<br />
 
