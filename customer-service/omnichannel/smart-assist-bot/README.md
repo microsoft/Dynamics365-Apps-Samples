@@ -29,15 +29,15 @@ Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/b
 
 
     Sample screenshots
-    ![](screenshots\LUIS1.png)
+    ![](screenshots/LUIS1.png)
 
-    ![](screenshots\LUISAppID.png)
+    ![](screenshots/LUISAppID.png)
 
-    You can create intents according to your sceanrio. Here for demo code to work please create intent for appointment
+    You can create intents according to your scenario. Here for this sample code to work please create intent for appointment.
 
-    ![](screenshots\intent1.png)
+    ![](screenshots/intent1.png)
 
-    ![](screenshots\intent2.png)
+    ![](screenshots/intent2.png)
 
     **LUIS** app settings can be left blank if you are interested only in KB search
     
@@ -54,7 +54,7 @@ Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/b
 
     ![](screenshots/Botsettings_bcr.png)
 
-    b. Go to the resource which is just created and select settings from left pane and then click on Manage like shown below in the screenshots.<br />
+    b. Go to the resource which is just created and select settings from left pane and then click on Manage like shown below in the screenshot.<br />
 
     ![](screenshots/BotAppId.png)
 
@@ -102,7 +102,7 @@ Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/b
     ![](screenshots/APIPermissions3.png)
 
 
-    d. Update appsettings.json<br />
+    d. Update the copied App Id and secret to appsettings.json<br />
 
      ```//Dynamics connection settings
     "DynamicsAppId": "<Azure Application Id copied in step 3c, This enables Bot to talk to CDS>",
