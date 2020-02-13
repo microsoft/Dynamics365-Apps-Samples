@@ -13,15 +13,16 @@ To develop a new web application based smart-assist bot, follow the steps mentio
 
 This setup broadly contains the following steps.
 
-- Update the values in appsettings.json (SmartAssistBot/appsettings.json) file<br />
-- Publish the webapp to Azure<br />
-- Update the Messaging endpoint in Bot channels registration<br />
-- [Enable Teams channel](README.md#-Enable-Teams-channel)<br />
-- Test your Bot online<br />
+- [Update the values in appsettings.json](README.md#update-appsettingsjson) <br />
+- [Publish the webapp to Azure](README.md#publish-your-webapp-to-azure)<br />
+- [Update the Messaging endpoint in Bot channels registration](README.md#update-messaging-endpoint-of-bot-channels-registration)<br />
+- [Enable Teams channel](README.md#enable-teams-channel)<br />
+- [Test your Bot online](README.md#test-your-smart-bot)<br />
+- [Smart Assist Admin Configuration](README.md#smart-assist-admin-configuration)
 
 #### Update appsettings.json
 
-Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/appsettings.json) and update LUIS, Bot and CDS settings following the steps mentioned below.
+Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot and CDS settings following the steps mentioned below.
 
 1) **LUIS Settings**
 
@@ -143,6 +144,23 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 - Test your bot online using ```Test in Web Chat``` option. See [here](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot) for more details. 
 - If you are using trail org use keywords `travel`  or `book` or `audio equipment` to see the smart suggestions
+
+#### Smart Assist Admin Configuration
+
+Please follow the steps mentioned in this [admin guide](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#walk-through-to-enable-smart-assist) to enable Smart Assist in Omnichannel
+
+- [Create a bot user](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user)
+Create a CDS application user and provide security roles. Refer the below screenshot
+
+![](screenshots/BotUser.png)
+
+- [Add a smart assist bot to a workstream](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#step-3-add-a-smart-assist-bot-to-a-workstream)
+
+![](screenshots\workstream.png)
+
+- [Enable the productivity pane](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#step-4-enable-the-productivity-pane)
+
+After you've enabled the productivity pane, users can see the smart-assist cards on the productivity pane in Omnichannel for Customer Service.
 
 ### 2 . Integrating Smart Assist to an exisiting Azure Bot
 
