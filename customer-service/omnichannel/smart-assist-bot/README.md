@@ -1,7 +1,7 @@
 # Build a custom smart assist bot
 
 ### Getting Started
-This sample code contains custom smart bot implementation for suggesting KB articles and for Natural Language Understanding using [LUIS](https://www.luis.ai/home).
+This sample code contains custom smart bot implementation for suggesting KB articles and appointment using LUIS provided by Azure Cognitive services.
 
 ### 1. Deploying a new Smart Assist Bot
 
@@ -13,13 +13,13 @@ To develop a new web application based smart-assist bot, follow the steps mentio
 
 This setup broadly contains the following steps.
 
-1) Update the values in appsettings.json (SmartAssistBot/appsettings.json) file<br />
-2) Publish the webapp to Azure<br />
-3) Update the Messaging endpoint in Bot channels registration<br />
-4) Enable Teams channel<br />
-5) Test your Bot online<br />
+- Update the values in appsettings.json (SmartAssistBot/appsettings.json) file<br />
+- Publish the webapp to Azure<br />
+- Update the Messaging endpoint in Bot channels registration<br />
+- [Enable Teams channel](README.md#-Enable-Teams-channel)<br />
+- Test your Bot online<br />
 
-**Update appsettings.json** <br />
+#### Update appsettings.json
 
 Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/appsettings.json) and update LUIS, Bot and CDS settings following the steps mentioned below.
 
@@ -113,7 +113,7 @@ Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/b
   Please use the same app ID while [creating a bot user](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user) later. Also if your bot needs to search for knowledge base articles, then you need to provide either
   the **Customer Service Manager** or **Customer Service Representative** role to your bot user.
 
-**Publish your WebApp to azure**<br />
+#### Publish your WebApp to azure
 
 - Build your code and publish from visual studio like mentioned in this [link](https://docs.microsoft.com/en-us/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)
 - Copy the WebApp's endpoint which opens up in a browser after publishing. For Instance, lets say webapp endpoint is https://smartassistbot2020.azurewebsites.net/
@@ -123,7 +123,7 @@ Go to your webapp and select **Overview** from left pane (see the screenshot bel
 ![](screenshots/WebappsEndpoint.png)
 
 
-**Update Messaging endpoint of Bot channels registration**<br />
+#### Update Messaging endpoint of Bot channels registration
 
 - Now update the Messaging endpoint of Bot channels registration, created in 2(a) with the WebApps messaging endpoint created in previous step
 **Messaging endpoint will be ```WebApp Endpoint + /api/messages```**  (i.e)  
@@ -131,7 +131,7 @@ _In our Example, it will be : https://smartassistbot2020.azurewebsites.net/api/m
 
 ![](screenshots/endpointupdate.png)
 
-**Enable Teams channel**
+#### Enable Teams channel
 
 Please make sure to enable Teams channel like mentioned in this [link](https://docs.microsoft.com/en-us/azure/bot-service/channel-connect-teams?view=azure-bot-service-4.0).
 
@@ -139,7 +139,7 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 ![](screenshots/Teams2.png)
 
-**Test your Smart bot**
+#### Test your Smart bot
 
 - Test your bot online using ```Test in Web Chat``` option. See [here](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot) for more details. 
 - If you are using trail org use keywords `travel`  or `book` or `audio equipment` to see the smart suggestions
