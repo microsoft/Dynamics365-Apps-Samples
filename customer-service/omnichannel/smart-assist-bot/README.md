@@ -56,15 +56,15 @@ Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/b
 
     b. Go to the resource which is just created and select settings from left pane and then click on Manage like shown below in the screenshots.<br />
 
-    ![](screenshots\BotAppId.png)
+    ![](screenshots/BotAppId.png)
 
     c. Generate Client secret like mentioned [here](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#get-registration-password) and copy it separately. This will be your _MicrosoftAppPassword_<br />
 
-    ![](screenshots\AppPassword.png)
+    ![](screenshots/AppPassword.png)
 
     d. Now click on **Overview** from left pane and copy the _Application(client) ID_.Update both the Microsoft App ID and secret in appsettings.json
 
-    ![](screenshots\BotAppId2.png)
+    ![](screenshots/BotAppId2.png)
 
 
     ```
@@ -81,25 +81,25 @@ Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/b
 
     Screenshots for your reference
 
-    ![](screenshots\CDSApp1.png)
+    ![](screenshots/CDSApp1.png)
 
-    ![](screenshots\CDSApp2.png)
+    ![](screenshots/CDSApp2.png)
 
     c. Copy the Application (client) ID and client secret<br />
 
-    ![](screenshots\CDSAppID.png)
+    ![](screenshots/CDSAppID.png)
 
     d. Copy the client secret<br />
 
-    ![](screenshots\CDSSecret.png)
+    ![](screenshots/CDSSecret.png)
 
     Add API permissions to this app inorder to access CDS capabilities
 
-    ![](screenshots\APIPermissions1.png)
+    ![](screenshots/APIPermissions1.png)
 
-    ![](screenshots\APIPermissions2.png)
+    ![](screenshots/APIPermissions2.png)
 
-    ![](screenshots\APIPermissions3.png)
+    ![](screenshots/APIPermissions3.png)
 
 
     d. Update appsettings.json<br />
@@ -119,7 +119,7 @@ Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/b
 - Copy the WebApp's endpoint which opens up in a browser after publishing. For Instance, lets say webapp endpoint is https://smartassistbot2020.azurewebsites.net/
 - Or you can also copy the endpoint from azure portal. Got to your webapp -> Overview(see the screenshot below)
 
-![](screenshots\WebappsEndpoint.png)
+![](screenshots/WebappsEndpoint.png)
 
 
 **Update Messaging endpoint of Bot channels registration**<br />
@@ -128,15 +128,15 @@ Go to [Appsettings.json](https://github.com/microsoft/Dynamics365-Apps-Samples/b
 **Messaging endpoint will be ```WebApp Endpoint + /api/messages```**  (i.e)  
 _In our Example, it will be : https://smartassistbot2020.azurewebsites.net/api/messages_
 
-![](screenshots\endpointupdate.png)
+![](screenshots/endpointupdate.png)
 
 **Enable Teams channel**
 
 Please make sure to enable Teams channel like mentioned in this [link](https://docs.microsoft.com/en-us/azure/bot-service/channel-connect-teams?view=azure-bot-service-4.0).
 
-![](screenshots\channel1.png)
+![](screenshots/channel1.png)
 
-![](screenshots\channel1.png)
+![](screenshots/channel1.png)
 
 **Test your Smart bot**
 
