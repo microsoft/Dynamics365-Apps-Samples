@@ -150,7 +150,12 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 Please follow the steps mentioned in this [admin guide](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#walk-through-to-enable-smart-assist) to enable Smart Assist in Omnichannel
 
 - [Create a bot user](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user)
-Create a CDS application user and provide security roles. Refer the below screenshot
+
+  Create a CDS application user (Refer the below screenshot).
+  Also you need to provide the following security roles for this bot user.
+
+  1) Omnichannel Agent
+  2) Customer Service Manager or Customer Service Representative
 
 ![](screenshots/BotUser.png)
 
