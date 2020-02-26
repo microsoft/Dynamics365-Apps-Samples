@@ -146,6 +146,8 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 - Type in "omnichannelfoobar" which will set the required flag to test online
 - If you are using trail org use keywords `travel`  or `book` or `audio equipment` to see the smart suggestions
 
+![](screenshots/TestBot.png)
+
 #### Smart Assist Admin Configuration
 
 Please follow the steps mentioned in this [admin guide](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#walk-through-to-enable-smart-assist) to enable Smart Assist in Omnichannel
