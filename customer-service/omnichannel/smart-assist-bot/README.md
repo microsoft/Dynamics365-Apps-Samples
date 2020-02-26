@@ -26,6 +26,13 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
 
 1) **LUIS Settings**
 
+ **LUIS** app settings can be left blank if you are interested only in KB search
+
+        // LUIS connection settings
+        "LuisAPIHostName": "westus.api.cognitive.microsoft.com",
+        "LuisAPIKey": "", // LUIS APP Key
+        "LuisAppId": "", // LUIS APP ID
+
     Follow the instructions mentioned in topic [Add natural language understanding to your bot](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp) to add LUIS to your bot. Once you have created a LUIS app, see [this section](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp#retrieve-application-information-from-the-luisai-portal) to get `LuisAppId`, `LuisAPIKey` and `LuiAPIHostName`
 
 
@@ -39,13 +46,6 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
     ![](screenshots/intent1.png)
 
     ![](screenshots/intent2.png)
-
-    **LUIS** app settings can be left blank if you are interested only in KB search
-    
-        // LUIS connection settings
-        "LuisAPIHostName": "westus.api.cognitive.microsoft.com",
-        "LuisAPIKey": "", // LUIS APP Key
-        "LuisAppId": "", // LUIS APP ID
 
 2) **BOT Settings**
 
@@ -86,7 +86,7 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
 
     ![](screenshots/CDSApp2.png)
 
-    c. Copy the Application (client) ID and client secret<br />
+    c. Copy the Application (client) ID and tenant ID<br />
 
     ![](screenshots/CDSAppID.png)
 
@@ -103,7 +103,7 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
     ![](screenshots/APIPermissions3.png)
 
 
-    d. Update the copied App Id and secret to appsettings.json<br />
+    d. Update the copied App Id, tenant ID and secret to appsettings.json<br />
 
      ```//Dynamics connection settings
     "DynamicsAppId": "<Azure Application Id copied in step 3c, This enables Bot to talk to CDS>",
@@ -143,6 +143,7 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 #### Test your Smart bot
 
 - Test your bot online using ```Test in Web Chat``` option. See [here](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot) for more details. 
+- Type in "omnichannelfoobar" which will set the required flag to test online
 - If you are using trail org use keywords `travel`  or `book` or `audio equipment` to see the smart suggestions
 
 #### Smart Assist Admin Configuration
@@ -151,7 +152,7 @@ Please follow the steps mentioned in this [admin guide](https://docs.microsoft.c
 
 - [Create a bot user](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user)
 
-  Create a CDS application user (Refer the below screenshot).
+  Create a CDS application user with **User Type** as **Bot Application user** (Refer the below screenshot).
   Also you need to provide the following security roles for this bot user.
 
   1) Omnichannel Agent
