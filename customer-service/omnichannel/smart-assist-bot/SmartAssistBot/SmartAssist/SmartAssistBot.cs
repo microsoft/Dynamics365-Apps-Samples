@@ -11,6 +11,12 @@ using System.Threading.Tasks;
 
 namespace Microsoft.BotBuilderSamples.Bots
 {
+    public class ConversationData
+    {
+        public bool IsEscalated { get; set; }
+
+    }
+
     /// <summary>
     /// Smartassist bot to demonstrate knowledge article suggestions and appointment intent detection
     /// </summary>
@@ -21,6 +27,7 @@ namespace Microsoft.BotBuilderSamples.Bots
         protected readonly ILogger Logger;
         protected readonly KBSearchOperation kBSearchOperation;
         protected readonly AppointmentDetectionOperation appointmentDetectionOperation;
+        public const string OmnichannelFooBar = "omnichannelfoobar";
 
         public SmartAssistBot(ConversationState conversationState, UserState userState, IDynamicsDataAccessLayer dynamicsDataAccessLayer, KBSearchOperation kBSearchOperation, AppointmentDetectionOperation appointmentDetectionOperation)
         {
@@ -30,9 +37,48 @@ namespace Microsoft.BotBuilderSamples.Bots
             this.appointmentDetectionOperation = appointmentDetectionOperation;
         }
 
+        private async Task setConversationData(ITurnContext turnContext)
+        {
+            var conversationStateAccessors = ConversationState.CreateProperty<ConversationData>(nameof(ConversationData));
+            var conversationData = await conversationStateAccessors.GetAsync(turnContext, () => new ConversationData());
+
+            conversationData.IsEscalated = true;
+            await ConversationState.SaveChangesAsync(turnContext);
+            await UserState.SaveChangesAsync(turnContext);
+        }
+
         public override async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await base.OnTurnAsync(turnContext, cancellationToken);
+            var conversationStateAccessors = ConversationState.CreateProperty<ConversationData>(nameof(ConversationData));
+            var conversationData = await conversationStateAccessors.GetAsync(turnContext, () => new ConversationData());
+
+            var activity = turnContext.Activity;
+            var actList = new List<IActivity>();
+
+            if (activity.Type == ActivityTypes.Message &&
+                activity.Text ==  OmnichannelFooBar &&
+                conversationData.IsEscalated == false)
+            {
+                await setConversationData(turnContext);
+                return;
+            }
+
+            if (activity.Type == ActivityTypes.ConversationUpdate && conversationData.IsEscalated == false)
+            {
+                var result = activity.MembersAdded;
+                foreach (ChannelAccount account in result)
+                {
+                    if (account.AadObjectId != null)
+                    {
+                        await setConversationData(turnContext);
+                        return;
+                    }
+                }
+            }
+            if (activity.Type == ActivityTypes.Message && (conversationData.IsEscalated == true))
+            {
+                await base.OnTurnAsync(turnContext, cancellationToken);
+            }
 
             // Save any state changes that might have occured during the turn.
             await ConversationState.SaveChangesAsync(turnContext, false, cancellationToken);

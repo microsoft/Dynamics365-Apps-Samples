@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreBot", "CoreBot.csproj", "{0793F52D-82C5-4C6E-967B-606676CF8B17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartBot", "SmartBot.csproj", "{0793F52D-82C5-4C6E-967B-606676CF8B17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
