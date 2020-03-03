@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1022
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FulfillSalesRecord", "PowerApps-Sample1\FulfillSalesRecord.csproj", "{AE40213C-F65D-4493-81E2-62DB01BA6C0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE40213C-F65D-4493-81E2-62DB01BA6C0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE40213C-F65D-4493-81E2-62DB01BA6C0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE40213C-F65D-4493-81E2-62DB01BA6C0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE40213C-F65D-4493-81E2-62DB01BA6C0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F0E394D-6143-402D-BA86-F703D959ED71}
+	EndGlobalSection
+EndGlobal
