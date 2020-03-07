@@ -1,7 +1,6 @@
+# Sample: Qualify a lead
 
-# Sample: %title%
-
-This sample shows how to %brief-description%.
+This sample shows how to qualify a lead and create an account, contact, or opportunity based on the lead.
 
 ## How to run this sample
 
@@ -9,7 +8,7 @@ See [How to run samples](https://github.com/microsoft/PowerApps-Samples/blob/mas
 
 ## What this sample does
 
-%full-description%
+This sample shows how to qualify a lead and create an account, contact, or opportunity based on the lead.
 
 ## How this sample works
 
@@ -17,11 +16,14 @@ In order to simulate the scenario described in [What this sample does](#what-thi
 
 ### Setup
 
-%setup%
+1. Create two leads.
+2. Create an account to relate the opportunity to.
 
-### Demonstrate
+### Demonstrates
 
-%demonstrates%
+1. Qualify the first lead, creating an account and a contact from it, but not creating an opportunity.
+2. Retrieve the organization's base currency ID for setting the transaction currency of the opportunity.
+3. Qualify the second lead, creating an opportunity from it, and not creating an account or a contact. We use an existing account for the opportunity customer instead.
 
 ### Clean up
 

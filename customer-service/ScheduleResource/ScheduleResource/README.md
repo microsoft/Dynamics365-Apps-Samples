@@ -1,7 +1,7 @@
 
-# Sample: %title%
+# Sample: Search for openings to schedule a resource
 
-This sample shows how to %brief-description%.
+This sample shows how to find openings to schedule a resource by using the [SearchRequest](https://docs.microsoft.com/dotnet/api/microsoft.crm.sdk.messages.searchrequest?view=dynamics-general-ce-9) message.
 
 ## How to run this sample
 
@@ -9,7 +9,7 @@ See [How to run samples](https://github.com/microsoft/PowerApps-Samples/blob/mas
 
 ## What this sample does
 
-%full-description%
+This sample shows how to find openings to schedule a resource by using the [SearchRequest](https://docs.microsoft.com/dotnet/api/microsoft.crm.sdk.messages.searchrequest?view=dynamics-general-ce-9) message.
 
 ## How this sample works
 
@@ -17,11 +17,13 @@ In order to simulate the scenario described in [What this sample does](#what-thi
 
 ### Setup
 
-%setup%
-
-### Demonstrate
-
-%demonstrates%
+1. Gets the current user's information.
+2. Creates the van resource.
+3. Defines an anonymous type to define the possible constraint based group type code values.
+4. Creates the plumber resource group.
+5. Create the plumber required resource object.
+6. Create the service for the equipment.
+7. Deletes any entity records that were created for this sample.
 
 ### Clean up
 

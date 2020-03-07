@@ -1,7 +1,7 @@
 
-# Sample: %title%
+# Sample: Close an incident
 
-This sample shows how to %brief-description%.
+This sample shows how to how to process and close an incident (case) with a case resolution.
 
 ## How to run this sample
 
@@ -17,11 +17,19 @@ In order to simulate the scenario described in [What this sample does](#what-thi
 
 ### Setup
 
-%setup%
+1. Create an incident.
+2. Create a 30-minute appointment regarding the incident.
+3. Show the time spent on the incident before closing the appointment.
+4. Check the validity of the state transition to closed on the incident.
+5. Close the appointment.
+6. Show the time spent on the incident after closing the appointment.
+7. Check the validity of the state transition to closed again.
+8. Create the incident's resolution.
+9. Close the incident with the resolution.
 
 ### Demonstrate
 
-%demonstrates%
+This sample shows how to how to process and close an incident (case) with a case resolution.
 
 ### Clean up
 
