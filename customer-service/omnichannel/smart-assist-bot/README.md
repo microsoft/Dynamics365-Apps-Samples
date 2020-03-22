@@ -101,9 +101,11 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
 
 ![](screenshots/APIPermissions1.png)
 
+
 ![](screenshots/APIPermissions2.png)
 
-    ![](screenshots/APIPermissions3.png)
+
+![](screenshots/APIPermissions3.png)
 
 
   d. Update the copied `App Id`, `tenant ID` and `client secret` to the **appsettings.json** file.<br />
