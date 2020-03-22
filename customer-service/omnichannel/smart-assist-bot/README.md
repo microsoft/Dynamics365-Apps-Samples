@@ -1,4 +1,4 @@
-# Build a custom smart assist bot
+# Build a smart assist bot
 
 ### Getting Started
 This sample code contains custom smart bot implementation for suggesting KB articles and appointment using LUIS provided by Azure Cognitive services.
