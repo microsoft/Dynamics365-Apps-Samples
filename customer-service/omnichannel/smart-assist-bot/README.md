@@ -45,7 +45,7 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
 
     ![](screenshots/intent1.png)
 
-    ![](screenshots/intent2.png)
+    ![](screenshots/Intent2.png)
 
 2. **BOT Settings**
 
