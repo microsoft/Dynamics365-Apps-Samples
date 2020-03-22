@@ -37,9 +37,10 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
 
 
   Sample screenshots
-  ![](screenshots/LUIS1.png)
+                                      
+        ![](screenshots/LUIS1.png)
 
-  ![](screenshots/LUISAppID.png)
+        ![](screenshots/LUISAppID.png)
 
   You can create intents according to your scenario. Here for this sample code to work please create intent for appointment.
 
@@ -125,7 +126,7 @@ You can also copy the endpoint from Azure Portal.<br />
 
 Go to your web app and select **Overview** from left pane, as shown in the screenshot below.
 
-![](screenshots/WebappsEndpoint.png)
+        ![](screenshots/WebappsEndpoint.png)
 
 
 #### Update Messaging endpoint of Bot channels registration
@@ -134,15 +135,15 @@ Go to your web app and select **Overview** from left pane, as shown in the scree
 **Messaging endpoint will be ```WebApp Endpoint + /api/messages```**  (i.e)  
 _In our Example, it will be : https://smartassistbot2020.azurewebsites.net/api/messages_
 
-![](screenshots/endpointupdate.png)
+        ![](screenshots/endpointupdate.png)
 
 #### Enable Teams channel
 
 Please make sure to enable Teams channel like mentioned in this [link](https://docs.microsoft.com/azure/bot-service/channel-connect-teams?view=azure-bot-service-4.0).
 
-![](screenshots/channel1.png)
+        ![](screenshots/channel1.png)
 
-![](screenshots/Teams2.png)
+        ![](screenshots/Teams2.png)
 
 #### Test your Smart bot
 
@@ -150,7 +151,7 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 - Type in `omnichannelfoobar` which will set the required flag to test online.
 - If you are using trail org use keywords `travel`  or `book` or `audio equipment` to see the smart suggestions
 
-![](screenshots/TestBot.png)
+        ![](screenshots/TestBot.png)
 
 #### Smart Assist Admin Configuration
 
@@ -165,11 +166,11 @@ Also you need to provide the following security roles for this bot user.
   1) Omnichannel Agent
   2) Customer Service Manager or Customer Service Representative
 
-![](screenshots/BotUser.png)
+                ![](screenshots/BotUser.png)
 
 - [Add a smart assist bot to a workstream](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#step-3-add-a-smart-assist-bot-to-a-workstream)
 
-![](screenshots/workstream.png)
+        ![](screenshots/workstream.png)
 
 - [Enable the productivity pane](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#step-4-enable-the-productivity-pane)
 
@@ -210,7 +211,8 @@ There are 3 primary sections in `appsettings.json` file that you will have to fi
 * `DynamicsAppId` and `DynamicsAppSecret` are the application Id and client secret of the Azure Active Directory app that you have created in the previous step.
 
 5.  Publish the code and test the bot. For more information on how to test the bot, see [Test the bot](https://docs.microsoft.com/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot).
-![Test the bot](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/test-bot-img.jpg).
+
+        ![Test the bot](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/test-bot-img.jpg).
 
 ## See also
 
