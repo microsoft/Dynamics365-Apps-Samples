@@ -13,14 +13,14 @@ To develop a new web application based smart-assist bot, follow the steps mentio
 
 This setup broadly contains the following steps.
 
-- [Update the values in appsettings.json](README.md#update-appsettingsjson) <br />
-- [Publish the webapp to Azure](README.md#publish-your-webapp-to-azure)<br />
-- [Update the Messaging endpoint in Bot channels registration](README.md#update-messaging-endpoint-of-bot-channels-registration)<br />
-- [Enable Teams channel](README.md#enable-teams-channel)<br />
-- [Test your Bot online](README.md#test-your-smart-bot)<br />
-- [Smart Assist Admin Configuration](README.md#smart-assist-admin-configuration)
+1. [Update the values in appsettings.json](README.md#update-appsettingsjson) <br />
+2. [Publish the webapp to Azure](README.md#publish-your-webapp-to-azure)<br />
+3. [Update the Messaging endpoint in Bot channels registration](README.md#update-messaging-endpoint-of-bot-channels-registration)<br />
+4. [Enable Teams channel](README.md#enable-teams-channel)<br />
+5. [Test your Bot online](README.md#test-your-smart-bot)<br />
+6. [Smart Assist Admin Configuration](README.md#smart-assist-admin-configuration)
 
-#### Update appsettings.json
+#### 1. Update appsettings.json
 
 Open [Appsettings.json](SmartAssistBot/appsettings.json) through solution explorer for the solution opened in Visual Studio, and update the LUIS, Bot and CDS settings following the steps mentioned below.
 
@@ -119,7 +119,7 @@ Open [Appsettings.json](SmartAssistBot/appsettings.json) through solution explor
 Use the same `app ID` that you created earlier using the instructions in the topic [Create a bot user](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user). Also if your bot needs to search for knowledge base articles, then you need to provide either
 the **Customer Service Manager** or **Customer Service Representative** role to your bot user.
 
-#### Publish your WebApp to azure
+#### 2. Publish your WebApp to azure
 
 - Build your code and publish from Visual Studio using the instructions mentioned in topic [Publish a Web app to Azure App Service using Visual Studio](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 - Copy the WebApp's endpoint that opens in a browser after publishing. For instance, webapp endpoint can be something like `https://smartassistbot2020.azurewebsites.net/`.<br />
@@ -130,7 +130,7 @@ Go to your web app and select **Overview** from left pane, as shown in the scree
  ![](screenshots/WebappsEndpoint.png)
 
 
-#### Update Messaging endpoint of Bot channels registration
+#### 3. Update Messaging endpoint of Bot channels registration
 
 - Now update the Messaging endpoint of Bot channels registration, created in 2(a) with the WebApps messaging endpoint created in previous step
 **Messaging endpoint will be ```WebApp Endpoint + /api/messages```**  (i.e)  
@@ -138,7 +138,7 @@ _In our Example, it will be : https://smartassistbot2020.azurewebsites.net/api/m
 
 ![](screenshots/endpointupdate.png)
 
-#### Enable Teams channel
+#### 4. Enable Teams channel
 
 Please make sure to enable Teams channel like mentioned in this [link](https://docs.microsoft.com/azure/bot-service/channel-connect-teams?view=azure-bot-service-4.0).
 
@@ -146,7 +146,7 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 ![](screenshots/Teams2.png)
 
-#### Test your Smart bot
+#### 5. Test your Smart bot
 
 - Test your bot online using ```Test in Web Chat``` option. See the section [Test the bot](https://docs.microsoft.com/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot) for more details. 
 - Type in `omnichannelfoobar` which will set the required flag to test online.
@@ -154,7 +154,7 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 ![](screenshots/TestBot.png)
 
-#### Smart Assist Admin Configuration
+#### 6. Smart Assist Admin Configuration
 
 Please follow the steps mentioned in the [Smart assist for admins](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#walk-through-to-enable-smart-assist) topic to enable Smart Assist in Omnichannel for Customer Service.
 
