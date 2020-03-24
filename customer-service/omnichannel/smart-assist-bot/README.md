@@ -36,7 +36,7 @@ Open [Appsettings.json](SmartAssistBot/appsettings.json) through solution explor
   Follow the instructions mentioned in topic [Add natural language understanding to your bot](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp) to add LUIS to your bot. Once you have created a LUIS app, see [this section](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=csharp#retrieve-application-information-from-the-luisai-portal) to get `LuisAppId`, `LuisAPIKey` and `LuiAPIHostName`.
 
 
-  Sample screenshots
+  **Sample screenshots**
                                       
   ![](screenshots/LUIS1.png)
 
@@ -146,13 +146,17 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 ![](screenshots/Teams2.png)
 
-#### 5. Test your Smart bot
+#### 5. Test your Smart assist bot
 
 - Test your bot online using ```Test in Web Chat``` option. See the section [Test the bot](https://docs.microsoft.com/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot) for more details. 
 - Type in `omnichannelfoobar` which will set the required flag to test online.
-- If you are using trail org use keywords `travel`  or `book` or `audio equipment` to see the smart suggestions
+- Install sample data and use keywords `travel`  or `book` or `audio equipment` to see the smart suggestions.
+
+**Note**: If you are using a power virtual agent to answer customer facing queries and have added another smart assist bot for giving agent facing recommendations, type in "omnichannelfoobar" while testing your bot which will set the required flag to test online. 
+<br />
 
 ![](screenshots/TestBot.png)
+<br />
 
 #### 6. Smart Assist Admin Configuration
 
