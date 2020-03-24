@@ -22,11 +22,11 @@ This setup broadly contains the following steps.
 
 #### Update appsettings.json
 
-Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot and CDS settings following the steps mentioned below.
+Open [Appsettings.json](SmartAssistBot/appsettings.json) through solution explorer for the solution opened in Visual Studio, and update the LUIS, Bot and CDS settings following the steps mentioned below.
 
 1. **LUIS Settings**
 
- **LUIS** app settings can be left blank if you are interested only in Knowledge base articles search
+ **LUIS** app settings can be left blank for this sample scenario.
 
         // LUIS connection settings
         "LuisAPIHostName": "westus.api.cognitive.microsoft.com",
@@ -42,8 +42,7 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
 
   ![](screenshots/LUISAppID.png)
 
-  You can create intents according to your scenario. Here for this sample code to work please create intent for appointment.
-
+  
   ![](screenshots/intent1.png)
 
   ![](screenshots/Intent2.png)
@@ -52,7 +51,7 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
 
   Register your bot with Azure Bot Service and obtain the Microsoft `App ID` and a `Client secret` as illustrated below.<br />
 
-  a. Create registration resource following the instructions mentioned in the topic [Register a bot with Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#create-a-registration-resource).<br />
+  a. Create a bot channel registration to register your bot using the steps to create a registration resource. More information: [Register a bot with Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#create-a-registration-resource).<br />
 
   ![](screenshots/Botsettings_bcr.png)
 
