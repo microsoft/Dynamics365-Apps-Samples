@@ -160,6 +160,10 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 ![](screenshots/TestBot.png)
 <br />
 
+##### Steps to create a custom scenario for smart assist bot
+
+After following the above steps to setup, a sample bot, use the below steps to author custom scenarios for your organization. Follow the instructions mentioned in the topic [Implement a custom scenario for smart assist bot](https://review.docs.microsoft.com/dynamics365/omnichannel/developer/how-to/smart-assist-scenario?branch=smart-assist-updates) to be able to get similar case recommendations for ‘printer noise’ issue in smart assist while interacting with a customer as an agent in Omnichannel for Customer Service.
+
 #### 7. Smart Assist admin configuration
 
 Please follow the steps mentioned in the [Smart assist for admins](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#walk-through-to-enable-smart-assist) topic to enable Smart Assist in Omnichannel for Customer Service.
