@@ -7,8 +7,10 @@ This sample code contains custom smart bot implementation for suggesting KB arti
 
 To develop a new web application based smart-assist bot, follow the steps mentioned below.
 
-- Download the github sample from the GitHub repository of [Dynamics 365 apps sample code](https://github.com/microsoft/Dynamics365-Apps-Samples).
-- Go to directory **Dynamics365-Apps-Samples\customer-service\omnichannel\smart-assist-bot\SmartAssistBot**.
+#### 1. Download the GitHub sample code
+
+- Download the sample from the GitHub repository of [Dynamics 365 apps sample code](https://github.com/microsoft/Dynamics365-Apps-Samples).
+- Unzip the downloaded file and go to directory **Dynamics365-Apps-Samples\customer-service\omnichannel\smart-assist-bot\SmartAssistBot**.
 - Open the solution file **SmartBot.sln**.(https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/CoreBot.sln) in Microsoft Visual Studio 2017 or above.
 
 This setup broadly contains the following steps.
@@ -20,7 +22,7 @@ This setup broadly contains the following steps.
 5. [Test your Bot online](README.md#test-your-smart-bot)<br />
 6. [Smart Assist Admin Configuration](README.md#smart-assist-admin-configuration)
 
-#### 1. Update appsettings.json
+#### 2. Update appsettings.json
 
 Open [Appsettings.json](SmartAssistBot/appsettings.json) through solution explorer for the solution opened in Visual Studio, and update the LUIS, Bot and CDS settings following the steps mentioned below.
 
@@ -63,7 +65,7 @@ Open [Appsettings.json](SmartAssistBot/appsettings.json) through solution explor
 
   ![](screenshots/AppPassword.png)
 
-    d. Now click on **Overview** from left pane and copy the _Application(client) ID_.Update both the Microsoft App ID and secret in appsettings.json
+    d. Now click on **Overview** from left pane and copy the _Application(client) ID_. Update both the `Microsoft App ID` and `MicrosoftAppPassword` in appsettings.json.
 
   ![](screenshots/BotAppId2.png)
 
@@ -119,7 +121,7 @@ Open [Appsettings.json](SmartAssistBot/appsettings.json) through solution explor
 Use the same `app ID` that you created earlier using the instructions in the topic [Create a bot user](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user). Also if your bot needs to search for knowledge base articles, then you need to provide either
 the **Customer Service Manager** or **Customer Service Representative** role to your bot user.
 
-#### 2. Publish your WebApp to azure
+#### 3. Publish your WebApp to azure
 
 - Build your code and publish from Visual Studio using the instructions mentioned in topic [Publish a Web app to Azure App Service using Visual Studio](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 - Copy the WebApp's endpoint that opens in a browser after publishing. For instance, webapp endpoint can be something like `https://smartassistbot2020.azurewebsites.net/`.<br />
@@ -130,15 +132,15 @@ Go to your web app and select **Overview** from left pane, as shown in the scree
  ![](screenshots/WebappsEndpoint.png)
 
 
-#### 3. Update Messaging endpoint of Bot channels registration
+#### 4. Update Messaging endpoint of Bot channels registration
 
-- Now update the Messaging endpoint of Bot channels registration, created in 2(a) with the WebApps messaging endpoint created in previous step
+- Now update the Messaging endpoint of Bot channels registration, created in 2(b) above with the WebApps messaging endpoint created in previous step
 **Messaging endpoint will be ```WebApp Endpoint + /api/messages```**  (i.e)  
 _In our Example, it will be : https://smartassistbot2020.azurewebsites.net/api/messages_
 
 ![](screenshots/endpointupdate.png)
 
-#### 4. Enable Teams channel
+#### 5. Enable Teams channel
 
 Please make sure to enable Teams channel like mentioned in this [link](https://docs.microsoft.com/azure/bot-service/channel-connect-teams?view=azure-bot-service-4.0).
 
@@ -146,7 +148,7 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 ![](screenshots/Teams2.png)
 
-#### 5. Test your Smart assist bot
+#### 6. Test your Smart assist bot
 
 - Test your bot online using ```Test in Web Chat``` option. See the section [Test the bot](https://docs.microsoft.com/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot) for more details. 
 - Type in `omnichannelfoobar` which will set the required flag to test online.
@@ -158,7 +160,7 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 ![](screenshots/TestBot.png)
 <br />
 
-#### 6. Smart Assist Admin Configuration
+#### 7. Smart Assist admin configuration
 
 Please follow the steps mentioned in the [Smart assist for admins](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#walk-through-to-enable-smart-assist) topic to enable Smart Assist in Omnichannel for Customer Service.
 
