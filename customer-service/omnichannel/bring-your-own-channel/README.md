@@ -51,5 +51,6 @@ _Note: Application logs will be stored in `Microsoft.OmniChannel.Adapters.Servic
 
 |Resource link|Description|
 |------|------|
+|[Bring your own channel](https://docs.microsoft.com/dynamics365/omnichannel/developer/how-to/bring-your-own-channel)|This topic provides information on how you can integrate custom messaging channels using Direct Line Bot.|
 |[Direct Line API 3.0](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) | Introduces key concepts of Direct Line API 3.0 and provides information about relevant developer resources.|
 |[MessageBird API Docs](https://developers.messagebird.com/api/) | Communication APIs and technical resources to help you build your MessageBird communication solution.|
