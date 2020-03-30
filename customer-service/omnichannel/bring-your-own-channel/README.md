@@ -1,6 +1,6 @@
 # OmniChannel Connector Sample
 
-This document describe how to run the sample connector which is integarted to OmniChannel through Direct Line Bot. This source code is intended for the developers reference to create their own connector. In this sample, we are using Direct Line API 3.0 via .NET SDK to create a direct line client and we have created following channel adapeter to build this sample connector:
+This document describe how to run the sample connector which is integarted to OmniChannel through Direct Line Bot. This sample code is intended for the developers reference to create their own connector. In this sample, we are using Direct Line API 3.0 via .NET SDK to create a direct line client and we have created following channel adapeter to build this sample connector:
   - MessageBird
 
 ## Prerequisites!
@@ -11,7 +11,7 @@ This document describe how to run the sample connector which is integarted to Om
 ## How To
 
 - Download the source code.
-- Open `Microsoft.OmniChannel.Connector.Sample.sln` in visual studio.
+- Open `Microsoft.OmniChannel.Connector.Sample.sln` in Visual Studio 2017 or above.
 - Fill following values in the appsettings.json file under `RelayProcessorSettings`.
  
     | Key | Value |
