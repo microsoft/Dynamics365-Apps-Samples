@@ -45,81 +45,80 @@ Open [Appsettings.json](SmartAssistBot/appsettings.json) through solution explor
   ![](screenshots/LUISAppID.png)
 
   
-  ![](screenshots/intent1.png)
+  You can create intents according to your scenario. Here we demonstrate how you can create intent for appointment.
+
+    ![](screenshots/intent1.png)
 
   ![](screenshots/Intent2.png)
 
 2. **BOT Settings**
 
-  Register your bot with Azure Bot Service and obtain the Microsoft `App ID` and a `Client secret` as illustrated below.<br />
+    Register your bot with Azure Bot Service and obtain the Microsoft `App ID` and a `Client secret` as illustrated below.<br />
 
-  a. Create a bot channel registration to register your bot using the steps to create a registration resource. More information: [Register a bot with Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#create-a-registration-resource).<br />
+    a. Create registration resource following the instructions mentioned in the topic [Register a bot with Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#create-a-registration-resource).<br />
 
-  ![](screenshots/Botsettings_bcr.png)
+      ![](screenshots/Botsettings_bcr.png)
 
-  b. Go to the resource which is just created and select settings from left pane and then click on **Manage** as shown in the screenshot below.<br />
+    b. Go to the resource which is just created and select settings from left pane and then click on **Manage** as shown in the screenshot below.<br />
 
-  ![](screenshots/BotAppId.png)
+      ![](screenshots/BotAppId.png)
 
-  c. Generate `Client secret` as mentioned in the section [Get registration password](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#get-registration-password) and copy it separately. This will be your _MicrosoftAppPassword_<br />
+    c. Generate `Client secret` as mentioned in the section [Get registration password](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#get-registration-password) and copy it separately. This will be your _MicrosoftAppPassword_<br />
 
-  ![](screenshots/AppPassword.png)
+      ![](screenshots/AppPassword.png)
 
     d. Now click on **Overview** from left pane and copy the _Application(client) ID_. Update both the `Microsoft App ID` and `MicrosoftAppPassword` in appsettings.json.
 
-  ![](screenshots/BotAppId2.png)
+      ![](screenshots/BotAppId2.png)
 
-
-```
-    // Bot settings
-    "MicrosoftAppId": "<Microsoft App Id as copied in step 2d>",
-    "MicrosoftAppPassword": "<Microsoft App password as copied in step 2c>",
-    "REMOTEDEBUGGINGVERSION": "15.0.28307.222",
-    "ScmType": "None"```
-```
+    ```json
+      // Bot settings
+      "MicrosoftAppId": "<Microsoft App Id as copied in step 2d>",
+      "MicrosoftAppPassword": "<Microsoft App password as copied in step 2c>",
+      "REMOTEDEBUGGINGVERSION": "15.0.28307.222",
+      "ScmType": "None"```
+    ```
 
 3. **CDS settings**
 
-  a. Login to Azure portal with Common Data Service credentials.<br />
+    a. Login to Azure portal with Common Data Service credentials.<br />
 
-  b. Create an azure application to access Power Apps Common Data Service using the information provided in the section [Create an application registration](https://docs.microsoft.com/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration).<br />
+    b. Create an azure application to access Power Apps Common Data Service using the information provided in the section [Create an application registration](https://docs.microsoft.com/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory#create-an-application-registration).<br />
 
-  See the screenshots given below for reference.
+    See the screenshots given below for reference.
 
-![](screenshots/CDSApp1.png)
+      ![](screenshots/CDSApp1.png)
 
-![](screenshots/CDSApp2.png)
+      ![](screenshots/CDSApp2.png)
 
-  c. Copy the `Application (client) ID` and `tenant ID`.<br />
+    c. Copy the `Application (client) ID` and `tenant ID`.<br />
 
-![](screenshots/CDSAppID.png)
+      ![](screenshots/CDSAppID.png)
 
-  d. Copy the `Client secret`<br />
+    d. Copy the `Client secret`<br />
 
-![](screenshots/CDSSecret.png)
+      ![](screenshots/CDSSecret.png)
 
-    Add API permissions to this app inorder to access CDS capabilities
+    e. Add API permissions to this app inorder to access CDS capabilities
 
-![](screenshots/APIPermissions1.png)
+      ![](screenshots/APIPermissions1.png)
 
+      ![](screenshots/APIPermissions2.png)
 
-![](screenshots/APIPermissions2.png)
-
-
-![](screenshots/APIPermissions3.png)
+      ![](screenshots/APIPermissions3.png)
 
 
-  d. Update the copied `App Id`, `tenant ID` and `client secret` to the **appsettings.json** file.<br />
+   f. Update the copied `App Id`, `tenant ID` and `client secret` to the **appsettings.json** file.<br />
 
-    ```//Dynamics connection settings
-    "DynamicsAppId": "<Azure Application Id copied in step 3c, This enables Bot to talk to CDS>",
-    "DynamicsAppSecret": "<App secret for CDS App Id copied in step 3d>",
-    "DynamicsOrgUrl": "<CDS Org Url>",
-    "TenantId": "<CDS Tenant Id>"
-    ```
+        ```//Dynamics connection settings
+        "DynamicsAppId": "<Azure Application Id copied in step 3c, This enables Bot to talk to CDS>",
+        "DynamicsAppSecret": "<App secret for CDS App Id copied in step 3d>",
+        "DynamicsOrgUrl": "<CDS Org Url>",
+        "TenantId": "<CDS Tenant Id>"
+        ```
 
-Use the same `app ID` that you created earlier using the instructions in the topic [Create a bot user](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user). Also if your bot needs to search for knowledge base articles, then you need to provide either
-the **Customer Service Manager** or **Customer Service Representative** role to your bot user.
+  Use the same `app ID` that you created earlier using the instructions in the topic [Create a bot user](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user). Also if your bot needs to search for knowledge base articles, then you need to provide either
+  the **Customer Service Manager** or **Customer Service Representative** role to your bot user.
 
 #### 3. Publish your WebApp to azure
 
@@ -152,13 +151,14 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 - Test your bot online using ```Test in Web Chat``` option. See the section [Test the bot](https://docs.microsoft.com/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot) for more details. 
 - Type in `omnichannelfoobar` which will set the required flag to test online.
-- Install sample data and use keywords `travel`  or `book` or `audio equipment` to see the smart suggestions.
+
+- You can use keywords like `travel`, `book` or `audio equipment` to see the smart suggestions.
 
 **Note**: If you are using a power virtual agent to answer customer facing queries and have added another smart assist bot for giving agent facing recommendations, type in "omnichannelfoobar" while testing your bot which will set the required flag to test online. 
 <br />
 
-![](screenshots/TestBot.png)
-<br />
+  ![](screenshots/TestBot.png)
+  <br />
 
 ##### Steps to create a custom scenario for smart assist bot
 
@@ -174,7 +174,7 @@ Create a CDS application user with **User Type** as **Bot Application user**, as
 
 Also you need to provide the following security roles for this bot user.
 
-  1) Omnichannel Agent
+  1) Omnichannel for Customer Service Agent
   2) Customer Service Manager or Customer Service Representative
 
    ![](screenshots/BotUser.png)
@@ -228,6 +228,7 @@ There are 3 primary sections in `appsettings.json` file that you will have to fi
 ## See also
 
 - [Build a custom smart assist bot](https://docs.microsoft.com/dynamics365/omnichannel/developer/how-to/smart-assist-bot)
+- [Implement a custom scenario for smart assist bot](smart-assist-scenario.md)
 - [Create a bot with Azure Bot Service](https://docs.microsoft.com/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0)
 - [Build LUIS app to determine user intentions](https://docs.microsoft.com/azure/cognitive-services/luis/luis-quickstart-intents-only)
 - [FullTextSearchKnowledgeArticle Action](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/fulltextsearchknowledgearticle?view=dynamics-ce-odata-9)
