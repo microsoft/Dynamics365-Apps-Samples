@@ -187,6 +187,7 @@ Also you need to provide the following security roles for this bot user.
 
 After you've enabled the productivity pane, users can see the smart-assist cards on the productivity pane in Omnichannel for Customer Service.
 
+<!--
 ### 2 . Integrating Smart Assist to an exisiting Azure Bot
 
 This sample code for building a custom smart assist bot is built on top of the bot code that is generated when you create an Azure webapp bot. More information: [Create a bot with Azure Bot Service > Download code](https://docs.microsoft.com/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#download-code).
@@ -216,6 +217,7 @@ There are 3 primary sections in `appsettings.json` file that you will have to fi
 - **CDS connection settings**<br />
   You will first need to create an application user in CDS using which you can interact with it. Follow the steps mentioned in the PowerApps topic [Build web applications using Server-to-Server(S2S) authentication](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication).
 <br />
+-->
 
 <!--For information on how to register your application on Azure Active Directory, see [Walkthrough: Register an app with Azure AD](https://docs.microsoft.com/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory).-->
 
