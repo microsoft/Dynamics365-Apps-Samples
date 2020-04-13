@@ -1,7 +1,8 @@
 # Build a smart assist bot
 
 ### Getting Started
-This sample code contains custom smart bot implementation for suggesting KB articles and appointment.
+
+This sample code contains custom smart bot implementation for suggesting knowledge base articles and appointment.
 
 ### 1. Deploying a new Smart Assist Bot
 
@@ -147,7 +148,46 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 ![](screenshots/Teams2.png)
 
-****
+
+**SendKB custom action**
+
+This custom action enables you to send a KB article.
+
+**Note**: The `CustomAction` key should contain `SendKB` and `kbLink` key should contain the link of the KB article. You cannot have another custom action with the same name as `SendKB`.
+
+```json
+{
+
+          "type": "Action.Submit",
+          "title": "Send",
+          "data": {
+                          "CustomAction": "SendKB",
+                          "CustomParameters": {
+                          "kbLink": "https://ocddemoebc.powerappsportals.com/knowledgebase/article/KA-01011/en-us"
+                  }
+          }
+}
+```
+
+**Open Case custom action**
+
+This custom action enables you to open any entity record.
+
+```json
+{
+              "type": "Action.Submit",
+              "title": "Open",
+              "data": {
+                             "CustomAction": "OpenForm",
+                             "CustomParameters": {
+                                           "entityName": "incident",
+                                           "entityId": "c3356c37-bba6-4067-b1a1-8c66e1c203a1",
+                                           "data": {}
+                             }
+              }
+}
+```
+
 #### 6. Test your Smart assist bot
 
 - Test your bot online using ```Test in Web Chat``` option. See the section [Test the bot](https://docs.microsoft.com/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot) for more details. 
