@@ -1,7 +1,7 @@
 # Build a smart assist bot
 
 ### Getting Started
-This sample code contains custom smart bot implementation for suggesting KB articles and appointment using LUIS provided by Azure Cognitive services.
+This sample code contains custom smart bot implementation for suggesting KB articles and appointment.
 
 ### 1. Deploying a new Smart Assist Bot
 
@@ -120,10 +120,10 @@ Open [Appsettings.json](SmartAssistBot/appsettings.json) through solution explor
   Use the same `app ID` that you created earlier using the instructions in the topic [Create a bot user](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user). Also if your bot needs to search for knowledge base articles, then you need to provide either
   the **Customer Service Manager** or **Customer Service Representative** role to your bot user.
 
-#### 3. Publish your WebApp to azure
+#### 3. Publish your WebApp to Azure
 
 - Build your code and publish from Visual Studio using the instructions mentioned in topic [Publish a Web app to Azure App Service using Visual Studio](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
-- Copy the WebApp's endpoint that opens in a browser after publishing. For instance, webapp endpoint can be something like `https://smartassistbot2020.azurewebsites.net/`.<br />
+- Copy the WebApp's endpoint that opens in a browser after publishing. For instance, web app endpoint can be something like `https://smartassistbot2020.azurewebsites.net/`.<br />
 You can also copy the endpoint from Azure Portal.<br />
 
 Go to your web app and select **Overview** from left pane, as shown in the screenshot below.
@@ -147,6 +147,7 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 ![](screenshots/Teams2.png)
 
+****
 #### 6. Test your Smart assist bot
 
 - Test your bot online using ```Test in Web Chat``` option. See the section [Test the bot](https://docs.microsoft.com/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot) for more details. 
