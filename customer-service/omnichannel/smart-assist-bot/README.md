@@ -207,7 +207,9 @@ After following the above steps to setup, a sample bot, use the below steps to a
 
 #### 7. Smart Assist admin configuration
 
-Please follow the steps mentioned in the [Smart assist for admins](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#walk-through-to-enable-smart-assist) topic to enable Smart Assist in Omnichannel for Customer Service.
+After you have built and tested the bot, follow the steps mentioned in the [Smart assist for admins](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#walk-through-to-enable-smart-assist) topic to enable Smart Assist in Omnichannel for Customer Service.
+<!--
+Please 
 
 - [Create a bot user](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#step-2-create-a-bot-user).
 
@@ -227,7 +229,7 @@ Also you need to provide the following security roles for this bot user.
 - [Enable the productivity pane](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#step-4-enable-the-productivity-pane)
 
 After you've enabled the productivity pane, users can see the smart-assist cards on the productivity pane in Omnichannel for Customer Service.
-
+-->
 <!--
 ### 2 . Integrating Smart Assist to an exisiting Azure Bot
 
