@@ -48,7 +48,7 @@ Open [Appsettings.json](SmartAssistBot/appsettings.json) through solution explor
   
   You can create intents according to your scenario. Here we demonstrate how you can create intent for appointment.
 
-    ![](screenshots/intent1.png)
+  ![](screenshots/intent1.png)
 
   ![](screenshots/Intent2.png)
 
@@ -262,13 +262,14 @@ There are 3 primary sections in `appsettings.json` file that you will have to fi
 <br />
 -->
 
-<!--For information on how to register your application on Azure Active Directory, see [Walkthrough: Register an app with Azure AD](https://docs.microsoft.com/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory).-->
+<!--For information on how to register your application on Azure Active Directory, see [Walkthrough: Register an app with Azure AD](https://docs.microsoft.com/powerapps/developer/common-data-service/walkthrough-register-app-azure-active-directory).
 
 * `DynamicsAppId` and `DynamicsAppSecret` are the application Id and client secret of the Azure Active Directory app that you have created in the previous step.
 
 5.  Publish the code and test the bot. For more information on how to test the bot, see [Test the bot](https://docs.microsoft.com/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot).
 
     ![Test the bot](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/customer-service/omnichannel/smart-assist-bot/SmartAssistBot/test-bot-img.jpg).
+-->
 
 ## See also
 
