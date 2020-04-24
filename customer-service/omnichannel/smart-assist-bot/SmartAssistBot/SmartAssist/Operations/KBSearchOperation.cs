@@ -129,7 +129,7 @@ namespace CoreBot.SmartAssist.Operations
                             // This should match with the custom action that you implement as webresource
                             CustomAction = "OpenURL",
                             CustomParameters = new Dictionary<string, string>() {
-                                ["kblink"] = WebsiteURL + articleNumber
+                                ["kbLink"] = WebsiteURL + articleNumber
                             }
                         }
                     }
