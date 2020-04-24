@@ -152,6 +152,25 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 ![](screenshots/TestBot.png)
 
+#### Custom Action
+In this sample, KB suggestion card contains two action buttons.
+- Send : Copies the KBLink to conversation control
+- Open : Opens up the KB article in a new browser tab and is implemented as a Custom action in this [Java script file](SmartAssistBot/Webresource_CustomAction.js)
+
+Upload this [custom action java script file](SmartAssistBot/Webresource_CustomAction.js) in Customer Summary form as shown below.
+
+![](screenshots/CustomerSummaryForm.png)
+
+Open Customer summary Form and Goto Form Properties to add the webresource
+
+![](screenshots/FormPropertiesAdd.png)
+
+![](screenshots/NewWebresource.png)
+
+![](screenshots/UploadDetails.png)
+
+Now the custom action will be available in the form for smart assist control to invoke.
+
 #### Smart Assist Admin Configuration
 
 Please follow the steps mentioned in the [Smart assist for admins](https://docs.microsoft.com/dynamics365/omnichannel/administrator/smart-assist#walk-through-to-enable-smart-assist) topic to enable Smart Assist in Omnichannel for Customer Service.
