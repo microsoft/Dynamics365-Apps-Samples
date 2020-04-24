@@ -43,9 +43,9 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
 
   You can create intents according to your scenario. Here for this sample code to work please create intent for appointment.
 
-    ![](screenshots/intent1.png)
+   ![](screenshots/intent1.png)
 
-    ![](screenshots/intent2.png)
+   ![](screenshots/intent2.png)
 
 2. **BOT Settings**
 
@@ -53,19 +53,19 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
 
   a. Create registration resource following the instructions mentioned in the topic [Register a bot with Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#create-a-registration-resource).<br />
 
-    ![](screenshots/Botsettings_bcr.png)
+  ![](screenshots/Botsettings_bcr.png)
 
   b. Go to the resource which is just created and select settings from left pane and then click on **Manage** as shown in the screenshot below.<br />
 
-    ![](screenshots/BotAppId.png)
+  ![](screenshots/BotAppId.png)
 
   c. Generate `Client secret` as mentioned in the section [Get registration password](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0#get-registration-password) and copy it separately. This will be your _MicrosoftAppPassword_<br />
 
-    ![](screenshots/AppPassword.png)
+  ![](screenshots/AppPassword.png)
 
     d. Now click on **Overview** from left pane and copy the _Application(client) ID_.Update both the Microsoft App ID and secret in appsettings.json
 
-    ![](screenshots/BotAppId2.png)
+  ![](screenshots/BotAppId2.png)
 
 
 ```
@@ -84,25 +84,25 @@ Go to [Appsettings.json](SmartAssistBot/appsettings.json) and update LUIS, Bot a
 
   See the screenshots given below for reference.
 
-    ![](screenshots/CDSApp1.png)
+  ![](screenshots/CDSApp1.png)
 
-    ![](screenshots/CDSApp2.png)
+  ![](screenshots/CDSApp2.png)
 
   c. Copy the `Application (client) ID` and `tenant ID`.<br />
 
-    ![](screenshots/CDSAppID.png)
+  ![](screenshots/CDSAppID.png)
 
   d. Copy the `Client secret`<br />
 
-    ![](screenshots/CDSSecret.png)
+  ![](screenshots/CDSSecret.png)
 
     Add API permissions to this app inorder to access CDS capabilities
 
-    ![](screenshots/APIPermissions1.png)
+  ![](screenshots/APIPermissions1.png)
 
-    ![](screenshots/APIPermissions2.png)
+  ![](screenshots/APIPermissions2.png)
 
-    ![](screenshots/APIPermissions3.png)
+  ![](screenshots/APIPermissions3.png)
 
 
   d. Update the copied `App Id`, `tenant ID` and `client secret` to the **appsettings.json** file.<br />
@@ -151,6 +151,25 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 - If you are using trail org use keywords `travel`  or `book` or `audio equipment` to see the smart suggestions
 
 ![](screenshots/TestBot.png)
+
+#### Custom Action
+In this sample, KB suggestion card contains two action buttons.
+- Send : Copies the KBLink to conversation control
+- Open : Opens up the KB article in a new browser tab and is implemented as a Custom action in this [Java script file](SmartAssistBot/CustomActions.js)
+
+Upload this [custom action java script file](SmartAssistBot/CustomActions.js) in Customer Summary form as shown below.
+
+![](screenshots/CustomerSummaryForm.png)
+
+Open Customer summary Form and Goto Form Properties to add the webresource
+
+![](screenshots/FormPropertiesAdd.png)
+
+![](screenshots/NewWebresource.png)
+
+![](screenshots/UploadDetails.png)
+
+Now the custom action will be available in the form for smart assist control to invoke.
 
 #### Smart Assist Admin Configuration
 
