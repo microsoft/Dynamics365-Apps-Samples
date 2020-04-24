@@ -1,0 +1,90 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OmniChannel.MessageRelayProcessor", "Microsoft.OmniChannel.MessageRelayProcessor\Microsoft.OmniChannel.MessageRelayProcessor.csproj", "{9965016F-40CD-4544-BAC9-5AF5F3F5ECDD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OmniChannel.Adapters.Service", "Microsoft.OmniChannel.Adaptors.Service\Microsoft.OmniChannel.Adapters.Service.csproj", "{EA10B141-32FB-4B4E-B587-F3A982B4D818}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{2E0C3227-0C15-4F68-A1CE-647F10DA0948}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{A753042D-E6B3-4576-9803-18C3A1C2DC9A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OmniChannel.Adapter.Builder", "Libraries\Microsoft.OmniChannel.Adapter.Builder\Microsoft.OmniChannel.Adapter.Builder.csproj", "{A638F3DA-554D-4D7D-9E66-37E6BA53BCA1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OmniChannel.Adapters.Line", "Libraries\Adapters\Microsoft.OmniChannel.Adapters.Line\Microsoft.OmniChannel.Adapters.Line.csproj", "{6A9A3D97-AD47-4C12-BF9C-73DA543F82E0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OmniChannel.Adapters.MessageBird", "Libraries\Adapters\Microsoft.OmniChannel.Adapters.MessageBird\Microsoft.OmniChannel.Adapters.MessageBird.csproj", "{22E57035-719B-4D02-AFBD-FD93375DCEDE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B09682A8-6C50-4027-9784-76444DBFFF47}"
+	ProjectSection(SolutionItems) = preProject
+		Microsoft.OmniChannel.Connector.ruleset = Microsoft.OmniChannel.Connector.ruleset
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{912D865C-A2BB-4F80-B23D-93DD5D5B17B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{9145D5A0-8205-45B1-B353-0E4437441EEF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OmniChannel.Adapters.MessageBird.Tests", "Tests\Adapters\Microsoft.OmniChannel.Adapters.MessageBird.Tests\Microsoft.OmniChannel.Adapters.MessageBird.Tests.csproj", "{8F03DB5A-DC6F-4C34-8608-6C9796810D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.OmniChannel.MessageRelayProcessor.Tests", "Tests\Microsoft.OmniChannel.MessageRelayProcessor.Tests\Microsoft.OmniChannel.MessageRelayProcessor.Tests.csproj", "{5A1C202A-7A43-45C2-8016-6B86175FD3F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.OmniChannel.Adapters.Service.Tests", "Tests\Microsoft.OmniChannel.Adapters.Service.Tests\Microsoft.OmniChannel.Adapters.Service.Tests.csproj", "{DAACBF62-361F-4E70-BBA1-CE53A1E08350}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9965016F-40CD-4544-BAC9-5AF5F3F5ECDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9965016F-40CD-4544-BAC9-5AF5F3F5ECDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9965016F-40CD-4544-BAC9-5AF5F3F5ECDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9965016F-40CD-4544-BAC9-5AF5F3F5ECDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA10B141-32FB-4B4E-B587-F3A982B4D818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA10B141-32FB-4B4E-B587-F3A982B4D818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA10B141-32FB-4B4E-B587-F3A982B4D818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA10B141-32FB-4B4E-B587-F3A982B4D818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A638F3DA-554D-4D7D-9E66-37E6BA53BCA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A638F3DA-554D-4D7D-9E66-37E6BA53BCA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A638F3DA-554D-4D7D-9E66-37E6BA53BCA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A638F3DA-554D-4D7D-9E66-37E6BA53BCA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A9A3D97-AD47-4C12-BF9C-73DA543F82E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A9A3D97-AD47-4C12-BF9C-73DA543F82E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A9A3D97-AD47-4C12-BF9C-73DA543F82E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A9A3D97-AD47-4C12-BF9C-73DA543F82E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22E57035-719B-4D02-AFBD-FD93375DCEDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22E57035-719B-4D02-AFBD-FD93375DCEDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22E57035-719B-4D02-AFBD-FD93375DCEDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22E57035-719B-4D02-AFBD-FD93375DCEDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F03DB5A-DC6F-4C34-8608-6C9796810D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F03DB5A-DC6F-4C34-8608-6C9796810D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F03DB5A-DC6F-4C34-8608-6C9796810D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F03DB5A-DC6F-4C34-8608-6C9796810D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A1C202A-7A43-45C2-8016-6B86175FD3F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A1C202A-7A43-45C2-8016-6B86175FD3F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A1C202A-7A43-45C2-8016-6B86175FD3F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A1C202A-7A43-45C2-8016-6B86175FD3F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAACBF62-361F-4E70-BBA1-CE53A1E08350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAACBF62-361F-4E70-BBA1-CE53A1E08350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAACBF62-361F-4E70-BBA1-CE53A1E08350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAACBF62-361F-4E70-BBA1-CE53A1E08350}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E0C3227-0C15-4F68-A1CE-647F10DA0948} = {A753042D-E6B3-4576-9803-18C3A1C2DC9A}
+		{A638F3DA-554D-4D7D-9E66-37E6BA53BCA1} = {A753042D-E6B3-4576-9803-18C3A1C2DC9A}
+		{6A9A3D97-AD47-4C12-BF9C-73DA543F82E0} = {2E0C3227-0C15-4F68-A1CE-647F10DA0948}
+		{22E57035-719B-4D02-AFBD-FD93375DCEDE} = {2E0C3227-0C15-4F68-A1CE-647F10DA0948}
+		{9145D5A0-8205-45B1-B353-0E4437441EEF} = {912D865C-A2BB-4F80-B23D-93DD5D5B17B5}
+		{8F03DB5A-DC6F-4C34-8608-6C9796810D62} = {9145D5A0-8205-45B1-B353-0E4437441EEF}
+		{5A1C202A-7A43-45C2-8016-6B86175FD3F1} = {912D865C-A2BB-4F80-B23D-93DD5D5B17B5}
+		{DAACBF62-361F-4E70-BBA1-CE53A1E08350} = {912D865C-A2BB-4F80-B23D-93DD5D5B17B5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0DCFDB82-D95A-4236-BE18-615B168E43D5}
+	EndGlobalSection
+EndGlobal

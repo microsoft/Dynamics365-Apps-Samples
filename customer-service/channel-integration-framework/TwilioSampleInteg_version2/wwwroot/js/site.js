@@ -34,6 +34,8 @@ var expandedWidgetWidth = "271fr";
 /* Whether Minimized or Docked Or Hidden */
 var _CurrentPanelMode = null;
 
+var _currentCallHoldState = 0; //Call is not on hold
+
 /* A timer for counting the duration of current call in the current state */
 class Timer {
     /* timerElemjQuery - Will update the value of all DOM elements returned by this jquery to current timer value
@@ -685,6 +687,20 @@ function answerCall() {
             $('#callNotesField').text("");
             phone.listOfSessions.set(sessionId, sessionPh);
             phone.currentCallSessioId = sessionId;
+
+            Utility.updateCallerDetailsFromCRM(phone.conn.parameters.From, !0, sessionPh).then(() => {
+                if (sessionPh.contactId != null && sessionPh.contactId != '') {
+                    let inputMap = new Map().set("sessionId", sessionId).set("targetRecordType", "contact").set("targetRecordId", sessionPh.contactId);
+                    updateConversation(inputMap).then((result) => {
+                        console.log("successfully updated conversation: " + result.value + ", with contact Id: " + sessionPh.contactId);
+                    },
+                        (error) => {
+                            console.log(error);
+                    });
+                } else {
+                    console.log('Caller details could not be fetched from CRM, skipping updateConversation api calls.');
+                }
+            });
         },
         (error) => {
             declineCall();
@@ -760,27 +776,40 @@ function createCase() {
         templatedata["customerid_contact@odata.bind"] = "/contacts(" + sessionI.contactId + ")";
         templatedata["caseorigincode"] = 1;
 
-        Microsoft.CIFramework.createRecord("incident", JSON.stringify(templatedata)).then((result) => {
-            var res = JSON.parse(result);
-            sessionI.currentCase = res.id
-            var input = {
-                templateName: "entityrecord",
-                templateParameters: {
-                    entityName: "incident",
-                    entityId: res.id,
-                },
-                isFocused: true
-            }
-            Microsoft.CIFramework.createTab(input).then((result) => {
-                $("#caseLink").text("Case Details");
-                console.log("created tab with id " + result);
-            },
-                (error) => {
-                    console.log(error);
+        if (sessionI.contactId != null && sessionI.contactId != '') {
+            Microsoft.CIFramework.createRecord("incident", JSON.stringify(templatedata)).then((result) => {
+                var res = JSON.parse(result);
+                sessionI.currentCase = res.id
+                var input = {
+                    templateName: "entityrecord",
+                    templateParameters: {
+                        entityName: "incident",
+                        entityId: res.id,
+                    },
+                    isFocused: true
                 }
-            );
-        });
 
+                Microsoft.CIFramework.createTab(input).then((result) => {
+                    $("#caseLink").text("Case Details");
+                    console.log("created tab with id " + result);
+                },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+
+                let inputMap = new Map().set("sessionId", sessionI.sessionId).set("targetRecordType", "incident").set("targetRecordId", res.id);
+                updateConversation(inputMap).then((result) => {
+                    console.log("successfully updated conversation: " + result.value + ", with incident id:" + res.id);
+                },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+            });
+        } else {
+            console.log("Caller details could not be fetched from CRM, skipping case creation.");
+        }
     });
 }
 
@@ -948,6 +977,9 @@ function initAll() {
     $("#addNotes").click(function () {
         updateActivity();
     });
+    $(".holdCall").click(function () {
+        holdUnholdCall();
+    });
     log('Requesting Capability Token...');
 
     $.getJSON(twilioAppURL)
@@ -1009,6 +1041,95 @@ function tryInitAll() {
     }
 }
 
+function holdUnholdCall() {
+    let data;
+    let eventNameStr;
+    if (_currentCallHoldState === 0) {
+        eventNameStr = "CallHold";
+        _currentCallHoldState = 1;
+
+        data = {
+            "events": [
+                {
+                    "kpiEventName": "CallHold",
+                    "kpiEventReason": "CallHold",
+                }
+            ]
+        }
+    } else {
+        eventNameStr = "CallUnhold";
+        _currentCallHoldState = 0;
+
+        data = {
+            "events": [
+                {
+                    "kpiEventName": "CallUnhold",
+                    "kpiEventReason": "CallUnhold",
+                }
+            ]
+        }
+    }
+
+
+    Microsoft.CIFramework.logAnalyticsEvent(data, eventNameStr).then((results) => {
+        console.log(eventNameStr + " event logged successfully.");
+    }, (error) => {
+        console.log(error);
+    });
+}
+
 $(function () {
     tryInitAll();
 });
+
+function updateConversation(inputMap) {
+    return new Promise(function (resolve, reject) {
+        if (inputMap === undefined || inputMap === null) {
+            return reject("updateConversation input map is empty, nothing to update");
+        }
+
+        Microsoft.CIFramework.getSession(inputMap.get("sessionId")).then((sessionInfo) => {
+            let conversationId = sessionInfo.get("conversationId");
+            if (conversationId != null && conversationId != '') {
+                console.log('Fetched current session details via the getSession api for conversation id: ' + conversationId);
+                let data = preparePayloadByUpdateType(inputMap);
+                Microsoft.CIFramework.updateConversation(sessionInfo.get('conversationId'), data).then((conversationInfo) => {
+                    resolve({ value: JSON.parse(conversationInfo).id });
+                },
+                    (error) => {
+                        console.log(error);
+                        reject(error);
+                    });
+            } else {
+                console.log("A live workitem is not available for this session, skipping updateConversation api calls.");
+            }  
+        },
+            (error) => {
+                console.log(error);
+                reject(error);
+            }
+        );
+    });
+}
+
+function preparePayloadByUpdateType(inputMap) {
+    /**
+     * 1. Case: Case details will be updated in the "regardingobjectid" column of the "msdyn_ocliveworkitem" entity, once linked, this will be reflected in the "_regardingobjectid_value" field of the odata results.
+     * 2. Contact/Account: Contact/Account details will be updated in the "msdyn_customer" column of the "msdyn_ocliveworkitem" entity, once linked, this will be reflected in the "_msdyn_customer_value" field of the odata results.
+     * */
+    let data;
+    if (inputMap.get("targetRecordType") !== undefined && inputMap.get("targetRecordType") !== null) {
+        if (inputMap.get("targetRecordType") === "incident") {//for case
+            data = JSON.stringify({ "regardingobjectid_incident@odata.bind": "/incidents(" + inputMap.get("targetRecordId") + ")" });
+        } else if (inputMap.get("targetRecordType") === "contact") {//for contact
+            data = JSON.stringify({ "msdyn_customer_msdyn_ocliveworkitem_contact@odata.bind": "/contacts(" + inputMap.get("targetRecordId") + ")" });
+        } else if (inputMap.get("targetRecordType") === "account") {//for account
+            data = JSON.stringify({ "msdyn_customer_msdyn_ocliveworkitem_account@odata.bind": "/accounts(" + inputMap.get("targetRecordId") + ")" });
+        } else {
+            return reject("Unsupported entity type.");
+        }
+    } else {
+        data = JSON.stringify(inputMap.payload);
+    }
+    return data;
+}

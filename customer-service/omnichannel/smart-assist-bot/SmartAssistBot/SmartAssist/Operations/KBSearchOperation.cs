@@ -115,21 +115,21 @@ namespace CoreBot.SmartAssist.Operations
                     new AdaptiveSubmitAction() {
                         IconUrl = SendIcon,
                         Title = "Send",
-                        Data = new MacroData() {
-                            // This macro should already be configured in the CDS org. Please note that the names are case sensitive
-                            MacroName = "SendKBAsEmail",
-                            MacroParameters = new Dictionary<string, string>() {
-                                ["EmailTemplateName"] = "KBEmaiLTemplate"
+                        Data = new CustomActionData() {
+                            CustomAction = "SendKB",
+                            CustomParameters = new Dictionary<string, string>() {
+                                ["kbLink"] = WebsiteURL + articleNumber
                             }
                         }
                     },
                     new AdaptiveSubmitAction() {
                         IconUrl = OpenIcon,
                         Title = "Open",
-                        Data = new MacroData() {
-                            MacroName = "OpenKBLink",
-                            MacroParameters = new Dictionary<string, string>() {
-                                ["kblink"] = WebsiteURL + articleNumber
+                        Data = new CustomActionData() {
+                            // This should match with the custom action that you implement as webresource
+                            CustomAction = "OpenURL",
+                            CustomParameters = new Dictionary<string, string>() {
+                                ["kbLink"] = WebsiteURL + articleNumber
                             }
                         }
                     }
