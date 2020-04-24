@@ -155,9 +155,9 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 #### Custom Action
 In this sample, KB suggestion card contains two action buttons.
 - Send : Copies the KBLink to conversation control
-- Open : Opens up the KB article in a new browser tab and is implemented as a Custom action in this [Java script file](SmartAssistBot/Webresource_CustomAction.js)
+- Open : Opens up the KB article in a new browser tab and is implemented as a Custom action in this [Java script file](SmartAssistBot/CustomActions.js)
 
-Upload this [custom action java script file](SmartAssistBot/Webresource_CustomAction.js) in Customer Summary form as shown below.
+Upload this [custom action java script file](SmartAssistBot/CustomActions.js) in Customer Summary form as shown below.
 
 ![](screenshots/CustomerSummaryForm.png)
 
