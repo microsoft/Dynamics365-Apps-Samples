@@ -19,7 +19,7 @@ The sample lets you:
 
 ## How this sample works
 
-In order to simulate the scenario described in [What this sample does](#what-this-sample-does), the sample will create, update and then delete sample forecasting data.
+In order to simulate the scenario described in [What this sample does](#what-this-sample-does), the sample will retrieve and update the forecasting data. You will need to create sample forecasting data to run this sample code.
 
 ### Demonstrate
 
