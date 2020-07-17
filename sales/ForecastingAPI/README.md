@@ -9,7 +9,7 @@ Follow these steps to run this sample.
 1. Open the `ForecastPublicApiUsageDemo.sln` file in Visual Studio.
 2. Add your organization URL and login credentials in the `App.config` file.
 3. Select **Tools**>**NuGet Package Manager**>**Package Manager Console** and install the NuGet package `Microsoft.CrmSdk.CoreAssemblies v9.0.2.26`.
-4. Build and then run the solution by selecting the **Start** button or by pressing **CTRL**+**F5** on your keyboard.
+4. Build and then run the solution by selecting the **Start** button or by pressing **F5** on your keyboard.
 
 For more information, see [How to run samples](https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/sales/README.md).
 
