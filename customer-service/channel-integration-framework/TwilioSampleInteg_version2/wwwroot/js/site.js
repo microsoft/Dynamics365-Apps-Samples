@@ -180,6 +180,7 @@ class SessionInfo {
         this._caseId = null;        //Any Case/Incident record created for current phone session
         this.notes = "";
         this.sessionId = sessionid;
+        this.isOldSession = true;
     }
 
     get name() {
@@ -323,7 +324,7 @@ class SessionInfo {
         if (this.state != PhoneState.Ongoing) {
             return;
         }
-        Utility.updateCallerDetailsFromCRM(this._number, false, this);
+        Utility.updateCallerDetailsFromCRM(this._number, this.isOldSession, this);
         log("Initiated CRM page update");
     }
 
@@ -576,6 +577,24 @@ function sendKBArticleHandler(paramStr) {
     });
 }
 
+/* Our clickToAct handler. This will place a phone call and change the phone state accordingly */
+function clickToActHandler(paramStr) {
+    return new Promise(function (resolve, reject) {
+        try {
+            let params = JSON.parse(paramStr);
+            var phNo = params.value;   //Retrieve the phone number to dial from parameters passed by CIF
+            log("Click To Act placing a phone call to " + phNo);
+            $("#dialerPhoneNumber").val(phNo);
+            expandPanel();  //Programatically expand the panel if required
+            placeCall();    //Make the call
+            resolve(true);
+        }
+        catch (error) {
+            reject(error);
+        }
+    });
+
+}
 /* Our handler invoked by CIF when the user changes panel mode */
 function modeChangedHandler(paramStr) {
     return new Promise(function (resolve, reject) {
@@ -696,7 +715,7 @@ function answerCall() {
                     },
                         (error) => {
                             console.log(error);
-                    });
+                        });
                 } else {
                     console.log('Caller details could not be fetched from CRM, skipping updateConversation api calls.');
                 }
@@ -720,7 +739,30 @@ function declineCall() {
 /* Our callback to be invoked by Twilio when a call is successfully connected */
 function ongoingCall() {
     var sess = phone.listOfSessions.get(phone.currentCallSessioId);
-    sess.state = PhoneState.Ongoing;
+    if (sess == null || sess === undefined) {
+        var inputBag = {
+            "templateName": "TwilioCallSessionTemplate", "templateParameters": {}, "customerName": phone.name
+        };
+        Microsoft.CIFramework.createSession(inputBag).then(
+            (sessionId) => {
+                var sessionPh = new SessionInfo(PhoneState.Dialing, sessionId);
+                sessionPh.name = phone.name;
+                log("Dialing " + sessionPh.name);
+                $('#callNotesField').text("");
+                phone.listOfSessions.set(sessionId, sessionPh);
+                phone.currentCallSessioId = sessionId;
+                sessionPh.isOldSession = false;
+                sessionPh.state = PhoneState.Ongoing;
+            },
+            (error) => {
+                log("Error in session creation for dialing " + sessionPh.name);
+            });
+    }
+    else {
+        sess.isOldSession = true;
+        sess.state = PhoneState.Ongoing;
+    }
+
     log("Ongoing call with " + sess.name);
 }
 
@@ -731,6 +773,19 @@ function hangupCall() {
     log("Hanging up call with " + sess.name);
 }
 
+/* Event handler to be invoked when the user wishes to place a call via either "clickToAct" or using our rudimentary dialer */
+function placeCall() {
+    if (phone.busy) {
+        throw new Error("Cannot place call. Phone busy");
+    }
+    var params = {
+        To: "+" + document.getElementById('dialerPhoneNumber').value
+    };
+    log('Placing a call to ' + params.To + '...');
+    phone.name = params.To;
+
+    Twilio.Device.connect(params);
+}
 /** Event handler when the user clicks on bing button.*/
 function searchBing() {
     Microsoft.CIFramework.getFocusedSession().then((sessionId) => {
@@ -934,6 +989,8 @@ function updateActivity() {
 /* Initialization function for this application.
  * Registers handlers for various CIF events */
 function initCTI() {
+    Microsoft.CIFramework.setClickToAct(true);
+    Microsoft.CIFramework.addHandler("onclicktoact", clickToActHandler);
     Microsoft.CIFramework.addHandler("onmodechanged", modeChangedHandler);
     Microsoft.CIFramework.addHandler("onpagenavigate", pageNavigateHandler);
     Microsoft.CIFramework.addHandler("onsendkbarticle", sendKBArticleHandler);
@@ -1102,7 +1159,7 @@ function updateConversation(inputMap) {
                     });
             } else {
                 console.log("A live workitem is not available for this session, skipping updateConversation api calls.");
-            }  
+            }
         },
             (error) => {
                 console.log(error);
