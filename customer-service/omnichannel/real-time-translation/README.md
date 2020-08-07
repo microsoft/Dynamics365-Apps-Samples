@@ -9,7 +9,8 @@ Since much of the real time translation behavior is defined by the web resource,
 3. Select **Roles** and create a new role with the name `RTT privilege`.
 4. Select custom entities and select all privileges for **Custom item value**.
 5. Save and close.
-6. Now go to the Omnichannel administration app and enable Real Time Translation.
+6. Assign the `RTT privilege` role to all agents and supervisors.
+7. Now go to the Omnichannel administration app and enable Real Time Translation.
 
 ## What does this sample do?
 
