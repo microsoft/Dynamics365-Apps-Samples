@@ -7,6 +7,9 @@ Since much of the real time translation behavior is defined by the web resource,
 1. Login to your organisation as an admin.
 2. Go to **Advanced Settings**, then select **Security**.
 3. Select **Roles** and create a new role with the name `RTT privilege`.
+
+!["Manage user roles"](rtt-manage-user-roles.png)
+
 4. Select custom entities and select all privileges for **Custom item value**.
 5. Save and close.
 6. Assign the `RTT privilege` role to all agents and supervisors.
