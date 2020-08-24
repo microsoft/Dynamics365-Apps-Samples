@@ -11,9 +11,7 @@ You will require the following before you get started with using this sample cod
 
 ## Getting Started
 
-1. Configure a chat widget
-
-Follow the instructions mentioned in the topic [Add a chat widget](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/add-chat-widget) to configure a chat widget.
+1. Configure a chat widget. Follow the instructions in [Add a chat widget](https://docs.microsoft.com/dynamics365/omnichannel/administrator/add-chat-widget) to configure a chat widget.
 
 2. Copy the widget snippet code from the **Code snippet** section and save it. It will be needed in the later steps.
 
