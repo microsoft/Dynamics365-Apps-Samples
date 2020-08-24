@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta http-equiv="no-cache">
+        <meta http-equiv="Expires" content="-1">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <script type="text/javascript">
+            var urlParams = new URLSearchParams(location.search);
+            var appId = urlParams.get("appId");
+            var orgId = urlParams.get("orgId");
+            var orgUrl = urlParams.get("orgUrl");
+            var environment = urlParams.get("environment");
+            var c2Src = urlParams.get("c2Src");
+            var renderMobile = urlParams.get("renderMobile");
+            var colorOverride = urlParams.get("colorOverride");
+            var hideChatButton = urlParams.get("hideChatButton");
+
+            // Inject the script into the header
+            // This allows us to set values from query parameters rather than make this a static file
+            var scriptTag = document.createElement("script");
+            scriptTag.type = "text/javascript";
+            scriptTag.src = c2Src;
+            scriptTag.setAttribute("id", "Microsoft_Omnichannel_LCWidget");
+            scriptTag.setAttribute("data-app-id", appId);
+            scriptTag.setAttribute("data-org-id", orgId);
+            scriptTag.setAttribute("data-org-url", orgUrl);
+            scriptTag.setAttribute("data-render-mobile", renderMobile);
+            scriptTag.setAttribute("data-hide-chat-button", hideChatButton);
+            if(colorOverride !== ""){
+                scriptTag.setAttribute("data-color-override", '#' + colorOverride);
+            }
+            document.head.appendChild(scriptTag);
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
