@@ -1,23 +1,23 @@
-# Embed chat widget on sample android app
+# Embed chat widget on a sample Android app
 
-This document describes how to embed chat widget on an android app. This sample code is intended for the developers reference to create their own android app.
+This sample code is intended for the reference of developers who are trying to create their own Android app with an embedded chat widget.
 
 ## Prerequisites
+
+You will require the following before you get started with using this sample code.
 
 - [Android Studio](https://developer.android.com/studio)
 - Android 10.0 (API level 29)
 
 ## Getting Started
 
-### 1. Configure a chat widget
+1. Configure a chat widget
 
-If you haven't set up a chat widget yet. Please follow these instructions on:
+Follow the instructions mentioned in the topic [Add a chat widget](https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/add-chat-widget) to configure a chat widget.
 
-https://docs.microsoft.com/en-us/dynamics365/omnichannel/administrator/add-chat-widget
+2. Copy the widget snippet code from the **Code snippet** section and save it. It will be needed in the later steps.
 
-### 2. **Copy** the widget snippet code from the **Code snippet** section and save it somewhere. It will be needed later on.
-
-It should look similar to this:
+It should look similar to this.
 
 ```html
     <script 
@@ -30,7 +30,7 @@ It should look similar to this:
     </script>
 ```
 
-### 3. **Add** your chat widget config to [ClientConfigs.kt](app/src/main/java/com/poc/SampleChatAppUsingLCW/ClientConfigs.kt)
+3. Add your chat widget config to [ClientConfigs.kt](app/src/main/java/com/poc/SampleChatAppUsingLCW/ClientConfigs.kt).
 
 ```kotlin
     val config = mapOf(
