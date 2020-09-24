@@ -1,31 +1,27 @@
-# Enable real time translation for conversations
+# Enable real-time translation for conversations
 
-## Pre-requisites
+## Prerequisites
 
-Since much of the real time translation behavior is defined by the web resource, follow the steps given below to create a new role `RTT privilege` and assign it to all the agents and supervisors.
+The real time translation behavior is defined by the web resource, therefore, verify the following checklist:
 
-1. Login to your organisation as an admin.
-2. Go to **Advanced Settings**, then select **Security**.
-3. Select **Roles** and create a new role with the name `RTT privilege`.
-
-!["Manage user roles"](rtt-manage-user-roles.png)
-
-4. Select custom entities and select all privileges for **Custom item value**.
-5. Save and close.
-6. Assign the `RTT privilege` role to all agents and supervisors.
-
-!["Assign security roles"](rtt-security-roles.png)
-
-7. Now go to the Omnichannel administration app and enable Real Time Translation.
+1. All the agents and supervisors should have "Omnichannel agent" or "Omnichannel supervisor" role.
 
 
 ## What does this sample do?
 
-This is a sample web resource that you can use to implement the logic for enabling real time translation of the conversation messages exchanged between the customer and the agent.
+The webResourceV2.js is a sample web resource that you can use to enable real-time translation of the conversation messages exchanged between the customer and the agent. Perform the following steps before using the sample:
 
-For more information about web resources, see [Web resources in model-driven apps](https://docs.microsoft.com/powerapps/developer/model-driven-apps/web-resources).
+1. Directly download the file and change the API key for the translation API engine that is used in your organisation, in `webResourceV2.js` at:
 
-Once you have uploaded this file as a web resource, follow the instructions in the topic [Add a web resource for real time translation](https://docs.microsoft.com/dynamics365/omnichannel/developer/how-to/add-web-resource-real-time-translation) to copy its URL in the Omnichannel Administration app.
+```
+	bingTranslateApiClientSecret: '<please add your own azure translation api key>',
+	googleTranslateApiClientSecret: '<please add your own google translation v2 api key>',
+	useAzureTranslationApis: true,//please override it to false if planning to use google translation v2 api
+```
+Additional changes can also be made in the web resource logic as per your business needs.
+
+
+2. Add this javascript file as web resource to your organisation. Follow the instructions in the topic [Add a web resource for real time translation](https://docs.microsoft.com/dynamics365/omnichannel/developer/how-to/add-web-resource-real-time-translation) to copy its URL in the Omnichannel Administration app to enable real-time translation feature in Omnichannel for Customer Service.
 
 ## See also
 
