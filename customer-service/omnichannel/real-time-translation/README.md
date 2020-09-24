@@ -19,7 +19,7 @@ The webResourceV2.js is a sample web resource that you can use to enable real-ti
 	useAzureTranslationApis: true,//please override it to false if planning to use google translation v2 api
 ```
 
-2. Make additional changes in the web resource logic as per your business needs.
+2. Additional changes can be made in the web resource logic as per your business needs.
 
 
 Add this javascript file as web resource to your organisation. Follow the instructions in the topic [Add a web resource for real time translation](https://docs.microsoft.com/dynamics365/omnichannel/developer/how-to/add-web-resource-real-time-translation) to copy its URL in the Omnichannel Administration app to enable real-time translation feature in Omnichannel for Customer Service.
