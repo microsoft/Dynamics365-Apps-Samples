@@ -1,7 +1,7 @@
 /* 
 
 (!) Important
-Microsoft provides the sample script as a guide only.  Using the sample script enables you to track the page navigation of your users through browser sessions.  You can then share that information with Dynamics 365 Customer Service.  Your collection of data from your users through the sample script is independent of Dynamics 365 Customer Service.
+Microsoft provides the sample script as a guide only. Using the sample script enables you to use Realtime Translation feature of Omnichannel for Customer Service.
 
 Microsoft provides the sample script "as is," "with all faults," and without warranty of any kind.  Microsoft does not provide any support for your use of the sample script.  If Microsoft does elect to provide support for your use of the sample script, then such support is also provided "as is," "with all faults," and without warranty of any kind and may be discontinued at any time at Microsoft's sole discretion.
  
