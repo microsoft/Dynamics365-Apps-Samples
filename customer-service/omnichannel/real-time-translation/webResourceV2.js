@@ -1,7 +1,7 @@
 /* 
 
 (!) Important
-Microsoft provides the sample script as a guide only. Using the sample script enables you to use Realtime Translation feature of Omnichannel for Customer Service.
+Microsoft provides the sample script as a guide only. Use the sample script to enable real-time translation in Omnichannel for Customer Service.
 
 Microsoft provides the sample script "as is," "with all faults," and without warranty of any kind.  Microsoft does not provide any support for your use of the sample script.  If Microsoft does elect to provide support for your use of the sample script, then such support is also provided "as is," "with all faults," and without warranty of any kind and may be discontinued at any time at Microsoft's sole discretion.
  
