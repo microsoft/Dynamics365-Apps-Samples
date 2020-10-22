@@ -2,11 +2,13 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Linq.Expressions;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Omnichannel.Bot.Middleware;
 
 namespace Microsoft.BotBuilderSamples
 {
@@ -17,6 +19,7 @@ namespace Microsoft.BotBuilderSamples
         public AdapterWithErrorHandler(IConfiguration configuration, ILogger<BotFrameworkHttpAdapter> logger, ConversationState conversationState = null)
             : base(configuration, logger)
         {
+            Use(new OmnichannelMiddleware());
             OnTurnError = async (turnContext, exception) =>
             {
                 // Log any leaked exception from the application.
