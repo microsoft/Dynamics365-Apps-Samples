@@ -16,10 +16,11 @@
   <ItemGroup>
     <PackageReference Include="AdaptiveCards" Version="1.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.Bot.Builder.AI.Luis" Version="4.5.1" />
-    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.5.1" />
-    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.5.1" />
+    <PackageReference Include="Microsoft.Bot.Builder.AI.Luis" Version="4.7.1" />
+    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.10.3" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.10.3" />
     <PackageReference Include="Microsoft.Recognizers.Text.DataTypes.TimexExpression" Version="1.1.5" />
+    <PackageReference Include="Microsoft.Xrm.Omnichannel.BotSDK" Version="1.0.0.5" />
   </ItemGroup>
 
   <Import Project="PostDeployScripts\IncludeSources.targets" Condition="Exists('PostDeployScripts\IncludeSources.targets')" />
