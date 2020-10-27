@@ -155,46 +155,6 @@ Please make sure to enable Teams channel like mentioned in this [link](https://d
 
 ![](screenshots/Teams2.png)
 
-
-**SendKB custom action**
-
-This custom action enables you to send a KB article.
-
-**Note**: The `CustomAction` key should contain `SendKB` and `kbLink` key should contain the link of the KB article. You cannot have another custom action with the same name as `SendKB`.
-
-```json
-{
-
-          "type": "Action.Submit",
-          "title": "Send",
-          "data": {
-                          "CustomAction": "SendKB",
-                          "CustomParameters": {
-                          "kbLink": "https://ocddemoebc.powerappsportals.com/knowledgebase/article/KA-01011/en-us"
-                  }
-          }
-}
-```
-
-**Open Case custom action**
-
-This custom action enables you to open any entity record.
-
-```json
-{
-              "type": "Action.Submit",
-              "title": "Open",
-              "data": {
-                             "CustomAction": "OpenForm",
-                             "CustomParameters": {
-                                           "entityName": "incident",
-                                           "entityId": "c3356c37-bba6-4067-b1a1-8c66e1c203a1",
-                                           "data": {}
-                             }
-              }
-}
-```
-
 #### 6. Test your Smart assist bot
 
 - Test your bot online using ```Test in Web Chat``` option. See the section [Test the bot](https://docs.microsoft.com/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0#test-the-bot) for more details. 
@@ -208,30 +168,17 @@ This custom action enables you to open any entity record.
  ![](screenshots/TestBot.png)
   <br />
   
-#### Custom Action
+#### Custom Actions
+
 In this sample, KB suggestion card contains two action buttons.
 - Send : Copies the KBLink to conversation control
-- Open : Opens up the KB article in a new browser tab and is implemented as a Custom action in this [Java script file](SmartAssistBot/CustomActions.js)
+- Open : Opens up the KB article in a new browser tab
 
-Upload this [custom action java script file](SmartAssistBot/CustomActions.js) in Customer Summary form as shown below.
-
-![](screenshots/CustomerSummaryForm.png)
-
-Open Customer summary Form and Goto Form Properties to add the webresource
-
-![](screenshots/FormPropertiesAdd.png)
-
-![](screenshots/NewWebresource.png)
-
-![](screenshots/UploadDetails.png)
-
-Now the custom action will be available in the form for smart assist control to invoke.
-
-#### Smart Assist Admin Configuration
+Both the actions will work by default and is handled in omnichannel side.
 
 ##### Steps to create a custom scenario for smart assist bot
 
-After following the above steps to setup, a sample bot, use the below steps to author custom scenarios for your organization. Follow the instructions mentioned in the topic [Implement a custom scenario for smart assist bot](https://review.docs.microsoft.com/dynamics365/omnichannel/developer/how-to/smart-assist-scenario?branch=smart-assist-updates) to be able to get similar case recommendations for ‘printer noise’ issue in smart assist while interacting with a customer as an agent in Omnichannel for Customer Service.
+Follow the instructions mentioned in the topic [Implement a custom scenario for smart assist bot](https://docs.microsoft.com/en-us/dynamics365/omnichannel/developer/how-to/smart-assist-scenario) to be able to get similar case recommendations for ‘printer noise’ issue in smart assist while interacting with a customer as an agent in Omnichannel for Customer Service.
 
 #### 7. Smart Assist admin configuration
 

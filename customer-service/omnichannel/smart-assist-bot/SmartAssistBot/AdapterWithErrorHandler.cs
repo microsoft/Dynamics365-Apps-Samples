@@ -19,6 +19,10 @@ namespace Microsoft.BotBuilderSamples
         public AdapterWithErrorHandler(IConfiguration configuration, ILogger<BotFrameworkHttpAdapter> logger, ConversationState conversationState = null)
             : base(configuration, logger)
         {
+            /* Using Omnichannel Middleware
+             * NuGet Link - https://www.nuget.org/packages/Microsoft.Xrm.Omnichannel.BotSDK/
+             * This Middleware helps in filtering out omnichannel internal and system messages
+             */
             Use(new OmnichannelMiddleware());
             OnTurnError = async (turnContext, exception) =>
             {
