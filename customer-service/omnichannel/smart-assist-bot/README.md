@@ -174,7 +174,9 @@ In this sample, KB suggestion card contains two action buttons.
 - Send : Copies the KBLink to conversation control
 - Open : Opens up the KB article in a new browser tab
 
-Both the actions will work by default and is handled in omnichannel side.
+You need to update the website URL value in the variable called 'WebsiteURL' here - [KBSearchOperation.cs](SmartAssistBot/SmartAssist/Operations/KBSearchOperation.cs)
+
+Both the actions will work by default and is handled in omnichannel side. You can also create custom action based on any scenario.
 
 ##### Steps to create a custom scenario for smart assist bot
 

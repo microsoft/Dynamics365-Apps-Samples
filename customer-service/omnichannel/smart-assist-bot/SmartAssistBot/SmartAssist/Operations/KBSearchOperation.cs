@@ -127,7 +127,7 @@ namespace CoreBot.SmartAssist.Operations
                         Title = "Open",
                         Data = new CustomActionData() {
                             // This should match with the custom action that you implement as webresource
-                            CustomAction = "OpenURL",
+                            CustomAction = "OpenKB",
                             CustomParameters = new Dictionary<string, string>() {
                                 ["kbLink"] = WebsiteURL + articleNumber
                             }
