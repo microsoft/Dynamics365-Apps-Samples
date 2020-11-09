@@ -5,7 +5,7 @@
 The real time translation behavior is defined by the web resource, therefore, verify the following checklist:
 
 - As an administrator, deploy a translation resource and get a translation key. For information, see [How to sign up for Translator](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup).
-	> [!NOTE] Make sure you create the resource for "Global" location.
+	> [!NOTE] Make sure you create the translation resource for the "Global" location.
 
 - All the agents and supervisors should have "Omnichannel agent" or "Omnichannel supervisor" role.
 
