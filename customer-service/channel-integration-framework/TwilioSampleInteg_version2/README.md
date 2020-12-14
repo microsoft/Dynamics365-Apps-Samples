@@ -35,7 +35,8 @@ This document assumes a valid Azure subscription is available
 7. Set channel order to "0"
 8. Select the UCI apps and user roles for which this sample softphone should be enabled
 9. Save all changes
-10. The softphone is now ready for testing
+10. Import TwilioSampleData.zip (included in this sample code) in your org to get Notification and Session templates used in this sample code.
+11. The softphone is now ready for testing
 
 ## Important considerations
 ----------------------------
@@ -128,16 +129,3 @@ exports.handler = function(context, event, callback) {
   callback(null, response);
 };
 ```
-
-VII) Import configuration data
-------------------------------
-
-1. Download the Configuration Migration Tool. The Configuration Migration tool is available as a NuGet package.
-2. Start the Configuration Migration tool. Double-click DataMigrationUtility.exe in the folder: [your folder]\Tools\ConfigurationMigration\
-3. On the main screen, click Import data, and click Continue.
-4. On the Login screen, provide authentication details to connect to your Dynamics 365 instance from where you want to import data. If you have multiple organizations on the Dynamics 365 for Customer Engagement server, and want to select the organization where to import the configuration data, select the Always display list of available orgs check box. Click Login.
-5. If you have multiple organizations, and you selected the Always display list of available orgs check box, the next screen lets you choose the organization that you want to connect to. Select a Dynamics 365 apps organization to connect to.
-6. Provide the data file. (data.zip) to be imported. Browse to the data file, and select it. Click Import Data.
-7. This step is applicable only if the data that you are importing contains the user information of the source system. Enter mapping user information on the target system. You can either map all of them to the user who is running the import process or map to individual users by using a user map file (.xml). If you choose the latter, you will have to either specify an existing user map file or the tool can generate it for you. If you generate a new file, fill in the mapping user name in the New parameter for every user on the source server. Select the user map file in the tool when you are done, and click OK.
-8. The next screen displays the import status of your records. The data import is done in multiple passes to first import the foundation data while queuing up the dependent data, and then import the dependent data in the subsequent passes to handle any data dependencies or linkages. This ensures clean and consistent data import.
-9. Click Finish to close the tool.
