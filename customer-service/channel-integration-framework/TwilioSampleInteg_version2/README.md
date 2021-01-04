@@ -1,20 +1,19 @@
 # Steps For deploying the Sample softphone for Channel Integration Framework 2.0
 
-This document assumes a valid Azure subscription is available
+This document assumes a valid Azure subscription is available and  CIF version deployed is 10.1.0.51 or higher (solution unique name is ChannelIntegrationFrameworkV2)
 
 ## Publishing the sample app to Azure
 -------------------------------------
-1. Unzip the folder "ChannelApiFrameworkv2_SampleApp.zip"
-2. Open the solution "TwilioSampleInteg.sln" using Visual Studio 2017
-3. In Solution Explorer, right-click on the solution and build the complete solution
-4. In Solution Explorer, right-click on the project "TwilioSampleInteg"  and select "Publish"
-5. Click on "Start" to launch the "Publish" wizard
-6. Choose "App Service" as the publish target
-7. Select "Create New" and click on "Publish"
-8. Provide a suitable appname. In this document we will assume "TwilioSampleInteg"
-9. Provide valid subscription, resource group and hosting plan details
-10. Click on "Create" to create the azure app service
-11. Note the app service URL. In this sample, we will use "https://twiliosampleinteg.azurewebsites.net"
+1. Open the solution "TwilioSampleInteg.sln" using Visual Studio 2017
+2. In Solution Explorer, right-click on the solution and build the complete solution
+3. In Solution Explorer, right-click on the project "TwilioSampleInteg"  and select "Publish"
+4. Click on "Start" to launch the "Publish" wizard
+5. Choose "App Service" as the publish target
+6. Select "Create New" and click on "Publish"
+7. Provide a suitable appname. In this document we will assume "TwilioSampleInteg"
+8. Provide valid subscription, resource group and hosting plan details
+9. Click on "Create" to create the azure app service
+10. Note the app service URL. In this sample, we will use "https://twiliosampleinteg.azurewebsites.net"
 
 ## Creating a Twilio function for use with the app service
 -----------------------------------------------------------
@@ -26,17 +25,28 @@ This document assumes a valid Azure subscription is available
 ## Configuring Dynamics 365 for using the sample app
 ------------------------------------------------------
 1. Note the base URL of the CRM org from where all webresources are served. For an online org, this should be of the form "https://<orgname>.crmXX.dynamics.com". In this sample, we will use "https://twiliosampleorg.crm10.dynamics.com"
-1. Install the solution "Dynamics 365 Channel Integration Framework"
-2. Open the UCI app "Channel Integration Framework"
-3. Click on "New" to create a new "Channel Provider"
-4. Provide a suitable name and label
-5. For Channel URL, provide the URL as <azure_app_service_url>?base=<crm_base_url>&twa=<twilio_capability_token_url>. In this sample, the URL would be "https://twiliosampleinteg.azurewebsites.net?base=https://twiliosampleorg.crm10.dynamics.com&twa=https://twilio-sample.twil.io/capability-token"
-6. For "Enable outbound communication", select "yes".
-7. Set channel order to "0"
-8. Select the UCI apps and user roles for which this sample softphone should be enabled
-9. Save all changes
-10. Import TwilioSampleData.zip (included in this sample code) in your org to get Notification and Session templates used in this sample code.
-11. The softphone is now ready for testing
+2. Open  https://make.powerapps.com and select your environment from top left of the screen.
+3. Open 'App Profile Manager' from available menu items for 'Omnichannel for customer service' app or 'Customer service workspace' app. for more details go to https://docs.microsoft.com/en-us/dynamics365/app-profile-manager/overview
+4. Select App Profiles from sitemap app and then select your app profile.
+5. Select last tab on the screen 'Channels' and  click 'Add Channel providers". Navigate to UCI app to create a new channel.
+6. Provide a suitable name and label.
+7. For Channel URL, provide the URL as <azure_app_service_url>?base=<crm_base_url>&twa=<twilio_capability_token_url>. In this sample, the URL would be "https://twiliosampleinteg.azurewebsites.net?base=https://twiliosampleorg.crm10.dynamics.com&twa=https://twilio-sample.twil.io/capability-token"
+8. For "Enable outbound communication", select "yes".
+9. Set channel order to "0"
+10. Save all changes.
+11. Once Channel record is saved, go back to App profile manager and now add this record under selected app profile > channels > Voice channel providers. 
+12. Import TwilioSampleData.zip (included in this sample code) in your org to get Notification and Session templates used in this sample code.
+13. The softphone is now ready for testing.
+
+## CIF Events required for Hold/Unhold scenarios
+-------------------------------------------------
+
+In order to make use of the CIF Analytics apis for Hold/Unhold scenarios, this sample app expects below mentioned events to be present in CIF:
+1. CallHold
+Microsoft.CIFramework.createRecord('msdyn_kpieventdefinition', JSON.stringify({"msdyn_name" : "CallHold", "msdyn_eventdescription" : "A call is put on hold.", "msdyn_eventtype" : "100000000", "msdyn_eventdisplayname": "Call Hold"}));
+
+2. CallUnhold
+Microsoft.CIFramework.createRecord('msdyn_kpieventdefinition', JSON.stringify({"msdyn_name" : "CallUnhold", "msdyn_eventdescription" : "A call is put on unhold.", "msdyn_eventtype" : "100000000", "msdyn_eventdisplayname": "Call Unhold"}));
 
 ## Important considerations
 ----------------------------
