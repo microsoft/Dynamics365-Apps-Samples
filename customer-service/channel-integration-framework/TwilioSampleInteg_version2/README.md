@@ -1,20 +1,22 @@
 # Steps For deploying the Sample softphone for Channel Integration Framework 2.0
 
-This document assumes a valid Azure subscription is available
+Prerequisite
+------------------------------------------------------------------------------
+1. Valid Azure subscription 
+2. Channel Integration Framework version is 10.1.0.51 or higher (unique name of the solution is ChannelIntegrationFrameworkV2)
 
 ## Publishing the sample app to Azure
 -------------------------------------
-1. Unzip the folder "ChannelApiFrameworkv2_SampleApp.zip"
-2. Open the solution "TwilioSampleInteg.sln" using Visual Studio 2017
-3. In Solution Explorer, right-click on the solution and build the complete solution
-4. In Solution Explorer, right-click on the project "TwilioSampleInteg"  and select "Publish"
-5. Click on "Start" to launch the "Publish" wizard
-6. Choose "App Service" as the publish target
-7. Select "Create New" and click on "Publish"
-8. Provide a suitable appname. In this document we will assume "TwilioSampleInteg"
-9. Provide valid subscription, resource group and hosting plan details
-10. Click on "Create" to create the azure app service
-11. Note the app service URL. In this sample, we will use "https://twiliosampleinteg.azurewebsites.net"
+1. Open the solution "TwilioSampleInteg.sln" using Visual Studio 2017
+2. In Solution Explorer, right-click on the solution and build the complete solution
+3. In Solution Explorer, right-click on the project "TwilioSampleInteg"  and select "Publish"
+4. Click on "Start" to launch the "Publish" wizard
+5. Choose "App Service" as the publish target
+6. Select "Create New" and click on "Publish"
+7. Provide a suitable appname. In this document we will assume "TwilioSampleInteg"
+8. Provide valid subscription, resource group and hosting plan details
+9. Click on "Create" to create the azure app service
+10. Note the app service URL. In this sample, we will use "https://twiliosampleinteg.azurewebsites.net"
 
 ## Creating a Twilio function for use with the app service
 -----------------------------------------------------------
@@ -25,17 +27,31 @@ This document assumes a valid Azure subscription is available
 
 ## Configuring Dynamics 365 for using the sample app
 ------------------------------------------------------
-1. Note the base URL of the CRM org from where all webresources are served. For an online org, this should be of the form "https://<orgname>.crmXX.dynamics.com". In this sample, we will use "https://twiliosampleorg.crm10.dynamics.com"
-1. Install the solution "Dynamics 365 Channel Integration Framework"
-2. Open the UCI app "Channel Integration Framework"
-3. Click on "New" to create a new "Channel Provider"
-4. Provide a suitable name and label
-5. For Channel URL, provide the URL as <azure_app_service_url>?base=<crm_base_url>&twa=<twilio_capability_token_url>. In this sample, the URL would be "https://twiliosampleinteg.azurewebsites.net?base=https://twiliosampleorg.crm10.dynamics.com&twa=https://twilio-sample.twil.io/capability-token"
-6. For "Enable outbound communication", select "yes".
-7. Set channel order to "0"
-8. Select the UCI apps and user roles for which this sample softphone should be enabled
-9. Save all changes
-10. The softphone is now ready for testing
+1. Note the base URL of the Dynamics 365 org from where all web resources are served. For example: "https://<orgname>.crmXX.dynamics.com". In this sample, we will use "https://twiliosampleorg.crm10.dynamics.com"
+2. Open  https://make.powerapps.com and select your environment from top left of the screen.
+3. Select the ellipsis next to the Omnichannel for customer service app or Customer service workspace app.
+4. Select App profile manager from the menu. More: https://docs.microsoft.com/en-us/dynamics365/app-profile-manager/overview
+5. Select App Profiles from sitemap app and then select your app profile.
+6. Select the Channels and then select Add Channel providers. The new Channel Provider page opens in a new browser tab.
+7. Provide a suitable name and label.
+8. Update the Channel URL field with the following value: 
+    <azure_app_service_url>?base=<crm_base_url>&twa=<twilio_capability_token_url> In this sample, the URL would be "https://twiliosampleinteg.azurewebsites.net?base=https://twiliosampleorg.crm10.dynamics.com&twa=https://twilio-sample.twil.io/capability-token"
+9. Select Yes for the Enable outbound communication field.
+10. Set channel order to 0.
+11. Save the changes.
+12. Once Channel record is saved, go to the browser tab where App profile manager is opened and now add this record under selected app profile > channels > Voice channel providers. 
+13. Import TwilioSampleData.zip (included in this sample code) in your org to get Notification and Session templates used in this sample code.
+14. The softphone is now ready for testing.
+
+## Channel Integration Framework Events required for Hold/Unhold scenarios
+--------------------------------------------------------------------------
+
+In order to make use of the Channel Integration Framework Analytics apis for Hold/Unhold scenarios, this sample app expects below mentioned events to be present in Channel Integration Framework:
+1. CallHold
+Microsoft.CIFramework.createRecord('msdyn_kpieventdefinition', JSON.stringify({"msdyn_name" : "CallHold", "msdyn_eventdescription" : "A call is put on hold.", "msdyn_eventtype" : "100000000", "msdyn_eventdisplayname": "Call Hold"}));
+
+2. CallUnhold
+Microsoft.CIFramework.createRecord('msdyn_kpieventdefinition', JSON.stringify({"msdyn_name" : "CallUnhold", "msdyn_eventdescription" : "A call is put on unhold.", "msdyn_eventtype" : "100000000", "msdyn_eventdisplayname": "Call Unhold"}));
 
 ## Important considerations
 ----------------------------
@@ -128,16 +144,3 @@ exports.handler = function(context, event, callback) {
   callback(null, response);
 };
 ```
-
-VII) Import configuration data
-------------------------------
-
-1. Download the Configuration Migration Tool. The Configuration Migration tool is available as a NuGet package.
-2. Start the Configuration Migration tool. Double-click DataMigrationUtility.exe in the folder: [your folder]\Tools\ConfigurationMigration\
-3. On the main screen, click Import data, and click Continue.
-4. On the Login screen, provide authentication details to connect to your Dynamics 365 instance from where you want to import data. If you have multiple organizations on the Dynamics 365 for Customer Engagement server, and want to select the organization where to import the configuration data, select the Always display list of available orgs check box. Click Login.
-5. If you have multiple organizations, and you selected the Always display list of available orgs check box, the next screen lets you choose the organization that you want to connect to. Select a Dynamics 365 apps organization to connect to.
-6. Provide the data file. (data.zip) to be imported. Browse to the data file, and select it. Click Import Data.
-7. This step is applicable only if the data that you are importing contains the user information of the source system. Enter mapping user information on the target system. You can either map all of them to the user who is running the import process or map to individual users by using a user map file (.xml). If you choose the latter, you will have to either specify an existing user map file or the tool can generate it for you. If you generate a new file, fill in the mapping user name in the New parameter for every user on the source server. Select the user map file in the tool when you are done, and click OK.
-8. The next screen displays the import status of your records. The data import is done in multiple passes to first import the foundation data while queuing up the dependent data, and then import the dependent data in the subsequent passes to handle any data dependencies or linkages. This ensures clean and consistent data import.
-9. Click Finish to close the tool.

@@ -126,7 +126,7 @@ class Utility {
      * searchOnly - when 'true', search but do not open the record, when 'false', also open the record
      * SesionBag - The session obj which we maintain to update the name details.
      * recordid - An optional CRM record Id to open. If not passed a search based on current phone number will be performed */
-    static updateCallerDetailsFromCRM(number, searchOnly, sessionBag, recordId, ) {
+    static updateCallerDetailsFromCRM(number, searchOnly, sessionBag, recordId) {
         return new Promise(function (resolve, reject) {
             if (!number) {
                 return reject("number is  empty"); //Not a phone number or another search in progress
@@ -631,7 +631,7 @@ function notificationCIF(number) {
     Utility.updateCallerDetailsFromCRM(number, true).then((result) => {
         console.log(result);
         var input = {
-            templateName: "IncomingCallNotification",
+            templateName: "sample_IncomingCallNotification",
             templateParameters: {
                 number: result.value
             }
@@ -693,7 +693,7 @@ function answerCall() {
         num = num.substring(1);
     }
     var inputBag = {
-        "templateName": "TwilioCallSessionTemplate", "templateParameters": {}, "customer": num
+        "templateName": "sample_TwilioCallSessionTemplate", "templateParameters": {}, "customer": num
     };
     Microsoft.CIFramework.createSession(inputBag).then(
         (sessionId) => {
@@ -741,7 +741,7 @@ function ongoingCall() {
     var sess = phone.listOfSessions.get(phone.currentCallSessioId);
     if (sess == null || sess === undefined) {
         var inputBag = {
-            "templateName": "TwilioCallSessionTemplate", "templateParameters": {}, "customerName": phone.name
+            "templateName": "sample_TwilioCallSessionTemplate", "templateParameters": {}, "customerName": phone.name
         };
         Microsoft.CIFramework.createSession(inputBag).then(
             (sessionId) => {
@@ -836,7 +836,7 @@ function createCase() {
                 var res = JSON.parse(result);
                 sessionI.currentCase = res.id
                 var input = {
-                    templateName: "entityrecord",
+                    templateName: "sample_entityrecord",
                     templateParameters: {
                         entityName: "incident",
                         entityId: res.id,
