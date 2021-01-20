@@ -170,7 +170,7 @@ class Utility {
 };
 
 class SessionInfo {
-    constructor(phoneState, sessionid) {
+    constructor(phoneState, sessionid, callDirection) {
         this._name = null;          //Current caller name by searching all contact records based on phone number
         this._contactid = null;     //CRM record ID of contact record for current phone number
         this._number = null;        //Current phone number
@@ -181,6 +181,7 @@ class SessionInfo {
         this.notes = "";
         this.sessionId = sessionid;
         this.isOldSession = true;
+        this._direction = callDirection; //to be set for each session about how it got created, via incoming or outgoing call
     }
 
     get name() {
@@ -220,10 +221,6 @@ class SessionInfo {
         return this._activityId;
     }
 
-    get currentEnvironment() {
-        return this._environ;
-    }
-
     /* Our handler CIF whenever any navigation happens on main UCI page.
  * In this sample, we simply record the contact or case record Id to be used for our case or activity record creation */
     pageNavigateHandlerSess(paramStr) {
@@ -257,15 +254,15 @@ class SessionInfo {
         //Setup basic details of the activity - subject, direction, duration
         phActivity["phonenumber"] = this._number;
         phActivity["subject"] = "Call with " + this.name;
-        phActivity["directioncode"] = phone.direction == CallDirection.Incoming ? false : true;
+        phActivity["directioncode"] = this.direction == CallDirection.Incoming ? false : true;
         phActivity["actualdurationminutes"] = Math.trunc(this._timer.duration / 60);
         //Capture any call notes as 'description' attribute of the activity
         phActivity["description"] = $('#callNotesField').text();
 
 
         var sysuser = null;
-        if (this.currentEnvironment) {
-            sysuser = Utility.stripParens(this.currentEnvironment.userId);
+        if (phone.currentEnvironment) {
+            sysuser = Utility.stripParens(phone.currentEnvironment.userId);
         }
 
         var us = {};
@@ -493,7 +490,6 @@ class Phone {
         }.bind(this));
     }
 
-
     get conn() {
         return this._conn;
     }
@@ -517,6 +513,9 @@ class Phone {
         //this.render();
     }
 
+    get currentEnvironment() {
+        return this._environ;
+    }
 }
 
 /* Programatically set the panel mode using CIF */
@@ -697,7 +696,7 @@ function answerCall() {
     };
     Microsoft.CIFramework.createSession(inputBag).then(
         (sessionId) => {
-            var sessionPh = new SessionInfo(PhoneState.CallAccepted, sessionId);
+            var sessionPh = new SessionInfo(PhoneState.CallAccepted, sessionId, CallDirection.Incoming);
             sessionPh.name = phone.conn.parameters.From;
             log("Accepting incoming call from " + sessionPh.name);
             if (phone.conn) {
@@ -745,7 +744,7 @@ function ongoingCall() {
         };
         Microsoft.CIFramework.createSession(inputBag).then(
             (sessionId) => {
-                var sessionPh = new SessionInfo(PhoneState.Dialing, sessionId);
+                var sessionPh = new SessionInfo(PhoneState.Dialing, sessionId, CallDirection.None);
                 sessionPh.name = phone.name;
                 log("Dialing " + sessionPh.name);
                 $('#callNotesField').text("");
@@ -755,15 +754,14 @@ function ongoingCall() {
                 sessionPh.state = PhoneState.Ongoing;
             },
             (error) => {
-                log("Error in session creation for dialing " + sessionPh.name);
+                log("Error in session creation for dialing " + sessionPh.name , error);
             });
     }
     else {
         sess.isOldSession = true;
         sess.state = PhoneState.Ongoing;
+        log("Ongoing call with " + sess.name);
     }
-
-    log("Ongoing call with " + sess.name);
 }
 
 /* Event handler for when the user clicks on the "hang up" button */
