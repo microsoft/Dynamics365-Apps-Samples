@@ -36,7 +36,7 @@ var C1WebResourceNamespace = {
 		'th': ['30', '1054'],
 		'tg': ['1064'],
 		'te': ['74', '1098'],
-		'fil': ['1124'],
+		'fil': ['1124','100'],
 		'ta': ['73', '1097'],
 		'yo': ['1130'],
 		'de': ['7', '3079', '2055', '1031', '5127', '4103'],
@@ -94,7 +94,7 @@ var C1WebResourceNamespace = {
 		'ha': ['1128'],
 		'he': ['13', '1037'],
 		'uz': ['67', '2115', '1091'],
-		'ml': ['1100'],
+		'ml': ['1100','76'],
 		'mn': ['80', '1104', '2128'],
 		'mi': ['1153'],
 		'mk': ['47', '1071'],
@@ -144,12 +144,27 @@ var C1WebResourceNamespace = {
 		'si': ['1115'],
 		'sl': ['36', '1060'],
 		'ky': ['64', '1088'],
-		'se': ['3131', '1083', '2107']
+		'se': ['3131', '1083', '2107'],		
+		'yue':['1166'],
+		'zh-Hans':['4'],
+	    	'zh-Hant':['31748'],
+	    	'fj':['4096'],
+	    	'fr-ca':['3084'],
+	    	'ht':['15372'],  
+	    	'ku':['146'],
+	    	'mg':['1000'],
+	    	'ms':['62'],
+	    	'my':['85'],
+	    	'pt-pt':['2070'],
+	    	'sr-Cyrl':['27674'],
+	    	'sr-Latn':['28698'],
+	    	'ti':['115'],
+	    	'to':['4096']		
 	},
 
 	//converts iso 639-1 language code to locale id. Example- "en" -> 1033 for english
 	getOcLanguageCodeMapFromISO6391LanguageCode: function (ISO6391LanguageCode) {
-		var lanCode = -1; //invalid code, used when oc language code is not found
+		var lanCode = ISO6391LanguageCode; //ISO6391LanguageCode,, used when oc language code is not found
 		if (ISO6391LanguageCode in C1WebResourceNamespace.ISO6391LanguageCodeToOcLanguageCodeMap)
 			lanCode = C1WebResourceNamespace.ISO6391LanguageCodeToOcLanguageCodeMap[ISO6391LanguageCode][0];
 		return lanCode;
