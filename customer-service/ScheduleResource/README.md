@@ -1,3 +1,18 @@
+---
+languages:
+- csharp
+products:
+- dynamics
+- dynamics-365
+- dynamics-customer-service
+page_type: sample
+level: 
+- beginner
+- intermediate
+- advanced
+role: developer
+description: "Sample that shows how to find opening to schedule a resource in Dynamics 365 Customer Service."
+---
 
 # Sample: Search for openings to schedule a resource
 

@@ -1,3 +1,18 @@
+---
+languages:
+- csharp
+products:
+- dynamics
+- dynamics-365
+- dynamics-customer-service
+page_type: sample
+level: 
+- beginner
+- intermediate
+- advanced
+role: developer
+description: "Sample that shows how to process and close an incident with a case resolution in Dynamics 365 Customer Service."
+---
 
 # Sample: Close an incident
 
