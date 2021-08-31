@@ -1,3 +1,19 @@
+---
+languages:
+- csharp
+products:
+- dynamics
+- dynamics-365
+- dynamics-marketing
+page_type: sample
+level: 
+- beginner
+- intermediate
+- advanced
+role: developer
+description: "Sample that shows how to create and distribute a quick campaign in Dynamics 365 Marketing."
+---
+
 # Distribute a quick campaign
 
 This sample shows how to create and distribute a quick campaign.

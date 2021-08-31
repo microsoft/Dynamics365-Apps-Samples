@@ -1,3 +1,19 @@
+---
+languages:
+- csharp
+products:
+- dynamics
+- dynamics-365
+- dynamics-sales
+page_type: sample
+level: 
+- beginner
+- intermediate
+- advanced
+role: developer
+description: "Sample that shows how to qualify a lead and create an account, contact, or opportunity based on the lead in Dynamics 365 Sales."
+---
+
 # Sample: Qualify a lead
 
 This sample shows how to qualify a lead and create an account, contact, or opportunity based on the lead.

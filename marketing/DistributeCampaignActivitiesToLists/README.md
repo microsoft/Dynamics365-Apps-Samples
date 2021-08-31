@@ -1,3 +1,19 @@
+---
+languages:
+- csharp
+products:
+- dynamics
+- dynamics-365
+- dynamics-marketing
+page_type: sample
+level: 
+- beginner
+- intermediate
+- advanced
+role: developer
+description: "Sample that shows how to create a dynamic marketing list, copy it to the static marketing list and distribute campaign activities to the members in Dynamics 365 Marketing."
+---
+
 # Distribute campaign activities to dynamic and static lists
 
 This sample shows how to create a dynamic marketing list, copy it to the static marketing list, and distribute campaign activities to the members of the marketing lists.

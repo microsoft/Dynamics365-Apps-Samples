@@ -2,10 +2,16 @@
 languages:
 - csharp
 products:
+- dynamics
+- dynamics-365
 - dynamics-sales
 page_type: sample
-level: beginner
-description: "Sample that shows how to add products to a bundle in Dynamics 365 for Sales. [SOAP]"
+level: 
+- beginner
+- intermediate
+- advanced
+role: developer
+description: "Sample that shows how to add products to a bundle in Dynamics 365 Sales."
 ---
 
 # Sample: Add products to a bundle

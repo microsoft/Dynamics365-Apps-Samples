@@ -1,3 +1,19 @@
+---
+languages:
+- csharp
+products:
+- dynamics
+- dynamics-365
+- dynamics-customer-service
+page_type: sample
+level: 
+- beginner
+- intermediate
+- advanced
+role: developer
+description: "Sample that shows how to implement a custom smart bot for suggesting knowledge based articles and appointments in Dynamics 365 Customer Service."
+---
+
 # Build a smart assist bot
 
 ### Getting Started
