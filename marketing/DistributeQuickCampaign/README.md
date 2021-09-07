@@ -2,14 +2,9 @@
 languages:
 - csharp
 products:
-- dynamics
-- dynamics-365
 - dynamics-marketing
 page_type: sample
-level: 
-- beginner
-- intermediate
-- advanced
+level: beginner
 role: developer
 description: "Sample that shows how to create and distribute a quick campaign in Dynamics 365 Marketing."
 ---
@@ -36,7 +31,7 @@ In order to simulate the scenario described in [What this sample does](#what-thi
 2. The `CreateRequiredRecords` method creates any entity records that this sample requires.
 3. The `CreateAndRetrieveQuickCampaignForQueryExpression` method creates a quick campaign for a set of accounts selected by a query.
 4. The `CreateAndRetrieveQuickCampaignForMarketingList` method creates quick campaign for a given marketing list and returns the Guid of the quick campaign.
-        
+
 ### Demonstrate
 
 1. The `List` method creates the marketing list that is required for the sample. 

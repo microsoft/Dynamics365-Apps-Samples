@@ -2,14 +2,9 @@
 languages:
 - csharp
 products:
-- dynamics
-- dynamics-365
 - dynamics-marketing
 page_type: sample
-level: 
-- beginner
-- intermediate
-- advanced
+level: beginner
 role: developer
 description: "Sample that shows how to create a dynamic marketing list, copy it to the static marketing list and distribute campaign activities to the members in Dynamics 365 Marketing."
 ---
