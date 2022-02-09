@@ -5,7 +5,7 @@ This repo provides samples for apps, solutions, and related services for Dynamic
 ## Related samples repos
 
 - AL language code samples for Dynamics 365 Business Central: <https://github.com/Microsoft/AL>.
-- PowerApps and Common Data Service samples: <https://github.com/Microsoft/PowerApps-Samples>.
+- Power Apps and Dataverse samples: <https://github.com/Microsoft/PowerApps-Samples>.
 
 ## Contributing
 
