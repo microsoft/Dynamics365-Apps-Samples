@@ -131,7 +131,7 @@ exports.handler = function(context, event, callback) {
 
   capability.addScope(new ClientCapability.IncomingClientScope(identity));
   capability.addScope(new ClientCapability.OutgoingClientScope({
-    applicationSid: context.TWIML_APPLICATION_SID,
+    applicationSid: context.TWIML_APP_SID,
     clientName: identity,
   }));
 

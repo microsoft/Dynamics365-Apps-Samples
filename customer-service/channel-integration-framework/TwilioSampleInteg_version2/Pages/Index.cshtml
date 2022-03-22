@@ -26,7 +26,7 @@
                                 <starArea><label class="dialerButton">*</label></starArea>
                                 <zeroArea><label class="dialerButton">0</label></zeroArea>
                                 <hashArea><label class="dialerButton">#</label></hashArea>
-                                <callButtonArea><img src="~/images/call.svg" id="placeCall" /></callButtonArea>
+                                <callButtonArea><img src="~/images/call.svg" id="placeCall" onclick="placeCall()" /></callButtonArea>
                             </section>
                         </div>
                         <div class="incomingCall">
@@ -41,6 +41,7 @@
                         </div>
                         <div class="outgoingCall">
                             <section id="outgoingCall">
+                                
                                 <iconArea><img src="~/images/callAlert.svg" /></iconArea>
                                 <statusArea1><label>Calling...</label></statusArea1>
                                 <callerIdArea><label class="callerName">Unknown</label></callerIdArea>
@@ -58,7 +59,7 @@
                                         <muteArea><img src="~/images/mute.svg" class="ongoingMenuItem" /></muteArea>
                                         <dialerArea><img src="~/images/dialpadWhite.svg" class="ongoingMenuItem" /></dialerArea>
                                         <caseArea><img src="~/images/case.svg" class="ongoingMenuItem createCase" /></caseArea>
-                                        <bingArea><img src="~/images/bing.svg" class="ongoingMenuItem searchBing" /></bingArea>
+                                        
                                         <!--<bingArea><img src="~/images/bing.svg" class="ongoingMenuItem searchBing" /></bingArea>-->
                                         <moreArea><img src="~/images/more.svg" class="ongoingMenuItem" /></moreArea>
                                     </section>
@@ -111,11 +112,10 @@
             </div>
         </widgetArea>
         <sideBarArea>
-            <div class="collapsed" style="display:none">
+            <div class="collapsed">
                 <section id="sideBarSection">
                     <sideBar>
-
-                        <dialPadArea>
+                         <dialPadArea>
 
                             <img id="dialpad" class="sideBarIcon" src="~/images/dialpad.svg" />
                             <!--div><label class="callerInit ongoingCallSidebar"></label></div-->
@@ -131,6 +131,7 @@
                             <img class="sideBarIcon ongoingCallSidebar" src="~/images/ongoingCall.svg" />
                             <!--label class="timer ongoingCallSidebar">34</label-->
                         </ongoingCallArea>
+
                         <emptyArea>
                             <div class="form-control" contenteditable="false"></div>
                         </emptyArea>
