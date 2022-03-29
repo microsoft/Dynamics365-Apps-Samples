@@ -1,0 +1,19 @@
+<entities >
+  <entity name="msdyn_capacityprofile" displayname="Capacity Profile" etc="10465" primaryidfield="msdyn_capacityprofileid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Block Assignment" name="msdyn_blockassignment" type="bool" customfield="true" />
+      <field displayname="Capacity Profile" name="msdyn_capacityprofileid" type="guid" primaryKey="true" />
+      <field displayname="Default Max Units" name="msdyn_defaultmaxunits" type="number" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Reset Duration" name="msdyn_resetduration" type="optionsetvalue" customfield="true" />
+      <field displayname="Unique Name" name="msdyn_uniquename" type="string" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+  &lt;entity name="msdyn_capacityprofile"&gt;
+    &lt;filter type="and"&gt;
+      &lt;condition attribute="ismanaged" operator="eq" value="0" /&gt;
+    &lt;/filter&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+</entities>

@@ -1,0 +1,69 @@
+<entities >
+  <entity name="msdyn_decisioncontract" displayname="Decision contract" etc="10458" primaryidfield="msdyn_decisioncontractid" primarynamefield="msdyn_name" disableplugins="false" skipupdate="true">
+    <fields>
+      <field displayname="Contract definition" name="msdyn_contractdefinition" type="string" customfield="true" />
+      <field displayname="Decision contract" name="msdyn_decisioncontractid" type="guid" primaryKey="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
+    </fields>
+    <filter>&lt;fetch distinct="true"&gt;
+ &lt;entity name="msdyn_decisioncontract"&gt;
+  &lt;filter type="or"&gt;
+   &lt;filter type="and"&gt;
+    &lt;condition attribute="msdyn_entitylogicalname" entityname="bp" operator="not-null" /&gt;
+   &lt;/filter&gt;
+   &lt;filter type="and"&gt;
+    &lt;condition attribute="msdyn_entitylogicalname" entityname="bt" operator="not-null" /&gt;
+   &lt;/filter&gt;
+  &lt;/filter&gt;
+  &lt;link-entity name="msdyn_decisionruleset" from="msdyn_inputcontractid" to="msdyn_decisioncontractid" link-type="outer" alias="bo"&gt;
+   &lt;link-entity name="msdyn_masterentityroutingconfiguration" from="msdyn_rulesetid" to="msdyn_decisionrulesetid" link-type="outer" alias="bp" /&gt;
+  &lt;/link-entity&gt;
+  &lt;link-entity name="msdyn_decisionruleset" from="msdyn_outputcontractid" to="msdyn_decisioncontractid" link-type="outer" alias="bs"&gt;
+   &lt;link-entity name="msdyn_masterentityroutingconfiguration" from="msdyn_rulesetid" to="msdyn_decisionrulesetid" link-type="outer" alias="bt" /&gt;
+  &lt;/link-entity&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_decisionruleset" displayname="Decision rule set" etc="10459" primaryidfield="msdyn_decisionrulesetid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="AI builder model" name="msdyn_aibmodelid" type="entityreference" lookupType="msdyn_aimodel" customfield="true" />
+      <field displayname="Authoring mode" name="msdyn_authoringmode" type="optionsetvalue" customfield="true" />
+      <field displayname="Decision rule set" name="msdyn_decisionrulesetid" type="guid" primaryKey="true" />
+      <field displayname="Description" name="msdyn_description" type="string" customfield="true" />
+      <field displayname="Input contract" name="msdyn_inputcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
+      <field displayname="Is input collection" name="msdyn_isinputcollection" type="bool" customfield="true" />
+      <field displayname="ML model type" name="msdyn_mlmodeltype" type="optionsetvalue" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Output contract" name="msdyn_outputcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
+      <field displayname="Rule set definition" name="msdyn_rulesetdefinition" type="string" customfield="true" />
+      <field displayname="Rule set type" name="msdyn_rulesettype" type="optionsetvalue" customfield="true" />
+      <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
+    </fields>
+    <filter>&lt;fetch distinct="true"&gt;
+ &lt;entity name="msdyn_decisionruleset"&gt;
+  &lt;link-entity name="msdyn_masterentityroutingconfiguration" from="msdyn_rulesetid" to="msdyn_decisionrulesetid" link-type="inner" alias="cp"&gt;
+   &lt;filter type="and"&gt;
+    &lt;condition attribute="msdyn_entitylogicalname" operator="not-null" /&gt;
+   &lt;/filter&gt;
+  &lt;/link-entity&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_masterentityroutingconfiguration" displayname="Master Entity Routing Configuration" etc="10463" primaryidfield="msdyn_masterentityroutingconfigurationid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Entity" name="msdyn_entitylogicalname" type="string" customfield="true" />
+      <field displayname="Master Entity Routing Configuration" name="msdyn_masterentityroutingconfigurationid" type="guid" primaryKey="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Rule set" name="msdyn_rulesetid" type="entityreference" lookupType="msdyn_decisionruleset" customfield="true" />
+      <field displayname="Unique Name" name="msdyn_uniquename" type="string" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+ &lt;entity name="msdyn_masterentityroutingconfiguration"&gt;
+  &lt;filter type="and"&gt;
+   &lt;condition attribute="msdyn_entitylogicalname" operator="not-null" /&gt;
+  &lt;/filter&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+</entities>
