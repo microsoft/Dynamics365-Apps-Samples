@@ -783,9 +783,6 @@ function resetPhone() {
 }
 /* Event handler to be invoked when the user wishes to place a call via either "clickToAct" or using our rudimentary dialer */
 function placeCall() {
-    var presence = Microsoft.CIFramework.getPresence();
-    if (presence != "Available")
-        throw new Error("Cannot place call. Agent busy");
     if (phone.busy) {
         throw new Error("Cannot place call. Phone busy");
     }
@@ -809,6 +806,28 @@ function placeCall() {
             document.getElementById("setPresenceText").innerHTML = "ERROR";
             reject(error);
         });
+}
+
+function getPresence() {
+    return new Promise((resolve, reject) => {
+        Microsoft.CIFramework.getPresence().then(
+            function (result) {
+                if (result == "FAILED")
+                    document.getElementById("livePresence").innerHTML = "OC Presence is in error state";
+                else {
+                    document.getElementById("livePresence").innerHTML = result;
+                    displayPresence(result);
+                }
+                return result;
+
+            },
+            function (error) {
+
+                document.getElementById("livePresence").innerHTML = "ERROR";
+                reject(error);
+            });
+
+    });
 }
 /** Event handler when the user clicks on bing button.*/
 function searchBing() {

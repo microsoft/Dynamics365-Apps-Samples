@@ -29,6 +29,28 @@
 		(function () {
 			window.addEventListener("CIFInitDone", function () {
 				ciLoaded = true;
+                displayPresence = function (presence) {
+                    document.getElementById("livePresence").innerHTML = presence;
+                    let color = "grey";
+                    if (presence == "Available") 
+                        color = "green";
+                    else if (presence == "Busy")
+                        color = "red";
+                    else if (presence == "Appear away")
+                        color = "yellow";
+                    else if (presence == "Do not disturb")
+                        color = "brown";
+                    else if (presence == "onVoiceCall")
+                        color = "brown";
+                   document.getElementById("presenceOnChange").style.color = color;
+                    document.getElementById("presenceOnChange").style.background = color;
+                }
+                handlerFunction = function (eventData) {
+                    var obj = JSON.parse(eventData);
+                    var presence = obj.presenceInfo.presenceText;
+                    displayPresence(presence)
+                }
+                window.Microsoft.CIFramework.addHandler("onPresenceChange", handlerFunction);
 			});
 		})();
     </script>
