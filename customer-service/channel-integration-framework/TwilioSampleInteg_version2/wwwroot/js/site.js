@@ -798,12 +798,12 @@ function placeCall() {
     Microsoft.CIFramework.setPresence("onVoiceCall").then(
         function (result) {
             if (!result)
-                document.getElementById("setPresenceText").innerHTML = "OC Presence is in error state";
+                document.getElementById("livePresence").innerHTML = "OC Presence is in error state";
 
         },
         function (error) {
 
-            document.getElementById("setPresenceText").innerHTML = "ERROR";
+            document.getElementById("livePresence").innerHTML = "ERROR";
             reject(error);
         });
 }
