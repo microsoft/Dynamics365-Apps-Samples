@@ -18,12 +18,13 @@ Prerequisite
 9. Click on "Create" to create the azure app service
 10. Note the app service URL. In this sample, we will use "https://twiliosampleinteg.azurewebsites.net"
 
-## Creating a Twilio function for use with the app service
+## Starting TwiML application
 -----------------------------------------------------------
 1. Follow the Twilio documentation to create a sample quickstart application: "https://www.twilio.com/docs/voice/client/javascript/quickstart"
 2. Use the code from section "Twilio - Client voice" below for the "client-voice" Twilio function
 3. Use the code from section "Twilio - Capability token" below for the "capability-token" Twilio function
 4. Note the URL for the Twilio "capability-token" function created above. In this sample, we will use "https://twilio-sample.twil.io/capability-token"
+5. Above steps are one time step. create a local application as per https://github.com/TwilioDevEd/voice-javascript-sdk-quickstart-node. We need to start this application for calls to work and is a localhost application(so need to be started whenever we need to run)
 
 ## Configuring Dynamics 365 for using the sample app
 ------------------------------------------------------
@@ -131,7 +132,7 @@ exports.handler = function(context, event, callback) {
 
   capability.addScope(new ClientCapability.IncomingClientScope(identity));
   capability.addScope(new ClientCapability.OutgoingClientScope({
-    applicationSid: context.TWIML_APPLICATION_SID,
+    applicationSid: context.TWIML_APP_SID,
     clientName: identity,
   }));
 

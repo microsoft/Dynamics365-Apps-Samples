@@ -24,7 +24,6 @@ var CallDirection = Object.freeze({
 var DisplayMode = Object.freeze({
     Minimized: 0,   //XrmClientApi.Constants.PanelState.Collapsed
     Docked: 1,       //XrmClientApi.Constants.PanelState.Expanded
-    Hidden: 2
 });
 
 /* In expanded mode, the toast area will be set to this width.
@@ -455,7 +454,7 @@ class SessionInfo {
         }
 
         this.renderCallerName();
-        let widgetToRender = (this.mode == DisplayMode.Hidden ? null : this.state.renderWidget);
+        let widgetToRender = this.state.renderWidget;
         let sidePanelToRender = this.state.renderSidePanel;
         Object.values(PhoneState).forEach((state) => {
             if (state.renderWidget != widgetToRender) {
@@ -479,7 +478,7 @@ class Phone {
     /* initialMode - whether to start in Docked or Minimized or Hidden mode */
     constructor(initialMode) {
         this.conn = null;           //Current Twilio connection
-        this.mode = initialMode;
+        this.mode = DisplayMode.Minimized;
         this._direction = CallDirection.None;   //Incoming or Outgoing
         this._environ = null;
         this.listOfSessions = new Map(); // List of session Objects which contains the context of each session.
@@ -605,9 +604,6 @@ function modeChangedHandler(paramStr) {
             if (mode == DisplayMode.Docked) {
                 expandPanel();
             }
-            else if (mode == DisplayMode.Hidden) {
-                HidePanel();
-            }
             else {
                 collapsePanel();
             }
@@ -680,7 +676,7 @@ function collapsePanel() {
 }
 
 function HidePanel() {
-    phone.mode = DisplayMode.Hidden;
+    phone.mode = DisplayMode.Minimized;
 }
 
 /* Event handler for when user clicks on "accept call" button.
@@ -754,7 +750,7 @@ function ongoingCall() {
                 sessionPh.state = PhoneState.Ongoing;
             },
             (error) => {
-                log("Error in session creation for dialing " + sessionPh.name , error);
+                log("Error in session creation for dialing " + sessionPh.name, error);
             });
     }
     else {
@@ -769,8 +765,22 @@ function hangupCall() {
     var sess = phone.listOfSessions.get(phone.currentCallSessioId);
     sess.state = PhoneState.CallSummary;
     log("Hanging up call with " + sess.name);
-}
+    Microsoft.CIFramework.setPresence("Available").then(
+        function (result) {
+            if (!result)
+                document.getElementById("setPresenceText").innerHTML = "OC Presence is in error state";
 
+        },
+        function (error) {
+
+            document.getElementById("setPresenceText").innerHTML = "ERROR";
+            reject(error);
+        });
+}
+function resetPhone() {
+    var sess = phone.listOfSessions.get(phone.currentCallSessioId);
+    sess.state = PhoneState.Idle;
+}
 /* Event handler to be invoked when the user wishes to place a call via either "clickToAct" or using our rudimentary dialer */
 function placeCall() {
     if (phone.busy) {
@@ -779,10 +789,45 @@ function placeCall() {
     var params = {
         To: "+" + document.getElementById('dialerPhoneNumber').value
     };
+    phone.state = PhoneState.Idle;
     log('Placing a call to ' + params.To + '...');
     phone.name = params.To;
 
     Twilio.Device.connect(params);
+    phone.state = PhoneState.Dialing;
+    Microsoft.CIFramework.setPresence("onVoiceCall").then(
+        function (result) {
+            if (!result)
+                document.getElementById("livePresence").innerHTML = "OC Presence is in error state";
+
+        },
+        function (error) {
+
+            document.getElementById("livePresence").innerHTML = "ERROR";
+            reject(error);
+        });
+}
+
+function getPresence() {
+    return new Promise((resolve, reject) => {
+        Microsoft.CIFramework.getPresence().then(
+            function (result) {
+                if (result == "FAILED")
+                    document.getElementById("livePresence").innerHTML = "OC Presence is in error state";
+                else {
+                    document.getElementById("livePresence").innerHTML = result;
+                    displayPresence(result);
+                }
+                return result;
+
+            },
+            function (error) {
+
+                document.getElementById("livePresence").innerHTML = "ERROR";
+                reject(error);
+            });
+
+    });
 }
 /** Event handler when the user clicks on bing button.*/
 function searchBing() {
