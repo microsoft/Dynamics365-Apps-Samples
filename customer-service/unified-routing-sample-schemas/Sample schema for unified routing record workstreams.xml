@@ -14,6 +14,7 @@
       <field displayname="Channel" name="msdyn_streamsource" type="optionsetvalue" customfield="true" />
       <field displayname="Contract Id" name="msdyn_routingcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
       <field displayname="Default" name="msdyn_sessiontemplate_default" type="string" customfield="true" />
+      <field displayname="Default Queue" name="msdyn_defaultqueue" type="entityreference" lookupType="queue" customfield="true" />
       <field displayname="Direction" name="msdyn_direction" type="optionsetvalue" customfield="true" />
       <field displayname="Enable selecting from push-based work streams" name="msdyn_enableselectingfrompushbasedworkstreams" type="bool" customfield="true" />
       <field displayname="Entity" name="msdyn_masterentityroutingconfigurationid" type="entityreference" lookupType="msdyn_masterentityroutingconfiguration" customfield="true" />
