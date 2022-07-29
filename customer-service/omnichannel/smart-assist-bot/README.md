@@ -158,13 +158,12 @@ _In our Example, it will be : https://smartassistbot2020.azurewebsites.net/api/m
 
 ![](screenshots/endpointupdate.png)
 
-#### 5. Enable Teams channel
+#### 5. Add supported channels
 
-Please make sure to enable Teams channel like mentioned in this [link](https://docs.microsoft.com/azure/bot-service/channel-connect-teams?view=azure-bot-service-4.0).
+To use the bot over messaging channels:
 
-![](screenshots/channel1.png)
-
-![](screenshots/Teams2.png)
+- Add [Omnichannel channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-omnichannel?view=azure-bot-service-4.0&preserve-view=true) as a supported channel, if you're using public cloud services.
+- Add both [Omnichannel channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-omnichannel?view=azure-bot-service-4.0&preserve-view=true) and [Microsoft Teams](https://docs.microsoft.com/azure/bot-service/channel-connect-teams?view=azure-bot-service-4.0&preserve-view=true) as supported channels, if you're using GCC (Government Community Cloud) services.
 
 #### 6. Test your Smart assist bot
 
