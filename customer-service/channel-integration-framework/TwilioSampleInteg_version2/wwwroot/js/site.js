@@ -24,6 +24,7 @@ var CallDirection = Object.freeze({
 var DisplayMode = Object.freeze({
     Minimized: 0,   //XrmClientApi.Constants.PanelState.Collapsed
     Docked: 1,       //XrmClientApi.Constants.PanelState.Expanded
+    Hidden: 2
 });
 
 /* In expanded mode, the toast area will be set to this width.
@@ -478,7 +479,7 @@ class Phone {
     /* initialMode - whether to start in Docked or Minimized or Hidden mode */
     constructor(initialMode) {
         this.conn = null;           //Current Twilio connection
-        this.mode = DisplayMode.Minimized;
+        this.mode = DisplayMode.Hidden;
         this._direction = CallDirection.None;   //Incoming or Outgoing
         this._environ = null;
         this.listOfSessions = new Map(); // List of session Objects which contains the context of each session.
@@ -601,11 +602,16 @@ function modeChangedHandler(paramStr) {
             var mode = params["value"];
             log("Mode changed to " + mode);
             //Get the new mode from the parameters passed by CIF and update our state accordingly
-            if (mode == DisplayMode.Docked) {
-                expandPanel();
-            }
-            else {
-                collapsePanel();
+            switch(mode) {
+                case DisplayMode.Docked:
+                    expandPanel();
+                    break;
+                case DisplayMode.Minimized:
+                    collapsePanel();
+                    break;
+                case DisplayMode.Hidden:
+                    HidePanel();
+                    break;
             }
             resolve(true);
         }
@@ -676,7 +682,7 @@ function collapsePanel() {
 }
 
 function HidePanel() {
-    phone.mode = DisplayMode.Minimized;
+    phone.mode = DisplayMode.Hidden;
 }
 
 /* Event handler for when user clicks on "accept call" button.
