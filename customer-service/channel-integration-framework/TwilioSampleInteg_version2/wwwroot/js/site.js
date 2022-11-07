@@ -1254,3 +1254,4 @@ function preparePayloadByUpdateType(inputMap) {
     }
     return data;
 }
+
