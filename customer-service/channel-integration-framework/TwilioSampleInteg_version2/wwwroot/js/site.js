@@ -1053,12 +1053,15 @@ function initCTI() {
  * Will see error loading control for some UI components but it will not affect twilio sample panel loading. It is due to we are missing templateParameters in this quick sample.
  * */
 function createNewSession() {
-    let input = {
-        templateName: 'msdyn_voicecall_session',
-        templateParameters: {}
+    var input = {
+        templateName: "msdyn_voicecall_session", // unique name of the configured template
+        templateParameters: {} // Global and application tab template parameters, these values will override configured values
     };
-    Microsoft.CIFramework.createSession(input);
-    Microsoft.CIFramework.setMode(1);
+    Microsoft.CIFramework.createSession(input).then(function success(sessionId) {
+        console.log(sessionId); // perform operations on session Id retrieved
+    }, function(error) {
+        console.log(error.message); // handle error conditions
+    });
     log("A new session is created for the panel");
 }
 
