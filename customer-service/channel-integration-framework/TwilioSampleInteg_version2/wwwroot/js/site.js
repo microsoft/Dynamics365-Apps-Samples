@@ -1048,6 +1048,20 @@ function initCTI() {
     log("Added handlers for the panel");
 }
 
+/* Initialize panel with creation a new session. This new session will load panel properly and set it to be visible.
+ * Make use of Microsoft OOB session template: msdyn_voicecall_session. Can create customized generic session template to show a proper anchor tab page.
+ * Will see error loading control for some UI components but it will not affect twilio sample panel loading. It is due to we are missing templateParameters in this quick sample.
+ * */
+function createNewSession() {
+    let input = {
+        templateName: 'msdyn_voicecall_session',
+        templateParameters: {}
+    };
+    Microsoft.CIFramework.createSession(input);
+    Microsoft.CIFramework.setMode(1);
+    log("A new session is created for the panel");
+}
+
 /* Global initialization function. Set up the event handlers, initialize CIF and Twilio */
 function initAll() {
     $("img#expand").click(function () {
@@ -1099,6 +1113,7 @@ function initAll() {
             Twilio.Device.ready(function (device) {
                 log('Twilio.Device Ready!');
                 initCTI();
+                createNewSession();
             });
 
             Twilio.Device.error(function (error) {
