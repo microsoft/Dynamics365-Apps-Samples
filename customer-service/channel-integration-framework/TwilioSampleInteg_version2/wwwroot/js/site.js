@@ -1062,7 +1062,6 @@ function createNewSession() {
     }, function(error) {
         console.log(error.message); // handle error conditions
     });
-    log("A new session is created for the panel");
 }
 
 /* Global initialization function. Set up the event handlers, initialize CIF and Twilio */
