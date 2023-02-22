@@ -38,6 +38,7 @@ var C1WebResourceNamespace = {
   useAzureTranslationApis: true,
   authToken: "",
   fullToken: {},
+  timerIds : { tokenRefreshTimerId: 0},
 
   inactiveTranslationWorkstreams: new Set(["773837a4-a823-18f2-63a2-857a386d18fa"]),
 
@@ -263,22 +264,21 @@ var C1WebResourceNamespace = {
 	return JSON.parse(jsonPayload);
   },
 
-  autoRenewTranslationToken: function(token) {
+  autoRenewTranslationToken: function(token, timerIds) {
 	var expiry = this.decodeToken(token);
 	expiry = expiry.exp;
-	// console.log(expiry);
-	window.top.setInterval(async () => {
+	window.top.clearTimeout(timerIds.tokenRefreshTimerId)
+	timerIds.tokenRefreshTimerId = window.top.setInterval(async () => {
 		const now = (new Date()).getTime();
-		console.log("renewing");
 		const expiryTime = expiry * oneSecondInMs - (8 * oneMinuteInMs);
 
 		var isExpired = now >= expiryTime;
-		console.log(`is expired  ${isExpired}`)
 		if (isExpired) {
+			console.log("Renewing translation token");
 			const newToken = await this.getTranslationToken();
 			C1WebResourceNamespace.authToken = newToken;
-			window.top.clearInterval("tokenRefresh");
-			this.autoRenewTranslationToken(C1WebResourceNamespace.authToken);
+			window.top.clearInterval(timerIds.tokenRefreshTimerId);
+			this.autoRenewTranslationToken(C1WebResourceNamespace.authToken, C1WebResourceNamespace.timerIds);
 		}
 	}, oneSecondInMs)
   },
@@ -387,7 +387,7 @@ var C1WebResourceNamespace = {
     console.log(JSON.stringify(conversationConfig));
     var bearerToken = await C1WebResourceNamespace.getTranslationToken();
 	C1WebResourceNamespace.authToken = bearerToken;
-	C1WebResourceNamespace.autoRenewTranslationToken(C1WebResourceNamespace.authToken);
+	C1WebResourceNamespace.autoRenewTranslationToken(C1WebResourceNamespace.authToken, C1WebResourceNamespace.timerIds);
     conversationId = conversationConfig.conversationId;
     c1Language =
       C1WebResourceNamespace.getISO6391LanguageCodeFromOcLanguageCode(
