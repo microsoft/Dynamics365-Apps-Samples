@@ -10,7 +10,10 @@ If you use the sample script and enable data collection in your applications, yo
 You can learn about Microsoft’s own data collection and use in the applicable product documentation and the Microsoft Privacy Statement at http://go.microsoft.com/fwlink/?LinkID=521839.  You agree to comply with all applicable provisions of the Microsoft Privacy Statement.
 
  */
-
+const oneSecondInMs = 1000;
+const oneMinuteInMs = 60 * oneSecondInMs;
+const oneHourInMs = 60 * oneMinuteInMs;
+const oneSecondInTicks = 10000000;
 var Sdk = window.top.Sdk || {};
 /**
  */
@@ -261,23 +264,23 @@ var C1WebResourceNamespace = {
   },
 
   autoRenewTranslationToken: function(token) {
-	const expiry = this.decodeToken(token);
+	var expiry = this.decodeToken(token);
 	expiry = expiry.exp;
+	// console.log(expiry);
 	window.top.setInterval(async () => {
 		const now = (new Date()).getTime();
 		console.log("renewing");
+		const expiryTime = expiry * oneSecondInMs - (8 * oneMinuteInMs);
 
-		const expiryTime = expiry 
-		expiryTime = now + 1000;
-		console.log("renewing");
-
+		var isExpired = now >= expiryTime;
+		console.log(`is expired  ${isExpired}`)
 		if (isExpired) {
 			const newToken = await this.getTranslationToken();
 			C1WebResourceNamespace.authToken = newToken;
 			window.top.clearInterval("tokenRefresh");
 			this.autoRenewTranslationToken(C1WebResourceNamespace.authToken);
 		}
-	}, 1000)
+	}, oneSecondInMs)
   },
   getTranslationToken: async function () {
 	console.log("getting token");
@@ -384,7 +387,7 @@ var C1WebResourceNamespace = {
     console.log(JSON.stringify(conversationConfig));
     var bearerToken = await C1WebResourceNamespace.getTranslationToken();
 	C1WebResourceNamespace.authToken = bearerToken;
-	// C1WebResourceNamespace.autoRenewTranslationToken(C1WebResourceNamespace.authToken);
+	C1WebResourceNamespace.autoRenewTranslationToken(C1WebResourceNamespace.authToken);
     conversationId = conversationConfig.conversationId;
     c1Language =
       C1WebResourceNamespace.getISO6391LanguageCodeFromOcLanguageCode(
