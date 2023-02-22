@@ -31,7 +31,7 @@ var getTranslationTokenRequest = new Sdk.GetTranslationToken();
 
 var C1WebResourceNamespace = {
   dictForAllConversation: {},
-  bingTranslateApiClientSecret: "3def0a776b5d41f4be9a0e96aae9e50c",
+  bingTranslateApiClientSecret: "",
   useAzureTranslationApis: true,
   authToken: "",
   fullToken: {},
