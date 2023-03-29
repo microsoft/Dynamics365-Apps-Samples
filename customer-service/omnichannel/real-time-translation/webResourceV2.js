@@ -21,11 +21,15 @@ Sdk.GetTranslationToken = function () {};
 
 // NOTE: The getMetadata property should be attached to the function prototype instead of the
 // function object itself.
+
+// Define the getTranslationToken which is a Custom API implemented on your Dynamics org
+// to retrieve the temporary bearer token for Azure Translator Resource
+// https://learn.microsoft.com/en-us/power-apps/developer/data-platform/custom-api
 Sdk.GetTranslationToken.prototype.getMetadata = function () {
   return {
     boundParameter: null,
     parameterTypes: {},
-    operationType: 0, // This is an action. Use '1' for functions and '2' for CRUD
+    operationType: 1, // This is an action. Use '1' for functions and '2' for CRUD
     operationName: "msdfm_GetTranslationToken",
   };
 };
@@ -38,8 +42,6 @@ var C1WebResourceNamespace = {
   useAzureTranslationApis: true,
   authToken: "",
   timerIds : { tokenRefreshTimerId: 0},
-
-  inactiveTranslationWorkstreams: new Set(["773837a4-a823-18f2-63a2-857a386d18fa"]),
 
   //ISO 639-1 language code. It is supported by Azure Cognitive Translate API and Google V2 translation API
   ISO6391LanguageCodeToOcLanguageCodeMap: {
@@ -266,14 +268,13 @@ var C1WebResourceNamespace = {
   autoRenewTranslationToken: function(token, timerIds) {
 	var expiry = this.decodeToken(token);
 	expiry = expiry.exp;
-	window.top.clearTimeout(timerIds.tokenRefreshTimerId)
+	window.top.clearInterval(timerIds.tokenRefreshTimerId)
 	timerIds.tokenRefreshTimerId = window.top.setInterval(async () => {
 		const now = (new Date()).getTime();
 		const expiryTime = expiry * oneSecondInMs - oneMinuteInMs;
 
 		var isExpired = now >= expiryTime;
 		if (isExpired) {
-			console.log("Renewing translation token");
 			const newToken = await this.getTranslationToken();
 			C1WebResourceNamespace.authToken = newToken;
 			window.top.clearInterval(timerIds.tokenRefreshTimerId);
@@ -283,10 +284,11 @@ var C1WebResourceNamespace = {
   },
 
   getTranslationToken: async function () {
-	console.log("getting token");
 	try {
 		const response = await window.top.Xrm.WebApi.online.execute(getTranslationTokenRequest);
 		const data = await response.json();
+    // Token returned from Custom API has msdfm_TranslationToken field containing bearer token to 
+    // authenticate into Azure Translator Resource
 		const token = await data.msdfm_TranslationToken;
 		return token;
 	}
