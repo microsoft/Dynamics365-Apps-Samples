@@ -37,7 +37,6 @@ var C1WebResourceNamespace = {
   bingTranslateApiClientSecret: "",
   useAzureTranslationApis: true,
   authToken: "",
-  fullToken: {},
   timerIds : { tokenRefreshTimerId: 0},
 
   inactiveTranslationWorkstreams: new Set(["773837a4-a823-18f2-63a2-857a386d18fa"]),
@@ -270,7 +269,7 @@ var C1WebResourceNamespace = {
 	window.top.clearTimeout(timerIds.tokenRefreshTimerId)
 	timerIds.tokenRefreshTimerId = window.top.setInterval(async () => {
 		const now = (new Date()).getTime();
-		const expiryTime = expiry * oneSecondInMs - (8 * oneMinuteInMs);
+		const expiryTime = expiry * oneSecondInMs - oneMinuteInMs;
 
 		var isExpired = now >= expiryTime;
 		if (isExpired) {
@@ -282,6 +281,7 @@ var C1WebResourceNamespace = {
 		}
 	}, oneSecondInMs)
   },
+
   getTranslationToken: async function () {
 	console.log("getting token");
 	try {
