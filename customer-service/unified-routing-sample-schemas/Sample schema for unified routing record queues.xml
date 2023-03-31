@@ -83,6 +83,7 @@
       <field displayname="Rule set definition" name="msdyn_rulesetdefinition" type="string" customfield="true" />
       <field displayname="Rule set type" name="msdyn_rulesettype" type="optionsetvalue" customfield="true" />
       <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
+      <field displayname="FetchXML for ruleset" name="msdyn_fetchxml" type="string" customfield="true" />
     </fields>
     <filter>&lt;fetch distinct="true"&gt;
  &lt;entity name="msdyn_decisionruleset"&gt;
