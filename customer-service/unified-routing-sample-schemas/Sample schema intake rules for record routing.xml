@@ -2,7 +2,7 @@
   <entity name="msdyn_decisioncontract" displayname="Decision contract" etc="10458" primaryidfield="msdyn_decisioncontractid" primarynamefield="msdyn_name" disableplugins="false" skipupdate="true">
     <fields>
       <field displayname="Contract definition" name="msdyn_contractdefinition" type="string" customfield="true" />
-      <field displayname="Decision contract" name="msdyn_decisioncontractid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Decision contract" name="msdyn_decisioncontractid" type="guid" primaryKey="true" />
       <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
       <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
     </fields>
@@ -29,7 +29,7 @@
     <fields>
       <field displayname="AI builder model" name="msdyn_aibmodelid" type="entityreference" lookupType="msdyn_aimodel" customfield="true" />
       <field displayname="Authoring mode" name="msdyn_authoringmode" type="optionsetvalue" customfield="true" />
-      <field displayname="Decision rule set" name="msdyn_decisionrulesetid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Decision rule set" name="msdyn_decisionrulesetid" type="guid" primaryKey="true" />
       <field displayname="Description" name="msdyn_description" type="string" customfield="true" />
       <field displayname="Input contract" name="msdyn_inputcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
       <field displayname="Is input collection" name="msdyn_isinputcollection" type="bool" customfield="true" />
@@ -53,7 +53,7 @@
   <entity name="msdyn_masterentityroutingconfiguration" displayname="Master Entity Routing Configuration" etc="10463" primaryidfield="msdyn_masterentityroutingconfigurationid" primarynamefield="msdyn_name" disableplugins="false">
     <fields>
       <field displayname="Entity" name="msdyn_entitylogicalname" type="string" customfield="true" />
-      <field displayname="Master Entity Routing Configuration" name="msdyn_masterentityroutingconfigurationid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Master Entity Routing Configuration" name="msdyn_masterentityroutingconfigurationid" type="guid" primaryKey="true" />
       <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
       <field displayname="Rule set" name="msdyn_rulesetid" type="entityreference" lookupType="msdyn_decisionruleset" customfield="true" />
       <field displayname="Unique Name" name="msdyn_uniquename" type="string" customfield="true" />

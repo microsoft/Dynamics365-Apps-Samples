@@ -3,7 +3,7 @@
     <fields>
       <field displayname="AI builder model" name="msdyn_aibmodelid" type="entityreference" lookupType="msdyn_aimodel" customfield="true" />
       <field displayname="Authoring mode" name="msdyn_authoringmode" type="optionsetvalue" customfield="true" />
-      <field displayname="Decision rule set" name="msdyn_decisionrulesetid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Decision rule set" name="msdyn_decisionrulesetid" type="guid" primaryKey="true" />
       <field displayname="Description" name="msdyn_description" type="string" customfield="true" />
       <field displayname="Input contract" name="msdyn_inputcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
       <field displayname="Is input collection" name="msdyn_isinputcollection" type="bool" customfield="true" />
@@ -36,7 +36,7 @@
   <entity name="msdyn_assignmentconfigurationstep" displayname="Assignment Configuration Step" etc="10464" primaryidfield="msdyn_assignmentconfigurationstepid" primarynamefield="msdyn_name" disableplugins="false">
     <fields>
       <field displayname="Assignment Configuration" name="msdyn_assignmentconfigurationid" type="entityreference" lookupType="msdyn_assignmentconfiguration" customfield="true" />
-      <field displayname="Assignment Configuration Step" name="msdyn_assignmentconfigurationstepid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Assignment Configuration Step" name="msdyn_assignmentconfigurationstepid" type="guid" primaryKey="true" />
       <field displayname="Is default ruleset" name="msdyn_isdefaultruleset" type="bool" customfield="true" />
       <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
       <field displayname="Rule Set" name="msdyn_rulesetid" type="entityreference" lookupType="msdyn_decisionruleset" customfield="true" />
