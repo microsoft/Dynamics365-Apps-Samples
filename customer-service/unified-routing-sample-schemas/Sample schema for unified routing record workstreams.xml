@@ -39,7 +39,7 @@
       <field displayname="Skill Attachment Rules Count (State)" name="msdyn_skillattachmentrulescount_state" type="number" customfield="true" />
       <field displayname="Waiting Time Threshold" name="msdyn_waitingtimethreshold" type="number" customfield="true" />
       <field displayname="Work Distribution Mode" name="msdyn_workdistributionmode" type="optionsetvalue" customfield="true" />
-      <field displayname="Work Stream" name="msdyn_liveworkstreamid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Work Stream" name="msdyn_liveworkstreamid" type="guid" primaryKey="true" />
     </fields>
     <filter>&lt;fetch distinct="true"&gt;
  &lt;entity name="msdyn_liveworkstream"&gt;
@@ -53,7 +53,7 @@
   <entity name="msdyn_decisioncontract" displayname="Decision contract" etc="10456" primaryidfield="msdyn_decisioncontractid" primarynamefield="msdyn_name" disableplugins="false" skipupdate="true">
     <fields>
       <field displayname="Contract definition" name="msdyn_contractdefinition" type="string" customfield="true" />
-      <field displayname="Decision contract" name="msdyn_decisioncontractid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Decision contract" name="msdyn_decisioncontractid" type="guid" primaryKey="true" />
       <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
       <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
     </fields>
@@ -98,7 +98,7 @@
     <fields>
       <field displayname="AI builder model" name="msdyn_aibmodelid" type="entityreference" lookupType="msdyn_aimodel" customfield="true" />
       <field displayname="Authoring mode" name="msdyn_authoringmode" type="optionsetvalue" customfield="true" />
-      <field displayname="Decision rule set" name="msdyn_decisionrulesetid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Decision rule set" name="msdyn_decisionrulesetid" type="guid" primaryKey="true" />
       <field displayname="Description" name="msdyn_description" type="string" customfield="true" />
       <field displayname="Input contract" name="msdyn_inputcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
       <field displayname="Is input collection" name="msdyn_isinputcollection" type="bool" customfield="true" />
@@ -134,7 +134,7 @@
   <entity name="msdyn_routingconfiguration" displayname="Routing configuration" etc="10467" primaryidfield="msdyn_routingconfigurationid" primarynamefield="msdyn_name" disableplugins="false">
     <fields>
       <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
-      <field displayname="Routing configuration" name="msdyn_routingconfigurationid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Routing configuration" name="msdyn_routingconfigurationid" type="guid" primaryKey="true" />
       <field displayname="Work stream" name="msdyn_liveworkstreamid" type="entityreference" lookupType="msdyn_liveworkstream" customfield="true" />
       <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
       <field displayname="Is active configuration" name="msdyn_isactiveconfiguration" type="bool" customfield="true" />
@@ -154,7 +154,7 @@
     <fields>
       <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
       <field displayname="Routing configuration" name="msdyn_routingconfigurationid" type="entityreference" lookupType="msdyn_routingconfiguration" customfield="true" />
-      <field displayname="Routing configuration step" name="msdyn_routingconfigurationstepid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Routing configuration step" name="msdyn_routingconfigurationstepid" type="guid" primaryKey="true" />
       <field displayname="Rule set" name="msdyn_rulesetid" type="entityreference" lookupType="msdyn_decisionruleset" customfield="true" />
       <field displayname="Step order" name="msdyn_steporder" type="number" customfield="true" />
       <field displayname="Step type" name="msdyn_type" type="optionsetvalue" customfield="true" />
@@ -178,7 +178,7 @@
       <field displayname="Capacity Profile" name="msdyn_capacityprofile_id" type="entityreference" lookupType="msdyn_capacityprofile" customfield="true" />
       <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
       <field displayname="Work Stream" name="msdyn_workstream_id" type="entityreference" lookupType="msdyn_liveworkstream" customfield="true" />
-      <field displayname="Work stream Capacity profile" name="msdyn_liveworkstreamcapacityprofileid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Work stream Capacity profile" name="msdyn_liveworkstreamcapacityprofileid" type="guid" primaryKey="true" />
     </fields>
     <filter>&lt;fetch&gt;
  &lt;entity name="msdyn_liveworkstreamcapacityprofile"&gt;
