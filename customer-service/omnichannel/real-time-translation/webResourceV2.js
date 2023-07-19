@@ -369,9 +369,12 @@ var C1WebResourceNamespace = {
 			myJson = await response.json();
 		} catch (err) {
 			console.log(err.message);
+			// add errorMessage and rawError to the errorObj so it can be logged internally for troubleshooting
 			var errorObj = {
 				isError: true,
-				errorCode: Microsoft.Omnichannel.TranslationFramework.ErrorCodes.TRANSLATION_FAILED
+				errorCode: Microsoft.Omnichannel.TranslationFramework.ErrorCodes.TRANSLATION_FAILED,
+				errorMessage: err.message,
+				rawError: err
 			};
 			return {
 				translatedMessage: null,
@@ -431,9 +434,12 @@ var C1WebResourceNamespace = {
 			myJson = await response.json();
 		} catch (err) {
 			console.log(err.message);
+			// add errorMessage and rawError to the errorObj so it can be logged internally for troubleshooting
 			var errorObj = {
 				isError: true,
-				errorCode: Microsoft.Omnichannel.TranslationFramework.ErrorCodes.TRANSLATION_FAILED
+				errorCode: Microsoft.Omnichannel.TranslationFramework.ErrorCodes.TRANSLATION_FAILED,
+				errorMessage: err.message,
+				rawError: err
 			};
 			return {
 				translatedMessage: null,
