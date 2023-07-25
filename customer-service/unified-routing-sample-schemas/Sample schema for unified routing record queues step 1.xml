@@ -11,6 +11,7 @@
       <field updateCompare="true" displayname="Queue" name="queueid" type="guid" primaryKey="true" />
       <field displayname="Queue type" name="msdyn_queuetype" type="optionsetvalue" customfield="true" />
       <field displayname="Type" name="queueviewtype" type="optionsetvalue" />
+      <field displayname="Operating Hours" name="msdyn_operatinghourid" type="entityreference" lookupType="msdyn_operatinghour" customfield="true" />      	    
     </fields>
     <filter>&lt;fetch&gt;
  &lt;entity name="queue"&gt;
