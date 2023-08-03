@@ -1,0 +1,293 @@
+<entities >
+  <entity name="msdyn_liveworkstream" displayname="Work Stream" etc="10481" primaryidfield="msdyn_liveworkstreamid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Allow Automated Messages" name="msdyn_enableautomatedmessages" type="bool" customfield="true" />
+      <field displayname="Allowed Presences" name="msdyn_allowedpresences" type="optionsetvaluecollection" customfield="true" />
+      <field displayname="Assign WorkItem After Decline or Timeout" name="msdyn_assignworkitemafterdecline" type="number" customfield="true" />
+      <field displayname="Auto-close after inactivity" name="msdyn_autocloseafterinactivity" type="number" customfield="true" />
+      <field displayname="Block capacity for wrap up state" name="msdyn_blockcapacityforwrapup" type="number" customfield="true" />
+      <field displayname="Bot queue" name="msdyn_bot_queue" type="entityreference" lookupType="queue" customfield="true" />
+      <field displayname="Bot rule" name="msdyn_bot_rule" type="string" customfield="true" />
+      <field displayname="Bot user" name="msdyn_bot_user" type="entityreference" lookupType="systemuser" customfield="true" />
+      <field displayname="Capacity" name="msdyn_capacityrequired" type="number" customfield="true" />
+      <field displayname="Capacity format" name="msdyn_capacityformat" type="optionsetvalue" customfield="true" />
+      <field displayname="Channel" name="msdyn_streamsource" type="optionsetvalue" customfield="true" />
+      <field displayname="Contract Id" name="msdyn_routingcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
+      <field displayname="Default" name="msdyn_sessiontemplate_default" type="string" customfield="true" />
+      <field displayname="Default Queue" name="msdyn_defaultqueue" type="entityreference" lookupType="queue" customfield="true" />
+      <field displayname="Direction" name="msdyn_direction" type="optionsetvalue" customfield="true" />
+      <field displayname="Enable selecting from push-based work streams" name="msdyn_enableselectingfrompushbasedworkstreams" type="bool" customfield="true" />
+      <field displayname="Entity" name="msdyn_masterentityroutingconfigurationid" type="entityreference" lookupType="msdyn_masterentityroutingconfiguration" customfield="true" />
+      <field displayname="FallBack Language" name="msdyn_fallbacklanguage" type="string" customfield="true" />
+      <field displayname="Follow-up after waiting" name="msdyn_followupafterwaiting" type="number" customfield="true" />
+      <field displayname="Handling Time Threshold" name="msdyn_handlingtimethreshold" type="number" customfield="true" />
+      <field displayname="Incoming authenticated" name="msdyn_notificationtemplate_incoming_auth" type="string" customfield="true" />
+      <field displayname="Is Default" name="msdyn_isdefault" type="bool" customfield="true" />
+      <field displayname="Keep same agent for entire conversation" name="msdyn_enableagentaffinity" type="bool" customfield="true" />
+      <field displayname="Matching Logic" name="msdyn_matchinglogic" type="optionsetvalue" customfield="true" />
+      <field displayname="Max Concurrency" name="msdyn_maxconcurrentconnection" type="number" customfield="true" />
+      <field displayname="Mode" name="msdyn_mode" type="optionsetvalue" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Notification" name="msdyn_notification" type="optionsetvalue" customfield="true" />
+      <field displayname="Outbound queue" name="msdyn_outboundqueueid" type="entityreference" lookupType="queue" customfield="true" />
+      <field displayname="Record Identification Rule" name="msdyn_recordidentificationrule" type="string" customfield="true" />
+      <field displayname="Record Identification Validation Rule" name="msdyn_recordidentificationvalidationrule" type="string" customfield="true" />
+      <field displayname="Screen pop timeout" name="msdyn_screenpoptimeout" type="number" customfield="true" />
+      <field displayname="Screen pop timeout" name="msdyn_screenpoptimeout_optionSet" type="optionsetvalue" customfield="true" />
+      <field displayname="Skill Attachment Rules Count" name="msdyn_skillattachmentrulescount" type="number" customfield="true" />
+      <field displayname="Skill Attachment Rules Count (Last Updated On)" name="msdyn_skillattachmentrulescount_date" type="datetime" customfield="true" />
+      <field displayname="Skill Attachment Rules Count (State)" name="msdyn_skillattachmentrulescount_state" type="number" customfield="true" />
+      <field displayname="Waiting Time Threshold" name="msdyn_waitingtimethreshold" type="number" customfield="true" />
+      <field displayname="Work Distribution Mode" name="msdyn_workdistributionmode" type="optionsetvalue" customfield="true" />
+      <field displayname="Work Stream" name="msdyn_liveworkstreamid" type="guid" primaryKey="true" />
+      <field displayname="API Key" name="msdyn_apikey" type="string" customfield="true" />
+      <field displayname="API Key Version Number" name="msdyn_apikeyversionnumber" type="number" customfield="true" />
+      <field displayname="CallbackPreviewDialing" name="msdyn_notificationtemplate_callback_previewdialing" type="string" customfield="true" />
+      <field displayname="Connectors URL" name="msdyn_connectorsurl" type="string" customfield="true" />
+      <field displayname="Consult" name="msdyn_notificationtemplate_consult" type="string" customfield="true" />
+      <field displayname="Conversation mode of chat channels" name="msdyn_conversationmode" type="optionsetvalue" customfield="true" />
+      <field displayname="Customer Disconnect Hold Duration For Open Conversation" name="msdyn_customerdisconnectholddurationforopenconversation" type="number" customfield="true" />
+      <field displayname="Customer ID" name="msdyn_customerid" type="string" customfield="true" />
+      <field displayname="Entity" name="msdyn_entityroutingconfigurationid" type="entityreference" lookupType="msdyn_entityroutingconfiguration" customfield="true" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="Incoming unauthenticated" name="msdyn_notificationtemplate_incoming_unauth" type="string" customfield="true" />
+      <field displayname="Last Validation On" name="msdyn_lastvalidationon" type="datetime" customfield="true" />
+      <field displayname="Last Validation Status" name="msdyn_lastvalidationstatus" type="string" customfield="true" />
+      <field displayname="notification scenario placeholder" name="msdyn_notificationscenarioplaceholder" type="string" customfield="true" />
+      <field displayname="Restrict download of recording" name="msdyn_restrictdownloadrecording" type="bool" customfield="true" />
+      <field displayname="Restrict download of transcript" name="msdyn_restrictdownloadtranscript" type="bool" customfield="true" />
+      <field displayname="Secure API Key" name="msdyn_secureapikey" type="string" customfield="true" />
+      <field displayname="session scenario placeholder" name="msdyn_sessionscenarioplaceholder" type="string" customfield="true" />
+      <field displayname="SMS Provider" name="msdyn_smsprovider" type="optionsetvalue" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="SupervisorAssign" name="msdyn_notificationtemplate_supervisorassign" type="string" customfield="true" />
+      <field displayname="TeleSign Inbound URL" name="msdyn_telesigninboundurl" type="string" customfield="true" />
+      <field displayname="Time Zone Rule Version Number" name="timezoneruleversionnumber" type="number" />
+      <field displayname="Transfer" name="msdyn_notificationtemplate_transfer" type="string" customfield="true" />
+      <field displayname="Twilio Inbound URL" name="msdyn_twilioinboundurl" type="string" customfield="true" />
+    </fields>
+    <filter>
+      &lt;fetch distinct="true"&gt;
+      &lt;entity name="msdyn_liveworkstream"&gt;
+      &lt;filter type="and"&gt;
+      &lt;condition attribute="msdyn_mode" operator="eq" value="717210001" /&gt;
+      &lt;condition attribute="msdyn_streamsource" operator="eq" value="192360000" /&gt;
+&lt;condition attribute="msdyn_liveworkstreamid" operator="eq" uiname="ALM Live Chat Test Workstream" uitype="msdyn_liveworkstream" value="{d3a1f09d-51a0-a6b7-266d-58e1bdb97b53}"/&gt;
+      &lt;/filter&gt;
+      &lt;/entity&gt;
+      &lt;/fetch&gt;
+    </filter>
+  </entity>
+  <entity name="msdyn_liveworkstreamcapacityprofile" displayname="Work stream capacity profile" etc="10537" primaryidfield="msdyn_liveworkstreamcapacityprofileid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Capacity Profile" name="msdyn_capacityprofile_id" type="entityreference" lookupType="msdyn_capacityprofile" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Work Stream" name="msdyn_workstream_id" type="entityreference" lookupType="msdyn_liveworkstream" customfield="true" />
+      <field displayname="Work stream Capacity profile" name="msdyn_liveworkstreamcapacityprofileid" type="guid" primaryKey="true" />
+    </fields>
+    <filter>
+      &lt;fetch&gt;
+      &lt;entity name="msdyn_liveworkstreamcapacityprofile"&gt;
+      &lt;link-entity name="msdyn_liveworkstream" from="msdyn_liveworkstreamid" to="msdyn_workstream_id" link-type="inner" alias="am"&gt;
+      &lt;filter type="and"&gt;
+      &lt;condition attribute="msdyn_mode" operator="eq" value="717210001" /&gt;
+      &lt;condition attribute="msdyn_streamsource" operator="eq" value="192360000" /&gt;
+&lt;condition attribute="msdyn_liveworkstreamid"  operator="eq" uiname="ALM Live Chat Test Workstream" uitype="msdyn_liveworkstream" value="{d3a1f09d-51a0-a6b7-266d-58e1bdb97b53}"/&gt;
+      &lt;/filter&gt;
+      &lt;/link-entity&gt;
+      &lt;/entity&gt;
+      &lt;/fetch&gt;
+    </filter>
+  </entity>
+  <entity name="msdyn_ocliveworkstreamcontextvariable" displayname="Context variable" etc="10494" primaryidfield="msdyn_ocliveworkstreamcontextvariableid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Relation Ship Name" name="msdyn_relationshipname" type="string" customfield="true" />
+      <field displayname="Type" name="msdyn_datatype" type="optionsetvalue" customfield="true" />
+      <field displayname="Work stream" name="msdyn_liveworkstreamid" type="entityreference" lookupType="msdyn_liveworkstream" customfield="true" />
+      <field displayname="IsList" name="msdyn_islist" type="bool" customfield="true" />
+      <field displayname="Modifiable" name="msdyn_ismodifiable" type="bool" customfield="true" />
+      <field displayname="Display Name" name="msdyn_displayname" type="string" customfield="true" />
+      <field displayname="Displayable" name="msdyn_isdisplayable" type="bool" customfield="true" />
+      <field displayname="Entity Logical Name" name="msdyn_entitylogicalname" type="string" customfield="true" />
+      <field displayname="Context variable" name="msdyn_ocliveworkstreamcontextvariableid" type="guid" primaryKey="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="System Defined" name="msdyn_issystemdefined" type="bool" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_ocliveworkstreamcontextvariable"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_liveworkstreamid" operator="eq" uiname="ALM Live Chat Test Workstream" uitype="msdyn_liveworkstream" value="{D3A1F09D-51A0-A6B7-266D-58E1BDB97B53}"/&gt;
+&lt;/filter&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_decisioncontract" displayname="Decision contract" etc="10456" primaryidfield="msdyn_decisioncontractid" primarynamefield="msdyn_name" disableplugins="false" skipupdate="true">
+    <fields>
+      <field displayname="Contract definition" name="msdyn_contractdefinition" type="string" customfield="true" />
+      <field displayname="Decision contract" name="msdyn_decisioncontractid" type="guid" primaryKey="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
+    </fields>
+    <filter>      &lt;fetch distinct="true"&gt;
+      &lt;entity name="msdyn_decisioncontract"&gt;
+      &lt;filter type="or"&gt;
+      &lt;filter type="and"&gt;
+      &lt;condition attribute="msdyn_mode" entityname="an" operator="eq" value="717210001" /&gt;
+      &lt;condition attribute="msdyn_streamsource" entityname="an" operator="eq" value="192360000" /&gt;
+      &lt;condition attribute="msdyn_liveworkstreamid" entityname="an" operator="eq" uiname="ALM Live Chat Test Workstream" uitype="msdyn_liveworkstream" value="{d3a1f09d-51a0-a6b7-266d-58e1bdb97b53}"/&gt;
+      &lt;/filter&gt;
+      &lt;filter type="and"&gt;
+      &lt;condition attribute="msdyn_mode" entityname="bd" operator="eq" value="717210001" /&gt;
+      &lt;condition attribute="msdyn_streamsource" entityname="bd" operator="eq" value="192360000" /&gt;
+      &lt;condition attribute="msdyn_liveworkstreamid" entityname="an" operator="eq" uiname="ALM Live Chat Test Workstream" uitype="msdyn_liveworkstream" value="{d3a1f09d-51a0-a6b7-266d-58e1bdb97b53}"/&gt;
+      &lt;/filter&gt;
+      &lt;filter type="and"&gt;
+      &lt;condition attribute="msdyn_entitylogicalname" entityname="bp" operator="not-null" /&gt;
+      &lt;/filter&gt;
+      &lt;filter type="and"&gt;
+      &lt;condition attribute="msdyn_entitylogicalname" entityname="bt" operator="not-null" /&gt;
+      &lt;/filter&gt;
+      &lt;/filter&gt;
+      &lt;link-entity name="msdyn_liveworkstream" from="msdyn_routingcontractid" to="msdyn_decisioncontractid" link-type="outer" alias="an"&gt;
+      &lt;/link-entity&gt;
+      &lt;link-entity name="msdyn_decisionruleset" from="msdyn_outputcontractid" to="msdyn_decisioncontractid" link-type="outer" alias="ba"&gt;
+      &lt;link-entity name="msdyn_routingconfigurationstep" from="msdyn_rulesetid" to="msdyn_decisionrulesetid" link-type="outer" alias="bb"&gt;
+      &lt;link-entity name="msdyn_routingconfiguration" from="msdyn_routingconfigurationid" to="msdyn_routingconfigurationid" link-type="outer" alias="bc"&gt;
+      &lt;link-entity name="msdyn_liveworkstream" from="msdyn_liveworkstreamid" to="msdyn_liveworkstreamid" link-type="outer" alias="bd"&gt;
+      &lt;/link-entity&gt;
+      &lt;/link-entity&gt;
+      &lt;/link-entity&gt;
+      &lt;/link-entity&gt;
+      &lt;link-entity name="msdyn_decisionruleset" from="msdyn_inputcontractid" to="msdyn_decisioncontractid" link-type="outer" alias="bo"&gt;
+      &lt;link-entity name="msdyn_masterentityroutingconfiguration" from="msdyn_rulesetid" to="msdyn_decisionrulesetid" link-type="outer" alias="bp" /&gt;
+      &lt;/link-entity&gt;
+      &lt;link-entity name="msdyn_decisionruleset" from="msdyn_outputcontractid" to="msdyn_decisioncontractid" link-type="outer" alias="bs"&gt;
+      &lt;link-entity name="msdyn_masterentityroutingconfiguration" from="msdyn_rulesetid" to="msdyn_decisionrulesetid" link-type="outer" alias="bt" /&gt;
+      &lt;/link-entity&gt;
+      &lt;/entity&gt;
+      &lt;/fetch&gt;
+    </filter>
+  </entity>
+  <entity name="msdyn_decisionruleset" displayname="Decision rule set" etc="10457" primaryidfield="msdyn_decisionrulesetid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="AI builder model" name="msdyn_aibmodelid" type="entityreference" lookupType="msdyn_aimodel" customfield="true" />
+      <field displayname="Authoring mode" name="msdyn_authoringmode" type="optionsetvalue" customfield="true" />
+      <field displayname="Decision rule set" name="msdyn_decisionrulesetid" type="guid" primaryKey="true" />
+      <field displayname="Description" name="msdyn_description" type="string" customfield="true" />
+      <field displayname="Input contract" name="msdyn_inputcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
+      <field displayname="Is input collection" name="msdyn_isinputcollection" type="bool" customfield="true" />
+      <field displayname="ML model type" name="msdyn_mlmodeltype" type="optionsetvalue" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Output contract" name="msdyn_outputcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
+      <field displayname="Rule set definition" name="msdyn_rulesetdefinition" type="string" customfield="true" />
+      <field displayname="Rule set type" name="msdyn_rulesettype" type="optionsetvalue" customfield="true" />
+      <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
+    </fields>
+    <filter>
+      &lt;fetch distinct="true"&gt;
+      &lt;entity name="msdyn_decisionruleset"&gt;
+      &lt;filter type="or"&gt;
+      &lt;filter type="and"&gt;
+      &lt;condition attribute="msdyn_mode" entityname="af" operator="eq" value="717210001" /&gt;
+      &lt;condition attribute="msdyn_streamsource" entityname="af" operator="eq" value="192360000" /&gt;
+      &lt;condition attribute="msdyn_liveworkstreamid" entityname="af" operator="eq" uiname="ALM Live Chat Test Workstream" uitype="msdyn_liveworkstream" value="{d3a1f09d-51a0-a6b7-266d-58e1bdb97b53}"/&gt;
+      &lt;/filter&gt;
+      &lt;/filter&gt;
+      &lt;link-entity name="msdyn_routingconfigurationstep" from="msdyn_rulesetid" to="msdyn_decisionrulesetid" link-type="outer" alias="ad"&gt;
+      &lt;link-entity name="msdyn_routingconfiguration" from="msdyn_routingconfigurationid" to="msdyn_routingconfigurationid" link-type="outer" alias="ae"&gt;
+      &lt;link-entity name="msdyn_liveworkstream" from="msdyn_liveworkstreamid" to="msdyn_liveworkstreamid" link-type="outer" alias="af"&gt;
+      &lt;/link-entity&gt;
+      &lt;/link-entity&gt;
+      &lt;/link-entity&gt;
+      &lt;/entity&gt;
+      &lt;/fetch&gt;
+    </filter>
+  </entity>
+  <entity name="msdyn_routingconfiguration" displayname="Routing configuration" etc="10467" primaryidfield="msdyn_routingconfigurationid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Routing configuration" name="msdyn_routingconfigurationid" type="guid" primaryKey="true" />
+      <field displayname="Work stream" name="msdyn_liveworkstreamid" type="entityreference" lookupType="msdyn_liveworkstream" customfield="true" />
+      <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
+      <field displayname="Is active configuration" name="msdyn_isactiveconfiguration" type="bool" customfield="true" />
+    </fields>
+    <filter>
+      &lt;fetch&gt;
+      &lt;entity name="msdyn_routingconfiguration"&gt;
+      &lt;link-entity name="msdyn_liveworkstream" from="msdyn_liveworkstreamid" to="msdyn_liveworkstreamid" link-type="inner" alias="ah"&gt;
+      &lt;filter type="and"&gt;
+      &lt;condition attribute="msdyn_mode" operator="eq" value="717210001" /&gt;
+      &lt;condition attribute="msdyn_streamsource" operator="eq" value="192360000" /&gt;
+      &lt;condition attribute="msdyn_liveworkstreamid" operator="eq" uiname="ALM Live Chat Test Workstream" uitype="msdyn_liveworkstream" value="{d3a1f09d-51a0-a6b7-266d-58e1bdb97b53}"/&gt;
+      &lt;/filter&gt;
+      &lt;/link-entity&gt;
+      &lt;/entity&gt;
+      &lt;/fetch&gt;
+    </filter>
+  </entity>
+  <entity name="msdyn_routingconfigurationstep" displayname="Routing configuration step" etc="10468" primaryidfield="msdyn_routingconfigurationstepid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Routing configuration" name="msdyn_routingconfigurationid" type="entityreference" lookupType="msdyn_routingconfiguration" customfield="true" />
+      <field displayname="Routing configuration step" name="msdyn_routingconfigurationstepid" type="guid" primaryKey="true" />
+      <field displayname="Rule set" name="msdyn_rulesetid" type="entityreference" lookupType="msdyn_decisionruleset" customfield="true" />
+      <field displayname="Step order" name="msdyn_steporder" type="number" customfield="true" />
+      <field displayname="Step type" name="msdyn_type" type="optionsetvalue" customfield="true" />
+      <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
+    </fields>
+    <filter>
+      &lt;fetch&gt;
+      &lt;entity name="msdyn_routingconfigurationstep"&gt;
+      &lt;link-entity name="msdyn_routingconfiguration" from="msdyn_routingconfigurationid" to="msdyn_routingconfigurationid" link-type="inner" alias="ak"&gt;
+      &lt;link-entity name="msdyn_liveworkstream" from="msdyn_liveworkstreamid" to="msdyn_liveworkstreamid" link-type="inner" alias="al"&gt;
+      &lt;filter type="and"&gt;
+      &lt;condition attribute="msdyn_mode" operator="eq" value="717210001" /&gt;
+      &lt;condition attribute="msdyn_streamsource" operator="eq" value="192360000" /&gt;
+      &lt;condition attribute="msdyn_liveworkstreamid" operator="eq" uiname="ALM Live Chat Test Workstream" uitype="msdyn_liveworkstream" value="{d3a1f09d-51a0-a6b7-266d-58e1bdb97b53}"/&gt;
+      &lt;/filter&gt;
+      &lt;/link-entity&gt;
+      &lt;/link-entity&gt;
+      &lt;/entity&gt;
+      &lt;/fetch&gt;
+    </filter>
+  </entity>
+  <entity name="msdyn_cannedmessage" displayname="Quick reply" etc="10468" primaryidfield="msdyn_cannedmessageid" primarynamefield="msdyn_title" disableplugins="false">
+    <fields>
+      <field displayname="Locale" name="msdyn_locale_field" type="optionsetvalue" customfield="true" />
+      <field displayname="Message" name="msdyn_message" type="string" customfield="true" />
+      <field displayname="Organization Id" name="organizationid" type="entityreference" lookupType="organization" />
+      <field displayname="Quick reply" name="msdyn_cannedmessageid" type="guid" primaryKey="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="TagsControlField" name="msdyn_tagscontrolfield" type="string" customfield="true" />
+      <field displayname="Title" name="msdyn_title" type="string" customfield="true" />
+    </fields>
+    <relationships>
+      <relationship name="msdyn_msdyn_cannedmessage_msdyn_octag" manyToMany="true" isreflexive="false" relatedEntityName="msdyn_msdyn_cannedmessage_msdyn_octag" m2mTargetEntity="msdyn_octag" m2mTargetEntityPrimaryKey="msdyn_octagid" />
+      <relationship name="msdyn_msdyn_cannedmessage_liveworkstream" manyToMany="true" isreflexive="false" relatedEntityName="msdyn_msdyn_cannedmessage_liveworkstream" m2mTargetEntity="msdyn_liveworkstream" m2mTargetEntityPrimaryKey="msdyn_liveworkstreamid" />
+    </relationships>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_cannedmessage"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_cannedmessageid" operator="eq" uiname="ALM Live Chat Test Quick Reply" uitype="msdyn_cannedmessage" value="{BFFA29ED-6CE3-ED11-A7C7-00224805C057}"/&gt;
+&lt;/filter&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_octag" displayname="Tag" etc="10509" primaryidfield="msdyn_octagid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Tag" name="msdyn_octagid" type="guid" primaryKey="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_octag"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_octagid" operator="eq" uiname="#ALM" uitype="msdyn_octag" value="{C4FA29ED-6CE3-ED11-A7C7-00224805C057}"/&gt;
+&lt;/filter&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+</entities>
