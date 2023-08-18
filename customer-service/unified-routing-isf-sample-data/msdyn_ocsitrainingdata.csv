@@ -1,0 +1,51 @@
+Skill finder model,Training record name,Input data
+Contoso skill finder model,Contoso coffee training data A10001,Smart brew 1000 Brew valve  Yes. No.
+Contoso skill finder model,Contoso coffee training data A10002,"Smart brew 1000 Coffee filter  Yes. No., can you please connect me to an agent"
+Contoso skill finder model,Contoso coffee training data A10003,"Smart brew 2500 Brew valve  Yes. No.t really, can you pls help"
+Contoso skill finder model,Contoso coffee training data A10004,"Smart brew 2500 Coffee filter  Yes. No.t atall, can I speak to a human"
+Contoso skill finder model,Contoso coffee training data A10005,Smart brew 1000 Brew valve  Yes. No. Need urgent attention
+Contoso skill finder model,Contoso coffee training data A10006,Smart brew 1000 Coffee filter  Yes. No. And it smells really bad
+Contoso skill finder model,Contoso coffee training data A10007,Smart brew 2500 Brew valve  Yes. No. Its not starting.
+Contoso skill finder model,Contoso coffee training data A10008,Smart brew 2500 Coffee filter  Yes. No. The wire is burring as-well now.
+Contoso skill finder model,Contoso coffee training data A10009,Smart brew 1000 Brew valve  Yes. No. It did not fill a cup.
+Contoso skill finder model,Contoso coffee training data A10010,Smart brew 1000 Coffee filter  Yes. No. Need to discuss on how to fix this ASAP.
+Contoso skill finder model,Contoso coffee training data A10011,Smart brew 2500 Brew valve  Yes. No.t good enough
+Contoso skill finder model,Contoso coffee training data A10012,Smart brew 2500 Coffee filter  Yes. No.t well enough
+Contoso skill finder model,Contoso coffee training data A10013,Smart brew 1000 Brew valve  Yes. No. Do you really think that was helpful
+Contoso skill finder model,Contoso coffee training data A10014,"Smart brew 1000 Coffee filter  Yes. No., no, no"
+Contoso skill finder model,Contoso coffee training data A10015,Smart brew 2500 Brew valve  Yes. No. Can I talk to an agent.
+Contoso skill finder model,Contoso coffee training data A10016,Smart brew 2500 Coffee filter  Yes. No. Can I talk to an agent.
+Contoso skill finder model,Contoso coffee training data A10017,Smart brew 1000 Brew valve  Yes. No. How to get hold of an agent.
+Contoso skill finder model,Contoso coffee training data A10018,Smart brew 1000 Coffee filter  Yes. No. How do I escalate to a human.
+Contoso skill finder model,Contoso coffee training data A10019,"Smart brew 2500 Brew valve  Yes. No., how can I file a claim"
+Contoso skill finder model,Contoso coffee training data A10020,Smart brew 2500 Coffee filter  Yes. No. Do you think so.
+Contoso skill finder model,Contoso coffee training data A10021,Smart brew 1000 Brew valve  Yes. No. How can that help anybody
+Contoso skill finder model,Contoso coffee training data A10022,Smart brew 1000 Coffee filter  Yes. No. Please connect me to an agent.
+Contoso skill finder model,Contoso coffee training data A10023,Smart brew 2500 Brew valve  Yes. No. Anybody real that I can talk to ?
+Contoso skill finder model,Contoso coffee training data A10024,"Smart brew 2500 Coffee filter  Yes. No., how do I get to an agent"
+Contoso skill finder model,Contoso coffee training data A10025,"Smart brew 1000 Brew valve  Yes. No., who do I need to butter around here to get to resolve this"
+Contoso skill finder model,Contoso coffee training data A10026,"Smart brew 1000 Coffee filter  Yes. No., when can I expect this to be fixed"
+Contoso skill finder model,Contoso coffee training data A10027,Smart brew 2500 Brew valve No
+Contoso skill finder model,Contoso coffee training data A10028,"Smart brew 2500 Coffee filter No, can you please connect me to an agent"
+Contoso skill finder model,Contoso coffee training data A10029,"Smart brew 1000 Brew valve Not really, can you pls help"
+Contoso skill finder model,Contoso coffee training data A10030,"Smart brew 1000 Coffee filter Not atall, can I speak to a human"
+Contoso skill finder model,Contoso coffee training data A10031,Smart brew 2500 Brew valve and not working No
+Contoso skill finder model,Contoso coffee training data A10032,Smart brew 2500 Coffee filter  and not working No
+Contoso skill finder model,Contoso coffee training data A10033,Smart brew 1000 Brew valve and is giving bad smell in cofee No
+Contoso skill finder model,Contoso coffee training data A10034,Smart brew 1000 Coffee filter and did not start No
+Contoso skill finder model,Contoso coffee training data A10035,Smart brew 2500 Brew valve and the wire burned down No
+Contoso skill finder model,Contoso coffee training data A10036,Smart brew 2500 Coffee filter and did not even fill a cup No
+Contoso skill finder model,Contoso coffee training data A10037,"Smart brew 1000 Brew valve Yes, but I need to discuss more"
+Contoso skill finder model,Contoso coffee training data A10038,Smart brew 1000 Coffee filter not good enough
+Contoso skill finder model,Contoso coffee training data A10039,Smart brew 2500 Brew valve Not well enough
+Contoso skill finder model,Contoso coffee training data A10040,Smart brew 2500 Coffee filter do you think that was helpful
+Contoso skill finder model,Contoso coffee training data A10041,"Smart brew 1000 Brew valve No, no, no"
+Contoso skill finder model,Contoso coffee training data A10042,Smart brew 1000 Coffee filter can I talk to an agent
+Contoso skill finder model,Contoso coffee training data A10043,Smart brew 2500 Brew valve how can I get to speck to an agent
+Contoso skill finder model,Contoso coffee training data A10044,Smart brew 2500 Coffee filter how do I escalate the case
+Contoso skill finder model,Contoso coffee training data A10045,"Smart brew 1000 Brew valve No, how can I file a claim"
+Contoso skill finder model,Contoso coffee training data A10046,Smart brew 1000 Coffee filter do you so?
+Contoso skill finder model,Contoso coffee training data A10047,Smart brew 2500 Brew valve how can that help anybody
+Contoso skill finder model,Contoso coffee training data A10048,Smart brew 2500 Coffee filter  how can that help anybody
+Contoso skill finder model,Contoso coffee training data A10049,Smart brew 1000 Brew valve Pls connect me to an agent
+Contoso skill finder model,Contoso coffee training data A10050,Smart brew 1000 Coffee filter is there anybody real that i can speak to 
