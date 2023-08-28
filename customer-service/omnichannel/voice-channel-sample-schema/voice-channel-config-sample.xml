@@ -1,0 +1,130 @@
+<entities >
+  <entity name="msdyn_ocvoicechannelsetting" displayname="Voice Channel Setting" etc="10768" primaryidfield="msdyn_ocvoicechannelsettingid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Enable agent control of the transcription" name="msdyn_agenttranscriptioncontrolsenabled" type="bool" customfield="true" />
+      <field displayname="Enable agent control to add an external participant" name="msdyn_agentexternalparticipantcontrolenabled" type="bool" customfield="true" />
+      <field displayname="Enable agent control to add an external participant on Teams" name="msdyn_agentexternalteamsparticipantcontrolenabled" type="bool" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Operating Hours" name="msdyn_operatinghoursid" type="entityreference" lookupType="msdyn_operatinghour" customfield="true" />
+      <field displayname="Recording Enabled" name="msdyn_recordingenabled" type="bool" customfield="true" />
+      <field displayname="Recording mode" name="msdyn_recordingmode" type="optionsetvaluecollection" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Voice Channel Setting" name="msdyn_ocvoicechannelsettingid" type="guid" primaryKey="true" />
+      <field displayname="Work Stream" name="msdyn_liveworkstreamid" type="entityreference" lookupType="msdyn_liveworkstream" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+ &lt;entity name="msdyn_ocvoicechannelsetting"&gt;
+  &lt;link-entity name="msdyn_liveworkstream" from="msdyn_liveworkstreamid" to="msdyn_liveworkstreamid" link-type="inner" alias="aa"&gt;
+   &lt;filter type="and"&gt;
+    &lt;condition attribute="msdyn_liveworkstreamid" operator="eq" uiname="ALM Voice Test Workstream" uitype="msdyn_liveworkstream" value="{3fd4b82b-d5a1-f9e5-4034-52021c0e3442}" /&gt;
+   &lt;/filter&gt;
+  &lt;/link-entity&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_oclocalizationdata" displayname="Localization" etc="10495" primaryidfield="msdyn_oclocalizationdataid" primarynamefield="msdyn_localizedtext" disableplugins="false">
+    <fields>
+      <field displayname="Automated message" name="msdyn_systemmessageid" type="entityreference" lookupType="msdyn_ocsystemmessage" customfield="true" />
+      <field displayname="Default Localized Text" name="msdyn_defaultlocalizedtext" type="string" customfield="true" />
+      <field displayname="Entity Column Name" name="msdyn_entitycolumnname" type="string" customfield="true" />
+      <field displayname="Entity Name" name="msdyn_entityname" type="string" customfield="true" />
+      <field displayname="Entity Record Id" name="msdyn_entityrecordid" type="string" customfield="true" />
+      <field displayname="Is default" name="msdyn_isdefault" type="bool" customfield="true" />
+      <field displayname="Language code" name="msdyn_customerlanguageid" type="entityreference" lookupType="msdyn_oclanguage" customfield="true" />
+      <field displayname="Language Code" name="msdyn_languagecode" type="number" customfield="true" />
+      <field displayname="Localization" name="msdyn_oclocalizationdataid" type="guid" primaryKey="true" />
+      <field displayname="Localized text" name="msdyn_localizedtext" type="string" customfield="true" />
+      <field displayname="Organization Id" name="organizationid" type="entityreference" lookupType="organization" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_oclocalizationdata"&gt;
+&lt;link-entity name="msdyn_ocsystemmessage" from="msdyn_ocsystemmessageid" to="msdyn_systemmessageid" link-type="inner" alias="ab"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_streamsource" operator="eq" value="192440000"/&gt;
+&lt;/filter&gt;
+&lt;/link-entity&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_ocsystemmessage" displayname="Message" etc="10508" primaryidfield="msdyn_ocsystemmessageid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Channel" name="msdyn_streamsource" type="optionsetvalue" customfield="true" />
+      <field displayname="Default language" name="msdyn_defaultlanguage" type="entityreference" lookupType="msdyn_oclanguage" customfield="true" />
+      <field displayname="Instance ID" name="msdyn_instanceid" type="string" customfield="true" />
+      <field displayname="Message" name="msdyn_ocsystemmessageid" type="guid" primaryKey="true" />
+      <field displayname="Message description" name="msdyn_messagedescription" type="string" customfield="true" />
+      <field displayname="Message recipient" name="msdyn_messagereceiver" type="optionsetvalue" customfield="true" />
+      <field displayname="Message template trigger" name="msdyn_messagetemplatetrigger" type="optionsetvalue" customfield="true" />
+      <field displayname="Message Text" name="msdyn_messagetext" type="string" customfield="true" />
+      <field displayname="Message trigger" name="msdyn_systemmessageeventtype" type="optionsetvalue" customfield="true" />
+      <field displayname="Message type" name="msdyn_messagetype" type="optionsetvalue" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Organization Id" name="organizationid" type="entityreference" lookupType="organization" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Widget" name="msdyn_widgetid" type="entityreference" lookupType="msdyn_livechatconfig" customfield="true" />
+    </fields>
+  </entity>
+  <entity name="msdyn_ocvoice" displayname="Voice" etc="10766" primaryidfield="msdyn_ocvoiceid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Language" name="msdyn_languageid" type="entityreference" lookupType="msdyn_oclanguage" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="pitch" name="msdyn_pitch" type="number" customfield="true" />
+      <field displayname="speaking speed" name="msdyn_speakingspeed" type="number" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="voice" name="msdyn_ocvoiceid" type="guid" primaryKey="true" />
+      <field displayname="voice name" name="msdyn_voicename" type="string" customfield="true" />
+      <field displayname="voice style" name="msdyn_voicestyle" type="string" customfield="true" />
+    </fields>
+  </entity>
+  <entity name="msdyn_ocvoicechannellanguagesetting" displayname="Voice Channel Language Setting" etc="10767" primaryidfield="msdyn_ocvoicechannellanguagesettingid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Wait music" name="msdyn_waitmusicid" type="entityreference" lookupType="msdyn_ocphonemusic" customfield="true" />
+      <field displayname="voice channel setting" name="msdyn_ocvoicechannelsettingid" type="entityreference" lookupType="msdyn_ocvoicechannelsetting" customfield="true" />
+      <field displayname="Voice Channel Language Setting" name="msdyn_ocvoicechannellanguagesettingid" type="guid" primaryKey="true" />
+      <field displayname="Voice" name="msdyn_ocvoiceid" type="entityreference" lookupType="msdyn_ocvoice" customfield="true" />
+      <field displayname="Hold music" name="msdyn_holdmusicid" type="entityreference" lookupType="msdyn_ocphonemusic" customfield="true" />
+      <field displayname="Is Primary" name="msdyn_isprimary" type="bool" customfield="true" />
+      <field displayname="Language" name="msdyn_languageid" type="entityreference" lookupType="msdyn_oclanguage" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="survey bot systemuser" name="msdyn_surveybotsystemuserid" type="entityreference" lookupType="systemuser" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+ &lt;entity name="msdyn_ocvoicechannellanguagesetting"&gt;
+  &lt;link-entity name="msdyn_ocvoicechannelsetting" from="msdyn_ocvoicechannelsettingid" to="msdyn_ocvoicechannelsettingid" link-type="inner" alias="ac"&gt;
+   &lt;link-entity name="msdyn_liveworkstream" from="msdyn_liveworkstreamid" to="msdyn_liveworkstreamid" link-type="inner" alias="ad"&gt;
+    &lt;filter type="and"&gt;
+     &lt;condition attribute="msdyn_liveworkstreamid" operator="eq" uiname="ALM Voice Test Workstream" uitype="msdyn_liveworkstream" value="{3fd4b82b-d5a1-f9e5-4034-52021c0e3442}" /&gt;
+    &lt;/filter&gt;
+   &lt;/link-entity&gt;
+  &lt;/link-entity&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_ocprovisioningstate" displayname="Provisioning State" etc="10462" primaryidfield="msdyn_ocprovisioningstateid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="CommunicationProviderSettings" name="msdyn_communicationprovidersettingid" type="entityreference" lookupType="msdyn_occommunicationprovidersetting" customfield="true" />
+      <field displayname="voicechannelsettingsid" name="msdyn_voicechannelsettingid" type="entityreference" lookupType="msdyn_ocvoicechannelsetting" customfield="true" />
+      <field displayname="Provisioning State" name="msdyn_ocprovisioningstateid" type="guid" primaryKey="true" />
+      <field displayname="Error Message (Deprecated)" name="msdyn_exceptiondetails" type="string" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+ &lt;entity name="msdyn_ocprovisioningstate"&gt;
+  &lt;link-entity name="msdyn_ocvoicechannelsetting" from="msdyn_ocvoicechannelsettingid" to="msdyn_voicechannelsettingid" link-type="inner" alias="ac"&gt;
+   &lt;link-entity name="msdyn_liveworkstream" from="msdyn_liveworkstreamid" to="msdyn_liveworkstreamid" link-type="inner" alias="ad"&gt;
+    &lt;filter type="and"&gt;
+     &lt;condition attribute="msdyn_liveworkstreamid" operator="eq" uiname="ALM Voice Test Workstream" uitype="msdyn_liveworkstream" value="{3fd4b82b-d5a1-f9e5-4034-52021c0e3442}" /&gt;
+    &lt;/filter&gt;
+   &lt;/link-entity&gt;
+  &lt;/link-entity&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+</entities>
