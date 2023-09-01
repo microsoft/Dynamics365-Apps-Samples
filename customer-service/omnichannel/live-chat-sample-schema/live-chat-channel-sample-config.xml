@@ -1,0 +1,298 @@
+<entities >
+  <entity name="msdyn_livechatconfig" displayname="Chat Widget" etc="10712" primaryidfield="msdyn_livechatconfigid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="(Deprecated) During non-operating hours" name="msdyn_duringnonoperatinghours" type="string" customfield="true" />
+      <field displayname="Agent display name" name="msdyn_agentdisplayname" type="optionsetvalue" customfield="true" />
+      <field displayname="Allow download of transcript" name="msdyn_enablechattranscriptdownload" type="bool" customfield="true" />
+      <field displayname="Allow email of transcript" name="msdyn_enablechattranscriptemail" type="bool" customfield="true" />
+      <field displayname="Anonymize Agent" name="msdyn_showagentname" type="bool" customfield="true" />
+      <field displayname="Authentication settings" name="msdyn_authsettingsid" type="entityreference" lookupType="msdyn_authenticationsettings" customfield="true" />
+      <field displayname="Auto Detect Language" name="msdyn_autodetectlanguage" type="bool" customfield="true" />
+      <field displayname="Bot Survey" name="msdyn_postconversationsurveybotsurvey" type="bool" customfield="true" />
+      <field displayname="Calling options" name="msdyn_callingoptions" type="optionsetvalue" customfield="true" />
+      <field displayname="Chat Widget" name="msdyn_livechatconfigid" type="guid" primaryKey="true" />
+      <field displayname="Co-browse provider" name="msdyn_cobrowseprovider" type="string" customfield="true" />
+      <field displayname="Display Generic Name" name="msdyn_genericagentdisplayname" type="string" customfield="true" />
+      <field displayname="Email Template" name="msdyn_emailtemplate" type="string" customfield="true" />
+      <field displayname="Enable" name="msdyn_postconversationsurveyenable" type="bool" customfield="true" />
+      <field displayname="Enable Co-browse" name="msdyn_enablecobrowse" type="bool" customfield="true" />
+      <field displayname="Enable file attachments for agents" name="msdyn_enablefileattachmentsforagents" type="bool" customfield="true" />
+      <field displayname="Enable file attachments for customers" name="msdyn_enablefileattachmentsforcustomers" type="bool" customfield="true" />
+      <field displayname="Enable Screen sharing" name="msdyn_enablescreensharing" type="bool" customfield="true" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="Indicates the conversation mode of the chat widget" name="msdyn_conversationmode" type="optionsetvalue" customfield="true" />
+      <field displayname="Indicates whether display of wait time is enabled" name="msdyn_averagewaittime_enabled" type="bool" customfield="true" />
+      <field displayname="infolabel" name="msdyn_infolabel" type="string" customfield="true" />
+      <field displayname="Language" name="msdyn_widgetlocale" type="entityreference" lookupType="msdyn_chatwidgetlanguage" customfield="true" />
+      <field displayname="Language" name="msdyn_ocwidgetlanguage" type="entityreference" lookupType="msdyn_oclanguage" customfield="true" />
+      <field displayname="Language" name="msdyn_language" type="optionsetvalue" customfield="true" />
+      <field displayname="Logo" name="msdyn_avatarurl" type="string" customfield="true" />
+      <field displayname="Message" name="msdyn_postconversationsurveymessagetext" type="string" customfield="true" />
+      <field displayname="Message" name="msdyn_postconversationsurveybotsurveymessagetext" type="string" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Offline Widegt Title" name="msdyn_offlinewidgettitle" type="string" customfield="true" />
+      <field displayname="Offline Widget Subtitle" name="msdyn_offlinewidgetsubtitle" type="string" customfield="true" />
+      <field displayname="Offline Widget Theme Color" name="msdyn_offlinewidgetthemecolor" type="optionsetvalue" customfield="true" />
+      <field displayname="Operating hours" name="msdyn_operatinghourid" type="entityreference" lookupType="msdyn_operatinghour" customfield="true" />
+      <field displayname="Portal URL" name="msdyn_portalurl" type="string" customfield="true" />
+      <field displayname="Position" name="msdyn_widgetposition" type="optionsetvalue" customfield="true" />
+      <field displayname="Post-chat Survey" name="msdyn_postchatenabled" type="bool" customfield="true" />
+      <field displayname="Pre-Chat Survey" name="msdyn_prechatenabled" type="bool" customfield="true" />
+      <field displayname="Proactive-chat" name="msdyn_proactivechatenabled" type="bool" customfield="true" />
+      <field displayname="Provider API key" name="msdyn_oc_geolocationprovider" type="entityreference" lookupType="msdyn_oc_geolocationprovider" customfield="true" />
+      <field displayname="Question Set for Authenticated Users" name="msdyn_prechatquestionnaireauthenticated" type="entityreference" lookupType="msdyn_questionsequence" customfield="true" />
+      <field displayname="Question Set for Unauthenticated Users" name="msdyn_prechatquestionnaireunauthenticated" type="entityreference" lookupType="msdyn_questionsequence" customfield="true" />
+      <field displayname="Reconnect to previous agent for" name="msdyn_timetoreconnectwithpreviousagent" type="number" customfield="true" />
+      <field displayname="Redirection URL" name="msdyn_redirectionurl" type="string" customfield="true" />
+      <field displayname="Request visitor location" name="msdyn_requestvisitorlocation" type="bool" customfield="true" />
+      <field displayname="Screen sharing provider" name="msdyn_screensharingprovider" type="string" customfield="true" />
+      <field displayname="Sender Mailbox" name="msdyn_mailbox" type="string" customfield="true" />
+      <field displayname="Show position in queue" name="msdyn_positioninqueue_enabled" type="bool" customfield="true" />
+      <field displayname="Show widget during offline hours" name="msdyn_showwidgetduringofflinehours" type="bool" customfield="true" />
+      <field displayname="Sign in is optional to start a chat" name="msdyn_authenticatedsigninoptional" type="bool" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Subtitle" name="msdyn_widgetsubtitle" type="string" customfield="true" />
+      <field displayname="Survey" name="msdyn_postconversationsurveyseparatebotsurvey" type="entityreference" lookupType="msfp_survey" customfield="true" />
+      <field displayname="Survey" name="msdyn_postconversationsurvey" type="entityreference" lookupType="msfp_survey" customfield="true" />
+      <field displayname="Survey Mode" name="msdyn_postconversationsurveymode" type="optionsetvalue" customfield="true" />
+      <field displayname="Survey Mode" name="msdyn_postconversationsurveybotsurveymode" type="optionsetvalue" customfield="true" />
+      <field displayname="Theme Color" name="msdyn_widgetthemecolor" type="optionsetvalue" customfield="true" />
+      <field displayname="Title" name="msdyn_widgettitle" type="string" customfield="true" />
+      <field displayname="Turn on reconnect to previous chat" name="msdyn_enablechatreconnect" type="bool" customfield="true" />
+      <field displayname="Turn on sound notifications" name="msdyn_widgetsoundnotification" type="bool" customfield="true" />
+      <field displayname="Turn on unread messages indicator" name="msdyn_widgetvisualnotification" type="bool" customfield="true" />
+      <field displayname="Work stream" name="msdyn_liveworkstreamid" type="entityreference" lookupType="msdyn_liveworkstream" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_livechatconfig"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_livechatconfigid" operator="eq" uiname="ALM Live Chat Channel Test" uitype="msdyn_livechatconfig" value="{7AC4292B-5DE3-ED11-A7C6-00224805C6D4}"/&gt;
+&lt;/filter&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_authenticationsettings" displayname="Authentication Settings" etc="10466" primaryidfield="msdyn_authenticationsettingsid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Action Name" name="msdyn_actionname" type="string" customfield="true" />
+      <field displayname="Additional Parameters for Custom Auth service" name="msdyn_additionalparams" type="string" customfield="true" />
+      <field displayname="Auth service Access token url" name="msdyn_accesstokenurl" type="string" customfield="true" />
+      <field displayname="Auth service Client ID" name="msdyn_authenticationclientid" type="string" customfield="true" />
+      <field displayname="Auth service client secret" name="msdyn_authenticationclientsecret" type="string" customfield="true" />
+      <field displayname="Auth service scopes" name="msdyn_authenticationscopes" type="string" customfield="true" />
+      <field displayname="Authentication Settings" name="msdyn_authenticationsettingsid" type="guid" primaryKey="true" />
+      <field displayname="Authentication Type" name="msdyn_authenticationtype" type="optionsetvalue" customfield="true" />
+      <field displayname="Channel Type" name="msdyn_ocauthchanneltype" type="optionsetvalue" customfield="true" />
+      <field displayname="Config Set ID for Gatekeeper authentication service" name="msdyn_authserviceconfigsetid" type="string" customfield="true" />
+      <field displayname="Decrypted Token URL" name="msdyn_decryptedtokenurl" type="string" customfield="true" />
+      <field displayname="Endpoint region" name="msdyn_endpointregion" type="optionsetvalue" customfield="true" />
+      <field displayname="JavaScript client function" name="msdyn_javascriptclientfunction" type="string" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Public key URL" name="msdyn_publickeyurl" type="string" customfield="true" />
+      <field displayname="Redirect Uri for Auth service" name="msdyn_redirecturi" type="string" customfield="true" />
+      <field displayname="Scope ID for Gatekeeper authentication service" name="msdyn_authservicescopeid" type="string" customfield="true" />
+      <field displayname="Use Auth Code Flow" name="msdyn_useauthcodeflow" type="bool" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_authenticationsettings"&gt;
+&lt;link-entity name="msdyn_livechatconfig" from="msdyn_authsettingsid" to="msdyn_authenticationsettingsid" link-type="inner" alias="aa"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_livechatconfigid" operator="eq" uiname="ALM Live Chat Channel Test" uitype="msdyn_livechatconfig" value="{7AC4292B-5DE3-ED11-A7C6-00224805C6D4}"/&gt;
+&lt;/filter&gt;
+&lt;/link-entity&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_oclocalizationdata" displayname="Localization" etc="10495" primaryidfield="msdyn_oclocalizationdataid" primarynamefield="msdyn_localizedtext" disableplugins="false">
+    <fields>
+      <field displayname="Automated message" name="msdyn_systemmessageid" type="entityreference" lookupType="msdyn_ocsystemmessage" customfield="true" />
+      <field displayname="Default Localized Text" name="msdyn_defaultlocalizedtext" type="string" customfield="true" />
+      <field displayname="Entity Column Name" name="msdyn_entitycolumnname" type="string" customfield="true" />
+      <field displayname="Entity Name" name="msdyn_entityname" type="string" customfield="true" />
+      <field displayname="Entity Record Id" name="msdyn_entityrecordid" type="string" customfield="true" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="Is default" name="msdyn_isdefault" type="bool" customfield="true" />
+      <field displayname="Language code" name="msdyn_customerlanguageid" type="entityreference" lookupType="msdyn_oclanguage" customfield="true" />
+      <field displayname="Language Code" name="msdyn_languagecode" type="number" customfield="true" />
+      <field displayname="Localization" name="msdyn_oclocalizationdataid" type="guid" primaryKey="true" />
+      <field displayname="Localized text" name="msdyn_localizedtext" type="string" customfield="true" />
+      <field displayname="Organization Id" name="organizationid" type="entityreference" lookupType="organization" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_oclocalizationdata"&gt;
+&lt;link-entity name="msdyn_ocsystemmessage" from="msdyn_ocsystemmessageid" to="msdyn_systemmessageid" link-type="inner" alias="ah"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_streamsource" operator="eq" value="192360000"/&gt;
+&lt;/filter&gt;
+&lt;/link-entity&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_ocsystemmessage" displayname="Message" etc="10508" primaryidfield="msdyn_ocsystemmessageid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Channel" name="msdyn_streamsource" type="optionsetvalue" customfield="true" />
+      <field displayname="Default language" name="msdyn_defaultlanguage" type="entityreference" lookupType="msdyn_oclanguage" customfield="true" />
+      <field displayname="Instance ID" name="msdyn_instanceid" type="string" customfield="true" />
+      <field displayname="Message" name="msdyn_ocsystemmessageid" type="guid" primaryKey="true" />
+      <field displayname="Message description" name="msdyn_messagedescription" type="string" customfield="true" />
+      <field displayname="Message recipient" name="msdyn_messagereceiver" type="optionsetvalue" customfield="true" />
+      <field displayname="Message template trigger" name="msdyn_messagetemplatetrigger" type="optionsetvalue" customfield="true" />
+      <field displayname="Message Text" name="msdyn_messagetext" type="string" customfield="true" />
+      <field displayname="Message trigger" name="msdyn_systemmessageeventtype" type="optionsetvalue" customfield="true" />
+      <field displayname="Message type" name="msdyn_messagetype" type="optionsetvalue" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Organization Id" name="organizationid" type="entityreference" lookupType="organization" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Widget" name="msdyn_widgetid" type="entityreference" lookupType="msdyn_livechatconfig" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_ocsystemmessage"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_instanceid" operator="like" value="%7AC4292B-5DE3-ED11-A7C6-00224805C6D4%"/&gt;
+&lt;/filter&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_chatansweroption" displayname="Survey Answer Option" etc="10708" primaryidfield="msdyn_chatansweroptionid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Survey Answer Option" name="msdyn_chatansweroptionid" type="guid" primaryKey="true" />
+      <field displayname="Survey question" name="msdyn_answeroptionsid" type="entityreference" lookupType="msdyn_surveyquestion" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_chatansweroption"&gt;
+&lt;link-entity name="msdyn_surveyquestion" from="msdyn_surveyquestionid" to="msdyn_answeroptionsid" link-type="inner" alias="ab"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_liveworkstreamtochatquestion" operator="eq" uiname="ALM Live Chat Test Workstream" uitype="msdyn_liveworkstream" value="{D3A1F09D-51A0-A6B7-266D-58E1BDB97B53}"/&gt;
+&lt;/filter&gt;
+&lt;/link-entity&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_surveyquestion" displayname="Survey Question" etc="10717" primaryidfield="msdyn_surveyquestionid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Answer type" name="msdyn_answertype" type="optionsetvalue" customfield="true" />
+      <field displayname="Help Text" name="msdyn_placeholdertext" type="string" customfield="true" />
+      <field displayname="Question name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Question text" name="msdyn_questiontext" type="string" customfield="true" />
+      <field displayname="Rating Scale" name="msdyn_ratingscale" type="number" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Survey Question" name="msdyn_surveyquestionid" type="guid" primaryKey="true" />
+      <field displayname="Work stream" name="msdyn_liveworkstreamtochatquestion" type="entityreference" lookupType="msdyn_liveworkstream" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_surveyquestion"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_liveworkstreamtochatquestion" operator="eq" uiname="ALM Live Chat Test Workstream" uitype="msdyn_liveworkstream" value="{D3A1F09D-51A0-A6B7-266D-58E1BDB97B53}"/&gt;
+&lt;/filter&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_questionsequence" displayname="Survey Question Sequence" etc="10716" primaryidfield="msdyn_questionsequenceid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Chat widget" name="msdyn_chatengagementtochatsequenceid" type="entityreference" lookupType="msdyn_livechatconfig" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Order" name="sequencenumber" type="number" />
+      <field displayname="Required" name="msdyn_questionrequired" type="bool" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Survey question name" name="msdyn_surveyquestion" type="entityreference" lookupType="msdyn_surveyquestion" customfield="true" />
+      <field displayname="Survey Question Sequence" name="msdyn_questionsequenceid" type="guid" primaryKey="true" />
+      <field displayname="Survey type" name="msdyn_chatquestionnairetype" type="optionsetvalue" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_questionsequence"&gt;
+&lt;link-entity name="msdyn_livechatconfig" from="msdyn_livechatconfigid" to="msdyn_chatengagementtochatsequenceid" link-type="inner" alias="ac"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_livechatconfigid" operator="eq" uiname="ALM Live Chat Channel Test" uitype="msdyn_livechatconfig" value="{7AC4292B-5DE3-ED11-A7C6-00224805C6D4}"/&gt;
+&lt;/filter&gt;
+&lt;/link-entity&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_livechatwidgetlocation" displayname="Chat Widget Location" etc="10714" primaryidfield="msdyn_livechatwidgetlocationid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Chat widget" name="msdyn_livechatconfigid" type="entityreference" lookupType="msdyn_livechatconfig" customfield="true" />
+      <field displayname="Chat Widget Location" name="msdyn_livechatwidgetlocationid" type="guid" primaryKey="true" />
+      <field displayname="Location URL Wildcard" name="msdyn_locationurlwildcard" type="string" customfield="true" />
+      <field displayname="Rule Type" name="msdyn_ruletype" type="optionsetvalue" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Title" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Value" name="msdyn_domainvalue" type="string" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_livechatwidgetlocation"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_livechatconfigid" operator="eq" uiname="ALM Live Chat Channel Test" uitype="msdyn_livechatconfig" value="{7AC4292B-5DE3-ED11-A7C6-00224805C6D4}"/&gt;
+&lt;/filter&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_chatwidgetlanguage" displayname="Chat Widget Language(deprecated)" etc="10711" primaryidfield="msdyn_chatwidgetlanguageid" primarynamefield="msdyn_languagename" disableplugins="false">
+    <fields>
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Language Name" name="msdyn_languagename" type="string" customfield="true" />
+      <field displayname="Locale ID" name="msdyn_localeid" type="number" customfield="true" />
+      <field displayname="Chat Widget Language" name="msdyn_chatwidgetlanguageid" type="guid" primaryKey="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_chatwidgetlanguage"&gt;
+&lt;link-entity name="msdyn_livechatconfig" from="msdyn_widgetlocale" to="msdyn_chatwidgetlanguageid" link-type="inner" alias="ad"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_livechatconfigid" operator="eq" uiname="ALM Live Chat Channel Test" uitype="msdyn_livechatconfig" value="{7AC4292B-5DE3-ED11-A7C6-00224805C6D4}"/&gt;
+&lt;/filter&gt;
+&lt;/link-entity&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_localizedsurveyquestion" displayname="Localized Survey Question (Deprecated)" etc="10715" primaryidfield="msdyn_localizedsurveyquestionid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Language Code" name="msdyn_languagecode" type="optionsetvalue" customfield="true" />
+      <field displayname="Localized Question Text" name="msdyn_localizedquestiontext" type="string" customfield="true" />
+      <field displayname="Localized Survey Question" name="msdyn_localizedsurveyquestionid" type="guid" primaryKey="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Organization Id" name="organizationid" type="entityreference" lookupType="organization" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Survey Question" name="msdyn_surveyquestionid" type="entityreference" lookupType="msdyn_surveyquestion" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_localizedsurveyquestion"&gt;
+&lt;link-entity name="msdyn_surveyquestion" from="msdyn_surveyquestionid" to="msdyn_surveyquestionid" link-type="inner" alias="af"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_liveworkstreamtochatquestion" operator="eq" uiname="ALM Live Chat Test Workstream" uitype="msdyn_liveworkstream" value="{D3A1F09D-51A0-A6B7-266D-58E1BDB97B53}"/&gt;
+&lt;/filter&gt;
+&lt;/link-entity&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_oc_geolocationprovider" displayname="Geo Location Provider" etc="10510" primaryidfield="msdyn_oc_geolocationproviderid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Provider name" name="msdyn_providername" type="optionsetvalue" customfield="true" />
+      <field displayname="Provider API Key Version" name="msdyn_providerapikeyversion" type="number" customfield="true" />
+      <field displayname="Secure Bing Maps API key" name="msdyn_secureproviderapikey" type="string" customfield="true" />
+      <field displayname="Bing Maps API key" name="msdyn_providerapikey" type="string" customfield="true" />
+      <field displayname="Geo Location Provider" name="msdyn_oc_geolocationproviderid" type="guid" primaryKey="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+    <filter>&lt;fetch&gt;
+&lt;entity name="msdyn_oc_geolocationprovider"&gt;
+&lt;link-entity name="msdyn_livechatconfig" from="msdyn_oc_geolocationprovider" to="msdyn_oc_geolocationproviderid" link-type="inner" alias="ag"&gt;
+&lt;filter type="and"&gt;
+&lt;condition attribute="msdyn_livechatconfigid" operator="eq" uiname="ALM Live Chat Channel Test" uitype="msdyn_livechatconfig" value="{7AC4292B-5DE3-ED11-A7C6-00224805C6D4}"/&gt;
+&lt;/filter&gt;
+&lt;/link-entity&gt;
+&lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+</entities>
