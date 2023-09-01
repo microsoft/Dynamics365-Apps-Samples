@@ -24,7 +24,7 @@ The webResourceV2.js is a sample web resource that you can use to enable real-ti
 	Additional changes can also be made in the web resource logic as per your business needs.
 
 
-2. Add this javascript file as a web resource to your organisation. Follow the instructions in the topic [Add a web resource for real time translation](https://docs.microsoft.com/dynamics365/omnichannel/developer/how-to/add-web-resource-real-time-translation) to copy its URL in the Omnichannel Administration app, and enable real-time translation feature in Omnichannel for Customer Service.
+2. Add this javascript file as a web resource to your organisation. Follow the instructions in the topic [Add a web resource for real time translation](https://docs.microsoft.com/dynamics365/omnichannel/developer/how-to/add-web-resource-real-time-translation) to copy its URL in the Customer Service admin center app, and enable the real-time translation feature in Omnichannel for Customer Service.
 
 ### See also
 
