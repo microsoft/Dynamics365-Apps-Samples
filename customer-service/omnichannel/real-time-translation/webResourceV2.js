@@ -552,23 +552,22 @@ var C1WebResourceNamespace = {
 		return result;
 	},
 	/*
-		For every conversation, create an array to store up to 50 messages
+		For every conversation, create an array to store up to 50 messages, shift the array and always append the message at the end of the array
 		When a new message added, always append to the end of the array with info of auto-detected language and score.
 		After adding the message, calculating the accumulated score for all the messages for a certain language.
 		For example:
-		If the message buffer cotnains:
+		If the message buffer contains:
 		[
 			0: {language: "en", score: "0.6"},
-			1: {language: "en", score: "0.7"},	
+			1: {language: "en", score: "0.7"},  
 		]
 		When a new message arrives with {language: "fr", score: "0.6"}
-		The score for "en" would be calcualted as: Sum(index * score)
+		The score for "en" would be calculated as: Sum(index * score)
 		(0+1) * 0.6 + (1+1) * 0.7 = 2
 		The score for "fr" would be calculated as:
 		(2+1) * 0.6 = 1.8
 		Note: always adding "1" to the index to avoid multiplying by "0"
-
-		In this case, the customer language is still more preferred as "en" instead of the lastest arrived language "fr"
+		In this case, the customer language is still more preferred as "en" instead of the last arrived language "fr"
 	*/
 	getHighestScoredC2Language: function(conversationId, translationResult) {
 		if (!translationResult) {
