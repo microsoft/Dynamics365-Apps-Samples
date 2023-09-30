@@ -18,6 +18,7 @@ var C1WebResourceNamespace = {
 	bingTranslateApiClientSecret: '<please add your own azure translation api key>',
 	googleTranslateApiClientSecret: '<please add your own google translation v2 api key>',
 	useAzureTranslationApis: true,//please override it to false if planning to use google translation v2 api
+	messageBuffer: new Map(),
 	
 	//ISO 639-1 language code. It is supported by Azure Cognitive Translate API and Google V2 translation API
 	ISO6391LanguageCodeToOcLanguageCodeMap: {
@@ -336,8 +337,8 @@ var C1WebResourceNamespace = {
 		// We should set the sourceLang if we already known the finalC2Language to avoid message change in the middle of the conversation
 		// the drawback for this approach is, if the detection of the language is wrong in the beginning, there is no way to correct it afterwards.
 		if (translateToC1orC2 == Microsoft.Omnichannel.TranslationFramework.TranslateTo.C1) {
-			sourceLang = C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'];
-			//destLang = C1WebResourceNamespace.dictForAllConversation[conversationId]['C1Lang']; //to be discussed
+			//sourceLang = C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang']; //to be discussed
+			destLang = C1WebResourceNamespace.dictForAllConversation[conversationId]['C1Lang']; 
 		}
 		// While translating for C2 as we know the C1 language so source langauge is c1's language.
 		if (translateToC1orC2 == Microsoft.Omnichannel.TranslationFramework.TranslateTo.C2) {
@@ -444,10 +445,14 @@ var C1WebResourceNamespace = {
 		if (sourceLang == null && messageSender == Microsoft.Omnichannel.TranslationFramework.UserType.C2) {
 			var detectedLang = myJson[0]['detectedLanguage']["language"];
 			var detectedLangScore = myJson[0]['detectedLanguage']["score"];
-			if (detectedLangScore > 0.6 && C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'] != detectedLang) {
+			var highestScoredC2Language = C1WebResourceNamespace.getHighestScoredC2Language(conversationId, myJson[0]);
+			if (detectedLangScore > 0.6
+				&& C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'] != detectedLang
+				&& highestScoredC2Language.language === detectedLang) {
 				C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'] = detectedLang;
 				consoleLogHelper(conversationId, "Updating detected language", {
-					dict: C1WebResourceNamespace.dictForAllConversation[conversationId]
+					dict: C1WebResourceNamespace.dictForAllConversation[conversationId],
+					highestScoredC2Language
 				})
 				C1WebResourceNamespace.upsertC2LanguageInCRM(conversationId, detectedLang);
 			}
@@ -545,6 +550,70 @@ var C1WebResourceNamespace = {
 			result
 		});
 		return result;
+	},
+	/*
+		For every conversation, create an array to store up to 50 messages
+		When a new message added, always append to the end of the array with info of auto-detected language and score.
+		After adding the message, calculating the accumulated score for all the messages for a certain language.
+		For example:
+		If the message buffer cotnains:
+		[
+			0: {language: "en", score: "0.6"},
+			1: {language: "en", score: "0.7"},	
+		]
+		When a new message arrives with {language: "fr", score: "0.6"}
+		The score for "en" would be calcualted as: Sum(index * score)
+		(0+1) * 0.6 + (1+1) * 0.7 = 2
+		The score for "fr" would be calculated as:
+		(2+1) * 0.6 = 1.8
+		Note: always adding "1" to the index to avoid multiplying by "0"
+
+		In this case, the customer language is still more preferred as "en" instead of the lastest arrived language "fr"
+	*/
+	getHighestScoredC2Language: function(conversationId, translationResult) {
+		if (!translationResult) {
+			return null;
+		}
+		if (!C1WebResourceNamespace.messageBuffer.get(conversationId)) {
+			C1WebResourceNamespace.messageBuffer.set(conversationId, []);
+		}
+		let messageBufferForConversation = C1WebResourceNamespace.messageBuffer.get(conversationId);
+
+		if (messageBufferForConversation.length >= 50) {
+			messageBufferForConversation.shift();
+		}
+		// interface detectedLanguage = {
+		// 	language: string;
+		// 	score: number;
+		// }
+		if (translationResult.detectedLanguage) {
+			messageBufferForConversation.push(translationResult.detectedLanguage);
+		}
+		let messageScoreMap = new Map();
+		let languageWithHighestScore = null;
+		for (let bufferedMessageIndex = 0; bufferedMessageIndex < messageBufferForConversation.length; bufferedMessageIndex ++ ) {
+			const bufferedMessage = messageBufferForConversation[bufferedMessageIndex];
+			
+			if (!messageScoreMap.get(bufferedMessage.language)) {
+				messageScoreMap.set(bufferedMessage.language, 0); 
+			}
+			const score = messageScoreMap.get(bufferedMessage.language) + bufferedMessage.score * (bufferedMessageIndex + 1); //always add 1 to avoid multiplying by 0
+			messageScoreMap.set(bufferedMessage.language, score);
+
+			if (!languageWithHighestScore) {
+				languageWithHighestScore = {
+					language: bufferedMessage.language,
+					totalScore: score
+				}
+			}
+			else {
+				if (score > languageWithHighestScore.totalScore) {
+					languageWithHighestScore.language = bufferedMessage.language;
+					languageWithHighestScore.totalScore = score;
+				}
+			}
+		}
+		return languageWithHighestScore;
 	}
 };
 
