@@ -19,6 +19,7 @@ var C1WebResourceNamespace = {
 	googleTranslateApiClientSecret: '<please add your own google translation v2 api key>',
 	useAzureTranslationApis: true,//please override it to false if planning to use google translation v2 api
 	messageBuffer: new Map(),
+	enableLanguageDetectionWithHistoryMessages: true,
 	
 	//ISO 639-1 language code. It is supported by Azure Cognitive Translate API and Google V2 translation API
 	ISO6391LanguageCodeToOcLanguageCodeMap: {
@@ -376,6 +377,19 @@ var C1WebResourceNamespace = {
 		return response;
 	},
 
+	updateC2Language: function (conversationId, detectedLang) {
+		var currentC2Language = C1WebResourceNamespace.dictForAllConversation[conversationId]?.['finalC2Lang'];
+		if (currentC2Language !== detectedLang) {
+			consoleLogHelper(conversationId, "Updating detected language", {
+				dict: C1WebResourceNamespace.dictForAllConversation[conversationId],
+				conversationId,
+				detectedLang
+			})
+			C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'] = detectedLang;
+			C1WebResourceNamespace.upsertC2LanguageInCRM(conversationId, detectedLang);
+		}
+	},
+
 	//https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-translate
 	translateMessageInternalAzure: async function (conversationId, message, messageSender, sourceLang, destLang) {
 		var errorObj = {
@@ -438,7 +452,7 @@ var C1WebResourceNamespace = {
 				sourceLanguage: null
 			};
 		}
-		consoleLogHelper(conversationId, "Received translation request response from Azure", {
+		consoleLogHelper(conversationId, "Received translation response from Azure", {
 			myJson
 		})
 		//detect langauge only if sender is C2 
@@ -446,15 +460,27 @@ var C1WebResourceNamespace = {
 			var detectedLang = myJson[0]['detectedLanguage']["language"];
 			var detectedLangScore = myJson[0]['detectedLanguage']["score"];
 			var highestScoredC2Language = C1WebResourceNamespace.getHighestScoredC2Language(conversationId, myJson[0]);
-			if (detectedLangScore > 0.6
-				&& C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'] != detectedLang
-				&& highestScoredC2Language.language === detectedLang) {
-				C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'] = detectedLang;
-				consoleLogHelper(conversationId, "Updating detected language", {
-					dict: C1WebResourceNamespace.dictForAllConversation[conversationId],
-					highestScoredC2Language
-				})
-				C1WebResourceNamespace.upsertC2LanguageInCRM(conversationId, detectedLang);
+			var currentC2Language = C1WebResourceNamespace.dictForAllConversation[conversationId]?.['finalC2Lang'];
+			var languageUsedForUpdate = detectedLang;
+			if (detectedLangScore > 0.6 && currentC2Language != languageUsedForUpdate) {
+				if (this.enableLanguageDetectionWithHistoryMessages && highestScoredC2Language?.language) {
+					var highestScoredC2Language = highestScoredC2Language;
+					if (highestScoredC2Language?.language === languageUsedForUpdate ) {
+						consoleLogHelper(conversationId, "History message score based evaluation is enabled, the hightest scored language is matching detected language", {
+							dict: C1WebResourceNamespace.dictForAllConversation[conversationId],
+							highestScoredC2Language
+						});
+					}
+					else {
+						consoleLogHelper(conversationId, "History message score based evaluation is enabled, the hightest scored language is used to update", {
+							dict: C1WebResourceNamespace.dictForAllConversation[conversationId],
+							highestScoredC2Language,
+							currentC2Language
+						});
+						languageUsedForUpdate = highestScoredC2Language.language;
+					}
+				}
+				C1WebResourceNamespace.updateC2Language(conversationId, languageUsedForUpdate);
 			}
 		}
 		if (sourceLang == null) {
@@ -570,7 +596,7 @@ var C1WebResourceNamespace = {
 		In this case, the customer language is still more preferred as "en" instead of the last arrived language "fr"
 	*/
 	getHighestScoredC2Language: function(conversationId, translationResult) {
-		if (!translationResult) {
+		if (!translationResult || !this.enableLanguageDetectionWithHistoryMessages) {
 			return null;
 		}
 		if (!C1WebResourceNamespace.messageBuffer.get(conversationId)) {
@@ -581,10 +607,7 @@ var C1WebResourceNamespace = {
 		if (messageBufferForConversation.length >= 50) {
 			messageBufferForConversation.shift();
 		}
-		// interface detectedLanguage = {
-		// 	language: string;
-		// 	score: number;
-		// }
+
 		if (translationResult.detectedLanguage) {
 			messageBufferForConversation.push(translationResult.detectedLanguage);
 		}
@@ -622,7 +645,12 @@ function consoleLogHelper(conversationId, message, data={}, isError=false) {
 			console.error(`${new Date().toISOString()}, ${conversationId}, ${message}`, data);
 		}
 		else {
-			console.log(`${new Date().toISOString()}, ${conversationId}, ${message}, ${stringifyHelper(data)}`);
+			let dataStr = stringifyHelper(data);
+			if (dataStr.length > 1000) {
+				//only logging first 1000 character
+				dataStr = dataStr.substring(0, 1000);
+			}
+			console.log(`${new Date().toISOString()}, ${conversationId}, ${message}, ${dataStr}`);
 		}
 	} catch (error) {
 		console.error("Failed to log console log", error);
