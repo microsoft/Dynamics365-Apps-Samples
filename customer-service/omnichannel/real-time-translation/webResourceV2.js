@@ -19,7 +19,7 @@ var C1WebResourceNamespace = {
 	googleTranslateApiClientSecret: '<please add your own google translation v2 api key>',
 	useAzureTranslationApis: true,//please override it to false if planning to use google translation v2 api
 	messageBuffer: new Map(),
-	enableLanguageDetectionWithHistoryMessages: true,
+	enableLanguageDetectionWithHistoryMessages: false,
 	
 	//ISO 639-1 language code. It is supported by Azure Cognitive Translate API and Google V2 translation API
 	ISO6391LanguageCodeToOcLanguageCodeMap: {
@@ -338,7 +338,6 @@ var C1WebResourceNamespace = {
 		// We should set the sourceLang if we already known the finalC2Language to avoid message change in the middle of the conversation
 		// the drawback for this approach is, if the detection of the language is wrong in the beginning, there is no way to correct it afterwards.
 		if (translateToC1orC2 == Microsoft.Omnichannel.TranslationFramework.TranslateTo.C1) {
-			//sourceLang = C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang']; //to be discussed
 			destLang = C1WebResourceNamespace.dictForAllConversation[conversationId]['C1Lang']; 
 		}
 		// While translating for C2 as we know the C1 language so source langauge is c1's language.
