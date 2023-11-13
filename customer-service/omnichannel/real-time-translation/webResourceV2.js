@@ -18,6 +18,8 @@ var C1WebResourceNamespace = {
 	bingTranslateApiClientSecret: '<please add your own azure translation api key>',
 	googleTranslateApiClientSecret: '<please add your own google translation v2 api key>',
 	useAzureTranslationApis: true,//please override it to false if planning to use google translation v2 api
+	messageBuffer: new Map(),
+	enableLanguageDetectionWithHistoryMessages: false,
 	
 	//ISO 639-1 language code. It is supported by Azure Cognitive Translate API and Google V2 translation API
 	ISO6391LanguageCodeToOcLanguageCodeMap: {
@@ -195,16 +197,22 @@ var C1WebResourceNamespace = {
 			"msdyn_isdisplayable": true,
 			"msdyn_ocliveworkitemid@odata.bind": "/msdyn_ocliveworkitems(" + conversationId + ")"
 		};
-
+		consoleLogHelper(conversationId, "Before upserting C2 Language in CRM", {
+			c2Lang,
+			dictionary: C1WebResourceNamespace.dictForAllConversation[conversationId],
+			data
+		});
 		if (C1WebResourceNamespace.dictForAllConversation[conversationId]['msdyn_C2_language_id'] == null) {
 			// create record
 			window.top.Xrm.WebApi.createRecord("msdyn_ocliveworkitemcontextitem", data).then(
 				function success(result) {
-					console.log("Created with ID: " + result.id);
+					consoleLogHelper(conversationId, "created msdyn_ocliveworkitemcontextitem when msdyn_C2_language_id is null", {
+						result
+					});
 					C1WebResourceNamespace.dictForAllConversation[conversationId]['msdyn_C2_language_id'] = String(result.id);
 				},
 				function (error) {
-					console.log(error.message);
+					consoleLogHelper(conversationId, "Failed to create msdyn_ocliveworkitemcontextitem", error, true);
 					// handle error conditions
 				}
 			);
@@ -212,10 +220,12 @@ var C1WebResourceNamespace = {
 			// update record
 			window.top.Xrm.WebApi.updateRecord("msdyn_ocliveworkitemcontextitem", C1WebResourceNamespace.dictForAllConversation[conversationId]['msdyn_C2_language_id'], data).then(
 				function success(result) {
-					console.log("Updated Record");
+					consoleLogHelper(conversationId, "updated msdyn_ocliveworkitemcontextitem", {
+						result
+					});
 				},
 				function (error) {
-					console.log(error.message);
+					consoleLogHelper(conversationId, "Failed to update msdyn_ocliveworkitemcontextitem", error, true);
 					// handle error conditions
 				}
 			);
@@ -225,34 +235,47 @@ var C1WebResourceNamespace = {
 	//called when a converation is opened/ accepted before start of the chat.
 	//this tells if the translation needs to be turned on or off for the conversation.
 	initializeNewConversationInWebResource: async function (conversationConfig) {
-		console.log(JSON.stringify(conversationConfig));
-		conversationId = conversationConfig.conversationId;
-		c1Language = C1WebResourceNamespace.getISO6391LanguageCodeFromOcLanguageCode(String(conversationConfig.c1Language));
+		var conversationId = conversationConfig.conversationId;
+		var c1Language = C1WebResourceNamespace.getISO6391LanguageCodeFromOcLanguageCode(String(conversationConfig.c1Language));
+		consoleLogHelper(conversationId, "Received translation request", {
+			conversationConfig,
+			c1Language
+		});
 		//error handling if invalid language is found
-		if (c1Language == "invalid code")
-			return Promise.resolve({
-				keepTranslationOn: false
-			});
-		dataObject = {}
+		if (c1Language == "invalid code") {
+			consoleLogHelper(conversationId, "Invalid c1Language found");
+				return Promise.resolve({
+					keepTranslationOn: false
+				});
+		}
+		var dataObject = {}
 		//get C2 language- start
 		var finalC2lang = null;
 		var finalC2langId = null;
 
-		if (conversationConfig.inviteParams && conversationConfig.inviteParams.inviteLocale)
+		if (conversationConfig.inviteParams && conversationConfig.inviteParams.inviteLocale) {
 			finalC2lang = C1WebResourceNamespace.getISO6391LanguageCodeFromOcLanguageCode(conversationConfig.inviteParams.inviteLocale);
-		if (finalC2lang == "invalid code")
+		}
+		consoleLogHelper(conversationId, "Determined C2 language code", {
+			finalC2lang
+		});
+		if (finalC2lang == "invalid code"){
+			consoleLogHelper(conversationId, "Invalid finalC2lang found");
 			return Promise.resolve({
 				keepTranslationOn: false
 			});
-
+		}
 		var engine = "azure";
 		if(C1WebResourceNamespace.useAzureTranslationApis == false)
 			engine = "google";
 		try {
 			//check if CDS already know the C2 language for the conversation and if found use it.
-			finalC2langPromise = window.top.Xrm.WebApi.retrieveMultipleRecords("msdyn_ocliveworkitemcontextitem", "?$select=msdyn_value,msdyn_name&$filter=_msdyn_ocliveworkitemid_value eq '" + conversationId + "' and msdyn_name eq 'msdyn_C2_language'");
+			var finalC2langPromiseRecord = window.top.Xrm.WebApi.retrieveMultipleRecords("msdyn_ocliveworkitemcontextitem", "?$select=msdyn_value,msdyn_name&$filter=_msdyn_ocliveworkitemid_value eq '" + conversationId + "' and msdyn_name eq 'msdyn_C2_language'");
 
-			finalC2langPromise = await finalC2langPromise;
+			var finalC2langPromise = await finalC2langPromiseRecord;
+			consoleLogHelper(conversationId, "Loaded msdyn_ocliveworkitemcontextitem", {
+				fetchedResult: finalC2langPromise
+			});
 			for (var i = 0; i < finalC2langPromise.entities.length; i++) {
 				if (finalC2langPromise.entities[i]['msdyn_name'] == "msdyn_C2_language") {
 					finalC2lang = finalC2langPromise.entities[i]['msdyn_value'];
@@ -260,7 +283,7 @@ var C1WebResourceNamespace = {
 				}
 			}
 		} catch (err) {
-			console.log(err.message);
+			consoleLogHelper(conversationId, "Failed retrieve msdyn_ocliveworkitemcontextitem", err, true);
 		}
 
 		var dictForThisConversation = {
@@ -274,43 +297,58 @@ var C1WebResourceNamespace = {
 		};
 		//save important contextual data about this conversation for future reference in the code
 		C1WebResourceNamespace.dictForAllConversation[conversationId] = dictForThisConversation;
+		consoleLogHelper(conversationId, "Updated dictionary config", {
+			dict: C1WebResourceNamespace.dictForAllConversation[conversationId]
+		});
 		if (finalC2langId == null && finalC2lang != null) {
 			C1WebResourceNamespace.upsertC2LanguageInCRM(conversationId, finalC2lang);
 		}
+		var initResult;
 		//here we are turning off translation when c1 and c2 are of same langauge
 		if (c1Language == finalC2lang) {
-			return Promise.resolve({
+			initResult = {
 				keepTranslationOn: false
-			});
+			};
 		} else {
-			return Promise.resolve({
+			initResult = {
 				keepTranslationOn: true
-			});
+			};
 		}
+		consoleLogHelper(conversationId, "Returning conversation init result", {
+			initResult
+		})
+		return initResult;
 	},
 	
 	//This method provides the translation of given message for a given conversation.
 	//It also provides the message's source language along with the language the message has been translated to.
 	translateMessageInWebResource: function (translationConfig) {
-		conversationId = translationConfig.conversationId;
+		var conversationId = translationConfig.conversationId;
 		var sourceLang = null;
 		var destLang = null;
-		console.log(JSON.stringify(translationConfig));
-		message = {
+		consoleLogHelper(conversationId, "Invoking translateMessageInWebResource", {
+			translationConfig
+		})
+		var message = {
 			text: translationConfig.messagePayload.content,
 			sender: translationConfig.messagePayload.sender.userType
 		};
-		translateToC1orC2 = translationConfig.translateToC1orC2;
+		var translateToC1orC2 = translationConfig.translateToC1orC2;
 		// While translating for C1 as we want to use auto detection of langauge for the incoming message.
-		// so, we are not setting the sourceLanguage below.
+		// We should set the sourceLang if we already known the finalC2Language to avoid message change in the middle of the conversation
+		// the drawback for this approach is, if the detection of the language is wrong in the beginning, there is no way to correct it afterwards.
 		if (translateToC1orC2 == Microsoft.Omnichannel.TranslationFramework.TranslateTo.C1) {
-			destLang = C1WebResourceNamespace.dictForAllConversation[conversationId]['C1Lang'];
+			destLang = C1WebResourceNamespace.dictForAllConversation[conversationId]['C1Lang']; 
 		}
 		// While translating for C2 as we know the C1 language so source langauge is c1's language.
 		if (translateToC1orC2 == Microsoft.Omnichannel.TranslationFramework.TranslateTo.C2) {
 			sourceLang = C1WebResourceNamespace.dictForAllConversation[conversationId]['C1Lang'];
 			destLang = C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang']; //it can still remain null. When we have no idea about C2 language
 		}
+		consoleLogHelper(conversationId, "Determined source and dest language", {
+			sourceLang,
+			destLang
+		})
 		var response = null;
 		//decides which transalation engine's api to call based on config set in initializeNewConversationInWebResource method
 		if (C1WebResourceNamespace.dictForAllConversation[conversationId]['engine'] == 'azure')
@@ -318,6 +356,9 @@ var C1WebResourceNamespace = {
 		else
 			response = C1WebResourceNamespace.translateMessageInternalGoogle(conversationId, message["text"], message['sender'], sourceLang, destLang);
 		response.then((value) => {
+			consoleLogHelper(conversationId, "Translation result received", {
+				value
+			});
 			if (value.sourceLanguage == value.destinationLanguage) {
 				value.sourceLanguage = C1WebResourceNamespace.dictForAllConversation[conversationId]['C1LangLocaleCode'];//replacing the current code with original C1 language code which came during initialization of new conversation
 				value.destinationLanguage = C1WebResourceNamespace.dictForAllConversation[conversationId]['C1LangLocaleCode'];//replacing the current code with original C1 language code which came during initialization of new conversation
@@ -326,9 +367,26 @@ var C1WebResourceNamespace = {
 			} else if (translateToC1orC2 == Microsoft.Omnichannel.TranslationFramework.TranslateTo.C2) {
 				value.sourceLanguage = C1WebResourceNamespace.dictForAllConversation[conversationId]['C1LangLocaleCode'];//replacing the current code with original C1 language code which came during initialization of new conversation
 			}
+			consoleLogHelper(conversationId, "Dumpping the latest dictionary and value", {
+				dict: C1WebResourceNamespace.dictForAllConversation[conversationId],
+				value
+			});
 			return value;
 		});
 		return response;
+	},
+
+	updateC2Language: function (conversationId, detectedLang) {
+		var currentC2Language = C1WebResourceNamespace.dictForAllConversation[conversationId]?.['finalC2Lang'];
+		if (currentC2Language !== detectedLang) {
+			consoleLogHelper(conversationId, "Updating detected language", {
+				dict: C1WebResourceNamespace.dictForAllConversation[conversationId],
+				conversationId,
+				detectedLang
+			})
+			C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'] = detectedLang;
+			C1WebResourceNamespace.upsertC2LanguageInCRM(conversationId, detectedLang);
+		}
 	},
 
 	//https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-translate
@@ -337,6 +395,12 @@ var C1WebResourceNamespace = {
 			isError: false,
 			errorCode: null
 		};
+		consoleLogHelper(conversationId, "Trigger translateMessageInternalAzure", {
+			message,
+			messageSender,
+			sourceLang,
+			destLang
+		})
 		//when we do not have even a single clue about C2's lang and c1 wants to send him message so destlang == null
 		if (destLang == null || sourceLang == destLang)
 			return {
@@ -366,9 +430,12 @@ var C1WebResourceNamespace = {
 					'Ocp-Apim-Subscription-Key': C1WebResourceNamespace.bingTranslateApiClientSecret
 				}
 			});
+			consoleLogHelper(conversationId, "Making translation request to Azure", {
+				url,
+				bodyObj
+			})
 			myJson = await response.json();
 		} catch (err) {
-			console.log(err.message);
 			// add errorMessage and rawError to the errorObj so it can be logged internally for troubleshooting
 			var errorObj = {
 				isError: true,
@@ -376,6 +443,7 @@ var C1WebResourceNamespace = {
 				errorMessage: err.message,
 				rawError: err
 			};
+			consoleLogHelper(conversationId, "Failed to post request for translation from Azure", err, true);
 			return {
 				translatedMessage: null,
 				destinationLanguage: null,
@@ -383,25 +451,50 @@ var C1WebResourceNamespace = {
 				sourceLanguage: null
 			};
 		}
-
+		consoleLogHelper(conversationId, "Received translation response from Azure", {
+			myJson
+		})
 		//detect langauge only if sender is C2 
 		if (sourceLang == null && messageSender == Microsoft.Omnichannel.TranslationFramework.UserType.C2) {
 			var detectedLang = myJson[0]['detectedLanguage']["language"];
 			var detectedLangScore = myJson[0]['detectedLanguage']["score"];
-			if (detectedLangScore > 0.6 && C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'] != detectedLang) {
-				C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'] = detectedLang;
-				C1WebResourceNamespace.upsertC2LanguageInCRM(conversationId, detectedLang);
+			var highestScoredC2Language = C1WebResourceNamespace.getHighestScoredC2Language(conversationId, myJson[0]);
+			var currentC2Language = C1WebResourceNamespace.dictForAllConversation[conversationId]?.['finalC2Lang'];
+			var languageUsedForUpdate = detectedLang;
+			if (detectedLangScore > 0.6 && currentC2Language != languageUsedForUpdate) {
+				if (this.enableLanguageDetectionWithHistoryMessages && highestScoredC2Language?.language) {
+					var highestScoredC2Language = highestScoredC2Language;
+					if (highestScoredC2Language?.language === languageUsedForUpdate ) {
+						consoleLogHelper(conversationId, "History message score based evaluation is enabled, the hightest scored language is matching detected language", {
+							dict: C1WebResourceNamespace.dictForAllConversation[conversationId],
+							highestScoredC2Language
+						});
+					}
+					else {
+						consoleLogHelper(conversationId, "History message score based evaluation is enabled, the hightest scored language is used to update", {
+							dict: C1WebResourceNamespace.dictForAllConversation[conversationId],
+							highestScoredC2Language,
+							currentC2Language
+						});
+						languageUsedForUpdate = highestScoredC2Language.language;
+					}
+				}
+				C1WebResourceNamespace.updateC2Language(conversationId, languageUsedForUpdate);
 			}
 		}
 		if (sourceLang == null) {
 			sourceLang = myJson[0]['detectedLanguage']["language"];
 		}
-		return {
+		var result = {
 			translatedMessage: myJson[0]['translations'][0]['text'],
 			destinationLanguage: C1WebResourceNamespace.getOcLanguageCodeMapFromISO6391LanguageCode(String(myJson[0]['translations'][0]['to'])),
 			errorObject: errorObj,
 			sourceLanguage: C1WebResourceNamespace.getOcLanguageCodeMapFromISO6391LanguageCode(String(sourceLang))
 		};
+		consoleLogHelper(conversationId, "Returning translation result from Azure translator", {
+			result
+		});
+		return result;
 	},
 
 	////https://cloud.google.com/translate/docs/reference/rest/v2/translate
@@ -410,6 +503,12 @@ var C1WebResourceNamespace = {
 			isError: false,
 			errorCode: null
 		};
+		consoleLogHelper(conversationId, "Trigger translateMessageInternalGoogle", {
+			message,
+			messageSender,
+			sourceLang,
+			destLang
+		})
 		//when we do not have even a single clue about C2's lang and c1 wants to send him message so destlang == null
 		if (destLang == null || sourceLang == destLang)
 			return {
@@ -431,9 +530,12 @@ var C1WebResourceNamespace = {
 			const response = await fetch(url, {
 				method: 'POST'
 			});
+			consoleLogHelper(conversationId, "Making translation request to Google", {
+				url
+			})
 			myJson = await response.json();
 		} catch (err) {
-			console.log(err.message);
+			consoleLogHelper(conversationId, "Failed to post request for translation from Google", err, true);
 			// add errorMessage and rawError to the errorObj so it can be logged internally for troubleshooting
 			var errorObj = {
 				isError: true,
@@ -454,20 +556,122 @@ var C1WebResourceNamespace = {
 			var detectedLang = myJson['data']["translations"][0]["detectedSourceLanguage"];
 			if (C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'] != detectedLang) {
 				C1WebResourceNamespace.dictForAllConversation[conversationId]['finalC2Lang'] = detectedLang;
+				consoleLogHelper(conversationId, "Updating detected language", {
+					dict: C1WebResourceNamespace.dictForAllConversation[conversationId]
+				})
 				C1WebResourceNamespace.upsertC2LanguageInCRM(conversationId, detectedLang);
 			}
 		}
 		if (sourceLang == null) {
 			sourceLang = myJson['data']["translations"][0]["detectedSourceLanguage"];
 		}
-		return {
+		var result = {
 			translatedMessage: myJson['data']["translations"][0]["translatedText"],
 			destinationLanguage: C1WebResourceNamespace.getOcLanguageCodeMapFromISO6391LanguageCode(String(destLang)),
 			errorObject: errorObj,
 			sourceLanguage: C1WebResourceNamespace.getOcLanguageCodeMapFromISO6391LanguageCode(String(sourceLang))
 		};
+		consoleLogHelper(conversationId, "Returning translation result from Google translator", {
+			result
+		});
+		return result;
+	},
+	/*
+		For every conversation, create an array to store up to 50 messages, shift the array and always append the message at the end of the array
+		When a new message added, always append to the end of the array with info of auto-detected language and score.
+		After adding the message, calculating the accumulated score for all the messages for a certain language.
+		For example:
+		If the message buffer contains:
+		[
+			0: {language: "en", score: "0.6"},
+			1: {language: "en", score: "0.7"},  
+		]
+		When a new message arrives with {language: "fr", score: "0.6"}
+		The score for "en" would be calculated as: Sum(index * score)
+		(0+1) * 0.6 + (1+1) * 0.7 = 2
+		The score for "fr" would be calculated as:
+		(2+1) * 0.6 = 1.8
+		Note: always adding "1" to the index to avoid multiplying by "0"
+		In this case, the customer language is still more preferred as "en" instead of the last arrived language "fr"
+	*/
+	getHighestScoredC2Language: function(conversationId, translationResult) {
+		if (!translationResult || !this.enableLanguageDetectionWithHistoryMessages) {
+			return null;
+		}
+		if (!C1WebResourceNamespace.messageBuffer.get(conversationId)) {
+			C1WebResourceNamespace.messageBuffer.set(conversationId, []);
+		}
+		let messageBufferForConversation = C1WebResourceNamespace.messageBuffer.get(conversationId);
+
+		if (messageBufferForConversation.length >= 50) {
+			messageBufferForConversation.shift();
+		}
+
+		if (translationResult.detectedLanguage) {
+			messageBufferForConversation.push(translationResult.detectedLanguage);
+		}
+		let messageScoreMap = new Map();
+		let languageWithHighestScore = null;
+		for (let bufferedMessageIndex = 0; bufferedMessageIndex < messageBufferForConversation.length; bufferedMessageIndex ++ ) {
+			const bufferedMessage = messageBufferForConversation[bufferedMessageIndex];
+			
+			if (!messageScoreMap.get(bufferedMessage.language)) {
+				messageScoreMap.set(bufferedMessage.language, 0); 
+			}
+			const score = messageScoreMap.get(bufferedMessage.language) + bufferedMessage.score * (bufferedMessageIndex + 1); //always add 1 to avoid multiplying by 0
+			messageScoreMap.set(bufferedMessage.language, score);
+
+			if (!languageWithHighestScore) {
+				languageWithHighestScore = {
+					language: bufferedMessage.language,
+					totalScore: score
+				}
+			}
+			else {
+				if (score > languageWithHighestScore.totalScore) {
+					languageWithHighestScore.language = bufferedMessage.language;
+					languageWithHighestScore.totalScore = score;
+				}
+			}
+		}
+		return languageWithHighestScore;
 	}
 };
+
+function consoleLogHelper(conversationId, message, data={}, isError=false) {
+	try {
+		if (isError) {
+			console.error(`${new Date().toISOString()}, ${conversationId}, ${message}`, data);
+		}
+		else {
+			let dataStr = stringifyHelper(data);
+			if (dataStr.length > 1000) {
+				//only logging first 1000 character
+				dataStr = dataStr.substring(0, 1000);
+			}
+			console.log(`${new Date().toISOString()}, ${conversationId}, ${message}, ${dataStr}`);
+		}
+	} catch (error) {
+		console.error("Failed to log console log", error);
+	}
+}
+
+function stringifyHelper(obj) {
+	let result = "";
+	try {
+		if (typeof obj === "string") {
+			return obj;
+		}
+		let tempResult = JSON.stringify(obj);
+		if (tempResult !== undefined && tempResult !== null) {
+			result = tempResult;
+		}
+	}
+	catch (e) {
+		console.error("failed to stringify: error:", e);
+	}
+	return result;
+}
 
 //registering the methods which Omnichannel will call for translating messages for a given conversation
 window.Microsoft.Omnichannel.TranslationFramework.getTranslationProvider = function () {
