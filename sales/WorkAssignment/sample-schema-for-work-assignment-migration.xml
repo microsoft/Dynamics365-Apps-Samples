@@ -1,0 +1,75 @@
+<entities >
+  <entity name="msdyn_segment" displayname="Segment" etc="10787" primaryidfield="msdyn_segmentid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Description" name="msdyn_description" type="string" customfield="true" />
+      <field displayname="Enable resegmentation" name="msdyn_isresegmentationenabled" type="bool" customfield="true" />
+      <field displayname="Enable resegmentation for routing activity" name="msdyn_isroutingenabledforresegmentation" type="bool" customfield="true" />
+      <field displayname="Entity Filter" name="msdyn_entityfilter" type="string" customfield="true" />
+      <field displayname="EntityFieldName" name="msdyn_entityfieldname" type="string" customfield="true" />
+      <field displayname="Record type" name="msdyn_objecttype" type="string" customfield="true" />
+      <field displayname="Record type" name="msdyn_objecttypecode" type="optionsetvalue" customfield="true" />
+      <field displayname="segment" name="msdyn_segmentid" type="guid" primaryKey="true" />
+      <field displayname="Segment name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Sequence" name="msdyn_sequence" type="entityreference" lookupType="msdyn_sequence" customfield="true" />
+      <field displayname="TriggerType" name="msdyn_triggertype" type="optionsetvalue" customfield="true" />
+    </fields>
+  </entity>
+  <entity name="msdyn_segmentattribute" displayname="Segment property" etc="10789" primaryidfield="msdyn_segmentattributeid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="attributemapping" name="msdyn_attributemapping" type="string" customfield="true" />
+      <field displayname="Attributes list for primary entity" name="msdyn_aggregatedprimaryentityattributelist" type="string" customfield="true" />
+      <field displayname="Attributes list for related entities" name="msdyn_aggregatedrelatedentityattributelist" type="string" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="objecttype" name="msdyn_objecttype" type="string" customfield="true" />
+      <field displayname="Segment priority order" name="msdyn_segmentpriorityorder" type="string" customfield="true" />
+      <field displayname="segmentattribute" name="msdyn_segmentattributeid" type="guid" primaryKey="true" />
+    </fields>
+  </entity>
+  <entity name="msdyn_attribute" displayname="Seller attribute" etc="10792" primaryidfield="msdyn_attributeid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Approval status" name="msdyn_reviewstatus" type="optionsetvalue" customfield="true" />
+      <field displayname="Attribute name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Attributes that can be associated with Sellers" name="msdyn_attributeid" type="guid" primaryKey="true" />
+      <field displayname="Automatically generate attribute values" name="msdyn_autogenerateattributevalues" type="bool" customfield="true" />
+      <field displayname="Data field linked to attribute" name="msdyn_linkedattributename" type="string" customfield="true" />
+      <field displayname="Entity Type Code" name="msdyn_linkedobjecttypecode" type="number" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+  </entity>
+  <entity name="msdyn_attributevalue" displayname="Seller attribute value" etc="10793" primaryidfield="msdyn_attributevalueid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Approval status" name="msdyn_reviewstatus" type="optionsetvalue" customfield="true" />
+      <field displayname="Attribute Value" name="msdyn_attributevalueid" type="guid" primaryKey="true" />
+      <field displayname="Attribute value name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Linked attribute" name="msdyn_parentattribute" type="entityreference" lookupType="msdyn_attribute" customfield="true" />
+      <field displayname="Linked field value" name="msdyn_linkedvalue" type="string" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+  </entity>
+  <entity name="msdyn_assignmentrule" displayname="Assignment Rule" etc="10791" primaryidfield="msdyn_assignmentruleid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Assign to Sellers, Teams or Queues." name="msdyn_distributeto" type="optionsetvalue" customfield="true" />
+      <field displayname="Assignment due in" name="msdyn_assignmentwindow" type="number" customfield="true" />
+      <field displayname="Assignment due in" name="msdyn_recordcreationwindow" type="number" customfield="true" />
+      <field displayname="Assignment Rule" name="msdyn_assignmentruleid" type="guid" primaryKey="true" />
+      <field displayname="Assignment Rule" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Attribute Filter" name="msdyn_attributefilter" type="string" customfield="true" />
+      <field displayname="CheckEligibilityByRecordAge" name="msdyn_distributewithrecordcreation" type="bool" customfield="true" />
+      <field displayname="Description" name="msdyn_description" type="string" customfield="true" />
+      <field displayname="DistributeWithAvailability" name="msdyn_distributewithavailability" type="bool" customfield="true" />
+      <field displayname="DistributeWithCapacity" name="msdyn_distributewithcapacity" type="bool" customfield="true" />
+      <field displayname="DistributionType" name="msdyn_distributiontype" type="optionsetvalue" customfield="true" />
+      <field displayname="Entity" name="msdyn_objecttypecode" type="optionsetvalue" customfield="true" />
+      <field displayname="Entity Filter" name="msdyn_entityfilter" type="string" customfield="true" />
+      <field displayname="EvaluationOrder" name="msdyn_evaluationorder" type="number" customfield="true" />
+      <field displayname="MatchType" name="msdyn_matchtype" type="optionsetvalue" customfield="true" />
+      <field displayname="Reference to the related entity logical name" name="msdyn_objecttype" type="string" customfield="true" />
+      <field displayname="Segment" name="msdyn_segmentid" type="entityreference" lookupType="msdyn_segment" customfield="true" />
+      <field displayname="Seller Filter" name="msdyn_sellerfilter" type="string" customfield="true" />
+      <field displayname="Sellers or Team." name="msdyn_SpecificSellersOrTeams" type="string" customfield="true" />
+      <field displayname="TriggerType" name="msdyn_triggertype" type="optionsetvalue" customfield="true" />
+    </fields>
+  </entity>
+</entities>
