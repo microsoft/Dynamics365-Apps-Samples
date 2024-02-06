@@ -1,0 +1,100 @@
+<entities >
+  <entity name="msdyn_ocbotchannelregistration" displayname="Custom messaging account" etc="10459" primaryidfield="msdyn_ocbotchannelregistrationid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Bot Channel Registration" name="msdyn_ocbotchannelregistrationid" type="guid" primaryKey="true" />
+      <field displayname="Client secret" name="msdyn_msappsecret" type="string" customfield="true" />
+      <field displayname="Is Custom Messaging BCR" name="msdyn_iscustommessagingbcr" type="bool" customfield="true" />
+      <field displayname="Last validated" name="msdyn_lastvalidateddate" type="datetime" customfield="true" />
+      <field displayname="MS Application Id" name="msdyn_msappid" type="string" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Secure Client secret" name="msdyn_securemsappsecret" type="string" customfield="true" />
+      <field displayname="Validation status" name="msdyn_validationstatus" type="string" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+ &lt;entity name="msdyn_ocbotchannelregistration"&gt;
+  &lt;link-entity name="msdyn_occustommessagingchannel" from="msdyn_custombotchannelregistration" to="msdyn_ocbotchannelregistrationid" link-type="inner" alias="ab"&gt;
+   &lt;link-entity name="msdyn_liveworkstream" from="msdyn_liveworkstreamid" to="msdyn_liveworkstreamid" link-type="inner" alias="ac"&gt;
+    &lt;filter type="and"&gt;
+     &lt;condition attribute="msdyn_liveworkstreamid" operator="eq" uiname="ALM Custom Channel Test Workstream" uitype="msdyn_liveworkstream" value="{cc97a7b0-9ed9-89f2-0277-8471068b6a3e}" /&gt;
+    &lt;/filter&gt;
+   &lt;/link-entity&gt;
+  &lt;/link-entity&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt;
+</filter>
+  </entity>
+  <entity name="msdyn_occustommessagingchannel" displayname="Custom messaging channel" etc="10743" primaryidfield="msdyn_occustommessagingchannelid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Bot Survey" name="msdyn_postconversationsurveybotsurvey" type="bool" customfield="true" />
+      <field displayname="Channel ID" name="msdyn_occustomchannelid" type="optionsetvalue" customfield="true" />
+      <field displayname="Custom messaging account" name="msdyn_custombotchannelregistration" type="entityreference" lookupType="msdyn_ocbotchannelregistration" customfield="true" />
+      <field displayname="Custom Messaging Channel" name="msdyn_occustommessagingchannelid" type="guid" primaryKey="true" />
+      <field displayname="Custom messaging channel language" name="msdyn_ocwidgetlanguage" type="entityreference" lookupType="msdyn_oclanguage" customfield="true" />
+      <field displayname="Enable" name="msdyn_postconversationsurveyenable" type="bool" customfield="true" />
+      <field displayname="Enable file attachments for agents" name="msdyn_enablefileattachmentsforagents" type="bool" customfield="true" />
+      <field displayname="Enable file attachments for customers" name="msdyn_enablefileattachmentsforcustomers" type="bool" customfield="true" />
+      <field displayname="Message" name="msdyn_postconversationsurveybotsurveymessagetext" type="string" customfield="true" />
+      <field displayname="Message" name="msdyn_postconversationsurveymessagetext" type="string" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Survey Mode" name="msdyn_postconversationsurveybotsurveymode" type="optionsetvalue" customfield="true" />
+      <field displayname="Survey Mode" name="msdyn_postconversationsurveymode" type="optionsetvalue" customfield="true" />
+      <field displayname="Work stream" name="msdyn_liveworkstreamid" type="entityreference" lookupType="msdyn_liveworkstream" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+ &lt;entity name="msdyn_occustommessagingchannel"&gt;
+  &lt;link-entity name="msdyn_liveworkstream" from="msdyn_liveworkstreamid" to="msdyn_liveworkstreamid" link-type="inner" alias="ab"&gt;
+   &lt;filter type="and"&gt;
+    &lt;condition attribute="msdyn_liveworkstreamid" operator="eq" uiname="ALM Custom Channel Test Workstream" uitype="msdyn_liveworkstream" value="{cc97a7b0-9ed9-89f2-0277-8471068b6a3e}" /&gt;
+   &lt;/filter&gt;
+  &lt;/link-entity&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt;
+</filter>
+  </entity>
+  <entity name="msdyn_oclocalizationdata" displayname="Localization" etc="10495" primaryidfield="msdyn_oclocalizationdataid" primarynamefield="msdyn_localizedtext" disableplugins="false">
+    <fields>
+      <field displayname="Automated message" name="msdyn_systemmessageid" type="entityreference" lookupType="msdyn_ocsystemmessage" customfield="true" />
+      <field displayname="Default Localized Text" name="msdyn_defaultlocalizedtext" type="string" customfield="true" />
+      <field displayname="Entity Column Name" name="msdyn_entitycolumnname" type="string" customfield="true" />
+      <field displayname="Entity Name" name="msdyn_entityname" type="string" customfield="true" />
+      <field displayname="Entity Record Id" name="msdyn_entityrecordid" type="string" customfield="true" />
+      <field displayname="Is default" name="msdyn_isdefault" type="bool" customfield="true" />
+      <field displayname="Language code" name="msdyn_customerlanguageid" type="entityreference" lookupType="msdyn_oclanguage" customfield="true" />
+      <field displayname="Language Code" name="msdyn_languagecode" type="number" customfield="true" />
+      <field displayname="Localization" name="msdyn_oclocalizationdataid" type="guid" primaryKey="true" />
+      <field displayname="Localized text" name="msdyn_localizedtext" type="string" customfield="true" />
+      <field displayname="Organization Id" name="organizationid" type="entityreference" lookupType="organization" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+    <filter>&lt;fetch&gt;
+ &lt;entity name="msdyn_oclocalizationdata"&gt;
+  &lt;link-entity name="msdyn_ocsystemmessage" from="msdyn_ocsystemmessageid" to="msdyn_systemmessageid" link-type="inner" alias="ab"&gt;
+   &lt;filter type="and"&gt;
+    &lt;condition attribute="msdyn_streamsource" operator="eq" value="192350002" /&gt;
+   &lt;/filter&gt;
+  &lt;/link-entity&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt;
+</filter>
+  </entity>
+  <entity name="msdyn_ocsystemmessage" displayname="Message" etc="10508" primaryidfield="msdyn_ocsystemmessageid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Channel" name="msdyn_streamsource" type="optionsetvalue" customfield="true" />
+      <field displayname="Default language" name="msdyn_defaultlanguage" type="entityreference" lookupType="msdyn_oclanguage" customfield="true" />
+      <field displayname="Instance ID" name="msdyn_instanceid" type="string" customfield="true" />
+      <field displayname="Message" name="msdyn_ocsystemmessageid" type="guid" primaryKey="true" />
+      <field displayname="Message description" name="msdyn_messagedescription" type="string" customfield="true" />
+      <field displayname="Message recipient" name="msdyn_messagereceiver" type="optionsetvalue" customfield="true" />
+      <field displayname="Message template trigger" name="msdyn_messagetemplatetrigger" type="optionsetvalue" customfield="true" />
+      <field displayname="Message Text" name="msdyn_messagetext" type="string" customfield="true" />
+      <field displayname="Message trigger" name="msdyn_systemmessageeventtype" type="optionsetvalue" customfield="true" />
+      <field displayname="Message type" name="msdyn_messagetype" type="optionsetvalue" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Organization Id" name="organizationid" type="entityreference" lookupType="organization" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Widget" name="msdyn_widgetid" type="entityreference" lookupType="msdyn_livechatconfig" customfield="true" />
+    </fields>
+  </entity>
+</entities>
