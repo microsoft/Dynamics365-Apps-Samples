@@ -7,8 +7,8 @@
     <ProjectGuid>{D6636B6D-8825-46D9-B08D-F20131129990}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RemoveUnrefrencedQueues</RootNamespace>
-    <AssemblyName>RemoveUnrefrencedQueues</AssemblyName>
+    <RootNamespace>RemoveUnreferencedQueues</RootNamespace>
+    <AssemblyName>RemoveUnreferencedQueues</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -91,7 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RemoveUnrefrencedQueues.cs" />
+    <Compile Include="RemoveUnreferencedQueues.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -20,10 +20,10 @@ namespace PowerApps.Samples
     /// </summary>
     /// <remarks>Register this plug-in on the Create message, email entity, and synchronous mode.
     /// </remarks>
-    public class RemoveUnrefrencedQueues : IPlugin
+    public class RemoveUnreferencedQueues : IPlugin
     {
 
-        public RemoveUnrefrencedQueues(string unsecure, string secure)
+        public RemoveUnreferencedQueues(string unsecure, string secure)
         {
             // Do nothing
         }
@@ -39,7 +39,7 @@ namespace PowerApps.Samples
         private EntityCollection GetActivityParties(IOrganizationService service, ITracingService tracingService, Entity email)
         {
 
-            tracingService.Trace("RemoveUnrefrencedQueues.GetActivityParties: Searching or activityid: " + email.Id.ToString());
+            tracingService.Trace("RemoveUnreferencedQueues.GetActivityParties: Searching or activityid: " + email.Id.ToString());
             var query = new QueryExpression("activityparty");
 
             query.ColumnSet.AllColumns = true;
@@ -58,7 +58,7 @@ namespace PowerApps.Samples
         /// <returns></returns>
         private EntityCollection GetRelatedItemsToKeep(IOrganizationService service, ITracingService tracingService, Entity email, EntityCollection activityParties)
         {
-            tracingService.Trace("RemoveUnrefrencedQueues.GetQueuesToRemove: Searching for related objects that are no-longer applicable");
+            tracingService.Trace("RemoveUnreferencedQueues.GetQueuesToRemove: Searching for related objects that are no-longer applicable");
             tracingService.Trace("Num Activity Parties: " + activityParties.Entities.Count.ToString());
 
             // This query will find all queues that are no-longer applicable by joining the activityparty table and the msdyn_originatingqueue table on the related objects
@@ -79,7 +79,7 @@ namespace PowerApps.Samples
                     // match all of Sender,To,CC,BCC
                     if (typemask >= 1 && typemask <= 4 && activityParty.GetAttributeValue<EntityReference>("partyid").LogicalName == "queue")
                     {
-                        tracingService.Trace("RemoveUnrefrencedQueues.GetQueuesToRemove: Applicable Queue: " + activityParty.GetAttributeValue<EntityReference>("partyid").Id.ToString());
+                        tracingService.Trace("RemoveUnreferencedQueues.GetQueuesToRemove: Applicable Queue: " + activityParty.GetAttributeValue<EntityReference>("partyid").Id.ToString());
 
                         ConditionExpression condition = new ConditionExpression("msdyn_queueid", ConditionOperator.Equal, activityParty.GetAttributeValue<EntityReference>("partyid").Id);
                         queues.Conditions.Add(condition);
@@ -88,7 +88,7 @@ namespace PowerApps.Samples
                     // Match Related activity parties
                     if (typemask == 13)
                     {
-                        tracingService.Trace("RemoveUnrefrencedQueues.GetQueuesToRemove: Applicable Entity: " + activityParty.GetAttributeValue<EntityReference>("partyid").Id.ToString());
+                        tracingService.Trace("RemoveUnreferencedQueues.GetQueuesToRemove: Applicable Entity: " + activityParty.GetAttributeValue<EntityReference>("partyid").Id.ToString());
 
                         ConditionExpression condition = new ConditionExpression("msdyn_createdentityid", ConditionOperator.Equal, activityParty.GetAttributeValue<EntityReference>("partyid").Id.ToString());
                         createdEntities.Conditions.Add(condition);
@@ -101,7 +101,7 @@ namespace PowerApps.Samples
             query.Criteria.AddFilter(queues);
             query.Criteria.AddFilter(createdEntities);
 
-            tracingService.Trace("RemoveUnrefrencedQueues.GetQueuesToRemove: Executing Retrival");
+            tracingService.Trace("RemoveUnreferencedQueues.GetQueuesToRemove: Executing Retrival");
 
             return service.RetrieveMultiple(query);
         }
@@ -136,7 +136,7 @@ namespace PowerApps.Samples
             IOrganizationServiceFactory serviceFactory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
             IOrganizationService service = serviceFactory.CreateOrganizationService(context.UserId);
             
-            tracingService.Trace("RemoveUnrefrencedQueues.Execute: Started");
+            tracingService.Trace("RemoveUnreferencedQueues.Execute: Started");
 
             // The InputParameters collection contains all the data passed in the message request.
             if (context.InputParameters.Contains("Target") &&
@@ -144,23 +144,23 @@ namespace PowerApps.Samples
             {
                 // Obtain the target entity from the input parameters.
                 Entity entity = (Entity)context.InputParameters["Target"];
-                tracingService.Trace("RemoveUnrefrencedQueues.Execute: Processing Entity Id: " + entity.Id);
+                tracingService.Trace("RemoveUnreferencedQueues.Execute: Processing Entity Id: " + entity.Id);
 
                 // Verify that the target entity represents an email.
                 // If not, this plug-in was not registered correctly.
                 if (entity.LogicalName != "email")
                 {
-                    tracingService.Trace("RemoveUnrefrencedQueues.Execute: Invalid Registration entity is not an email Id: " + entity.Id);
+                    tracingService.Trace("RemoveUnreferencedQueues.Execute: Invalid Registration entity is not an email Id: " + entity.Id);
                     return;
                 }
 
                 if (entity.GetAttributeValue<bool>("directioncode") == true)
                 {
-                    tracingService.Trace("RemoveUnrefrencedQueues.Execute: Only processing inbound emails");
+                    tracingService.Trace("RemoveUnreferencedQueues.Execute: Only processing inbound emails");
                     return;
                 }
 
-                tracingService.Trace("RemoveUnrefrencedQueues.Execute: Verifying Entity is Email Id: " + entity.Id);
+                tracingService.Trace("RemoveUnreferencedQueues.Execute: Verifying Entity is Email Id: " + entity.Id);
 
                 // Fetch the data needed
                 var activityparties = GetActivityParties(service,  tracingService, entity);
@@ -185,7 +185,7 @@ namespace PowerApps.Samples
                     }
                     String partyId = party.GetAttributeValue<EntityReference>("partyid").Id.ToString();
 
-                    tracingService.Trace("RemoveUnrefrencedQueues.Execute: Checking if partyid is in the no-longer applicable list: " + partyId);
+                    tracingService.Trace("RemoveUnreferencedQueues.Execute: Checking if partyid is in the no-longer applicable list: " + partyId);
 
                     foreach (var originatingQueueEntity in itemsToKeep.Entities)
                     {
@@ -194,11 +194,11 @@ namespace PowerApps.Samples
                         if (party.GetAttributeValue<EntityReference>("partyid").Equals(createdEntityRef))
                         {
 
-                            tracingService.Trace("RemoveUnrefrencedQueues.Execute: Keeping Party with ID" + createdEntityRef.Id.ToString() + " == " + partyId);
+                            tracingService.Trace("RemoveUnreferencedQueues.Execute: Keeping Party with ID" + createdEntityRef.Id.ToString() + " == " + partyId);
                             found = true; 
                             break;
                         }
-                        tracingService.Trace("RemoveUnrefrencedQueues.Execute: " + createdEntityRef.Id.ToString() + " != " + partyId);
+                        tracingService.Trace("RemoveUnreferencedQueues.Execute: " + createdEntityRef.Id.ToString() + " != " + partyId);
                     }
 
                     if (found)
@@ -213,7 +213,7 @@ namespace PowerApps.Samples
 
                 if (itemRemoved)
                 {
-                    tracingService.Trace("RemoveUnrefrencedQueues.Execute: Updating email");
+                    tracingService.Trace("RemoveUnreferencedQueues.Execute: Updating email");
 
                     // Finally perform the update on the email entity
                     Entity newEmail = new Entity("email", entity.Id);
@@ -222,7 +222,7 @@ namespace PowerApps.Samples
                 }
                 else
                 {
-                    tracingService.Trace("RemoveUnrefrencedQueues.Execute: No changes required");
+                    tracingService.Trace("RemoveUnreferencedQueues.Execute: No changes required");
                 }
             }
         }

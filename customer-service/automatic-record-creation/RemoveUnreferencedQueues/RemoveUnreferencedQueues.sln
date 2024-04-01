@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoveUnrefrencedQueues", "RemoveUnrefrencedQueues\RemoveUnrefrencedQueues.csproj", "{D6636B6D-8825-46D9-B08D-F20131129990}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoveUnreferencedQueues", "RemoveUnreferencedQueues\RemoveUnreferencedQueues.csproj", "{D6636B6D-8825-46D9-B08D-F20131129990}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
