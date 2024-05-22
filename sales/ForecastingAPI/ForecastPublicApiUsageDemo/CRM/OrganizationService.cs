@@ -1,19 +1,22 @@
 ﻿using Microsoft.Xrm.Sdk;
-using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Query;
 using Microsoft.Xrm.Tooling.Connector;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForecastPublicApiUsageDemo.CRM
 {
     class OrganizationService
     {
-        private static string TIP_CONN_STR_TEMP = "AuthType=Office365;Username={0};Password={1};Url={2};AppId=57b7286c-58c7-49be-aaa7-157ea9dfb8b9;RedirectUri=api://57b7286c-58c7-49be-aaa7-157ea9dfb8b9;TokenCacheStorePath=c:\\MyTokenCache;LoginPrompt=Never";
+        private const string TIP_CONN_STR_TEMP = @"
+                AuthType = OAuth;
+                UserName = {0};
+                Password = {1};
+                Url = {2};
+                AppId = 51f81489-12ee-4a9e-aaae-a2591f45987d;
+                RedirectUri = app://58145B91-0C36-4500-8554-080854F2AC97;
+                LoginPrompt=Auto;
+                RequireNewInstance = True";
 
         /// <summary>
         /// Create the organization service for using Public APIs endpoints
@@ -40,12 +43,11 @@ namespace ForecastPublicApiUsageDemo.CRM
         {
             LogWriter.GetLogWriter().LogWrite("Connecting to CRM org");
             CrmServiceClient crmConn = new CrmServiceClient(connstr);
-            OrganizationServiceProxy crmService = crmConn.OrganizationServiceProxy;
-            if (crmService != null)
+            if (crmConn.IsReady)
                 LogWriter.GetLogWriter().LogWrite("Connection successful");
             else
                 LogWriter.GetLogWriter().LogWrite("Connection failed");
-            return crmService;
+            return crmConn;
 
         }
 

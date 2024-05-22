@@ -20,8 +20,8 @@ namespace ForecastPublicApiUsageDemo.Utility
 
 
         // Usecase related Constants
-        public const string forecastConfigurationName = "acc-5k-1";
-        public const string forecastperiodName = "FY2020 Q2";
+        public const string forecastConfigurationName = "Sample Forecast";
+        public const string forecastperiodName = "FY{0} {1}"; //E.g. FY2024 May
 
 
     }

@@ -48,8 +48,10 @@ namespace ForecastPublicApiUsageDemo
             LogWriter.GetLogWriter().LogWrite($"FCs Names: {string.Join(",", (fcs.Select(c => c.Name).ToList().ToArray()))}");
 
             // fetching forecast configuration by name
+            var sampleFCName = Constants.forecastConfigurationName;
+            var sampleFRName = string.Format(Constants.forecastperiodName, DateTime.Now.Year, DateTime.Now.ToString("MMM"));
 
-            var fcsByName = da.GetFCListByName(Constants.forecastConfigurationName);
+            var fcsByName = da.GetFCListByName(sampleFCName);
 
             if (fcsByName.Count == 0)
             {
@@ -60,37 +62,39 @@ namespace ForecastPublicApiUsageDemo
             LogWriter.GetLogWriter().LogWrite($"FCs Id: {string.Join(",", (fcs.Select(c => c.ForecastConfigurationId).ToList().ToArray()))}");
             
             // fetching forecast periods for the forecast configuration
-            var fps = da.GetForecastPeriodsList(fcsByName[0].ForecastConfigurationId);
-            LogWriter.GetLogWriter().LogWrite("FPs Names: " + string.Join(",", (fps.Select(c => c.Name).ToList().ToArray())));
+            var forecastRecurrences = da.GetForecastPeriodsList(fcsByName[0].ForecastConfigurationId);
+            LogWriter.GetLogWriter().LogWrite("FR Names: " + string.Join(",", forecastRecurrences.Select(c => c.Name).ToList().ToArray()));
             
-            var fpResults = fps.Where(o => o.Name == Constants.forecastperiodName).ToList();
+            var frResults = forecastRecurrences.Where(o => o.Name == sampleFRName).ToList();
 
-            if (fpResults.Count == 0)
+            if (frResults.Count == 0)
             {
                 LogWriter.GetLogWriter().LogWrite("Please provide a valid forecast period Name");
                 return;
             }
 
-            var fis = da.FetchFullFIList(fcsByName[0].ForecastConfigurationId, fpResults[0].Id);
+            var forecastInstances = da.FetchFullFIList(fcsByName[0].ForecastConfigurationId, frResults[0].Id);
 
-            Dictionary<Guid, double> dataSet = UtilityImpl.prepareDataSet(fis);
+            Dictionary<Guid, double> dataSet = UtilityImpl.PrepareDataSet(forecastInstances);
 
-            LogWriter.GetLogWriter().LogWrite("FIs fetched: " + fis.Count);
+            LogWriter.GetLogWriter().LogWrite("FIs fetched: " + forecastInstances.Count);
 
-            LogWriter.GetLogWriter().LogWrite("FIs Guids: " + string.Join(",", (fis.Select(c => c.ForecastInstanceId).ToList().ToArray())));
+            LogWriter.GetLogWriter().LogWrite("FIs Guids: " + string.Join(",", (forecastInstances.Select(c => c.ForecastInstanceId).ToList().ToArray())));
 
-            LogWriter.GetLogWriter().LogWrite("DataSet Size: " + dataSet.Count());
+            LogWriter.GetLogWriter().LogWrite("DataSet Size: " + dataSet.Count);
 
             LogWriter.GetLogWriter().LogWrite("DataSet build: " + UtilityImpl.DictToDebugString(dataSet));
 
             var res = da.UpdateSimpleColumnByFIId(fcsByName[0].ForecastConfigurationId,
-                 fpResults[0].Id,
-                 fis,
+                 frResults[0].Id,
+                 forecastInstances,
                  dataSet);
 
-            fis = da.FetchFullFIList(fcsByName[0].ForecastConfigurationId, fpResults[0].Id);
+            forecastInstances = da.FetchFullFIList(fcsByName[0].ForecastConfigurationId, frResults[0].Id);
 
-            UtilityImpl.VerifyDataSet(fis, dataSet);
+            UtilityImpl.VerifyDataSet(forecastInstances, dataSet);
+
+            UsecaseHelper.CreateCSVOfForecastInstances(fcsByName[0], forecastInstances);
 
             Console.WriteLine("Completed");
             Console.ReadKey();
