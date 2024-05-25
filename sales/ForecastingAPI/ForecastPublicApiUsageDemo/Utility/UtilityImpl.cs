@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForecastPublicApiUsageDemo.Utility
 {
@@ -19,9 +17,11 @@ namespace ForecastPublicApiUsageDemo.Utility
                 dataSet.TryGetValue(forecastInstance.HierarchyEntityRecord.RecordId, out value);
                 if (value != forecastInstance.AggregatedColumns[1].Value)
                 {
-                    LogWriter.GetLogWriter().LogWrite($"FI Value does not match {forecastInstance.ForecastInstanceId} {value} { forecastInstance.AggregatedColumns[1].Value}");
+                    LogWriter.GetLogWriter().LogWrite($"FI Value does not match {forecastInstance.ForecastInstanceId} {value} {forecastInstance.AggregatedColumns[1].Value}");
                 }
             }
+
+            LogWriter.GetLogWriter().LogWrite("Verified data set.");
         }
 
         public static string DictToDebugString<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
@@ -36,7 +36,7 @@ namespace ForecastPublicApiUsageDemo.Utility
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
 
-        public static Dictionary<Guid, Double> prepareDataSet(List<ForecastInstance> forecastInstances)
+        public static Dictionary<Guid, Double> PrepareDataSet(List<ForecastInstance> forecastInstances)
         {
             Dictionary<Guid, Double> dataSet = new Dictionary<Guid, double>();
             double minimum = 1000;
@@ -51,6 +51,5 @@ namespace ForecastPublicApiUsageDemo.Utility
             }
             return dataSet;
         }
-
     }
 }
