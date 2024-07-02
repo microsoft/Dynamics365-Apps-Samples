@@ -97,6 +97,7 @@
     <Compile Include="CRM\PagedEntityEnumerator.cs" />
     <Compile Include="Forecasting\ForecastDataAccess.cs" />
     <Compile Include="LogWriter.cs" />
+    <Compile Include="Models\AccessType.cs" />
     <Compile Include="Models\AttributeInfo.cs" />
     <Compile Include="Models\EntityInfo.cs" />
     <Compile Include="Models\FcByNameRequest.cs" />
@@ -109,10 +110,15 @@
     <Compile Include="Models\ForecastConfigurationColumn.cs" />
     <Compile Include="Models\ForecastConfigurationState.cs" />
     <Compile Include="Models\ForecastConfigurationStatusCode.cs" />
+    <Compile Include="Models\ForecastDrillDown\DrillDownParticipatingRecordsInfo.cs" />
+    <Compile Include="Models\ForecastDrillDown\ParticipatingRecordsCountByDrillDownInstance.cs" />
+    <Compile Include="Models\ForecastDrillDown\ParticipatingRecordsInfoByPivot.cs" />
     <Compile Include="Models\ForecastInstance.cs" />
     <Compile Include="Models\ForecastInstanceColumn.cs" />
     <Compile Include="Models\ForecastManualAdjustment.cs" />
     <Compile Include="Models\ForecastPeriodType.cs" />
+    <Compile Include="Models\ForecastPivot.cs" />
+    <Compile Include="Models\ForecastPivotType.cs" />
     <Compile Include="Models\ForecastRecurrence.cs" />
     <Compile Include="Models\ForecastRecurrenceState.cs" />
     <Compile Include="Models\GetFRsForFCServiceBody.cs" />
@@ -123,8 +129,10 @@
     <Compile Include="Models\PermissionRole.cs" />
     <Compile Include="Models\PermissionType.cs" />
     <Compile Include="Models\PublicForecastInstanceListRequest.cs" />
+    <Compile Include="Models\RecomputeStatus.cs" />
     <Compile Include="Models\RelationshipInfo.cs" />
     <Compile Include="Models\ServiceResponse.cs" />
+    <Compile Include="Models\ShareLevel.cs" />
     <Compile Include="Models\UpdateSimpleColumn\UpdateSimpleColumnByEntityIdServiceRequest.cs" />
     <Compile Include="Models\UpdateSimpleColumn\UpdateSimpleColumnByEntityResponse.cs" />
     <Compile Include="Models\UpdateSimpleColumn\UpdateSimpleColumnByFIIdResponse.cs" />

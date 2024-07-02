@@ -3,15 +3,15 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.Dynamics.Forecasting.Common.Models
 {
-    /// <summary>
-    /// Hierarchy entity record class
-    /// </summary>
-    public class HierarchyEntity
-    {
-        /// <summary>
-        /// Hierarchy entity logical name
-        /// </summary>
-        public string EntityLogicalName { get; set; }
+	/// <summary>
+	/// Hierarchy entity record class
+	/// </summary>
+	public class HierarchyEntity
+	{
+		/// <summary>
+		/// Hierarchy entity logical name
+		/// </summary>
+		public string EntityLogicalName { get; set; }
 
 		/// <summary>
 		/// Name of the entity record. This is the display name of the record
@@ -32,6 +32,12 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
 		/// Immediate child count under this node
 		/// </summary>
 		public int ImmediateChildCount { get; set; }
+
+		/// <summary>
+		/// Based on HierarchyFilter from ForecastConfiguration
+		/// value will be false if it matches the filter condition
+		/// </summary>
+		public bool IsFilteredOut { get; set; }
 	}
 
 }

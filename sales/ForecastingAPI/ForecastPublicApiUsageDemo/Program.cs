@@ -8,9 +8,9 @@ using ForecastPublicApiUsageDemo.Utility;
 
 namespace ForecastPublicApiUsageDemo
 {
-   /// <summary>
-   /// Main Application
-   /// </summary>
+    /// <summary>
+    /// Main Application
+    /// </summary>
     class Program
     {
         private void Execute()
@@ -25,31 +25,29 @@ namespace ForecastPublicApiUsageDemo
 
             var da = new ForecastDataAccess(orgService);
             PerformUsecase(da);
-
         }
 
-    /// <summary>
-    /// This will demonstrate Use case of:
-    /// 1. Fetching forecast configuration list
-    /// 2. Fetching forecast configuration using the name
-    /// 3. Fecthing forecast Periods for the forecast configuration 
-    /// 4. Fetching all the forecast Instances for the given forecast configuration and forecast period
-    /// 5. Updating their column value using update simple column API by forecast Instance Id
-    /// 6. Validating the updates are successful.
-    /// </summary>
-    /// <param name="da">Forecast Data Access Object</param>
-       private void PerformUsecase(ForecastDataAccess da)
+        /// <summary>
+        /// This will demonstrate Use case of:
+        /// 1. Fetching forecast configuration list
+        /// 2. Fetching forecast configuration using the name
+        /// 3. Fecthing forecast Periods for the forecast configuration
+        /// 4. Fetching all the forecast Instances for the given forecast configuration and forecast period
+        /// 5. Updating their column value using update simple column API by forecast Instance Id
+        /// 6. Validating the updates are successful.
+        /// </summary>
+        /// <param name="da">Forecast Data Access Object</param>
+        private void PerformUsecase(ForecastDataAccess da)
         {
-
             // Fetching full Forecast Configuration List 
             var fcs = da.GetFCList();
 
             LogWriter.GetLogWriter().LogWrite($"Num FCs:{fcs.Count}");
-            LogWriter.GetLogWriter().LogWrite($"FCs Names: {string.Join(",", (fcs.Select(c => c.Name).ToList().ToArray()))}");
+            LogWriter.GetLogWriter().LogWrite($"FCs Names: {string.Join(",", fcs.ConvertAll(c => c.Name).ToArray())}");
 
             // fetching forecast configuration by name
-            var sampleFCName = Constants.forecastConfigurationName;
-            var sampleFRName = string.Format(Constants.forecastperiodName, DateTime.Now.Year, DateTime.Now.ToString("MMM"));
+            const string sampleFCName = Constants.forecastConfigurationName;
+            var sampleFRName = string.Format(Constants.forecastperiodName, DateTime.Now.Year, DateTime.Now.ToString("MMMM"));
 
             var fcsByName = da.GetFCListByName(sampleFCName);
 
@@ -60,11 +58,11 @@ namespace ForecastPublicApiUsageDemo
             }
             LogWriter.GetLogWriter().LogWrite($"FCs Found:{fcs.Count > 0}");
             LogWriter.GetLogWriter().LogWrite($"FCs Id: {string.Join(",", (fcs.Select(c => c.ForecastConfigurationId).ToList().ToArray()))}");
-            
+
             // fetching forecast periods for the forecast configuration
             var forecastRecurrences = da.GetForecastPeriodsList(fcsByName[0].ForecastConfigurationId);
             LogWriter.GetLogWriter().LogWrite("FR Names: " + string.Join(",", forecastRecurrences.Select(c => c.Name).ToList().ToArray()));
-            
+
             var frResults = forecastRecurrences.Where(o => o.Name == sampleFRName).ToList();
 
             if (frResults.Count == 0)
@@ -79,7 +77,7 @@ namespace ForecastPublicApiUsageDemo
 
             LogWriter.GetLogWriter().LogWrite("FIs fetched: " + forecastInstances.Count);
 
-            LogWriter.GetLogWriter().LogWrite("FIs Guids: " + string.Join(",", (forecastInstances.Select(c => c.ForecastInstanceId).ToList().ToArray())));
+            LogWriter.GetLogWriter().LogWrite("FIs Guids: " + string.Join(",", (forecastInstances.ConvertAll(c => c.ForecastInstanceId).ToArray())));
 
             LogWriter.GetLogWriter().LogWrite("DataSet Size: " + dataSet.Count);
 
@@ -100,11 +98,9 @@ namespace ForecastPublicApiUsageDemo
             Console.ReadKey();
         }
 
-
         static void Main(string[] args)
         {
             new Program().Execute();
         }
-      
     }
 }
