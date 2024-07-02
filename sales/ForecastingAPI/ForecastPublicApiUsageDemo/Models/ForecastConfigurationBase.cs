@@ -3,7 +3,7 @@
 namespace Microsoft.Dynamics.Forecasting.Common.Models
 {
     /// <summary>
-    /// This class is for storing forcast definition
+    /// This class is for storing forcast configuration
     /// </summary>
     public class ForecastConfigurationBase
     {
@@ -13,7 +13,7 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
         public Guid ForecastConfigurationId { get; set; }
 
         /// <summary>
-        /// forecast Definition name
+        /// forecast configuration name
         /// </summary>
         public String Name { get; set; }
 
@@ -33,11 +33,6 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
         public EntityInfo RollupEntity { get; set; }
 
         /// <summary>
-        /// Period type
-        /// </summary>
-        public ForecastPeriodType PeriodType { get; set; }
-
-        /// <summary>
         /// start date for forecast
         /// </summary>
         public DateTime StartDate { get; set; }
@@ -48,34 +43,14 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
         public DateTime EndDate { get; set; }
 
         /// <summary>
-        /// starting fiscal month optionset value
-        /// </summary>
-        public int StartingFiscalMonth { get; set; }
-
-        /// <summary>
-        /// starting fiscal quarter optionset value
-        /// </summary>
-        public int StartingFiscalQuarter { get; set; }
-
-        /// <summary>
-        /// starting fiscal year optionset value
-        /// </summary>
-        public int StartingFiscalYear { get; set; }
-
-        /// <summary>
-        /// forecast definition statuscode mapping from CRM
+        /// forecast configuration statuscode mapping from CRM
         /// </summary>
         public ForecastConfigurationStatusCode StatusCode { get; set; }
 
         /// <summary>
-        /// forecast definition statuscode mapping from CRM
+        /// forecast configuration statuscode mapping from CRM
         /// </summary>
         public ForecastConfigurationState State { get; set; }
-
-        /// <summary>
-        /// Any error during publish
-        /// </summary>
-        public string ErrorMessage { get; set; }    
 
         /// <summary>
         /// this guid will contain root record of hierarchy entity under which forecast will be performed
@@ -92,32 +67,36 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
         /// </summary>
         public AttributeInfo ForecastCategoryAttribute { get; set; }
 
-         ///   <summary>
-         ///   Attribute info for storing permission attribute for forecast instances which is linked with Hierarchy Entity directly or indirectly
-         ///   Eg : 
-         ///   OrgChart : 
-         ///    {
-         ///       Relation : {
-         ///       EntityInfo : {
-         ///       EntityLogicalName = "systemuser",
-         ///       PrimaryNameAttribute = "fullname",
-         ///       PrimaryIdAttribute = "systemuserid",
-         ///       EntitySetName = "systemusers",
-         ///       HierarchyAttribute = "parentsystemuserid"
-         ///  },
-         ///  "RelatedFrom" : null,
-         ///  "Relationship" : null
-         /// },
-         /// "TargetAttributeName" : "systemuserid"
-         ///}
-         ///</summary>
-        
+        ///   <summary>
+        ///   Attribute info for storing permission attribute for forecast instances which is linked with Hierarchy Entity directly or indirectly
+        ///   Eg :
+        ///   OrgChart :
+        ///    {
+        ///       Relation : {
+        ///       EntityInfo : {
+        ///       EntityLogicalName = "systemuser",
+        ///       PrimaryNameAttribute = "fullname",
+        ///       PrimaryIdAttribute = "systemuserid",
+        ///       EntitySetName = "systemusers",
+        ///       HierarchyAttribute = "parentsystemuserid"
+        ///  },
+        ///  "RelatedFrom" : null,
+        ///  "Relationship" : null
+        /// },
+        /// "TargetAttributeName" : "systemuserid"
+        ///}
+        ///</summary>
         public AttributeInfo PermissionAttribute { get; set; }
 
         /// <summary>
         /// Permission type will contain array of permission for this FC
         /// </summary>
         public PermissionType[] PermissionTypes { get; set; }
+
+        /// <summary>
+        /// Share Level for this FC
+        /// </summary>
+        public ShareLevel ShareLevel { get; set; }
 
         /// <summary>
         /// Permission roles will contain array of permission role objects for this FC
@@ -130,20 +109,9 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
         public string AdditionalFilters { get; set; }
 
         /// <summary>
-        /// If the snapshot is scheduled or not
-        /// If the snapshot is not scheduled then user will have to take snapshot manually
+        /// Fetch xml for hierarchy filters
         /// </summary>
-        public bool IsSnapshotScheduled { get; set; }
-
-        /// <summary>
-        /// CRON expression of the snapshot schedule
-        /// </summary>
-        public string SnapshotSchedule { get; set; }
-
-        /// <summary>
-        /// Time zone used for governing the forecast snapshot work
-        /// </summary>
-        public string SnapshotTimeZone { get; set; }
+        public string HierarchyFilters { get; set; }
 
         /// <summary>
         /// Published dateTime
@@ -151,8 +119,13 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
         public DateTime PublishedDateTime { get; set; }
 
         /// <summary>
-        /// Default view id on which underlying records to be shown in editable grid. 
+        /// Default view id on which underlying records to be shown in editable grid.
         /// </summary>
         public Guid DefaultViewIdForUnderlyingRecords { get; set; }
+
+        /// <summary>
+        /// if fc is default or not
+        /// </summary>
+        public bool IsDefault { get; set; }
     }
 }

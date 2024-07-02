@@ -1,0 +1,339 @@
+{
+  "definitions": {
+    "DrillDownParticipatingRecordsInfo": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "TotalParticipatingRecordsCount": {
+          "type": "integer",
+          "description": "The total number of records participating in the drill down."
+        },
+        "ParticipatingRecordsCountByDrillDownInstance": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "description": "The count of participating records broken down by each drill down instance."
+        }
+      },
+      "required": [
+        "TotalParticipatingRecordsCount",
+        "ParticipatingRecordsCountByDrillDownInstance"
+      ]
+    },
+    "Field<Double>": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Value": {
+          "type": "number",
+          "description": "The numerical value of the field."
+        },
+        "DisplayValue": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The displayable string representation of the field's value."
+        }
+      },
+      "required": [
+        "Value",
+        "DisplayValue"
+      ]
+    },
+    "ForecastInstanceColumn": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "ForecastConfigurationColumnId": {
+          "type": "string",
+          "description": "The identifier of the forecast configuration column."
+        },
+        "RecordId": {
+          "type": "string",
+          "description": "The identifier of the record."
+        },
+        "Value": {
+          "type": "number",
+          "description": "The numerical value for the column. Stores numerical value of the column if the column is of type Double, Integer, or Money."
+        },
+        "DisplayValue": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The displayable string representation of the column's value. Columns like user where name of the hierarchy record is stored here."
+        },
+        "SystemValue": {
+          "type": "number",
+          "description": "Obsolete. The system-calculated numerical value for the column."
+        },
+        "SystemDisplayValue": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Obsolete. The displayable string representation of the system-calculated value."
+        },
+        "SystemCalculated": {
+          "$ref": "#/definitions/Field<Double>",
+          "description": "The field representing system-calculated adjustments."
+        },
+        "DirectAdjusted": {
+          "$ref": "#/definitions/Field<Double>",
+          "description": "The field representing direct adjustments made to the forecast."
+        },
+        "RollupAdjusted": {
+          "$ref": "#/definitions/Field<Double>",
+          "description": "The field representing adjustments made through rollups."
+        },
+        "IsManualAdjusted": {
+          "type": "boolean",
+          "description": "Indicates whether the forecast has been manually adjusted."
+        },
+        "IsEditable": {
+          "type": "boolean",
+          "description": "Indicates whether the forecast column is editable."
+        },
+        "ShowHistory": {
+          "type": "boolean",
+          "description": "Indicates whether to show the history of adjustments for the forecast."
+        },
+        "ParticipatingRecordsCount": {
+          "type": "integer",
+          "description": "The count of records participating in the forecast."
+        },
+        "DirectAdjustedDescendantsCount": {
+          "type": "integer",
+          "description": "The count of descendants that have been directly adjusted."
+        },
+        "ManualAdjustment": {
+          "$ref": "#/definitions/ForecastManualAdjustment",
+          "description": "The manual adjustment applied to the forecast."
+        },
+        "AdjustmentHistory": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/ForecastManualAdjustment"
+          },
+          "description": "The history of manual adjustments applied to the forecast."
+        },
+        "ParticipatingRecordsInfoByPivot": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "$ref": "#/definitions/DrillDownParticipatingRecordsInfo"
+          },
+          "description": "Information about participating records broken down by pivot."
+        }
+      },
+      "required": [
+        "ForecastConfigurationColumnId",
+        "RecordId",
+        "Value",
+        "DisplayValue",
+        "SystemValue",
+        "SystemDisplayValue",
+        "SystemCalculated",
+        "DirectAdjusted",
+        "RollupAdjusted",
+        "IsManualAdjusted",
+        "IsEditable",
+        "ShowHistory",
+        "ParticipatingRecordsCount",
+        "DirectAdjustedDescendantsCount",
+        "ManualAdjustment",
+        "AdjustmentHistory",
+        "ParticipatingRecordsInfoByPivot"
+      ]
+    },
+    "ForecastManualAdjustment": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "description": "The unique identifier of the manual adjustment."
+        },
+        "IsReset": {
+          "type": "boolean",
+          "description": "Indicates whether the adjustment is a reset to system-calculated values."
+        },
+        "To": {
+          "$ref": "#/definitions/Field<Double>",
+          "description": "The adjusted to value of the forecast."
+        },
+        "From": {
+          "$ref": "#/definitions/Field<Double>",
+          "description": "The original value of the forecast before adjustment."
+        },
+        "Notes": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Notes or comments on the adjustment."
+        },
+        "AdjustedBy": {
+          "type": "string",
+          "description": "The identifier of the user who made the adjustment."
+        },
+        "AdjustedByName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The name of the user who made the adjustment."
+        },
+        "AdjustedOn": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time when the adjustment was made."
+        }
+      },
+      "required": [
+        "Id",
+        "IsReset",
+        "To",
+        "From",
+        "Notes",
+        "AdjustedBy",
+        "AdjustedByName",
+        "AdjustedOn"
+      ]
+    },
+    "HierarchyEntity": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "EntityLogicalName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The logical name of the entity in the hierarchy."
+        },
+        "RecordName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The name of the record in the hierarchy."
+        },
+        "RecordId": {
+          "type": "string",
+          "description": "The unique identifier of the record in the hierarchy."
+        },
+        "ParentRecordId": {
+          "type": "string",
+          "description": "The unique identifier of the parent record in the hierarchy."
+        },
+        "ImmediateChildCount": {
+          "type": "integer",
+          "description": "The count of immediate children under the record in the hierarchy."
+        },
+        "IsFilteredOut": {
+          "type": "boolean",
+          "description": "Indicates whether the record is filtered out from the hierarchy due to hierarchy filters."
+        }
+      },
+      "required": [
+        "EntityLogicalName",
+        "RecordName",
+        "RecordId",
+        "ParentRecordId",
+        "ImmediateChildCount",
+        "IsFilteredOut"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "ForecastInstanceId": {
+      "type": "string",
+      "description": "The unique identifier of the forecast instance."
+    },
+    "ForecastConfigurationId": {
+      "type": "string",
+      "description": "The identifier of the forecast configuration to which this instance belongs."
+    },
+    "ParentInstanceId": {
+      "type": "string",
+      "description": "The identifier of the parent forecast instance, if any."
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "The identifier of the owner of the forecast instance."
+    },
+    "ForecastRecurrenceId": {
+      "type": "string",
+      "description": "The identifier of the forecast recurrence associated with this instance."
+    },
+    "HierarchyEntityRecord": {
+      "$ref": "#/definitions/HierarchyEntity",
+      "description": "The hierarchy entity record associated with this forecast instance."
+    },
+    "AggregatedColumns": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/ForecastInstanceColumn"
+      },
+      "description": "The aggregated columns of data for this forecast instance."
+    },
+    "RolledUpColumns": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/ForecastInstanceColumn"
+      },
+      "description": "The columns of data that have been rolled up for this forecast instance."
+    },
+    "Access": {
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "The access level the user has on the forecast instance. 0 - None, 1 - Shared as read only, 2 - Read, 3 - Shared as read/write, 4 - Read/Write, 5 - Owner."
+    }
+  },
+  "required": [
+    "ForecastInstanceId",
+    "ForecastConfigurationId",
+    "ParentInstanceId",
+    "OwnerId",
+    "ForecastRecurrenceId",
+    "HierarchyEntityRecord",
+    "AggregatedColumns",
+    "RolledUpColumns",
+    "Access"
+  ]
+}

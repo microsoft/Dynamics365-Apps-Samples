@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Microsoft.Dynamics.Forecasting.Common.Models
+﻿namespace Microsoft.Dynamics.Forecasting.Common.Models
 {
     /// <summary>
     /// This class will contains entity information
@@ -18,5 +14,10 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
         /// Attribute logical name
         /// </summary>
         public string TargetAttributeName { get; set; }
+
+        /// <summary>
+        /// Contains the type of the target lookup attribute
+        /// </summary>
+        public string LookupAttributeTarget { get; set; }
     }
 }

@@ -78,14 +78,14 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
         public string Formula { get; set; }
 
         /// <summary>
-        /// If the column is editable, required by grid 
+        /// If the column is editable, required by grid
         /// </summary>
         public bool IsEditable { get; set; }
 
         /// <summary>
-        /// If the column is visible or hidden, required by grid 
+        /// If the column is visible or hidden, required by grid
         /// </summary>
-        public bool IsVisible { get; set; } 
+        public bool IsVisible { get; set; }
 
         /// <summary>
         /// Show quota compared progress on this column

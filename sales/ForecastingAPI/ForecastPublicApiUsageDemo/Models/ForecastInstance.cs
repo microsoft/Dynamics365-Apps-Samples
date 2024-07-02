@@ -5,19 +5,10 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
 {
     /// <summary>
     /// This class will contains single forecast instance information
-    /// </summary>    
+    /// </summary>
     public class ForecastInstance
     {
-
-        /// <summary>
-        /// PK
-        /// </summary>
         public Guid ForecastInstanceId { get; set; }
-
-        /// <summary>
-        /// Organization id which it belongs
-        /// </summary>
-        public Guid OrganizationId { get; set; }
 
         /// <summary>
         /// Forecast definition id which it belongs
@@ -30,7 +21,7 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
         public Guid ParentInstanceId { get; set; }
 
         /// <summary>
-        /// its a type of system user which owns this instance 
+        /// its a type of system user which owns this instance
         /// </summary>
         public Guid OwnerId { get; set; }
 
@@ -53,5 +44,10 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
         /// List of rollup columns
         /// </summary>
         public List<ForecastInstanceColumn> RolledUpColumns { get; set; }
+
+        /// <summary>
+        /// Access the user has on the FI. This is computed at runtime
+        /// </summary>
+        public AccessType Access { get; set; }
     }
 }

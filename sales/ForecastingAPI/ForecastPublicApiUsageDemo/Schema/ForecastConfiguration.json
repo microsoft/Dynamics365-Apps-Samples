@@ -1,0 +1,589 @@
+{
+  "definitions": {
+    "AttributeInfo": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Relation": {
+          "$ref": "#/definitions/RelationshipInfo",
+          "description": "Defines the relationship information for the attribute."
+        },
+        "TargetAttributeName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Specifies the target attribute name for the relationship."
+        },
+        "LookupAttributeTarget": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Specifies the target lookup attribute."
+        }
+      },
+      "required": [
+        "Relation",
+        "TargetAttributeName",
+        "LookupAttributeTarget"
+      ],
+      "description": "Contains information about an attribute, including its relationship and target details."
+    },
+    "EntityInfo": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "EntityLogicalName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The logical name of the entity."
+        },
+        "PrimaryIdAttribute": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The primary ID attribute of the entity."
+        },
+        "PrimaryNameAttribute": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The primary name attribute of the entity."
+        },
+        "EntitySetName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The entity set name for OData."
+        },
+        "HierarchyAttribute": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Specifies the hierarchy attribute of the entity."
+        }
+      },
+      "required": [
+        "EntityLogicalName",
+        "PrimaryIdAttribute",
+        "PrimaryNameAttribute",
+        "EntitySetName",
+        "HierarchyAttribute"
+      ],
+      "description": "Contains information about an entity, including its logical name, primary ID, and hierarchy attribute."
+    },
+    "ForecastConfigurationColumn": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "ForecastConfigurationColumnId": {
+          "type": "string",
+          "description": "Unique identifier for the forecast configuration column."
+        },
+        "DisplayName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The display name of the column."
+        },
+        "UniqueName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "A unique name for the column."
+        },
+        "DataType": {
+          "type": "integer",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "description": "The data type of the column. 1 - Currency, 2 - Decimal, 3 - Single line of text, 4 - Not Supported, 5 - Integer"
+        },
+        "ActualMoneyAttribute": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Specifies the attribute that holds the actual money value."
+        },
+        "AggregatingAttribute": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Specifies the attribute used for aggregation."
+        },
+        "DateAttribute": {
+          "$ref": "#/definitions/AttributeInfo",
+          "description": "Specifies the date attribute for the column."
+        },
+        "RecordAttribute": {
+          "$ref": "#/definitions/AttributeInfo",
+          "description": "Specifies the record attribute for the column."
+        },
+        "Selector": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Specifies the fetchXml responsible to get the source records for the column."
+        },
+        "ForecastConfigurationId": {
+          "type": "string",
+          "description": "The ID of the forecast configuration this column belongs to."
+        },
+        "OptionSetValue": {
+          "type": "integer",
+          "description": "Specifies the option set value for the column."
+        },
+        "ColumnOrder": {
+          "type": "integer",
+          "description": "Specifies the order in which the column would be displayed in the grid."
+        },
+        "ColumnType": {
+          "type": "integer",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "description": "Specifies the type of the column. 0 - Rollup, 1 - Calculated, 2 - Simple, 3 - Predictive, 4 - HierarchyPrimary, 5 - HierarchySecondary"
+        },
+        "Formula": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Specifies the formula used in the column."
+        },
+        "IsEditable": {
+          "type": "boolean",
+          "description": "Indicates whether the column is editable."
+        },
+        "IsVisible": {
+          "type": "boolean",
+          "description": "Indicates whether the column is visible."
+        },
+        "ShowQuotaComparedProgress": {
+          "type": "boolean",
+          "description": "Indicates whether to show quota compared progress."
+        },
+        "Description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "A description of the column."
+        },
+        "ShowInTrendChart": {
+          "type": "boolean",
+          "description": "Indicates whether to show this column in trend charts."
+        },
+        "ColorCode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Specifies the color code for the column."
+        }
+      },
+      "required": [
+        "ForecastConfigurationColumnId",
+        "DisplayName",
+        "UniqueName",
+        "DataType",
+        "ActualMoneyAttribute",
+        "AggregatingAttribute",
+        "DateAttribute",
+        "RecordAttribute",
+        "Selector",
+        "ForecastConfigurationId",
+        "OptionSetValue",
+        "ColumnOrder",
+        "ColumnType",
+        "Formula",
+        "IsEditable",
+        "IsVisible",
+        "ShowQuotaComparedProgress",
+        "Description",
+        "ShowInTrendChart",
+        "ColorCode"
+      ],
+      "description": "Defines a column in the forecast configuration, including its data type, visibility, and other properties."
+    },
+    "ForecastPivot": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "ForecastPivotId": {
+          "type": "string",
+          "description": "Unique identifier for the forecast pivot."
+        },
+        "PivotName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The name of the pivot."
+        },
+        "PivotType": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ],
+          "description": "Specifies the type of the pivot."
+        },
+        "PivotOptionSetAttributeInfo": {
+          "$ref": "#/definitions/AttributeInfo",
+          "description": "Specifies the option set attribute information for the pivot."
+        },
+        "PivotEntity": {
+          "$ref": "#/definitions/EntityInfo",
+          "description": "Specifies the entity information for the pivot."
+        },
+        "SourceEntity": {
+          "$ref": "#/definitions/EntityInfo",
+          "description": "Specifies the source entity information for the pivot."
+        },
+        "AmountAttributesPerColumn": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": "Specifies the amount attributes per column for the pivot."
+        },
+        "AmountEntityToRollupEntityRelation": {
+          "$ref": "#/definitions/RelationshipInfo",
+          "description": "Specifies the relationship from the amount entity to the rollup entity."
+        },
+        "AmountEntityToPivotEntityRelation": {
+          "$ref": "#/definitions/RelationshipInfo",
+          "description": "Specifies the relationship from the amount entity to the pivot entity."
+        },
+        "IsPivotEnabledForQuotaAndSimpleColumns": {
+          "type": "boolean",
+          "description": "Indicates whether the pivot is enabled for quota and simple columns."
+        },
+        "isPivotDefault": {
+          "type": "boolean",
+          "description": "Indicates whether this pivot is the default one."
+        }
+      },
+      "required": [
+        "ForecastPivotId",
+        "PivotName",
+        "PivotType",
+        "PivotOptionSetAttributeInfo",
+        "PivotEntity",
+        "SourceEntity",
+        "AmountAttributesPerColumn",
+        "AmountEntityToRollupEntityRelation",
+        "AmountEntityToPivotEntityRelation",
+        "IsPivotEnabledForQuotaAndSimpleColumns",
+        "isPivotDefault"
+      ],
+      "description": "Defines a pivot in the forecast configuration, including its type, related entities, and other properties."
+    },
+    "PermissionRole": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "RoleId": {
+          "type": "string",
+          "description": "Unique identifier for the permission role."
+        }
+      },
+      "required": [
+        "RoleId"
+      ],
+      "description": "Defines a permission role with a unique identifier."
+    },
+    "RelationshipInfo": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "EntityInfo": {
+          "$ref": "#/definitions/EntityInfo",
+          "description": "Specifies the entity information for the relationship."
+        },
+        "RelatedFrom": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Specifies the attribute from which the relationship is related."
+        },
+        "Relationship": {
+          "$ref": "#/definitions/RelationshipInfo",
+          "description": "Specifies the nested relationship information."
+        }
+      },
+      "required": [
+        "EntityInfo",
+        "RelatedFrom",
+        "Relationship"
+      ],
+      "description": "Defines a relationship between entities, including the related entity and the relationship details."
+    }
+  },
+  "type": "object",
+  "properties": {
+    "Columns": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/ForecastConfigurationColumn"
+      },
+      "description": "A collection of columns defined in the forecast configuration. Refer for further details - https://learn.microsoft.com/en-us/dynamics365/sales/choose-layout-and-columns-forecast"
+    },
+    "RelatedEntities": {
+      "description": "Defines related entities for the forecast configuration, allowing for an array of entity names or null.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "Pivots": {
+      "description": "Specifies the pivot entities used in the forecast, which can be an array of ForecastPivot definitions or null. Refer for further details - https://learn.microsoft.com/en-us/dynamics365/sales/configure-manage-drill-downs",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/ForecastPivot"
+      }
+    },
+    "EntityMetadata": {
+      "description": "Contains metadata for the forecasted entity, allowing for a dynamic object structure or null.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "#/definitions/EntityInfo"
+      }
+    },
+    "MoneyAttrCache": {
+      "description": "Caches monetary attributes for the forecast, structured as an object or null with nested monetary attributes.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "additionalProperties": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "ForecastConfigurationId": {
+      "description": "Unique identifier for the forecast configuration.",
+      "type": "string"
+    },
+    "Name": {
+      "description": "The name of the forecast configuration, allowing for a string value or null.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "NumberOfRecurrences": {
+      "description": "Defines the number of recurrences for the forecast.",
+      "type": "integer"
+    },
+    "HierarchyEntity": {
+      "description": "Specifies the entity that represents the hierarchy in the forecast.",
+      "$ref": "#/definitions/EntityInfo"
+    },
+    "RollupEntity": {
+      "description": "Specifies the entity used for rollup calculations in the forecast.",
+      "$ref": "#/definitions/EntityInfo"
+    },
+    "StartDate": {
+      "description": "The start date of the forecast period, formatted as date-time.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "EndDate": {
+      "description": "The end date of the forecast period, formatted as date-time.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "StatusCode": {
+      "description": "Represents the current status of the forecast configuration. Each status is represented by a unique integer value: 1 - Draft, 2 - InProgress, 3 - Active, 4 - Failed, 5 - Inactive, 6 - Archived, 7 - Invalidated, and 8 - Reactivate_InProgress.",
+      "type": "integer",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "State": {
+      "description": "Indicates the state of the forecast, with predefined integer values.",
+      "type": "integer",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "RootEntityRecordId": {
+      "description": "The root entity record ID for the forecast hierarchy.",
+      "type": "string"
+    },
+    "HierarchyRelationship": {
+      "description": "Defines the relationship used to build the hierarchy in the forecast.",
+      "$ref": "#/definitions/RelationshipInfo"
+    },
+    "ForecastCategoryAttribute": {
+      "description": "Specifies the attribute used to categorize forecast data. This is an option set attribute.",
+      "$ref": "#/definitions/AttributeInfo"
+    },
+    "PermissionAttribute": {
+      "description": "Specifies the attribute used to define permissions on the forecast data.",
+      "$ref": "#/definitions/AttributeInfo"
+    },
+    "PermissionTypes": {
+      "description": "Defines the types of permissions applicable to the forecast, allowing for an array of integer values or null. 1 - All security roles, 2 - No additional security roles, 3 - Specific security roles. Refer for further details - https://learn.microsoft.com/en-us/dynamics365/sales/provide-permissions-forecast",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "integer",
+        "enum": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "ShareLevel": {
+      "description": "Indicates the level of sharing applied to the forecast, with predefined integer values. 0 - None, 1 - Read-only, 2 - Read and adjust. Refer for further details - https://learn.microsoft.com/en-us/dynamics365/sales/provide-permissions-forecast",
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "PermissionRoles": {
+      "description": "Specifies the roles that have permissions on the forecast, allowing for an array of PermissionRole definitions or null. Refer for further details - https://learn.microsoft.com/en-us/dynamics365/sales/provide-permissions-forecast",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/PermissionRole"
+      }
+    },
+    "AdditionalFilters": {
+      "description": "Defines additional filters applied to the forecast data, allowing for a string value or null. Refer for further details - https://learn.microsoft.com/en-us/dynamics365/sales/add-additional-filters",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "HierarchyFilters": {
+      "description": "Defines filters applied specifically to the hierarchy data, allowing for a string value or null. Refer for further details - https://learn.microsoft.com/en-us/dynamics365/sales/add-additional-filters",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "PublishedDateTime": {
+      "description": "The date and time when the forecast was published, formatted as date-time.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "DefaultViewIdForUnderlyingRecords": {
+      "description": "Specifies the default view ID for underlying records in the forecast.",
+      "type": "string"
+    },
+    "IsDefault": {
+      "description": "Indicates whether this forecast configuration is the default one. Refer for further details - https://learn.microsoft.com/en-us/dynamics365/sales/select-default-forecast",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "Columns",
+    "RelatedEntities",
+    "Pivots",
+    "EntityMetadata",
+    "MoneyAttrCache",
+    "ForecastConfigurationId",
+    "Name",
+    "NumberOfRecurrences",
+    "HierarchyEntity",
+    "RollupEntity",
+    "StartDate",
+    "EndDate",
+    "StatusCode",
+    "State",
+    "RootEntityRecordId",
+    "HierarchyRelationship",
+    "ForecastCategoryAttribute",
+    "PermissionAttribute",
+    "PermissionTypes",
+    "ShareLevel",
+    "PermissionRoles",
+    "AdditionalFilters",
+    "HierarchyFilters",
+    "PublishedDateTime",
+    "DefaultViewIdForUnderlyingRecords",
+    "IsDefault"
+  ]
+}

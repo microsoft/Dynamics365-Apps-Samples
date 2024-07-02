@@ -1,22 +1,13 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace ForecastPublicApiUsageDemo.Models
 {
-    [BsonIgnoreExtraElements]
     class ForecastRecurrence
     {
-        [BsonElement("_id")]
-        public Guid Id { get; set; }
-
         /// <summary>
-        /// Organization id which it belongs
+        /// Primary key
         /// </summary>
-        public Guid OrganizationId { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// Forecast configuration id to which it is related
@@ -44,7 +35,12 @@ namespace ForecastPublicApiUsageDemo.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Last successful recompute completed on. 
+        /// Current recompute status.
+        /// </summary>
+        public RecomputeStatus RecomputeStatus { get; set; }
+
+        /// <summary>
+        /// Last successful recompute completed on.
         /// </summary>
         public DateTime LastRecomputedOn { get; set; }
 
@@ -57,26 +53,5 @@ namespace ForecastPublicApiUsageDemo.Models
         /// Last status changed on
         /// </summary>
         public DateTime RecomputeStatusChangedOn { get; set; }
-
-        /// <summary>
-        /// Failure information if any
-        /// </summary>
-        public string FailureInfo { get; set; }
-
-        /// <summary>
-        /// Recompute executor id
-        /// </summary>
-        public string RecomputeExecutorId { get; set; }
-
-        /// <summary>
-		/// Forecast recurrence state
-		/// </summary>
-        public ForecastRecurrenceState RecurrenceState { get; set; }
-
-        /// <summary>
-        /// For storing list of attributes which needs to be updated
-        /// </summary>
-        [BsonIgnore]
-        public List<string> UpdatedAttribteList { get; set; }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Microsoft.Dynamics.Forecasting.Common.Models
+﻿namespace Microsoft.Dynamics.Forecasting.Common.Models
 {
     /// <summary>
     /// Data type of forecastcolumn
@@ -11,6 +7,8 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
     {
         Currency = 1,
         Decimal,
-        SingleLineOfText
+        SingleLineOfText,
+        NotSupported,
+        Integer
     }
 }
