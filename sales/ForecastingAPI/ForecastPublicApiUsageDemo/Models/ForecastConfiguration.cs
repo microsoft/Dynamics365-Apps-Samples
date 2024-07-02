@@ -4,6 +4,7 @@
     using System.Collections.Generic;
 
     /// <summary>
+    /// This class is for storing forcast configuration
     /// </summary>
     public class ForecastConfiguration : ForecastConfigurationBase
     {

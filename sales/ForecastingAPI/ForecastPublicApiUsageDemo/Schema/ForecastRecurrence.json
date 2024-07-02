@@ -1,0 +1,72 @@
+{
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "The unique identifier for the forecast recurrence."
+    },
+    "ForecastConfigurationId": {
+      "type": "string",
+      "description": "The identifier of the forecast configuration to which this recurrence belongs."
+    },
+    "RecurrenceIndex": {
+      "type": "integer",
+      "description": "The index of the recurrence, indicating its order or position among multiple recurrences."
+    },
+    "ValidFrom": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time from which this forecast recurrence starts."
+    },
+    "ValidTo": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time until which this forecast recurrence ends."
+    },
+    "Name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The name of the forecast recurrence, which can be null if not specified."
+    },
+    "RecomputeStatus": {
+      "type": "integer",
+      "enum": [
+        0,
+        10,
+        20,
+        30,
+        40
+      ],
+      "description": "The status of the recompute process for this forecast recurrence, represented by predefined integer values. 0 - New, 10- Queued, 20 - InProgress, 30 - Completed, 40 - Failed."
+    },
+    "LastRecomputedOn": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time when the forecast recurrence was last recomputed."
+    },
+    "RecomputationStartTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The start time of the latest recompute operation for this forecast recurrence."
+    },
+    "RecomputeStatusChangedOn": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time when the recompute status last changed for this forecast recurrence."
+    }
+  },
+  "required": [
+    "Id",
+    "ForecastConfigurationId",
+    "RecurrenceIndex",
+    "ValidFrom",
+    "ValidTo",
+    "Name",
+    "RecomputeStatus",
+    "LastRecomputedOn",
+    "RecomputationStartTime",
+    "RecomputeStatusChangedOn"
+  ]
+}

@@ -57,11 +57,11 @@ namespace ForecastPublicApiUsageDemo
                 return;
             }
             LogWriter.GetLogWriter().LogWrite($"FCs Found:{fcs.Count > 0}");
-            LogWriter.GetLogWriter().LogWrite($"FCs Id: {string.Join(",", (fcs.Select(c => c.ForecastConfigurationId).ToList().ToArray()))}");
+            LogWriter.GetLogWriter().LogWrite($"FCs Id: {string.Join(",", fcs.ConvertAll(c => c.ForecastConfigurationId).ToArray())}");
 
             // fetching forecast periods for the forecast configuration
             var forecastRecurrences = da.GetForecastPeriodsList(fcsByName[0].ForecastConfigurationId);
-            LogWriter.GetLogWriter().LogWrite("FR Names: " + string.Join(",", forecastRecurrences.Select(c => c.Name).ToList().ToArray()));
+            LogWriter.GetLogWriter().LogWrite("FR Names: " + string.Join(",", forecastRecurrences.ConvertAll(c => c.Name).ToArray()));
 
             var frResults = forecastRecurrences.Where(o => o.Name == sampleFRName).ToList();
 
@@ -77,7 +77,7 @@ namespace ForecastPublicApiUsageDemo
 
             LogWriter.GetLogWriter().LogWrite("FIs fetched: " + forecastInstances.Count);
 
-            LogWriter.GetLogWriter().LogWrite("FIs Guids: " + string.Join(",", (forecastInstances.ConvertAll(c => c.ForecastInstanceId).ToArray())));
+            LogWriter.GetLogWriter().LogWrite("FIs Guids: " + string.Join(",", forecastInstances.ConvertAll(c => c.ForecastInstanceId).ToArray()));
 
             LogWriter.GetLogWriter().LogWrite("DataSet Size: " + dataSet.Count);
 
