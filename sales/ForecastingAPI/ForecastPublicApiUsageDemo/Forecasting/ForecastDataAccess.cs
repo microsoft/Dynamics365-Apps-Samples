@@ -109,6 +109,14 @@ namespace ForecastPublicApiUsageDemo.Forecasting
             return fetchXML;
         }
 
+
+        /// <summary>
+        /// This will use the API for savedqueries
+        /// to retrieve record view id using record view name
+        /// public doc link: https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/reference/savedquery?view=dataverse-latest
+        /// </summary>
+        /// <param name="name">Record view name</param>
+        /// <returns></returns>
         public Guid GetRecordViewId(string name)
         {
             QueryExpression query = new QueryExpression("savedquery")
