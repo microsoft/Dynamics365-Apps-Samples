@@ -126,6 +126,7 @@
     <Compile Include="Models\GetFRsForFCServiceResponse.cs" />
     <Compile Include="Models\HierarchyEntity.cs" />
     <Compile Include="Models\PageInfo.cs" />
+	<Compile Include="Models\ParticipatingRecordFetchXMLRequest.cs" />
     <Compile Include="Models\PermissionRole.cs" />
     <Compile Include="Models\PermissionType.cs" />
     <Compile Include="Models\PublicForecastInstanceListRequest.cs" />

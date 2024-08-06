@@ -1,13 +1,32 @@
 ﻿using Microsoft.Dynamics.Forecasting.Common.Models;
+using Microsoft.Xrm.Sdk;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace ForecastPublicApiUsageDemo.Utility
 {
     static class UsecaseHelper
     {
+        public static Dictionary<string, string> attributeDisplayNameMap = new Dictionary<string, string>()
+                                                                {
+                                                                    { "statecode", "Status" },
+                                                                    { "actualclosedate", "Actual Close Date" },
+                                                                    { "statuscode", "Status Reason" },
+                                                                    { "estimatedclosedate", "Est. close date" },
+                                                                    { "transactioncurrencyid", "Currency" },
+                                                                    { "msdyn_forecastcategory", "Forecast category" },
+                                                                    { "customerid", "Potential Customer" },
+                                                                    { "ownerid", "Owner" },
+                                                                    { "systemuser1.systemuserid", "System User" },
+                                                                    { "actualvalue", "Actual Revenue" },
+                                                                    { "opportunityid", "Opportunity" },
+                                                                    { "name", "Topic" },
+                                                                    { "estimatedvalue", "Est. revenue" }
+                                                                };
         public static void CreateCSVOfForecastInstances(ForecastConfiguration forecastConfiguration, List<ForecastInstance> forecastInstances)
         {
             LogWriter.GetLogWriter().LogWrite("Creating CSV for the FC and Aggregated Columns.");
@@ -27,6 +46,89 @@ namespace ForecastPublicApiUsageDemo.Utility
             File.WriteAllText(fileName, csvContent);
 
             LogWriter.GetLogWriter().LogWrite("Created CSV for the FC and Aggregated Columns.");
+        }
+
+        public static void CreateCSVOfParticipatingRecords(Entity[] opportunities)
+        {
+            var logWriter = LogWriter.GetLogWriter();
+            logWriter.LogWrite("Creating CSV for the FC and Participating records.");
+
+            // Get the keys from the first opportunity's attributes
+            var keys = opportunities[0].Attributes.Keys;
+
+            // Create header map and rows
+            var headerRowMapForOptys = CreateHeaderMap(keys);
+            var csvContent = new StringBuilder();
+
+            // Build CSV content
+            csvContent.AppendLine(CreateHeaderRowForOpty(keys, headerRowMapForOptys));
+            csvContent.Append(CreateDataRowsForOpty(opportunities, headerRowMapForOptys));
+
+            // Save the CSV file
+            const string fileName = "ParticipatingRecords.csv";
+            File.WriteAllText(fileName, csvContent.ToString());
+
+            logWriter.LogWrite("Created CSV for the FC and Aggregated Columns.");
+        }
+
+        private static Dictionary<string, KeyValuePair<int, string>> CreateHeaderMap(ICollection<string> keys)
+        {
+            return keys
+                .Select((key, index) => new { key, index })
+                .ToDictionary(k => k.key, k => new KeyValuePair<int, string>(k.index, attributeDisplayNameMap[k.key]));
+        }
+
+        private static string CreateHeaderRowForOpty(ICollection<string> keys, Dictionary<string, KeyValuePair<int, string>> headerRowMapForOptys)
+        {
+            return string.Join(",", keys.Select(k => headerRowMapForOptys[k].Value));
+        }
+
+        private static string CreateDataRowsForOpty(Entity[] opportunities, Dictionary<string, KeyValuePair<int, string>> headerRowMapForOptys)
+        {
+            var dataRows = new StringBuilder();
+            var dictLength = headerRowMapForOptys.Count;
+
+            foreach (var opty in opportunities)
+            {
+                var values = new string[dictLength];
+
+                foreach (var kvp in opty.Attributes)
+                {
+                    var key = kvp.Key;
+                    var value = kvp.Value;
+                    var idx = headerRowMapForOptys[key].Key;
+
+                    if (value is OptionSetValue optionSetValue)
+                        values[idx] = optionSetValue.Value.ToString();
+                    else if (value is Money money)
+                        values[idx] = money.Value.ToString();
+                    else if (value is DateTime date)
+                        values[idx] = date.ToString("yyyy-MM-dd");
+                    else if (value is EntityReference entity)
+                        values[idx] = entity.Name;
+                    else if (value is AliasedValue aliasedValue)
+                        values[idx] = aliasedValue.Value.ToString();
+                    else if (value is Guid id)
+                        values[idx] = id.ToString();
+                    else if (value is string str)
+                        values[idx] = str;
+                    else
+                        values[idx] = string.Empty;
+
+                    if (key == "msdyn_forecastcategory")
+                        values[idx] = Constants.OpportunityCategories[values[idx]];
+
+                    if (key == "statecode")
+                        values[idx] = Constants.OpportunityState[values[idx]];
+
+                    if (key == "statuscode")
+                        values[idx] = Constants.OpportunityStatusReason[values[idx]];
+                }
+
+                dataRows.AppendLine(string.Join(",", values.Select(v => v != null && v.Contains(",") ? $"\"{v}\"" : v)));
+            }
+
+            return dataRows.ToString();
         }
 
         private static string CreateHeaderRow(List<ForecastConfigurationColumn> columns)
