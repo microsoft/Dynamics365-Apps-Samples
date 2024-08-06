@@ -90,6 +90,11 @@ namespace ForecastPublicApiUsageDemo
 
             forecastInstances = da.FetchFullFIList(fcsByName[0].ForecastConfigurationId, frResults[0].Id);
 
+            var participatingRecordsFetchXML = da.GetParticipatingRecordsFetchXML(fcsByName[0], frResults[0], forecastInstances[0]);
+            var entities = da.GetParticipatingRecords(participatingRecordsFetchXML);
+            LogWriter.GetLogWriter().LogWrite("Participating record fetch XMLs: " + participatingRecordsFetchXML);
+            UsecaseHelper.CreateCSVOfParticipatingRecords(entities);
+
             UtilityImpl.VerifyDataSet(forecastInstances, dataSet);
 
             UsecaseHelper.CreateCSVOfForecastInstances(fcsByName[0], forecastInstances);

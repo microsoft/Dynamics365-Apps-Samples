@@ -3,6 +3,7 @@ using ForecastPublicApiUsageDemo.Utility;
 using Microsoft.Dynamics.Forecasting.Common.Models;
 using Microsoft.Dynamics.Forecasting.Common.Models.ClientServices.UpdateSimpleColumnModels;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Query;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -31,8 +32,8 @@ namespace ForecastPublicApiUsageDemo.Forecasting
             {
                 string respJsonString = ExecuteCrmApiCustomAction(Constants.GET_ForecastConfigurations, "{}");
                 forecastConfigurationsList = JsonConvert.DeserializeObject<List<ForecastConfiguration>>(respJsonString);
-            } 
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 LogWriter.GetLogWriter().LogWrite("Something went wrong at GetFCList() API");
                 LogWriter.GetLogWriter().LogWrite(ex.Message);
@@ -51,7 +52,7 @@ namespace ForecastPublicApiUsageDemo.Forecasting
         {
             var reqObj = new FcByNameRequest()
             {
-               Name = fcName
+                Name = fcName
             };
 
             List<ForecastConfiguration> forecastConfigurationsList = new List<ForecastConfiguration>();
@@ -68,6 +69,95 @@ namespace ForecastPublicApiUsageDemo.Forecasting
             }
 
             return forecastConfigurationsList;
+
+        }
+
+        /// <summary>
+        /// This will use the API "GET_ParticipatingRecordsFetchXML"
+        /// to retrieve fetch xml to get participating records for a forecast configurtaion
+        /// </summary>
+        /// <param name="fcId">Forecast Configuration Id</param>
+        /// <returns></returns>
+        public string GetParticipatingRecordsFetchXML(ForecastConfiguration fc, ForecastRecurrence fr, ForecastInstance forecastInstance)
+        {
+            string fetchXML = "";
+
+            try
+            {
+                var hierarchyRecordId = new Guid(Constants.hierarchyRecordId);
+                var columnId = fc.Columns.First(col => col.UniqueName == Constants.columnUniqueName).ForecastConfigurationColumnId;
+                var recordViewId = GetRecordViewId(Constants.recordViewName);
+                var reqObj = new ParticipatingRecordFetchXMLRequest
+                {
+                    ForecastConfigurationId = fc.ForecastConfigurationId,
+                    ForecastPeriodId = fr.Id,
+                    HierarchyRecordId = hierarchyRecordId,
+                    ForecastInstanceId = forecastInstance.ForecastInstanceId,
+                    ForecastConfigurationColumnId = columnId,
+                    RecordViewId = new Guid(Constants.recordViewId),
+                    IsRolledUpNodeRequested = true
+                };
+
+                fetchXML = ExecuteCrmApiCustomAction(Constants.GET_ParticipatingRecordsFetchXML, reqObj);
+            }
+            catch (Exception ex)
+            {
+                LogWriter.GetLogWriter().LogWrite("Something went wrong at GetParticipatingRecordsFetchXML() API");
+                LogWriter.GetLogWriter().LogWrite(ex.Message);
+            }
+
+            return fetchXML;
+        }
+
+        public Guid GetRecordViewId(string name)
+        {
+            QueryExpression query = new QueryExpression("savedquery")
+            {
+                ColumnSet = new ColumnSet("savedqueryid"),
+                Criteria = new FilterExpression
+                {
+                    Conditions =
+                    {
+                        new ConditionExpression("name", ConditionOperator.Equal, name)
+                    }
+                },
+                TopCount = 1
+            };
+
+            // Execute the query
+            EntityCollection results = _organizationService.RetrieveMultiple(query);
+
+            // Process the results
+            if (results.Entities.Count > 0)
+            {
+                Entity savedQuery = results.Entities[0];
+                Guid savedQueryId = savedQuery.Id;
+                string queryName = savedQuery.GetAttributeValue<string>("name");
+
+                Console.WriteLine($"Saved Query ID: {savedQueryId}");
+                Console.WriteLine($"Query Name: {queryName}");
+                return savedQueryId;
+            }
+            else
+            {
+                Console.WriteLine("No saved query found with the specified name.");
+                return new Guid(Constants.recordViewId);
+            }
+        }
+
+        public Entity[] GetParticipatingRecords(string fetchXML)
+        {
+            try
+            {
+                EntityCollection entityCollection = _organizationService.RetrieveMultiple(new FetchExpression(fetchXML));
+                return entityCollection.Entities.Count != 0 ? entityCollection.Entities.ToArray() : null;
+            }
+            catch (Exception ex)
+            {
+                LogWriter.GetLogWriter().LogWrite("Something went wrong at GetParticipatingRecordsFetchXML() API");
+                LogWriter.GetLogWriter().LogWrite(ex.Message);
+                throw;
+            }
 
         }
 
@@ -89,7 +179,7 @@ namespace ForecastPublicApiUsageDemo.Forecasting
             {
                 string respJsonString = ExecuteCrmApiCustomAction(Constants.GET_FORECASTPERIODS_BY_FORECASTCONFIGID, reqObj);
                 forecastPeriods = JsonConvert.DeserializeObject<List<ForecastRecurrence>>(respJsonString);
-          
+
             }
             catch (Exception ex)
             {
