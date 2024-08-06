@@ -40,11 +40,10 @@ namespace ForecastPublicApiUsageDemo.Utility
         };
 
         // Usecase related Constants
-        public const string forecastConfigurationName = "TestFC-MB";
-        public const string forecastperiodName = "FY2024 Q3"; //E.g. FY2024 May
-        public const string recordViewId = "bf649add-6c30-ea11-a813-000d3a5475f7";
-        public const string recordViewName = "All Opportunities";//This should change according to the view you are expecting
-        public const string hierarchyRecordId = "08acc26c-0b49-ef11-accd-6045bd077f05";
-        public const string columnUniqueName = "pipeline";
+        public const string forecastConfigurationName = "Sample Forecast";
+        public const string forecastperiodName = "FY{0} {1}"; //E.g. FY2024 May
+        public const string recordViewId = "bf649add-6c30-ea11-a813-000d3a5475f7"; //Record view id for Opportunities Forecast View
+        public const string recordViewName = "Opportunities Forecast View";//This should change according to the view you are expecting
+        public const string columnUniqueName = "pipeline";//Simple column unique name
     }
 }

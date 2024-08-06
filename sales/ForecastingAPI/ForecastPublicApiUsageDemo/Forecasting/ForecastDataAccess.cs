@@ -84,7 +84,7 @@ namespace ForecastPublicApiUsageDemo.Forecasting
 
             try
             {
-                var hierarchyRecordId = new Guid(Constants.hierarchyRecordId);
+                var hierarchyRecordId = forecastInstance.HierarchyEntityRecord.RecordId;
                 var columnId = fc.Columns.First(col => col.UniqueName == Constants.columnUniqueName).ForecastConfigurationColumnId;
                 var recordViewId = GetRecordViewId(Constants.recordViewName);
                 var reqObj = new ParticipatingRecordFetchXMLRequest
