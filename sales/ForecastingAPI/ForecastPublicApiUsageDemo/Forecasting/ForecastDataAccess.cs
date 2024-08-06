@@ -94,7 +94,7 @@ namespace ForecastPublicApiUsageDemo.Forecasting
                     HierarchyRecordId = hierarchyRecordId,
                     ForecastInstanceId = forecastInstance.ForecastInstanceId,
                     ForecastConfigurationColumnId = columnId,
-                    RecordViewId = new Guid(Constants.recordViewId),
+                    RecordViewId = recordViewId,
                     IsRolledUpNodeRequested = true
                 };
 
@@ -149,7 +149,7 @@ namespace ForecastPublicApiUsageDemo.Forecasting
             else
             {
                 Console.WriteLine("No saved query found with the specified name.");
-                return new Guid(Constants.recordViewId);
+                return new Guid("bf649add-6c30-ea11-a813-000d3a5475f7"); //Default record view id for Opportunities Forecast View
             }
         }
 
