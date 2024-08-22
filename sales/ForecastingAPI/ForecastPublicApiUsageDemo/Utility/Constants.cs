@@ -42,7 +42,7 @@ namespace ForecastPublicApiUsageDemo.Utility
         // Usecase related Constants
         public const string forecastConfigurationName = "Sample Forecast";
         public const string forecastperiodName = "FY{0} {1}"; //E.g. FY2024 May
-        public const string recordViewName = "Opportunities Forecast View";//This should change according to the view you are expecting
+        public const string participatingRecordsViewName = "Opportunities Forecast View";//This should change according to the view you are expecting
         public const string columnUniqueName = "pipeline";//Simple column unique name
     }
 }
