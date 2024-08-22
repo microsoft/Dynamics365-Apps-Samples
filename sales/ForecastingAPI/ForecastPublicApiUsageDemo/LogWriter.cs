@@ -9,22 +9,20 @@ namespace ForecastPublicApiUsageDemo
         private string LogFolderPath = string.Empty;
         private string CurrentLogFile = string.Empty;
         private static LogWriter logger;
-        
-        private static Boolean enableConsolePrint = true;
 
         private LogWriter()
         {
             string format = "Mddyyyyhhmmsstt";
             string _fileName = string.Format("{0}.log", DateTime.Now.ToString(format));
             LogFolderPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            CurrentLogFile = string.Format("{0}\\{1}",LogFolderPath,_fileName);
+            CurrentLogFile = string.Format("{0}\\{1}", LogFolderPath, _fileName);
             Console.WriteLine($"Log will be at: {CurrentLogFile}");
         }
 
-        public void LogWrite(string logMessage)
+        public void LogWrite(string logMessage, bool enableConsolePrint = true)
         {
             try
-            {   
+            {
                 if (enableConsolePrint)
                 {
                     Console.WriteLine(logMessage);

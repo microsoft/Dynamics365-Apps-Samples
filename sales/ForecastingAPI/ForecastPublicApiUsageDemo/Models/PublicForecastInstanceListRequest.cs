@@ -10,12 +10,16 @@ namespace Microsoft.Dynamics.Forecasting.Common.Models
     /// Siguature of request arguments for "GetFiList" API method
     /// </summary>
 	public class PublicForecastInstanceListRequest
-	{
-		public Guid ForecastPeriodId { get; set; }
+    {
+        public Guid ForecastPeriodId { get; set; }
 
-		public Guid ForecastConfigurationId { get; set; }
+        public Guid ForecastConfigurationId { get; set; }
 
-		public PageInfo PageInfo { get; set; }
+        public PageInfo PageInfo { get; set; }
 
-	}
+        public bool GetParticipatingRecordsFetchXml { get; set; }
+
+        public Guid? ParticipatingRecordsViewId { get; set; }
+
+    }
 }

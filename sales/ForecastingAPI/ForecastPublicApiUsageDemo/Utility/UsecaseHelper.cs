@@ -29,7 +29,7 @@ namespace ForecastPublicApiUsageDemo.Utility
                                                                 };
         public static void CreateCSVOfForecastInstances(ForecastConfiguration forecastConfiguration, List<ForecastInstance> forecastInstances)
         {
-            LogWriter.GetLogWriter().LogWrite("Creating CSV for the FC and Aggregated Columns.");
+            LogWriter.GetLogWriter().LogWrite("Creating CSV for forecasts.");
             // Get all the columns from the forecast configuration
             List<ForecastConfigurationColumn> columns = forecastConfiguration.Columns;
 
@@ -42,16 +42,16 @@ namespace ForecastPublicApiUsageDemo.Utility
             var csvContent = headerRow + dataRows;
 
             // Save the CSV file in local disk
-            const string fileName = "Path.csv";
+            const string fileName = "Forecast.csv";
             File.WriteAllText(fileName, csvContent);
 
-            LogWriter.GetLogWriter().LogWrite("Created CSV for the FC and Aggregated Columns.");
+            LogWriter.GetLogWriter().LogWrite($"Created CSV file - {fileName}");
         }
 
-        public static void CreateCSVOfParticipatingRecords(Entity[] opportunities)
+        public static void CreateCSVOfParticipatingRecords(Entity[] opportunities, string fileName)
         {
             var logWriter = LogWriter.GetLogWriter();
-            logWriter.LogWrite("Creating CSV for the FC and Participating records.");
+            logWriter.LogWrite("Creating CSV for participating records.");
 
             // Get the keys from the first opportunity's attributes
             var keys = opportunities[0].Attributes.Keys;
@@ -64,11 +64,10 @@ namespace ForecastPublicApiUsageDemo.Utility
             csvContent.AppendLine(CreateHeaderRowForOpty(keys, headerRowMapForOptys));
             csvContent.Append(CreateDataRowsForOpty(opportunities, headerRowMapForOptys));
 
-            // Save the CSV file
-            const string fileName = "ParticipatingRecords.csv";
+            // Save the CSV file            
             File.WriteAllText(fileName, csvContent.ToString());
 
-            logWriter.LogWrite("Created CSV for the FC and Aggregated Columns.");
+            LogWriter.GetLogWriter().LogWrite($"Created CSV file - {fileName}");
         }
 
         private static Dictionary<string, KeyValuePair<int, string>> CreateHeaderMap(ICollection<string> keys)
@@ -133,21 +132,34 @@ namespace ForecastPublicApiUsageDemo.Utility
 
         private static string CreateHeaderRow(List<ForecastConfigurationColumn> columns)
         {
-            return "HierarchyRecordId," + string.Join(",", columns.Select(c => c.DisplayName).ToArray()) + "\n";
+            return $"HierarchyRecordId,IsGroupRow,${string.Join(",", columns.Select(c => c.DisplayName).ToArray())}\n";
         }
 
         private static string CreateDataRows(List<ForecastConfigurationColumn> columns, List<ForecastInstance> forecastInstances)
         {
-            string dataRows = "";
+            var dataRows = new StringBuilder();
             foreach (ForecastInstance forecastInstance in forecastInstances)
             {
-                var fiColumns = GetForecastInstanceColumns(forecastInstance);
+                var fiColumns = GetForecastInstanceColumnValues(forecastInstance.AggregatedColumns);
                 Guid recordId = forecastInstance.HierarchyEntityRecord.RecordId;
                 string columnData = string.Join(",", columns.Select(c => GetColumnValue(c, fiColumns)).ToArray());
-                dataRows += $"{recordId},{columnData}\n";
+                dataRows.AppendFormat($"{recordId},false,{columnData}\n");
+
+                // check whether current fi is group node or not and create row for rolled up data if it is group node.
+                var isGroupNode = forecastInstances.Exists(fi => fi.ParentInstanceId.Equals(forecastInstance.ForecastInstanceId));
+                var isRootForecastInstance = forecastInstance.ParentInstanceId.Equals(Guid.Empty);
+                if (isGroupNode || isRootForecastInstance)
+                {
+                    fiColumns = GetForecastInstanceColumnValues(forecastInstance.RolledUpColumns);
+                    if (fiColumns != null)
+                    {
+                        var rolledUpColumnData = string.Join(",", columns.Select(c => GetColumnValue(c, fiColumns)).ToArray());
+                        dataRows.AppendFormat($"{recordId},true,{rolledUpColumnData}\n");
+                    }
+                }
             }
 
-            return dataRows;
+            return dataRows.ToString();
         }
 
         private static string GetColumnValue(ForecastConfigurationColumn column, Dictionary<Guid, string> fiColumns)
@@ -155,9 +167,9 @@ namespace ForecastPublicApiUsageDemo.Utility
             return fiColumns.ContainsKey(column.ForecastConfigurationColumnId) ? fiColumns[column.ForecastConfigurationColumnId] : "";
         }
 
-        private static Dictionary<Guid, string> GetForecastInstanceColumns(ForecastInstance forecastInstance)
+        private static Dictionary<Guid, string> GetForecastInstanceColumnValues(List<ForecastInstanceColumn> fiColumns)
         {
-            return forecastInstance.AggregatedColumns.ToDictionary(c => c.ForecastConfigurationColumnId, c => string.IsNullOrEmpty(c.DisplayValue) ? c.Value.ToString() : c.DisplayValue);
+            return fiColumns?.ToDictionary(c => c.ForecastConfigurationColumnId, c => string.IsNullOrEmpty(c.DisplayValue) ? c.Value.ToString() : c.DisplayValue);
         }
     }
 }
