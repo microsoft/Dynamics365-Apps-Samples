@@ -79,9 +79,9 @@ namespace ForecastPublicApiUsageDemo.Forecasting
         /// <param name="forecastConfigurationId">Forecast Configuration Id</param>
         /// /// <param name="forecastRecurrenceId">Forecast Recurrence Id</param>
         /// /// <param name="hierarchyRecordId">Hierarchy Record Id</param>
-        /// <param name="columnId">Forecast Column Id</param>
+        /// <param name="columnId">Forecast Column Id.</param>
         /// <returns></returns>
-        public string GetParticipatingRecordsFetchXML(Guid forecastConfigurationId, Guid forecastRecurrenceId, Guid hierarchyRecordId, Guid forecastInstanceId, Guid columnId)
+        public string GetParticipatingRecordsFetchXML(Guid forecastConfigurationId, Guid forecastRecurrenceId, Guid hierarchyRecordId, Guid forecastInstanceId, Guid? columnId)
         {
             string fetchXML = string.Empty;
             try
@@ -93,10 +93,14 @@ namespace ForecastPublicApiUsageDemo.Forecasting
                     ForecastPeriodId = forecastRecurrenceId,
                     HierarchyRecordId = hierarchyRecordId,
                     ForecastInstanceId = forecastInstanceId,
-                    ForecastConfigurationColumnId = columnId, //Note: Column Id can be skipped for fetching data across all columns
                     RecordViewId = recordViewId,
                     IsRolledUpNodeRequested = true
                 };
+
+                if (columnId != null)
+                {
+                    reqObj.ForecastConfigurationColumnId = columnId.Value; //Note: Column Id can be skipped for fetching data across all columns
+                }
 
                 fetchXML = ExecuteCrmApiCustomAction(Constants.GET_ParticipatingRecordsFetchXML, reqObj);
             }
@@ -234,8 +238,8 @@ namespace ForecastPublicApiUsageDemo.Forecasting
                     var fiResponse = JsonConvert.DeserializeObject<FetchForecastInstanceListServiceResponse>(respJsonString);
                     forecastInstances.AddRange(fiResponse.ForecastInstances);
 
-                    LogWriter.GetLogWriter().LogWrite($"Current Size: {forecastInstances.Count()}, HasMorePages: {fiResponse.HasMorePages}, Last FI fetched: {forecastInstances[forecastInstances.Count - 1].ForecastInstanceId}", false);
-                    if (fiResponse.HasMorePages == false)
+                    LogWriter.GetLogWriter().LogWrite($"Current Size: {forecastInstances.Count}, HasMorePages: {fiResponse.HasMorePages}, Last FI fetched: {forecastInstances[forecastInstances.Count - 1].ForecastInstanceId}", false);
+                    if (!fiResponse.HasMorePages)
                     {
                         break;
                     }
@@ -297,8 +301,8 @@ namespace ForecastPublicApiUsageDemo.Forecasting
 
                     forecastInstances.AddRange(fiResponse.ForecastInstances);
 
-                    LogWriter.GetLogWriter().LogWrite($"Current Size: {forecastInstances.Count()}, HasMorePages: {fiResponse.HasMorePages}, Last FI fetched: {forecastInstances[forecastInstances.Count - 1].ForecastInstanceId}", false);
-                    if (fiResponse.HasMorePages == false)
+                    LogWriter.GetLogWriter().LogWrite($"Current Size: {forecastInstances.Count}, HasMorePages: {fiResponse.HasMorePages}, Last FI fetched: {forecastInstances[forecastInstances.Count - 1].ForecastInstanceId}", false);
+                    if (!fiResponse.HasMorePages)
                     {
                         break;
                     }
