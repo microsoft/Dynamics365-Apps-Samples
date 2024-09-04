@@ -23,20 +23,30 @@ The sample lets you:
 - Retrieve all the forecast periods for the active forecast configuration Id, that is provided as part of the request payload.
 - Retrieve the list of forecast instances that are a single row entity record.
 - Update the specific column values using the values of the passed parameters.
-- Creates a csv file showing the forecast values
+- Retrieve participating records for a forecast instance and export as a csv file named ParticipatingRecords_ForSingleForecastInstance.csv.
+- Retrieve all forecast instances and their participating records and export as csv files named Forecast.csv and ParticipatingRecords_ForForecast.csv respectively.
 
 ## How this sample works
 
 In order to simulate the scenario described in [What this sample does](#what-this-sample-does), the sample will retrieve and update the forecasting data. You will need to create sample forecasting data to run this sample code. The sample adds a new column namely `Quota` to the forecasting data. The changes can be reverted manually through the UI.
 
-The sample also creates a csv file that shows record id, record name and the values of the columns that are configured. The values are the forecast values for the configuration and the recurrence period mentioned in step 3 of [How to run this sample](#how-to-run-this-sample).
+Below are sample csv formats for forecasts and participating records created in the last two steps. The values are the forecast values for the configuration and the recurrence period mentioned in step 3 of [How to run this sample](#how-to-run-this-sample).
 
-Below is a sample csv file that was created.
+Forecasts.csv
+HierarchyRecordId,IsGroupRow,$User,Quota,Won,Best case,Committed,Pipeline,Forecast,Prediction
+34bfa932-425a-ef11-bfe2-6045bd0a9aca,false,Dustin Ochs,0,0,0,0,5000,0,0
+c142f379-f856-ef11-bfe3-000d3a5b3e08,false,Kenny Smith,0,0,0,0,20000,0,0
+c142f379-f856-ef11-bfe3-000d3a5b3e08,true,Kenny Smith,0,0,0,0,25000,0,0
 
-HierarchyRecordId,User,Quota,Won,Best case,Committed,Pipeline,Forecast,Prediction
-482da819-4336-ef11-a317-000d3a5a9882,Kenny Smith,0,0,2550,6107,16586,6107,0
-5a74b9d7-fc37-ef11-a316-000d3a34d462,Dustin Ochs,0,0,0,11949,3583,11949,0
-6974b9d7-fc37-ef11-a316-000d3a34d462,Millard Lamontagne,0,0,9575,12180,9869,12180,0
+ParticipatingRecords_ForForecast.csv
+Status,Actual Close Date,Status Reason,Currency,Forecast category,Potential Customer,Owner,Est. close date,System User,Opportunity,Topic,Est. revenue
+Open,2024-08-14,InProgress,US Dollar,Pipeline,"Fabrikam, Inc. (sample)",Dustin Ochs,2024-08-23,34bfa932-425a-ef11-bfe2-6045bd0a9aca,71c467a4-4a5a-ef11-bfe2-6045bd07d9e5,6 orders of Product SKU JJ202 (sample),5000.0000000000
+Open,2024-08-14,InProgress,US Dollar,Pipeline,Blue Yonder Airlines (sample),Kenny Smith,2024-08-23,c142f379-f856-ef11-bfe3-000d3a5b3e08,73c467a4-4a5a-ef11-bfe2-6045bd07d9e5,Needs to restock their supply of Product SKU AX305; will purchase at least 25-50 (sample),5000.0000000000
+Open,2024-08-14,InProgress,US Dollar,Pipeline,Contoso Pharmaceuticals (sample),Kenny Smith,2024-08-23,c142f379-f856-ef11-bfe3-000d3a5b3e08,77c467a4-4a5a-ef11-bfe2-6045bd07d9e5,They sell many of the same items that we do - need to follow up (sample),5000.0000000000
+Open,2024-08-14,InProgress,US Dollar,Pipeline,Alpine Ski House (sample),Kenny Smith,2024-08-23,c142f379-f856-ef11-bfe3-000d3a5b3e08,79c467a4-4a5a-ef11-bfe2-6045bd07d9e5,Very likely will order 18 Product SKU JJ202 this year (sample),5000.0000000000
+Open,2024-08-14,InProgress,US Dollar,Pipeline,Coho Winery (sample),Kenny Smith,2024-08-23,c142f379-f856-ef11-bfe3-000d3a5b3e08,7dc467a4-4a5a-ef11-bfe2-6045bd07d9e5,Will be ordering about 110 items of all types (sample),5000.0000000000
+
+
 
 ### Demonstrate
 
