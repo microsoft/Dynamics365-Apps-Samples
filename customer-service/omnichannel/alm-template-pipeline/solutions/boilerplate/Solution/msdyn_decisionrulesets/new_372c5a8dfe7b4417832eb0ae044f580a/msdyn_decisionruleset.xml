@@ -1,0 +1,19 @@
+<msdyn_decisionruleset msdyn_uniquename="new_372c5a8dfe7b4417832eb0ae044f580a">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_authoringmode>192350000</msdyn_authoringmode>
+  <msdyn_inputcontractid>
+    <msdyn_uniquename>msdyn_894c6fd0_1125_4588_a1c0_52279bbc387a</msdyn_uniquename>
+  </msdyn_inputcontractid>
+  <msdyn_isinputcollection>0</msdyn_isinputcollection>
+  <msdyn_name default="ALM Chat Work Classification">
+    <label description="ALM Chat Work Classification" languagecode="1033" />
+  </msdyn_name>
+  <msdyn_outputcontractid>
+    <msdyn_uniquename>msdyn_894c6fd0_1125_4588_a1c0_52279bbc387a</msdyn_uniquename>
+  </msdyn_outputcontractid>
+  <msdyn_persistoutputdata>0</msdyn_persistoutputdata>
+  <msdyn_refreshinputdata>0</msdyn_refreshinputdata>
+  <msdyn_rulesettype>192350000</msdyn_rulesettype>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</msdyn_decisionruleset>

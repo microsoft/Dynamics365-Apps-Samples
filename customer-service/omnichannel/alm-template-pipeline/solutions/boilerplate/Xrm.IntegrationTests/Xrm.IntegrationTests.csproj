@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{64192E87-5D05-4292-A485-587CFCFA7860}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFramework>net472</TargetFramework>
+    <TestProjectType>UnitTest</TestProjectType>
+    <ExcludeXUnit>true</ExcludeXUnit>
+    <ExcludeTestCommon>true</ExcludeTestCommon>
+    <ExcludeTestSdk>true</ExcludeTestSdk>
+    <ExcludeKernelContracts>true</ExcludeKernelContracts>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(WSRoot)\build\config\component.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.ServerTests" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="MSTest.TestAdapter" />
+    <PackageReference Include="MSTest.TestFramework" />
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" />
+    <PackageReference Include="StyleCop.MSBuild" />
+    <PackageReference Include="Microsoft.Xrm.Tools.Sdk.CDSConnection" />    
+    <PackageReference Include="Microsoft.XrmTestFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Tests\boilerplateIntegrationTests.cs" />
+    <Compile Include="Framework\IntegrationTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{1609da28-3e03-4d48-ba4b-9550869f6276}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestCommon\TestCommon.csproj">
+      <Project>{3d043c43-31ad-40ae-9955-eadc768c78ce}</Project>
+      <Name>TestCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="..\..\..\build\config\mssharedlibsn1024.snk">
+      <Link>mssharedlibsn1024.snk</Link>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.Build.NoTargets">
+  <PropertyGroup>
+    <PowerAppsTargetsPath>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\PowerApps</PowerAppsTargetsPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Name>boilerplate</Name>
+    <ProjectGuid>0f330d64-cac2-403f-9ccc-efbf554b6091</ProjectGuid>
+    <TargetFramework>net48</TargetFramework>
+    <MakeCab>true</MakeCab>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ApplicationFolder>$(WSRoot)\solutions\boilerplate</ApplicationFolder>
+    <SolutionProjectNamePrefix>boilerplate</SolutionProjectNamePrefix>
+    <SolutionFileNamePrefix>msdyn_boilerplate</SolutionFileNamePrefix>
+    <!-- Used by the PowerApps.MSBuild.Solution targets to know where your solution files are -->
+    <SolutionRootPath>.</SolutionRootPath>
+    <SolutionFolder>$(ApplicationFolder)\Solution</SolutionFolder>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SolutionPackageType>Both</SolutionPackageType>
+    <!-- This points solution packager to your packageMap file for referecing plugin dlls or web resrouces -->
+    <SolutionPackageMapFilePath>$(ApplicationFolder)\packageMap.xml</SolutionPackageMapFilePath>
+    <SolutionPackageLogFilePath>$(ApplicationFolder)\$(SolutionFileNamePrefix)_packager.log</SolutionPackageLogFilePath>
+    <SolutionPackageZipFilePath>$(SolutionOutputPath)\$(SolutionFileNamePrefix).zip</SolutionPackageZipFilePath>
+    <SolutionPackageEnableLocalization>$(EnableLocalization)</SolutionPackageEnableLocalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerApps.MSBuild.Solution" />
+    <!-- Interal tooling package to aid in solution packaging, versioning, and .cab production 
+      See ADO wiki page here: https://dynamicscrm.visualstudio.com/OneCRM/_wiki/wikis/OneCRM.wiki/26040/Common-target-files-and-the-XRMSolutions.Tools-NuGet-Package
+    -->
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.SolutionPackager" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\bin\**" />
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\obj\**" />
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\*.cdsproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)\**" Exclude="@(ExcludeDirectories)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- Documentation: This block is an example of how to link a PCF control project into the solution -->
+  <!--
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Controls\boilerplateControl\boilerplateControl.pcfproj">
+      <Project>f335ef75-d67b-4523-93ba-9f02a51fd21a</Project>
+      <Name>boilerplateControl</Name>
+      <Targets>Build</Targets>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <OutputItemType>Content</OutputItemType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  -->
+  
+  <!-- Documentation: Example of including a pre-built PCF control -->
+  <!--
+  <ItemGroup>
+    <ProjectReference Include="SecondboilerplateControl.csproj">
+       <Project>76731E6A-F488-4AAD-99F5-E04D4345BDE3</Project>
+       <Name>SecondboilerplateControl</Name>
+       <Targets>Build</Targets>
+       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+       <OutputItemType>Content</OutputItemType>
+    </ProjectReference>
+  </ItemGroup>
+  -->
+
+  <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.targets" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.targets')" />
+</Project>

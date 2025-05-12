@@ -1,0 +1,17 @@
+{
+    "files": [
+		"../../references/internal/TypeDefinitions/XrmClientApi/XrmClassicWebClientApi.d.ts",
+		"../../references/external/TypeDefinitions/microsoft.ajax.d.ts",
+		"../../references/external/TypeDefinitions/lib.es6.d.ts",
+		"../../references/external/TypeDefinitions/whatwg-fetch.d.ts"
+	],
+	"exclude": [
+		"node_modules"
+	],
+    "compilerOptions": {
+		"noImplicitAny":  true,
+		"noEmitOnError": true,
+      	"target": "es5",
+      	"skipLibCheck": true
+    }
+}

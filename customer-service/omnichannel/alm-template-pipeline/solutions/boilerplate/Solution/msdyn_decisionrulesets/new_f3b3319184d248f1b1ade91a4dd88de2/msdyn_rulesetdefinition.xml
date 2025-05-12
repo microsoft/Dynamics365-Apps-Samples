@@ -1,0 +1,17 @@
+<decision hit-policy="all" version="1">
+  <rules>
+    <rule id="9ec5f0f9-504f-40b7-8e66-f0c3dfe47084" name="ALM Test Chat Route-to-queues Rule">
+      <logical operator="AND">
+        <condition operator="not-null">
+          <lhs type="attribute">msdyn_ocliveworkitem.msdyn_createdon</lhs>
+        </condition>
+      </logical>
+      <action>
+        <setattribute>
+          <lhs type="attribute">assign_to.queue</lhs>
+          <rhs type="staticvalue">bbc3a88b-901f-f011-9989-00224803a19b</rhs>
+        </setattribute>
+      </action>
+    </rule>
+  </rules>
+</decision>

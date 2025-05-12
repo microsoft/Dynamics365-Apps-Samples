@@ -1,0 +1,54 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <GlobalPackageReference Include="Dynamics.Solutions.Tools.CoreBuild" Version="1.1.26" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- build dependencies -->
+    <PackageVersion Include="Crm.MSBuild.ILMerge.Task" Version="1.0.5" as="PKG_MSBUILD_ILMERGE_TASK" />
+    <PackageVersion Include="Crm.ClientApiTypings" Version="1.4.3104-master" />
+    <PackageVersion Include="ILMerge" Version="2.14.1208" as="PKG_ILMERGE" />
+    <PackageVersion Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" as="PKG_MSBUILD_ILREPACK_TASK" />
+    <PackageVersion Include="LsBuild.Corext" Version="6.12.4929.5" />
+    <PackageVersion Include="Dynamics.Solutions.Tools.Targets.AssemblyAutoVersion" Version="2.0.57" />
+    <PackageVersion Include="Dynamics.Solutions.Tools.Targets.BuildExtensions" Version="1.1.52" />
+    <PackageVersion Include="Dynamics.Solutions.Tools.Targets.ControlManifestAutoVersion" Version="2.0.57" />
+    <PackageVersion Include="Dynamics.Solutions.Tools.Targets.DeploymentPackage" Version="2.0.57" />
+    <PackageVersion Include="Dynamics.Solutions.Tools.Targets.PackageAutoVersion" Version="2.0.57" />
+    <PackageVersion Include="Dynamics.Solutions.Tools.Targets.PluginResources" Version="1.1.52" />
+    <PackageVersion Include="Dynamics.Solutions.Tools.Targets.TypeScript" Version="1.1.20" />
+    <!-- Internal tooling package for doing ILRepack tasks for plugins See ADO wiki page here: https://dynamicscrm.visualstudio.com/OneCRM/_wiki/wikis/OneCRM.wiki/26040/Common-target-files-and-the-XRMSolutions.Tools-NuGet-Package -->
+    <PackageVersion Include="Dynamics.Solutions.Tools.Targets.ILRepack" Version="1.1.48" />
+    <!-- Internal tooling package to aid in solution packaging, versioning, and .cab production See ADO wiki page here: https://dynamicscrm.visualstudio.com/OneCRM/_wiki/wikis/OneCRM.wiki/26040/Common-target-files-and-the-XRMSolutions.Tools-NuGet-Package -->
+    <PackageVersion Include="Dynamics.Solutions.Tools.Targets.SolutionPackager" Version="2.0.57" />
+    <PackageVersion Include="StyleCop.MSBuild" Version="6.1.0" as="PKG_STYLECOP" />
+    <PackageVersion Include="Microsoft.PowerApps.MSBuild.Plugin" Version="1.19.4" />
+    <PackageVersion Include="Microsoft.PowerApps.MSBuild.Solution" Version="1.20.3" />
+    <PackageVersion Include="Microsoft.PowerApps.MSBuild.Pcf" Version="1.19.4" />
+    <!-- Dependencies -->
+    <PackageVersion Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.48" as="PKG_CRMSDK_COREASSEMBLIES" />
+    <PackageVersion Include="Microsoft.CrmSdk.CoreTools" Version="9.1.0.82" as="PKG_CRMSDK_CORETOOLS" />
+    <PackageVersion Include="Microsoft.CrmSdk.Deployment" Version="9.0.2.28" as="PKG_CRMSDK_DEPLOYMENT" />
+    <PackageVersion Include="Microsoft.CrmSdk.UII.CommonAssemblies" Version="9.0.2.12" as="PKG_CRMSDK_UII" />
+    <PackageVersion Include="Microsoft.CrmSdk.Workflow" Version="9.0.2.28" as="PKG_CRMSDK_WORKFLOW" />
+    <PackageVersion Include="Microsoft.CrmSdk.XrmTooling.CoreAssembly" Version="9.1.0.63" as="PKG_CRMSDK_XRMTOOLING_COREASSEMBLY" />
+    <PackageVersion Include="Microsoft.CrmSdk.XrmTooling.PackageDeployment" Version="9.1.0.46" as="PKG_CRMSDK_XRMTOOLING_DEPLOYMENT" />
+    <PackageVersion Include="Microsoft.IdentityModel" Version="6.1.7600.16394" targetFramework="net452" as="PKG_IDENTITY_MODEL" />
+    <PackageVersion Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.19.8" as="PKG_ADAL" />
+    <PackageVersion Include="Microsoft.Rest.ClientRuntime" Version="2.3.24" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" as="PKG_JSON" />
+    <PackageVersion Include="System.Runtime" Version="4.3.1" />
+    <PackageVersion Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+    <PackageVersion Include="System.Security.Cryptography.X509Certificates" Version="4.3.2" />
+    <!-- Test dependencies -->
+    <PackageVersion Include="Moq" Version="4.13.1" />
+    <PackageVersion Include="Dynamics.Solutions.Tools.Targets.ServerTests" Version="1.0.0.1" />
+    <PackageVersion Include="FluentAssertions" Version="4.18.0" />
+    <PackageVersion Include="MSTest.TestAdapter" Version="2.1.2" />
+    <PackageVersion Include="MSTest.TestFramework" Version="2.1.2" />
+    <PackageVersion Include="Microsoft.Xrm.Tools.Sdk.CDSConnection" Version="1.0.0.5" />
+    <PackageVersion Include="Microsoft.XrmTestFramework" Version="0.1.242" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.Build.Traversal">
+  <PropertyGroup>
+    <BuildInParallel>false</BuildInParallel>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="Solution\boilerplateSolution.csproj"/>
+    <ProjectReference Include="Anchor\boilerplateAnchorSolution.csproj"/>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+variables:
+  - name: AppName
+    value: boilerplateApp
+  - name: ApplicationName
+    value: boilerplate
+  # Name of the DLL inside Drop\debug\AnyCPU\PDPackages
+  - name: PackageName
+    value: 'Microsoft.Dynamics.boilerplate.PackageExtension.dll'
+  # The name of the artifact built to Drop\debug\AnyCPU\PDPackages
+  - name: PDPackageFile
+    value: 'boilerplate.PackageDeployer.zip'
+  # Name of the csproj at solutions\<App>\Solution
+  - name: SolutionName
+    value: 'boilerplateSolution'

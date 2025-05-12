@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.Build.NoTargets">
+  <PropertyGroup>
+    <Name>boilerplateAnchor</Name>
+    <TargetFramework>net48</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SolutionFileNamePrefix>msdyn_boilerplateAnchor</SolutionFileNamePrefix>
+    <ApplicationFolder>$(WSRoot)solutions\boilerplate</ApplicationFolder>
+    <SolutionFolder>$(ApplicationFolder)\Anchor</SolutionFolder>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SolutionPackageType>Both</SolutionPackageType>
+    <SolutionPackageLogFilePath>$(ApplicationFolder)\$(SolutionFileNamePrefix)_packager.log</SolutionPackageLogFilePath>
+    <SolutionPackageZipFilePath>$(SolutionOutputPath)\$(SolutionFileNamePrefix).zip</SolutionPackageZipFilePath>
+    <SolutionPackageEnableLocalization>$(EnableLocalization)</SolutionPackageEnableLocalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerApps.MSBuild.Solution" />
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.SolutionPackager" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\bin\**" />
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\obj\**" />
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\*.cdsproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)\**" Exclude="@(ExcludeDirectories)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

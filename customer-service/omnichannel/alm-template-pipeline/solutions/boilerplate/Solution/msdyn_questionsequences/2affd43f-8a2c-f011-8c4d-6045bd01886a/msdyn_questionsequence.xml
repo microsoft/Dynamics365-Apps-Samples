@@ -1,0 +1,14 @@
+<msdyn_questionsequence msdyn_questionsequenceid="2affd43f-8a2c-f011-8c4d-6045bd01886a">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_chatengagementtochatsequenceid>
+    <msdyn_livechatconfigid>045af637-8a2c-f011-8c4d-6045bd01886a</msdyn_livechatconfigid>
+  </msdyn_chatengagementtochatsequenceid>
+  <msdyn_chatquestionnairetype>192350001</msdyn_chatquestionnairetype>
+  <msdyn_questionrequired>0</msdyn_questionrequired>
+  <msdyn_surveyquestion>
+    <msdyn_surveyquestionid>1bffd43f-8a2c-f011-8c4d-6045bd01886a</msdyn_surveyquestionid>
+  </msdyn_surveyquestion>
+  <sequencenumber>1</sequencenumber>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</msdyn_questionsequence>

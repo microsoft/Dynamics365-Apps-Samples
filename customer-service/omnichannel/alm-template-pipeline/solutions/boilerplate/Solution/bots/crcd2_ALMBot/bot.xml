@@ -1,0 +1,35 @@
+<bot schemaname="crcd2_ALMBot">
+  <authenticationmode>1</authenticationmode>
+  <authenticationtrigger>0</authenticationtrigger>
+  <iscustomizable>1</iscustomizable>
+  <language>1033</language>
+  <name>ALMBot</name>
+  <runtimeprovider>0</runtimeprovider>
+  <synchronizationstatus>{
+  "$kind": "BotSynchronizationDetails",
+  "contentVersion": 2,
+  "currentSynchronizationState": {
+    "$kind": "SynchronizationState",
+    "botRegistration": {
+      "$kind": "BotRegistrationDetails",
+      "botRegistrationIdConsumptionTime": "2025-05-09T03:57:54Z",
+      "applicationId": "77a44302-345a-45d9-8a2d-6f3a38ddcd72",
+      "isAppAvailableInTenant": true
+    },
+    "provisioningStatus": "Provisioned",
+    "state": "Synchronized",
+    "channels": [
+      {
+        "$kind": "SynchronizedChannel",
+        "channelName": "Omnichannel"
+      },
+      {
+        "$kind": "SynchronizedChannel",
+        "channelName": "Telephony"
+      }
+    ]
+  },
+  "lastSynchronizedOnUtc": "2025-05-09T03:59:15.268194Z"
+}</synchronizationstatus>
+  <template>omnichannel-ivr-1.0.0</template>
+</bot>

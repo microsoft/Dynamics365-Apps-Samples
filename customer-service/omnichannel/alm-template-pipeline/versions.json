@@ -1,0 +1,33 @@
+{
+  "serviceId": "2ebe5c78-37b5-4ada-9707-16f310e03863",
+  "artifacts": [
+    {
+      "name": "Microsoft.Dynamics.XrmSolutions.boilerplatePackage",
+      "series": "1.0.0.0",
+      "strategy": "increment"
+    },
+    {
+      "name": "Microsoft.Dynamics.boilerplate.PackageExtension",
+      "inherit": "Microsoft.Dynamics.XrmSolutions.boilerplatePackage"
+    },
+    {
+      "name": "msdyn_boilerplateAnchor",
+      "inherit": "Microsoft.Dynamics.XrmSolutions.boilerplatePackage"
+    },
+    {
+      "name": "msdyn_boilerplate",
+      "series": "1.0.0.0",
+      "strategy": "increment"
+    },
+    {
+      "name": "boilerplateControl.boilerplateControl",
+      "series": "1.0.1",
+      "strategy": "increment"
+    },
+    {
+      "name": "SecondboilerplateControl.SecondboilerplateControl",
+      "series": "1.0.1",
+      "strategy": "increment"
+    }
+  ]
+}

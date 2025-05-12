@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{1ff66a9d-66bb-420c-919c-d32031b0b1c8}</ProjectGuid>
+    <ProjectTypeGuids>{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>boilerplate.Client.UnitTests</RootNamespace>
+    <AssemblyName>boilerplate.Client.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFramework>net472</TargetFramework>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+    <NoWarn>2008</NoWarn>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(BuildConfiguration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(BuildConfiguration)' == 'Release'">
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.TypeScript" IncludeAssets="none" PrivateAssets="all" GeneratePathProperty="true" />
+  </ItemGroup>
+  <Import Project="$(PkgDynamics_Solutions_Tools_Targets_TypeScript)\build\TypeScriptCommonTypes.targets" />
+  <ItemGroup>
+    <None Include="chutzpah.json" />
+    <Content Include="tsconfig.json" />
+    <TypeScriptCompile Include="Common\boilerplateTest.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="@(TypeScriptCommonFile)" />
+    <TypeScriptCompile Include="@(TypeScriptTestFile)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Client\boilerplateWebResources.csproj">
+      <Project>{66c9d415-0635-4134-93cd-e667037f1c9e}</Project>
+      <Name>boilerplateWebResources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+</Project>

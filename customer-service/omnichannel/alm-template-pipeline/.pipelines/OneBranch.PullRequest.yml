@@ -1,0 +1,300 @@
+#################################################################################
+#                      OneBranch Pipelines - PR Build                           #
+# This pipeline was created by EasyStart from a sample located at:              #
+#   https://aka.ms/obpipelines/easystart/samples                                #
+# Documentation:  https://aka.ms/obpipelines                                    #
+# Yaml Schema:    https://aka.ms/obpipelines/yaml/schema                        #
+# Retail Tasks:   https://aka.ms/obpipelines/tasks                              #
+# Support:        https://aka.ms/onebranchsup                                   #
+#################################################################################
+
+trigger: # https://aka.ms/obpipelines/triggers
+  - main
+
+parameters: # parameters are shown up in ADO UI in a build queue time
+  - name: 'debug'
+    displayName: 'Enable debug output'
+    type: boolean
+    default: false
+
+variables:
+  - template: /YAMLBuilds/variables/common-build-variables.yml@tools
+  - template: /common/variables/common-canonical-build-variables.yml@tools
+  - template: /common/variables/common-onebranch-variables.yml@tools
+  - template: variables/PRBuild.Variables.yml
+
+resources:
+  repositories:
+    - repository: tools
+      type: git
+      name: OneCRM/CRM.Solutions.Tools.Pipelines
+      ref: master-onebranch
+    - repository: d365shared
+      type: git
+      name: OneCRM/D365.Shared
+      ref: main
+
+extends:
+  template: /.pipelines/templates/canonical_build/v2/NonOfficial.yml@d365shared
+  parameters:
+    featureFlags:
+      WindowsHostVersion: 1ESWindows2022
+    globalSdl: # https://aka.ms/obpipelines/sdl
+      tsa:
+        enabled: false # onebranch publish all sdl results to TSA. If TSA is disabled all SDL tools will forced into 'break' build mode.
+      # credscan:
+      #   suppressionsFile: $(Build.SourcesDirectory)\.config\CredScanSuppressions.json
+      binskim:
+        break: true # always break the build on binskim issues. You can disable it by setting to 'false'
+      policheck:
+        break: true # always break the build on policheck issues. You can disable it by setting to 'false'
+      # suppression:
+      #   suppressionFile: $(Build.SourcesDirectory)\.gdn\global.gdnsuppress
+    InputConfig:
+        AppName: $(AppName)
+        Resources:
+          - Type: PipelineArtifact
+            ArtifactName: drop_Solution_Build_Stage_SolutionBuild
+            Alias: BuiltSolutionArtifacts
+        SolutionBuild:
+          Enabled: true
+          UsePNPM: true
+        UnitTests:
+          RunClientUnitTests: false
+          RunServerUnitTests: true
+          TestAssembly: '**\*.UnitTests.dll'
+        SolutionChecker:
+          Enabled: true
+          Solutions:
+            - FilesToAnalyze: $(BuildConfiguration)\$(BuildPlatform)\Solutions\*_managed.cab
+              ResourceAlias: BuiltSolutionArtifacts
+              RuleSetId: BE619000-BA92-4C4E-BE6E-767BE90AE8A5
+              RulesToOverride: '[{"Id":"meta-solution-strongname-general","OverrideLevel":"Informational"},{"Id":"web-use-strict-equality-operators","OverrideLevel":"Low"},{"Id":"web-avoid-dom-form","OverrideLevel":"Medium"}, {"Id":"meta-entity-attribute-appdefaultvalue","OverrideLevel":"Medium"},{"Id":"web-avoid-window-top","OverrideLevel":"Low"},{"Id":"web-avoid-dom-form-event","OverrideLevel":"Low"},{"Id":"web-do-not-make-parent-assumption","OverrideLevel":"Low"}]'
+        PowerPlatformServiceConnection: $(PowerPlatformServiceConnection)
+        Import:
+          Enabled: false
+          DelayOrgReleaseTimeInHours: 0
+          AuroraConfig:
+            AuroraAPIKey: $(AuroraAPIKeyValue)
+            AuroraAPISecret: $(AuroraAPISecret)
+          PreImportSteps:
+          PostImportActions:
+            - stage: Run_Integration_Tests
+              displayName: 'Run Integration Tests'
+              jobs:
+              - template: /YAMLBuilds/PR_Pipelines/jobs/Run-Integration-Tests.yml@tools
+                parameters:
+                    artifactName: drop_Solution_Build_Stage_SolutionBuild
+                    IntegrationTestsAssembly: '**\*.IntegrationTests.dll'
+                    jobDisplayName: 'Run Integration Tests'
+                    jobName: 'Integration_Tests'
+                    OptionalAuroraCleanupJob: 'true'
+                    testStageTimeout: 60
+                    testAssemblysearchFolder: '$(Build.ArtifactStagingDirectory)\App\debug\AnyCPU\Tests'
+                    testSettingsTargetDir: '$(Build.ArtifactStagingDirectory)\App\debug\AnyCPU\Tests'
+                    orgUrl: $(AuroraOrgUrl)
+                    orgUserName: $(crmUserName)
+                    orgPassword: $(crmPassword)
+          Bundles:
+            - Path: $(BuildConfiguration)\$(BuildPlatform)\PDPackages\$(PDPackageFile)
+              ResourceAlias: BuiltSolutionArtifacts
+              Type: "Package"
+
+    stages:
+    - stage: ImportToIntermediateOrg
+      dependsOn: Solution_Checker_Stage
+      jobs:
+      - job: Import
+        pool:
+          name: 1ES-windows-latest-dynamicscrm
+          type: windows
+        variables: # More settings at https://aka.ms/obpipelines/yaml/jobs
+              ob_outputDirectory: '$(REPOROOT)\out' # this directory is uploaded to pipeline artifacts, reddog and cloudvault. More info at https://aka.ms/obpipelines/artifacts
+              ob_sdl_binskim_break: false # https://aka.ms/obpipelines/sdl
+              ob_git_fetchDepth: 5000
+              ob_git_fetchTags: true
+              ob_git_fetchFilters: 'blob:none'
+              BuildConfiguration: 'debug'
+              ob_sdl_codeSignValidation_excludes: -|**\Tests\**\*.dll;-|**\*.js;-|**\*.zip\**\*.dll;-|**\*.exe #Exclude test dlls in the nuget package as well as bundle.js files
+        steps: 
+        - template: /.pipelines/steps/common-pipeline-steps.yml@self        
+        - template: /.pipelines/steps/cmt-configuration-import.yml@self
+          parameters:    
+              sourceOrgUrl: ${env:DEVORGURL}
+              destinationOrgUrl: ${env:BUILDORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              ConfigFileName: CMTSkillsConfig.xml
+              DataFileName: CMTSkillsDataExported.zip
+        - template: /.pipelines/steps/cmt-configuration-import.yml@self
+          parameters:    
+              sourceOrgUrl: ${env:DEVORGURL}
+              destinationOrgUrl: ${env:BUILDORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              ConfigFileName: CMTQueuesConfig.xml
+              DataFileName: CMTQueuesDataExported.zip
+        - template: /.pipelines/steps/queue-to-systemuser-linkage.yml@self
+          parameters:    
+              orgUrl: ${env:BUILDORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              TenantId: $(TenantId)
+        
+        - task: microsoft-IsvExpTools.PowerPlatform-BuildTools.import-solution.PowerPlatformImportSolution@2
+          inputs:
+            authenticationType: 'PowerPlatformSPN'
+            PowerPlatformSPN: $(Build Service Connection)
+            SolutionInputFile: '$(Build.ArtifactStagingDirectory)/drop/Debug/AnyCPU/Solutions/msdyn_boilerplate_managed.cab'
+            AsyncOperation: true
+            MaxAsyncWaitTime: '60'
+            ConvertToManaged: false
+
+        - template: /.pipelines/steps/workstream-to-bot-linkage.yml@self
+          parameters:    
+              orgUrl: ${env:BUILDORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              TenantId: $(TenantId)        
+
+    - stage: ApproveImportToPPEOrg
+      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+      dependsOn: ImportToIntermediateOrg
+      jobs:
+      - job: Manual_Approval_Common
+        displayName: "Approve Deployment of Common Ppe Infrastructure"
+        pool:
+          type: agentless
+        steps:
+        - task: ManualValidation@1
+          timeoutInMinutes: 60
+          inputs:
+            notifyUsers: mosheik@microsoft.com
+            onTimeout: reject
+    
+    - stage: ImportToPPEOrg
+      dependsOn: ApproveImportToPPEOrg
+      jobs:
+      - job: Import
+        pool:
+          name: 1ES-windows-latest-dynamicscrm
+          type: windows
+        variables: # More settings at https://aka.ms/obpipelines/yaml/jobs
+              ob_outputDirectory: '$(REPOROOT)\out' # this directory is uploaded to pipeline artifacts, reddog and cloudvault. More info at https://aka.ms/obpipelines/artifacts
+              ob_sdl_binskim_break: false # https://aka.ms/obpipelines/sdl
+              ob_git_fetchDepth: 5000
+              ob_git_fetchTags: true
+              ob_git_fetchFilters: 'blob:none'
+              BuildConfiguration: 'debug'
+              ob_sdl_codeSignValidation_excludes: -|**\Tests\**\*.dll;-|**\*.js;-|**\*.zip\**\*.dll;-|**\*.exe #Exclude test dlls in the nuget package as well as bundle.js files
+        steps:
+        - template: /.pipelines/steps/common-pipeline-steps.yml@self
+        - template: /.pipelines/steps/cmt-configuration-import.yml@self
+          parameters:    
+              sourceOrgUrl: ${env:BUILDORGURL}
+              destinationOrgUrl: ${env:PPEORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              ConfigFileName: CMTSkillsConfig.xml
+              DataFileName: CMTSkillsDataExported.zip
+        - template: /.pipelines/steps/cmt-configuration-import.yml@self
+          parameters:    
+              sourceOrgUrl: ${env:BUILDORGURL}
+              destinationOrgUrl: ${env:PPEORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              ConfigFileName: CMTQueuesConfig.xml
+              DataFileName: CMTQueuesDataExported.zip
+        - template: /.pipelines/steps/queue-to-systemuser-linkage.yml@self
+          parameters:    
+              orgUrl: ${env:PPEORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              TenantId: $(TenantId)
+        
+        - task: microsoft-IsvExpTools.PowerPlatform-BuildTools.import-solution.PowerPlatformImportSolution@2
+          inputs:
+            authenticationType: 'PowerPlatformSPN'
+            PowerPlatformSPN: $(PPE Service Connection)
+            SolutionInputFile: '$(Build.ArtifactStagingDirectory)/drop/Debug/AnyCPU/Solutions/msdyn_boilerplate_managed.cab'
+            AsyncOperation: true
+            MaxAsyncWaitTime: '60'
+            ConvertToManaged: false
+        
+        - template: /.pipelines/steps/workstream-to-bot-linkage.yml@self
+          parameters:    
+              orgUrl: ${env:PPEORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              TenantId: $(TenantId)
+
+    - stage: ApproveImportToProdOrg
+      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+      dependsOn: ImportToIntermediateOrg
+      jobs:
+      - job: Manual_Approval_Common
+        displayName: "Approve Deployment of Common Prod Infrastructure"
+        pool:
+          type: agentless
+        steps:
+        - task: ManualValidation@1
+          timeoutInMinutes: 60
+          inputs:
+            notifyUsers: mosheik@microsoft.com
+            onTimeout: reject
+    
+    - stage: ImportToProdOrg
+      dependsOn: ApproveImportToProdOrg
+      jobs:
+      - job: Import
+        pool:
+          name: 1ES-windows-latest-dynamicscrm
+          type: windows
+        variables: # More settings at https://aka.ms/obpipelines/yaml/jobs
+              ob_outputDirectory: '$(REPOROOT)\out' # this directory is uploaded to pipeline artifacts, reddog and cloudvault. More info at https://aka.ms/obpipelines/artifacts
+              ob_sdl_binskim_break: false # https://aka.ms/obpipelines/sdl
+              ob_git_fetchDepth: 5000
+              ob_git_fetchTags: true
+              ob_git_fetchFilters: 'blob:none'
+              BuildConfiguration: 'debug'
+              ob_sdl_codeSignValidation_excludes: -|**\Tests\**\*.dll;-|**\*.js;-|**\*.zip\**\*.dll;-|**\*.exe #Exclude test dlls in the nuget package as well as bundle.js files
+        steps:
+        - template: /.pipelines/steps/common-pipeline-steps.yml@self  
+        - template: /.pipelines/steps/cmt-configuration-import.yml@self
+          parameters:    
+              sourceOrgUrl: ${env:PPEORGURL}
+              destinationOrgUrl: ${env:PRODORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              ConfigFileName: CMTSkillsConfig.xml
+              DataFileName: CMTSkillsDataExported.zip
+        - template: /.pipelines/steps/cmt-configuration-import.yml@self
+          parameters:    
+              sourceOrgUrl: ${env:PPEORGURL}
+              destinationOrgUrl: ${env:PRODORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              ConfigFileName: CMTQueuesConfig.xml
+              DataFileName: CMTQueuesDataExported.zip
+        - template: /.pipelines/steps/queue-to-systemuser-linkage.yml@self
+          parameters:    
+              orgUrl: ${env:PRODORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              TenantId: $(TenantId)
+        
+        - task: microsoft-IsvExpTools.PowerPlatform-BuildTools.import-solution.PowerPlatformImportSolution@2
+          inputs:
+            authenticationType: 'PowerPlatformSPN'
+            PowerPlatformSPN: $(Prod Service Connection)
+            SolutionInputFile: '$(Build.ArtifactStagingDirectory)/drop/Debug/AnyCPU/Solutions/msdyn_boilerplate_managed.cab'
+            AsyncOperation: true
+            MaxAsyncWaitTime: '60'
+            ConvertToManaged: false
+
+        - template: /.pipelines/steps/workstream-to-bot-linkage.yml@self
+          parameters:    
+              orgUrl: ${env:PRODORGURL}
+              AppUserClientId: $(AppUserClientId)
+              AppUserSecret: $(AppUserSecret)
+              TenantId: $(TenantId)    

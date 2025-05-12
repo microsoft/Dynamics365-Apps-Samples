@@ -1,0 +1,30 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnDtmfKeyPress
+  id: main
+  dtmfKey: PoundKey
+  actions:
+    - kind: SendActivity
+      id: sendActivity_xvGFW6
+      activity:
+        text:
+          - |-
+            For store hours, say "store hours."
+            For store locations, say "store locations."
+            To purchase an item, say "purchase items."
+        speak:
+          - |-
+            For store hours, say "store hours."
+            For store locations, say "store locations."
+            To purchase an item, say "purchase items."
+
+    - kind: SendActivity
+      id: sendActivity_sGzVAH
+      activity:
+        text:
+          - To hear this menu again, press the pound key.
+        speak:
+          - To hear this menu again, press the pound key.
+
+    - kind: CancelAllDialogs
+      id: cancelAllDialogs_s2Gt21

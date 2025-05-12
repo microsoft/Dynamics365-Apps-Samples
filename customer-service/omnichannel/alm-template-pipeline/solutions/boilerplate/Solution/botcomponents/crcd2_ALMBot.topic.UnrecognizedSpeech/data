@@ -1,0 +1,12 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnrecognizedSpeech
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendActivity_26sT9O
+      activity:
+        text:
+          - I'm sorry. I did not understand. Can you try again?
+        speak:
+          - I'm sorry. I did not understand. Can you try again?
