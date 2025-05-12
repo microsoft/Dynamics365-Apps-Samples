@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.Build.Traversal">
+  <PropertyGroup>
+    <BuildInParallel>false</BuildInParallel>
+    <SkipPackageGeneration>true</SkipPackageGeneration>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="Common\Common.csproj" />
+    <ProjectReference Include="Plugins\Plugins.csproj" />
+    <ProjectReference Include="Client\boilerplateWebResources.csproj" />
+    <ProjectReference Include="TestCommon\TestCommon.csproj" />
+    <ProjectReference Include="Xrm.UnitTests\Xrm.UnitTests.csproj" />
+    <ProjectReference Include="Xrm.IntegrationTests\Xrm.IntegrationTests.csproj" />
+    <ProjectReference Include="Client.UnitTests\Client.UnitTests.csproj" />
+    <ProjectReference Include="PDPackage\boilerplatePDPackage.csproj" />
+
+    <ProjectReference Include="solutions.proj" Condition="'$(EnableSigning)'!='true'" />
+    <ProjectReference Include="packages.proj" Condition="'$(EnableSigning)'!='true'" />
+  </ItemGroup>
+</Project>

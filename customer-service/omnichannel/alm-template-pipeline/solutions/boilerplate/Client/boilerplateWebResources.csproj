@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{66c9d415-0635-4134-93cd-e667037f1c9e}</ProjectGuid>
+    <ProjectTypeGuids>{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <RootNamespace>Microsoft.Dynamics.boilerplate.WebResources</RootNamespace>
+    <AssemblyName>Microsoft.Dynamics.boilerplate.WebResources</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFramework>net472</TargetFramework>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <NOTARGET>true</NOTARGET>
+    <SolutionPackagePath>$(WSRoot)\solutions\boilerplate\Package\WebResources\boilerplate</SolutionPackagePath>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <TypeScriptBuildMode>true</TypeScriptBuildMode>
+    <TypeScriptOutDir>$(OutputPath)\WebResources</TypeScriptOutDir>
+    <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
+		<GenerateAssemblyFileVersionAttribute>False</GenerateAssemblyFileVersionAttribute>
+		<GenerateAssemblyInformationalVersionAttribute>False</GenerateAssemblyInformationalVersionAttribute>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.TypeScript" />
+    <PackageReference Include="Crm.ClientApiTypings" GeneratePathProperty="true" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="..\..\..\references\external\TypeDefinitions\microsoft.ajax.d.ts">
+      <Link>TypeDefinitions\microsoft.ajax.d.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="@(TypeScriptCommonFile)" />
+    <TypeScriptCompile Include="Localization\Provider\StringProvider.ts" />
+    <TypeScriptCompile Include="Localization\ResourceStringProvider.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <None Include="..\..\tsconfig\tsconfig.base.classicweb.json">
+      <Link>tsconfig\tsconfig.base.classicweb.json</Link>
+    </None>
+    <None Include="..\..\tsconfig\tsconfig.base.noclientapi.json">
+      <Link>tsconfig\tsconfig.base.noclientapi.json</Link>
+    </None>
+    <None Include="..\..\tsconfig\tsconfig.base.uci.json">
+      <Link>tsconfig\tsconfig.base.uci.json</Link>
+    </None>
+    <None Include="..\..\tsconfig\tsconfig.base.uciandclassicweb.json">
+      <Link>tsconfig\tsconfig.base.uciandclassicweb.json</Link>
+    </None> -->
+    <Content Include="Localization\tsconfig.json" />
+    <Content Include="Localization\Provider\tsconfig.json" />
+  </ItemGroup>
+  <!-- NOTE: This target allows us to pull the internal CRM.ClientAPITypings package via package reference, and places them in a known location to be
+              referenced by the tsconfig files -->
+  <Target Name="_CopyApiTypings" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+     <_TypingsToCopy Include="$(PkgCrm_ClientApiTypings)\clientapi\*.d.ts" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_TypingsToCopy)" DestinationFiles="..\..\..\packages\Crm.ClientApiTypings\clientapi\%(FileName)%(Extension)" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="CopyResource">
+    <Copy SourceFiles="Localization\Languages\boilerplate.resx" DestinationFiles="Localization\Languages\boilerplate.1033.resx" SkipUnchangedFiles="True" />
+  </Target>
+  <Target Name="CopyStatic" DependsOnTargets="CopyResource">
+    <ItemGroup>
+      <StaticWebResources Include="**\*.png;**\*.jpg;**\*.jpeg;**\*.gif;**\*.htm;**\*.html;**\*.css;**\*.less;**\*.js;**\*.d.ts;**\*.resx;" Exclude="bin\**\*.*;obj\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(StaticWebResources)" DestinationFiles="@(StaticWebResources->'$(TypeScriptOutDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="True" />
+    <Message text="ScriptWebResources directory: $(TypeScriptOutDir)" Importance="High" />
+  </Target>
+  <Target Name="SelectedOutputs" DependsOnTargets="CopyStatic">
+    <ItemGroup>
+      <WebResources Include="$(TypeScriptOutDir)\**\*.png" />
+      <WebResources Include="$(TypeScriptOutDir)\**\*.jpg" />
+      <WebResources Include="$(TypeScriptOutDir)\**\*.jpeg" />
+      <WebResources Include="$(TypeScriptOutDir)\**\*.gif" />
+      <WebResources Include="$(TypeScriptOutDir)\**\*.htm" />
+      <WebResources Include="$(TypeScriptOutDir)\**\*.html" />
+      <WebResources Include="$(TypeScriptOutDir)\**\*.css" />
+      <WebResources Include="$(TypeScriptOutDir)\**\*.less" />
+      <WebResources Include="$(TypeScriptOutDir)\**\*.js" />
+      <WebResources Include="$(TypeScriptOutDir)\**\*.resx" />
+    </ItemGroup>
+    <ItemGroup>
+      <TypeDefinitions Include="$(TypeScriptOutDir)\**\*.d.ts" />
+    </ItemGroup>
+  </Target>
+  <Target Name="CopyCompiledTypeScriptFiles" DependsOnTargets="SelectedOutputs" AfterTargets="AfterBuild" Inputs="@(WebResources)" Outputs="@(WebResources->'$(SolutionPackagePath)%(RecursiveDir)')">
+    <Copy SourceFiles="@(WebResources)" DestinationFolder="$(SolutionPackagePath)\%(RecursiveDir)" Retries="3" RetryDelayMilliseconds="300" />
+    <Copy SourceFiles="@(TypeDefinitions)" DestinationFolder="$(WSRoot)\drop\$(BuildConfiguration)\$(BuildPlatform)\TypeDefinitions\boilerplate\%(RecursiveDir)" Retries="3" RetryDelayMilliseconds="300" />
+  </Target>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Languages\boilerplate.1033.resx" />
+    <EmbeddedResource Include="Localization\Languages\boilerplate.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

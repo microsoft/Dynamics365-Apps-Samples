@@ -1,0 +1,31 @@
+# 1ES dependabot documentation: https://eng.ms/docs/products/dependabot
+# Documentation of this file's schema: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+# Find the state of your active Dependabot PRs at https://aka.ms/dependabot
+
+version: 2
+
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    target-branch: "master"
+    open-pull-requests-limit: 5
+    # Example of how to tell Dependabot not to update a dependency, or not to update to certain versions
+    # ignore:
+    #  - dependency-name: "Microsoft.Extension*" 
+    #    versions: ["7.*", "8.*"]  
+    # Update the auto-complete to have the pull request auto complete settings be configured.
+    auto-complete: true
+    # Use groups to define dependencies that should be updated together in a single PR
+    groups:
+      # This is the name of your group, it will be used in PR titles and branch names
+      test-dependencies:
+        patterns:
+          - "MSTest.Test*"  # A wildcard string that matches multiple dependencies
+          - "Microsoft.NET.Test.Sdk"
+          - "Moq"
+          - "xunit*"
+          - "fluentassertions*"
+    work-items:
+      area-path: "OneCRM" # Change this to your team's work items area path. Example: OneCRM\PowerApps\CoreServices

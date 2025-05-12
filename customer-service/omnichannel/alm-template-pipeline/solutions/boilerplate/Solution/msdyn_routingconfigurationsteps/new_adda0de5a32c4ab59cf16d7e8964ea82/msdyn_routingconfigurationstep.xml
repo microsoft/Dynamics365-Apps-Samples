@@ -1,0 +1,16 @@
+<msdyn_routingconfigurationstep msdyn_uniquename="new_adda0de5a32c4ab59cf16d7e8964ea82">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_name default="ALM Chat Work Classification">
+    <label description="ALM Chat Work Classification" languagecode="1033" />
+  </msdyn_name>
+  <msdyn_routingconfigurationid>
+    <msdyn_uniquename>new_ea6ee41511014c2bbcd960672d9062a3</msdyn_uniquename>
+  </msdyn_routingconfigurationid>
+  <msdyn_rulesetid>
+    <msdyn_uniquename>new_372c5a8dfe7b4417832eb0ae044f580a</msdyn_uniquename>
+  </msdyn_rulesetid>
+  <msdyn_steporder>1</msdyn_steporder>
+  <msdyn_type>192350000</msdyn_type>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</msdyn_routingconfigurationstep>

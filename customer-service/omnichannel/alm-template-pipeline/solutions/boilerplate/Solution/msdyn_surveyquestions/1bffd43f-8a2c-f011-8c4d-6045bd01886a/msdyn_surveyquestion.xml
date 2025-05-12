@@ -1,0 +1,11 @@
+<msdyn_surveyquestion msdyn_surveyquestionid="1bffd43f-8a2c-f011-8c4d-6045bd01886a">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_answertype>192350000</msdyn_answertype>
+  <msdyn_liveworkstreamtochatquestion>
+    <msdyn_liveworkstreamid>f12b5631-adfa-b334-6902-0acd706fa93a</msdyn_liveworkstreamid>
+  </msdyn_liveworkstreamtochatquestion>
+  <msdyn_name>Name</msdyn_name>
+  <msdyn_questiontext>Whats your name?</msdyn_questiontext>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</msdyn_surveyquestion>

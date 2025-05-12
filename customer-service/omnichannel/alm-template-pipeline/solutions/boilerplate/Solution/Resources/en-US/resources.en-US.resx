@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="Source LCID" xml:space="preserve">
+    <value>1033</value>
+  </metadata>
+  <metadata name="Source file" xml:space="preserve">
+    <value>boilerplate_managed.zip</value>
+  </metadata>
+  <metadata name="Source package type" xml:space="preserve">
+    <value>Both</value>
+  </metadata>
+  <metadata name="SolutionPackager Version" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAEAQAAAA5TeXN0ZW0uVmVyc2lvbgQAAAAGX01ham9yBl9NaW5vcgZfQnVp
+        bGQJX1JldmlzaW9uAAAAAAgICAgJAAAAAAAAAAAAAAAAAAAACw==
+</value>
+  </metadata>
+  <data name="100000:label,014A113C52D7D291E37477495D42113C1875104E388A98ACC098CA0B2CF7E151" xml:space="preserve">
+    <value>ALM Chat Work Classification</value>
+    <comment>Relative path in xml: \msdyn_routingconfigurationstep\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,0258DCFEBA3D6CB476A75A4958D25FF114585DA8356D305DCDA8445C4D9C756C" xml:space="preserve">
+    <value>ALM Test Chat Work Classification Ruleset</value>
+    <comment>Relative path in xml: \msdyn_decisionruleset\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,135B09A792A8D9A0C1DDBCEEF50A2E944DE27FA996BF5245C810080D968997CF" xml:space="preserve">
+    <value>ALM Test Chat Route-to-queues Ruleset</value>
+    <comment>Relative path in xml: \msdyn_decisionruleset\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,1B6B4C28E0AFA425E5591095540D48D87D76DC272F976D9899B38ED704F404F3" xml:space="preserve">
+    <value>ALM Chat Route To Queue</value>
+    <comment>Relative path in xml: \msdyn_routingconfiguration\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,3DC84BB325A41147223D6B4D4A211C4168E8B0DEF7B4FD834031D287E8EB5003" xml:space="preserve">
+    <value>ALM Chat Work Classification</value>
+    <comment>Relative path in xml: \msdyn_decisionruleset\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,512FD0DC38575462C99E6A30EE0AA6A2A09AA9EEF92D8FBC3B5E780AE5CAE67A" xml:space="preserve">
+    <value>ALM Chat Route To Queue</value>
+    <comment>Relative path in xml: \msdyn_decisionruleset\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,69ED55EE797DD6BC587D559D89CAF79381ADB35A800E8A65D51694CCC62743DD" xml:space="preserve">
+    <value>ALM Test Chat Route-to-queues Ruleset</value>
+    <comment>Relative path in xml: \msdyn_decisionruleset\msdyn_description id:</comment>
+  </data>
+  <data name="100000:label,7A9AC6E63D158A881E156D821676D7182F1D5C56D2D28C0ED60035A3EAA8216A" xml:space="preserve">
+    <value>ALM Test Chat Work Classification Ruleset</value>
+    <comment>Relative path in xml: \msdyn_routingconfiguration\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,85FDF6FEF7BBAC77DCC625B19468EC9EF3166785F6922EE5A892BDFF4C165140" xml:space="preserve">
+    <value>ALM Chat Route To Queue</value>
+    <comment>Relative path in xml: \msdyn_routingconfigurationstep\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,A458689C0BC61FE54FF6B0FD9985030666127A3122A8B19177D44802A57E5F49" xml:space="preserve">
+    <value>msdyn_894c6fd0_1125_4588_a1c0_52279bbc387a</value>
+    <comment>Relative path in xml: \msdyn_decisioncontract\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,A6C7C0425579BF5867A54FC9D37CEE851C45180DD813B7D045901B93709D6DAE" xml:space="preserve">
+    <value>new_316ca32a_7dfd_4848_aa47_ced2461a671f</value>
+    <comment>Relative path in xml: \msdyn_decisioncontract\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,BD4EE88E2EB4184ED94B35DB61BCFD7B54BD15E8C908E857A8914A432399098B" xml:space="preserve">
+    <value>ALM Test Chat Work Classification Ruleset</value>
+    <comment>Relative path in xml: \msdyn_decisionruleset\msdyn_description id:</comment>
+  </data>
+  <data name="100000:label,BEE982FD959E71B7C6BC12582063D36BC4AC15837A4A6AC5063D64C1490F4576" xml:space="preserve">
+    <value>ALM Test Chat Work Classification Ruleset</value>
+    <comment>Relative path in xml: \msdyn_routingconfigurationstep\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,CA81DD33DD96F8ED76A983FB04287CEAD2F49F73BBF1170FA3CD1A128221B323" xml:space="preserve">
+    <value>ALM Test Chat Capacity Profile</value>
+    <comment>Relative path in xml: \msdyn_capacityprofile\msdyn_name id:</comment>
+  </data>
+  <data name="100000:label,E5098A132EF805B22C0976C047E5B8A818A21C5B6A08AA63C6BF26CD0F5FF7FA" xml:space="preserve">
+    <value>ALM Test Chat Work Route-to-queues Ruleset</value>
+    <comment>Relative path in xml: \msdyn_routingconfigurationstep\msdyn_name id:</comment>
+  </data>
+  <data name="15062:Description,microsoftdynamicsmsdyn70061" xml:space="preserve">
+    <value>Dynamics 365</value>
+    <comment> 'microsoftdynamics' : Description for Solution Publisher</comment>
+  </data>
+  <data name="15062:Description,msdyn_boilerplate" xml:space="preserve">
+    <value>boilerplate application for Dynamics 365 solutions</value>
+    <comment> 'msdyn_boilerplate' : Description for Solution</comment>
+  </data>
+  <data name="15062:LocalizedName,microsoftdynamicsmsdyn70061" xml:space="preserve">
+    <value>Dynamics 365</value>
+    <comment> 'microsoftdynamics' : LocalizedName for Solution Publisher</comment>
+  </data>
+  <data name="15062:LocalizedName,msdyn_boilerplate" xml:space="preserve">
+    <value>boilerplate Solution</value>
+    <comment> 'msdyn_boilerplate' : LocalizedName for Solution</comment>
+  </data>
+</root>
