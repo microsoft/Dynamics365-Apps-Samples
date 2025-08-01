@@ -20,7 +20,9 @@ var C1WebResourceNamespace = {
 	useAzureTranslationApis: true,//please override it to false if planning to use google translation v2 api
 	messageBuffer: new Map(),
 	enableLanguageDetectionWithHistoryMessages: false,
-	
+	agentPreferredLanguageField: 'jkalz_preferredlanguagecode', // Replace with the actual field name for agent's preferred language on the systemuser entity
+    enableAgentSpecificTranslation: false, // Set to true to enable agent specific translations
+
 	//ISO 639-1 language code. It is supported by Azure Cognitive Translate API and Google V2 translation API
 	ISO6391LanguageCodeToOcLanguageCodeMap: {
 		'gu': ['71', '1095'],
@@ -241,6 +243,38 @@ var C1WebResourceNamespace = {
 			conversationConfig,
 			c1Language
 		});
+
+		const getAgentPreferredLanguage = async () => {
+			try {
+				// Get the current user's ID				
+				const userId = window.top.Xrm.Utility.getGlobalContext().userSettings.userId.replace("{", "").replace("}", "");
+				
+				// Define the entity name and the columns to retrieve
+				const entityName = "systemuser";
+
+				// Define the columns to retrieve, jkalz_preferredlanguagecode is the language preference field
+				// which should be added to the systemuser entity
+				const columns = ["fullname", C1WebResourceNamespace.agentPreferredLanguageField];
+
+				// Fetch the user's details including their language preference
+				let userDataResponse = await window.top.Xrm.WebApi.retrieveRecord(entityName, userId, `?$select=${columns.join(',')}`);
+
+				let agentPreferredLanguage = userDataResponse[C1WebResourceNamespace.agentPreferredLanguageField];
+				return agentPreferredLanguage;
+			} catch (error) {
+				console.error("Error in fetching agent's preferred language:", error);
+				return null; // Handle error case appropriately
+			}
+		};
+
+		// Use the function to get the agent's preferred language, if it's null, then use the default
+		const agentPreferredLanguage = await getAgentPreferredLanguage();
+
+		if (C1WebResourceNamespace.enableAgentSpecificTranslation) {
+			const agentPreferredLanguage = await getAgentPreferredLanguage();
+			c1Language = agentPreferredLanguage || c1Language;
+		}
+
 		//error handling if invalid language is found
 		if (c1Language == "invalid code") {
 			consoleLogHelper(conversationId, "Invalid c1Language found");
