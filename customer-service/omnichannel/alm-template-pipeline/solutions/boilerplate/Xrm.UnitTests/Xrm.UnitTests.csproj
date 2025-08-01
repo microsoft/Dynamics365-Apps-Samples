@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{2EE89686-701C-4E11-A455-8D6CD22256B3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>boilerplate.Xrm.UnitTests</RootNamespace>
+    <AssemblyName>boilerplate.Xrm.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFramework>net472</TargetFramework>
+    <TestProjectType>UnitTest</TestProjectType>
+    <nowarn>2008</nowarn>
+    <ExcludeKernelContracts>true</ExcludeKernelContracts>
+    <ExcludeTestCommon>true</ExcludeTestCommon>
+    <ExcludeTestSDK>true</ExcludeTestSDK>
+    <ExcludeXUnit>true</ExcludeXUnit>
+    <EnableDefaultItems>false</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(WSRoot)\build\config\component.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.ServerTests" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="MSTest.TestAdapter" />
+    <PackageReference Include="MSTest.TestFramework" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="StyleCop.MSBuild" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\..\..\build\config\mssharedlibsn1024.snk">
+      <Link>mssharedlibsn1024.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="boilerplateTests.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,19 @@
+{
+	"Framework": "mocha",
+	"References": [
+		{ "Path": "%PKG_UCLIENT_UNITTESTTOOLS%/content/scripts/chai/chai.js" }
+	],
+	"Tests": [
+		{ "Includes": [ "*Test.ts" ] }
+	],
+	"EnableTestFileBatching": true,
+	"Compile": {
+		"Extensions": [ ".ts" ],
+		"ExtensionsWithNoOutput": [ ".d.ts" ],
+		"Mode": "External",
+		"UseSourceMaps": true,
+		"Paths": [
+			{ "OutputPath": "ClientUnitTests.js" }
+		]
+	}
+}

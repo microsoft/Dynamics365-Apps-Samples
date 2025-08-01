@@ -1,0 +1,46 @@
+<msdyn_livechatconfig msdyn_livechatconfigid="889d27d5-921f-f011-998a-6045bd09e9ce">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_agentdisplayname>192350001</msdyn_agentdisplayname>
+  <msdyn_authenticatedsigninoptional>0</msdyn_authenticatedsigninoptional>
+  <msdyn_autodetectlanguage>0</msdyn_autodetectlanguage>
+  <msdyn_avatarurl>https://oc-cdn-ocprod.azureedge.net/livechatwidget/images/chatIcon.svg</msdyn_avatarurl>
+  <msdyn_averagewaittime_enabled>1</msdyn_averagewaittime_enabled>
+  <msdyn_callingoptions>192350000</msdyn_callingoptions>
+  <msdyn_conversationmode>192350000</msdyn_conversationmode>
+  <msdyn_emailtemplate>Conversation transcript email template</msdyn_emailtemplate>
+  <msdyn_enablechatreconnect>0</msdyn_enablechatreconnect>
+  <msdyn_enablechattranscriptdownload>1</msdyn_enablechattranscriptdownload>
+  <msdyn_enablechattranscriptemail>0</msdyn_enablechattranscriptemail>
+  <msdyn_enablecobrowse>0</msdyn_enablecobrowse>
+  <msdyn_enablefileattachmentsforagents>1</msdyn_enablefileattachmentsforagents>
+  <msdyn_enablefileattachmentsforcustomers>1</msdyn_enablefileattachmentsforcustomers>
+  <msdyn_enablescreensharing>0</msdyn_enablescreensharing>
+  <msdyn_language>192360014</msdyn_language>
+  <msdyn_liveworkstreamid>
+    <msdyn_liveworkstreamid>2edf72a6-dd2a-2abd-cdd5-96a718e31c46</msdyn_liveworkstreamid>
+  </msdyn_liveworkstreamid>
+  <msdyn_name>ALM Test Chat Channel</msdyn_name>
+  <msdyn_ocwidgetlanguage>
+    <msdyn_oclanguageid>75b7fe8c-af61-41ea-a51c-449eb1cf8b7f</msdyn_oclanguageid>
+  </msdyn_ocwidgetlanguage>
+  <msdyn_operatinghourid>
+    <msdyn_operatinghourid>5e7a4ced-901f-f011-998a-6045bd09e9ce</msdyn_operatinghourid>
+  </msdyn_operatinghourid>
+  <msdyn_positioninqueue_enabled>1</msdyn_positioninqueue_enabled>
+  <msdyn_postchatenabled>0</msdyn_postchatenabled>
+  <msdyn_postconversationsurveyenable>0</msdyn_postconversationsurveyenable>
+  <msdyn_prechatenabled>1</msdyn_prechatenabled>
+  <msdyn_proactivechatenabled>0</msdyn_proactivechatenabled>
+  <msdyn_requestvisitorlocation>0</msdyn_requestvisitorlocation>
+  <msdyn_showagentname>0</msdyn_showagentname>
+  <msdyn_showwidgetduringofflinehours>0</msdyn_showwidgetduringofflinehours>
+  <msdyn_widgetappid>65fdf4cf-df19-4b09-b69b-002ed245c4fb</msdyn_widgetappid>
+  <msdyn_widgetposition>192236010</msdyn_widgetposition>
+  <msdyn_widgetsoundnotification>1</msdyn_widgetsoundnotification>
+  <msdyn_widgetsubtitle>We're here to help</msdyn_widgetsubtitle>
+  <msdyn_widgetthemecolor>192350001</msdyn_widgetthemecolor>
+  <msdyn_widgettitle>Let's chat about ALM</msdyn_widgettitle>
+  <msdyn_widgetvisualnotification>1</msdyn_widgetvisualnotification>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</msdyn_livechatconfig>

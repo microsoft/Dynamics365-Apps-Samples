@@ -1,0 +1,42 @@
+<msdyn_liveworkstream msdyn_liveworkstreamid="2edf72a6-dd2a-2abd-cdd5-96a718e31c46">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_allowedpresences>[-1,192360000,192360001,-1]</msdyn_allowedpresences>
+  <msdyn_alwaysassigntolastagent>0</msdyn_alwaysassigntolastagent>
+  <msdyn_autocloseafterinactivity>2880</msdyn_autocloseafterinactivity>
+  <msdyn_capacityformat>192360000</msdyn_capacityformat>
+  <msdyn_capacityrequired>30</msdyn_capacityrequired>
+  <msdyn_conversationmode>192350000</msdyn_conversationmode>
+  <msdyn_direction>0</msdyn_direction>
+  <msdyn_enableagentaffinity>1</msdyn_enableagentaffinity>
+  <msdyn_enableautomatedmessages>1</msdyn_enableautomatedmessages>
+  <msdyn_enableselectingfrompushbasedworkstreams>1</msdyn_enableselectingfrompushbasedworkstreams>
+  <msdyn_enablevoicev2>0</msdyn_enablevoicev2>
+  <msdyn_intentfeatureenabled>0</msdyn_intentfeatureenabled>
+  <msdyn_isdefault>0</msdyn_isdefault>
+  <msdyn_isicdenabled>0</msdyn_isicdenabled>
+  <msdyn_matchinglogic>192350001</msdyn_matchinglogic>
+  <msdyn_mode>717210001</msdyn_mode>
+  <msdyn_name>ALM Test Chat Workstream</msdyn_name>
+  <msdyn_notification>100000001</msdyn_notification>
+  <msdyn_notificationtemplate_consult>msdyn_chat_consult</msdyn_notificationtemplate_consult>
+  <msdyn_notificationtemplate_incoming_auth>msdyn_chat_incoming_authenticated</msdyn_notificationtemplate_incoming_auth>
+  <msdyn_notificationtemplate_incoming_unauth>msdyn_chat_incoming_unauthenticated</msdyn_notificationtemplate_incoming_unauth>
+  <msdyn_notificationtemplate_returning_conv_assig>msdyn_chat_incoming_authenticated</msdyn_notificationtemplate_returning_conv_assig>
+  <msdyn_notificationtemplate_supervisorassign>msdyn_chat_supervisor_assign</msdyn_notificationtemplate_supervisorassign>
+  <msdyn_notificationtemplate_transfer>msdyn_chat_transfer</msdyn_notificationtemplate_transfer>
+  <msdyn_recordidentificationrule>&lt;RecordIdentificationRuleSet&gt;&lt;RecordIdentificationRule&gt;&lt;PrimaryEntity LogicalCollectionName="accounts" PrimaryKeyAttribute="accountid" PrimaryNameAttribute="name"/&gt;&lt;fetch version="1.0" output-format="xml-platform" mapping="logical" top="2"&gt;&lt;entity name="account"&gt;&lt;attribute name="accountid" /&gt;&lt;attribute name = "name" /&gt;&lt;filter type="and"&gt;&lt;condition attribute="statuscode" operator="eq" value="1" /&gt;&lt;condition attribute="name" operator="eq" value="${Name}" /&gt;&lt;condition attribute="telephone1" operator="eq" value="${Phone}" /&gt;&lt;condition attribute="emailaddress1" operator="eq" value="${Email}" /&gt;&lt;/filter&gt;&lt;/entity&gt;&lt;/fetch&gt;&lt;ContextKey name="msdyn_account_msdyn_ocliveworkitem_Customer" isPreferred="false"/&gt;&lt;/RecordIdentificationRule&gt;&lt;RecordIdentificationRule&gt;&lt;PrimaryEntity LogicalCollectionName="contacts" PrimaryKeyAttribute="contactid" PrimaryNameAttribute="fullname"/&gt;&lt;fetch version="1.0" output-format="xml-platform" mapping="logical" top="2"&gt;&lt;entity name="contact"&gt;&lt;attribute name="contactid" /&gt;&lt;attribute name = "fullname" /&gt;&lt;filter type="and"&gt;&lt;condition attribute="statuscode" operator="eq" value="1" /&gt;&lt;condition attribute="contactid" operator="eq" source="msdyn_msdyn_ocliveworkitem_msdyn_livechatengagementctx_liveworkitemid" value="${msdyn_portalcontactid}" /&gt;&lt;condition attribute="fullname" operator="eq" value="${Name}" /&gt;&lt;condition attribute="telephone1" operator="eq" value="${Phone}" /&gt;&lt;condition attribute="emailaddress1" operator="eq" value="${Email}" /&gt;&lt;/filter&gt;&lt;/entity&gt;&lt;/fetch&gt;&lt;ContextKey name="msdyn_contact_msdyn_ocliveworkitem_Customer" isPreferred="true"/&gt;&lt;/RecordIdentificationRule&gt;&lt;RecordIdentificationRule&gt;&lt;PrimaryEntity LogicalCollectionName="incidents" PrimaryKeyAttribute="incidentid" PrimaryNameAttribute="title"/&gt;&lt;fetch version="1.0" output-format="xml-platform" mapping="logical" top="2"&gt;&lt;entity name="incident"&gt;&lt;attribute name="incidentid" /&gt;&lt;attribute name = "title" /&gt;&lt;filter type="and"&gt;&lt;condition attribute="ticketnumber" operator="eq" value="${CaseNumber}" /&gt;&lt;condition attribute="statuscode" operator="eq" value="1" /&gt;&lt;filter type="or"&gt;&lt;filter type="and"&gt;&lt;condition attribute="statuscode" operator="eq" value="1" entityname="ac" /&gt;&lt;condition attribute="name" operator="eq" value="${Name}" entityname="ac" /&gt;&lt;condition attribute="telephone1" operator="eq" value="${Phone}" entityname="ac" /&gt;&lt;condition attribute="emailaddress1" operator="eq" value="${Email}" entityname="ac" /&gt;&lt;/filter&gt;&lt;filter type="and"&gt;&lt;condition attribute="statuscode" operator="eq" value="1" entityname="co" /&gt;&lt;condition attribute="contactid" operator="eq" source="msdyn_msdyn_ocliveworkitem_msdyn_livechatengagementctx_liveworkitemid" value="${msdyn_portalcontactid}" entityname="co" /&gt;&lt;condition attribute="fullname" operator="eq" value="${Name}" entityname="co" /&gt;&lt;condition attribute="telephone1" operator="eq" value="${Phone}" entityname="co" /&gt;&lt;condition attribute="emailaddress1" operator="eq" value="${Email}" entityname="co" /&gt;&lt;/filter&gt;&lt;/filter&gt;&lt;/filter&gt;&lt;link-entity name="account" from="accountid" to="customerid" link-type="outer" alias="ac" /&gt;&lt;link-entity name="contact" from="contactid" to="customerid" link-type="outer" alias="co" /&gt;&lt;/entity&gt;&lt;/fetch&gt;&lt;ContextKey name="msdyn_incident_msdyn_ocliveworkitem" /&gt;&lt;/RecordIdentificationRule&gt;&lt;/RecordIdentificationRuleSet&gt;</msdyn_recordidentificationrule>
+  <msdyn_restrictdownloadrecording>0</msdyn_restrictdownloadrecording>
+  <msdyn_restrictdownloadtranscript>0</msdyn_restrictdownloadtranscript>
+  <msdyn_routingcontractid>
+    <msdyn_uniquename>new_316ca32a_7dfd_4848_aa47_ced2461a671f</msdyn_uniquename>
+  </msdyn_routingcontractid>
+  <msdyn_screenpoptimeout_optionSet>120</msdyn_screenpoptimeout_optionSet>
+  <msdyn_sessiontemplate_default>new_almtestchatsessiontemplate</msdyn_sessiontemplate_default>
+  <msdyn_skillattachmentrulescount_date>5/9/2025 3:23:12 AM</msdyn_skillattachmentrulescount_date>
+  <msdyn_skillattachmentrulescount_state>0</msdyn_skillattachmentrulescount_state>
+  <msdyn_streamsource>192360000</msdyn_streamsource>
+  <msdyn_workdistributionmode>192350000</msdyn_workdistributionmode>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <timezoneruleversionnumber>4</timezoneruleversionnumber>
+</msdyn_liveworkstream>

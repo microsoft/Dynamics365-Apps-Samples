@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.Build.Traversal">
+  <PropertyGroup>
+    <BuildInParallel>false</BuildInParallel>
+    <TraversalGlobalProperties>SkipPackageGeneration=true</TraversalGlobalProperties>
+    <PackageNuspec>$(WSRoot)build/config/package.nuspec</PackageNuspec>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.PackageAutoVersion" />
+  </ItemGroup>
+
+  <Target Name="ExecuteResolvePackageVersion" BeforeTargets="Build">
+		<CallTarget Targets="ResolveNuGetPackageVersion" />
+	</Target>
+
+  <ItemGroup>
+    <ProjectReference Include="solutions\dirs.proj" />
+  </ItemGroup>
+</Project>

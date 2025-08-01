@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{1609da28-3e03-4d48-ba4b-9550869f6276}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Dynamics.boilerplate.Common</RootNamespace>
+    <AssemblyName>Microsoft.Dynamics.boilerplate.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFramework>net471</TargetFramework>    
+    <SolutionNamePath>boilerplate</SolutionNamePath>
+    <PluginResourceFolder>$(WSRoot)\solutions\$(SolutionNamePath)\Package\WebResources\$(SolutionNamePath)\PluginResources</PluginResourceFolder>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(WSRoot)\build\config\component.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" />
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.BuildExtensions" />
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.PluginResources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Localization\Labels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Labels.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Labels.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Labels.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Microsoft.Dynamics.boilerplate.Localization</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PluginResources Include="Localization\Labels.*-*.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Operations\" />
+    <Folder Include="Proxies\" />
+  </ItemGroup>
+  <Target Name="ValidateLabels" BeforeTargets="Compile">
+    <LabelCheck LabelFile="Localization\Labels.resx" />
+  </Target>
+</Project>

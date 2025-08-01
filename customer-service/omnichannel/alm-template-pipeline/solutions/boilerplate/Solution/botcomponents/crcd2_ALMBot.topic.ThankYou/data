@@ -1,0 +1,21 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Thank you
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - thanks
+      - thank you
+      - thanks so much
+      - ty
+
+  actions:
+    - kind: SendActivity
+      id: sendMessage_9iz6v7
+      activity:
+        text:
+          - You're welcome.
+        speak:
+          - You're welcome.

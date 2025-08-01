@@ -1,0 +1,48 @@
+<Project>
+  <!-- Build Type and Target Properties -->
+  <!-- Universal Properties -->
+  <PropertyGroup>
+    <BuildTarget>AnyCPU</BuildTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <WSRoot>$(MSBuildThisFileDirectory)</WSRoot>
+
+    <BuildPlatform Condition=" '$(BuildPlatform)' == '' ">AnyCPU</BuildPlatform>
+    <Platform Condition=" '$(Platform)' == '' ">$(BuildPlatform)</Platform>
+
+    <BuildConfiguration Condition=" '$(BuildConfiguration)' == '' ">debug</BuildConfiguration>
+    <Configuration Condition=" '$(Configuration)' == '' ">$(BuildConfiguration)</Configuration>
+
+    <!-- Versioning -->
+    <Version>$([MSBuild]::ValueOrDefault('$(CDP_FILE_VERSION_NUMERIC)', '0.0.1.0'))</Version>
+    <PackageVersion>$([MSBuild]::ValueOrDefault('$(CDP_PACKAGE_VERSION_SEMANTIC)', '0.0.1'))</PackageVersion>
+    <!-- If there's no prerelease tag definied in the pipeline yaml, only use the numeric portion of the package version-->
+    <PackageVersion Condition="'$(CDP_VERSION_TAG_ONLY)'==''">$([MSBuild]::ValueOrDefault('$(CDP_PACKAGE_VERSION_NUMERIC)', '0.0.1'))</PackageVersion>
+    <MakeCab>true</MakeCab>
+
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(BuildConfiguration)' == 'debug' ">
+    <BuildType>debug</BuildType>
+    <ConfigurationIsDebug>true</ConfigurationIsDebug>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(BuildConfiguration)' != 'debug' ">
+    <BuildType>release</BuildType>
+    <ConfigurationIsDebug>false</ConfigurationIsDebug>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  
+
+  <!-- Sdk style projects -->
+  <PropertyGroup>
+    <!-- Once we convert a project to sdk style, it will by default append TFM after the output path such as project\net471\project.dll vs just project\project.dll, since we are still expecting to have the dll at old location, we will turn off this behavior. -->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+</Project>
