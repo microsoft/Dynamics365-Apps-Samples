@@ -1,0 +1,5 @@
+*\tools\commands\
+*\tools\nuget\
+*\tools\ImportSolution\
+*\tools\ImportPackage\
+*\tools\TiPOrgManager\

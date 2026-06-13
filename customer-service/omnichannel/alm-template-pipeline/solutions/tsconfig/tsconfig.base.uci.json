@@ -1,0 +1,21 @@
+{
+    "files": [
+		"../../packages/Crm.ClientApiTypings/clientapi/XrmClientApi.d.ts",
+		"../../packages/Crm.ClientApiTypings/clientapi/XrmClientApiDeprecated.d.ts",
+		"../../packages/Crm.ClientApiTypings/clientapi/XrmClientApiInternal.d.ts",
+		"../../references/internal/TypeDefinitions/XrmClientApi/XrmClientApiGap.d.ts",
+		"../../references/internal/TypeDefinitions/XrmClientApi/XrmClientApiCommand.d.ts",
+		"../../references/external/TypeDefinitions/microsoft.ajax.d.ts",
+		"../../references/external/TypeDefinitions/lib.es6.d.ts",
+		"../../references/external/TypeDefinitions/whatwg-fetch.d.ts"
+	],
+	"exclude": [
+		"node_modules"
+	],
+    "compilerOptions": {
+		"noImplicitAny":  true,
+		"noEmitOnError": true,
+      	"target": "es5",
+      	"skipLibCheck": true
+    }
+}

@@ -1,0 +1,15 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnSilence
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendActivity_C6pKOo
+      activity:
+        text:
+          - Goodbye!
+        speak:
+          - Goodbye!
+
+    - kind: EndConversation
+      id: Rgrh4i

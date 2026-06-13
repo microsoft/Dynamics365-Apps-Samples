@@ -1,0 +1,47 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Start Over
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - let's begin again
+      - start over
+      - start again
+      - restart
+
+  actions:
+    - kind: Question
+      id: question_zguoVV
+      alwaysPrompt: false
+      variable: init:Topic.Confirm
+      prompt:
+        text:
+          - Are you sure you want to restart the conversation?
+        speak:
+          - Are you sure you want to restart the conversation?
+
+      entity:
+        kind: BooleanPrebuiltEntity
+        dtmfMultipleChoiceOptions:
+          generateMapping: true
+
+    - kind: ConditionGroup
+      id: conditionGroup_lvx2zV
+      conditions:
+        - id: conditionItem_sVQtHa
+          condition: =Topic.Confirm = true
+          actions:
+            - kind: BeginDialog
+              id: 0YKYsy
+              dialog: crcd2_ALMBot.topic.ResetConversation
+
+      elseActions:
+        - kind: SendActivity
+          id: sendMessage_lk2CyQ
+          activity:
+            text:
+              - Ok. Let's carry on.
+            speak:
+              - Ok. Let's carry on.

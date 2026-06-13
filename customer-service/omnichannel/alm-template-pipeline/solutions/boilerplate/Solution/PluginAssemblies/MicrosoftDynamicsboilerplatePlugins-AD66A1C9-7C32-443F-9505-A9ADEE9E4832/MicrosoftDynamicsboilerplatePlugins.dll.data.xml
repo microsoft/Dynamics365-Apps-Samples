@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginAssembly FullName="Microsoft.Dynamics.boilerplate.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" PluginAssemblyId="AD66A1C9-7C32-443F-9505-A9ADEE9E4832" CustomizationLevel="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsolationMode>2</IsolationMode>
+  <SourceType>0</SourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <FileName>/PluginAssemblies/MicrosoftDynamicsboilerplatePlugins-AD66A1C9-7C32-443F-9505-A9ADEE9E4832/MicrosoftDynamicsboilerplatePlugins.dll</FileName>
+  <PluginTypes>
+    <PluginType AssemblyQualifiedName="Microsoft.Dynamics.boilerplate.Plugins.boilerplatePostOperation, Microsoft.Dynamics.boilerplate.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" PluginTypeId="0a23cfab-3654-ea11-a81e-000d3ac3e552" Name="Microsoft.Dynamics.boilerplate.Plugins.boilerplatePostOperation">
+      <FriendlyName>a1d9a285-9d98-4c0a-891b-3a78ba989358</FriendlyName>
+    </PluginType>
+  </PluginTypes>
+</PluginAssembly>

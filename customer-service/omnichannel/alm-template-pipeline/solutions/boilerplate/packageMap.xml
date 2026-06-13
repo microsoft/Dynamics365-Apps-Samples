@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mapping>
+  <!-- Match specific named files to an alternate folder -->
+  <FileToFile
+    map="PluginAssemblies\MicrosoftDynamicsboilerplatePlugins-AD66A1C9-7C32-443F-9505-A9ADEE9E4832\MicrosoftDynamicsboilerplatePlugins.dll"
+    to="%WSRoot%\drop\%BuildConfiguration%\%BuildPlatform%\Plugins\Microsoft.Dynamics.boilerplate.Plugins.dll" />
+</Mapping>

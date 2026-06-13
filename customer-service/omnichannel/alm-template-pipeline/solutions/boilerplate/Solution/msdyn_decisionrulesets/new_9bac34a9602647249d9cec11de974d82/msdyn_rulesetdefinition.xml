@@ -1,0 +1,17 @@
+<decision hit-policy="all" version="1">
+  <rules>
+    <rule id="f1df58a2-c388-4b9e-958c-aa163c61a109" name="ALM Rule 1">
+      <logical operator="AND">
+        <condition operator="not-null">
+          <lhs type="attribute">msdyn_ocliveworkitem.msdyn_createdon</lhs>
+        </condition>
+      </logical>
+      <action>
+        <setattribute>
+          <lhs type="attribute">assign_to.queue</lhs>
+          <rhs type="staticvalue">bbc3a88b-901f-f011-9989-00224803a19b</rhs>
+        </setattribute>
+      </action>
+    </rule>
+  </rules>
+</decision>

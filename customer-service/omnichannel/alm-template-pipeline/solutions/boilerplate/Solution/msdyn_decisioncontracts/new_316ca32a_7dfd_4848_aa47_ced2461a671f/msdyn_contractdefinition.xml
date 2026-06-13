@@ -1,0 +1,11 @@
+<contract version="1">
+  <entity logical-name="msdyn_ocliveworkitem" key="msdyn_ocliveworkitem" />
+  <entity logical-name="msdyn_effortpredictionresult" key="msdyn_effortpredictionresult" />
+  <entity logical-name="msdyn_livechatengagementctx" key="msdyn_livechatengagementctx" />
+  <entity logical-name="msdyn_ocliveworkitemcharacteristic" key="msdyn_ocliveworkitemcharacteristic" is-collection="true" />
+  <entity logical-name="msdyn_ocliveworkitemcapacityprofile" key="msdyn_ocliveworkitemcapacityprofile" is-collection="true" />
+  <complex key="liveworkitemcontext">
+    <variable name="ALMTestChatQuestionTwo" data-type="string" />
+    <variable name="ALMTestChatQuestionOne" data-type="string" />
+  </complex>
+</contract>

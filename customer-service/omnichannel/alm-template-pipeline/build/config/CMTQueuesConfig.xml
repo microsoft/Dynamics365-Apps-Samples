@@ -1,0 +1,172 @@
+<entities >
+  <entity name="queue" displayname="Queue" etc="2020" primaryidfield="queueid" primarynamefield="name" disableplugins="false">
+    <fields>
+      <field displayname="Assignment Input Contract Id" name="msdyn_assignmentinputcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
+      <field displayname="Assignment Strategy" name="msdyn_assignmentstrategy" type="optionsetvalue" customfield="true" />
+      <field displayname="Description" name="description" type="string" />
+      <field displayname="Is Default Queue" name="msdyn_isdefaultqueue" type="bool" customfield="true" />
+      <field displayname="Is Omnichannel queue" name="msdyn_isomnichannelqueue" type="bool" customfield="true" />
+      <field displayname="Name" name="name" type="string" />
+      <field displayname="Operating Hours" name="msdyn_operatinghourid" type="entityreference" lookupType="msdyn_operatinghour" customfield="true" />
+      <field displayname="Priority" name="msdyn_priority" type="number" customfield="true" />
+      <field displayname="Queue" name="queueid" type="guid" primaryKey="true" />
+      <field displayname="Queue type" name="msdyn_queuetype" type="optionsetvalue" customfield="true" />
+      <field displayname="Type" name="queueviewtype" type="optionsetvalue" />
+      <field displayname="Prequeue Overflow Ruleset" name="msdyn_prequeueoverflowrulesetid" type="entityreference" lookupType="msdyn_decisionruleset" customfield="true" />
+    </fields>
+    <relationships />
+    <filter>&lt;fetch&gt;
+ &lt;entity name="queue"&gt;
+   &lt;filter type="or"&gt;
+    &lt;condition attribute="name" operator="eq" value="ALM Test Chat Queue" /&gt;
+    &lt;condition attribute="name" operator="eq" value="ALM Test Voice Queue" /&gt;
+   &lt;/filter&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt;
+</filter>
+  </entity>
+  <entity name="msdyn_decisioncontract" displayname="Decision contract" etc="10570" primaryidfield="msdyn_decisioncontractid" primarynamefield="msdyn_name" disableplugins="false" skipupdate="true">
+    <fields>
+      <field displayname="Decision contract" name="msdyn_decisioncontractid" type="guid" primaryKey="true" />
+      <field displayname="Contract definition" name="msdyn_contractdefinition" type="string" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
+    </fields>
+    <filter>&lt;fetch distinct="true"&gt;
+ &lt;entity name="msdyn_decisioncontract"&gt;
+  &lt;filter type="or"&gt;
+   &lt;filter type="or"&gt;
+    &lt;condition attribute="name" entityname="aw" operator="eq" value="ALM Test Chat Queue" /&gt;
+    &lt;condition attribute="name" entityname="aw" operator="eq" value="ALM Test Voice Queue" /&gt;
+   &lt;/filter&gt;
+   &lt;filter type="or"&gt;
+    &lt;condition attribute="name" entityname="be" operator="eq" value="ALM Test Chat Queue" /&gt;
+    &lt;condition attribute="name" entityname="be" operator="eq" value="ALM Test Voice Queue" /&gt;
+   &lt;/filter&gt;
+   &lt;filter type="or"&gt;
+    &lt;condition attribute="name" entityname="bm" operator="eq" value="ALM Test Chat Queue" /&gt;
+    &lt;condition attribute="name" entityname="bm" operator="eq" value="ALM Test Voice Queue" /&gt;
+   &lt;/filter&gt;
+  &lt;/filter&gt;
+  &lt;link-entity name="queue" from="msdyn_assignmentinputcontractid" to="msdyn_decisioncontractid" link-type="outer" alias="aw"&gt;&lt;/link-entity&gt;
+  &lt;link-entity name="msdyn_decisionruleset" from="msdyn_inputcontractid" to="msdyn_decisioncontractid" link-type="outer" alias="bb"&gt;
+   &lt;link-entity name="msdyn_assignmentconfigurationstep" from="msdyn_rulesetid" to="msdyn_decisionrulesetid" link-type="outer" alias="bc"&gt;
+    &lt;link-entity name="msdyn_assignmentconfiguration" from="msdyn_assignmentconfigurationid" to="msdyn_assignmentconfigurationid" link-type="outer" alias="bd"&gt;
+     &lt;link-entity name="queue" from="queueid" to="msdyn_queueid" link-type="outer" alias="be"&gt;&lt;/link-entity&gt;
+    &lt;/link-entity&gt;
+   &lt;/link-entity&gt;
+  &lt;/link-entity&gt;
+  &lt;link-entity name="msdyn_decisionruleset" from="msdyn_outputcontractid" to="msdyn_decisioncontractid" link-type="outer" alias="bj"&gt;
+   &lt;link-entity name="msdyn_assignmentconfigurationstep" from="msdyn_rulesetid" to="msdyn_decisionrulesetid" link-type="outer" alias="bk"&gt;
+    &lt;link-entity name="msdyn_assignmentconfiguration" from="msdyn_assignmentconfigurationid" to="msdyn_assignmentconfigurationid" link-type="outer" alias="bl"&gt;
+     &lt;link-entity name="queue" from="queueid" to="msdyn_queueid" link-type="outer" alias="bm"&gt;&lt;/link-entity&gt;
+    &lt;/link-entity&gt;
+   &lt;/link-entity&gt;
+  &lt;/link-entity&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_decisionruleset" displayname="Decision rule set" etc="10571" primaryidfield="msdyn_decisionrulesetid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Is input collection" name="msdyn_isinputcollection" type="bool" customfield="true" />
+      <field displayname="AI builder model" name="msdyn_aibmodelid" type="entityreference" lookupType="msdyn_aimodel" customfield="true" />
+      <field displayname="Authoring mode" name="msdyn_authoringmode" type="optionsetvalue" customfield="true" />
+      <field displayname="Decision rule set" name="msdyn_decisionrulesetid" type="guid" primaryKey="true" />
+      <field displayname="Description" name="msdyn_description" type="string" customfield="true" />
+      <field displayname="Input contract" name="msdyn_inputcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
+      <field displayname="ML model type" name="msdyn_mlmodeltype" type="optionsetvalue" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Output contract" name="msdyn_outputcontractid" type="entityreference" lookupType="msdyn_decisioncontract" customfield="true" />
+      <field displayname="Rule set definition" name="msdyn_rulesetdefinition" type="string" customfield="true" />
+      <field displayname="Rule set type" name="msdyn_rulesettype" type="optionsetvalue" customfield="true" />
+      <field displayname="Unique name" name="msdyn_uniquename" type="string" customfield="true" />
+      <field displayname="FetchXML for ruleset" name="msdyn_fetchxml" type="string" customfield="true" />
+    </fields>
+    <filter>&lt;fetch distinct="true"&gt;
+   &lt;entity name="msdyn_decisionruleset"&gt;
+    &lt;link-entity name="msdyn_assignmentconfigurationstep" from="msdyn_rulesetid" to="msdyn_decisionrulesetid" link-type="inner" alias="am"&gt;
+     &lt;filter&gt;
+      &lt;condition attribute="msdyn_type" operator="ne" value="192350001" /&gt;
+     &lt;/filter&gt;
+     &lt;link-entity name="msdyn_assignmentconfiguration" from="msdyn_assignmentconfigurationid" to="msdyn_assignmentconfigurationid" link-type="inner" alias="an"&gt;
+      &lt;link-entity name="queue" from="queueid" to="msdyn_queueid" link-type="inner" alias="ao"&gt;
+       &lt;filter type="or"&gt;
+        &lt;condition attribute="name" operator="eq" value="ALM Test Chat Queue" /&gt;
+        &lt;condition attribute="name" operator="eq" value="ALM Test Voice Queue" /&gt;
+       &lt;/filter&gt;
+      &lt;/link-entity&gt;
+     &lt;/link-entity&gt;
+    &lt;/link-entity&gt;
+   &lt;/entity&gt;
+  &lt;/fetch&gt;
+</filter>
+  </entity>
+  <entity name="msdyn_assignmentconfiguration" displayname="Assignment Configuration" etc="10623" primaryidfield="msdyn_assignmentconfigurationid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Assignment Configuration" name="msdyn_assignmentconfigurationid" type="guid" primaryKey="true" />
+      <field displayname="Description" name="msdyn_description" type="string" customfield="true" />
+      <field displayname="Is Active Configuration" name="msdyn_isactiveconfiguration" type="bool" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Queue" name="msdyn_queueid" type="entityreference" lookupType="queue" customfield="true" />
+      <field displayname="Unique Name" name="msdyn_uniquename" type="string" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+ &lt;entity name="msdyn_assignmentconfiguration"&gt;
+  &lt;link-entity name="queue" from="queueid" to="msdyn_queueid" link-type="inner"&gt;
+   &lt;filter type="or"&gt;
+    &lt;condition attribute="name" operator="eq" value="ALM Test Chat Queue" /&gt;
+    &lt;condition attribute="name" operator="eq" value="ALM Test Voice Queue" /&gt;
+   &lt;/filter&gt;
+  &lt;/link-entity&gt;
+ &lt;/entity&gt;
+&lt;/fetch&gt; 
+</filter>
+  </entity>
+  <entity name="msdyn_assignmentconfigurationstep" displayname="Assignment Configuration Step" etc="10624" primaryidfield="msdyn_assignmentconfigurationstepid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Assignment Configuration" name="msdyn_assignmentconfigurationid" type="entityreference" lookupType="msdyn_assignmentconfiguration" customfield="true" />
+      <field displayname="Assignment Configuration Step" name="msdyn_assignmentconfigurationstepid" type="guid" primaryKey="true" />
+      <field displayname="Is default ruleset" name="msdyn_isdefaultruleset" type="bool" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Rule Set" name="msdyn_rulesetid" type="entityreference" lookupType="msdyn_decisionruleset" customfield="true" />
+      <field displayname="Step Order" name="msdyn_steporder" type="number" customfield="true" />
+      <field displayname="Step Type" name="msdyn_type" type="optionsetvalue" customfield="true" />
+      <field displayname="Unique Name" name="msdyn_uniquename" type="string" customfield="true" />
+    </fields>
+    <filter>&lt;fetch&gt;
+   &lt;entity name="msdyn_assignmentconfigurationstep"&gt;
+    &lt;filter&gt;
+      &lt;condition attribute="msdyn_type" operator="ne" value="192350001" /&gt;
+    &lt;/filter&gt;
+    &lt;link-entity name="msdyn_assignmentconfiguration" from="msdyn_assignmentconfigurationid" to="msdyn_assignmentconfigurationid" link-type="inner"&gt;
+     &lt;link-entity name="queue" from="queueid" to="msdyn_queueid" link-type="inner"&gt;
+      &lt;filter type="or"&gt;
+       &lt;condition attribute="name" operator="eq" value="ALM Test Chat Queue" /&gt;
+       &lt;condition attribute="name" operator="eq" value="ALM Test Voice Queue" /&gt;
+      &lt;/filter&gt;
+     &lt;/link-entity&gt;
+    &lt;/link-entity&gt;
+   &lt;/entity&gt;
+&lt;/fetch&gt;</filter>
+  </entity>
+  <entity name="msdyn_operatinghour" displayname="Operating Hour" etc="10689" primaryidfield="msdyn_operatinghourid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Description" name="msdyn_description" type="string" customfield="true" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Operating Hour" name="msdyn_operatinghourid" type="guid" primaryKey="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+    <filter>        &lt;fetch&gt;
+            &lt;entity name="msdyn_operatinghour"&gt;
+               &lt;link-entity name="queue" from="msdyn_operatinghourid" to="msdyn_operatinghourid" link-type="inner"&gt;
+                &lt;filter type="or"&gt;
+                  &lt;condition attribute="name" operator="eq" value="ALM Test Chat Queue" /&gt;
+                  &lt;condition attribute="name" operator="eq" value="ALM Test Voice Queue" /&gt;
+                &lt;/filter&gt;
+               &lt;/link-entity&gt;
+            &lt;/entity&gt;
+        &lt;/fetch&gt;
+</filter>
+  </entity>
+</entities>

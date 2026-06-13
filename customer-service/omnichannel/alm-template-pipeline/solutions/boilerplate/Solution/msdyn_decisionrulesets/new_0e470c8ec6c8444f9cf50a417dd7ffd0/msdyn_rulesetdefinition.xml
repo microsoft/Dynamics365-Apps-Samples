@@ -1,0 +1,28 @@
+<decision hit-policy="first" version="1">
+  <rules>
+    <rule id="9e6e1a37-8d31-413e-9763-6c5e17d6d648" name="ALM Test Chat Work Classification Rule">
+      <logical operator="AND">
+        <condition operator="not-null">
+          <lhs type="attribute">msdyn_ocliveworkitem.msdyn_createdon</lhs>
+        </condition>
+      </logical>
+      <action>
+        <upsertrecords>
+          <target>msdyn_ocliveworkitemcharacteristic</target>
+          <records>
+            <record>
+              <setattribute>
+                <lhs type="attribute">msdyn_characteristic.characteristicid</lhs>
+                <rhs type="staticvalue">{748416d5-221f-f011-9989-6045bd01886a}</rhs>
+              </setattribute>
+              <setattribute>
+                <lhs type="attribute">msdyn_ratingvalue.ratingvalueid</lhs>
+                <rhs type="staticvalue">{6e9c5616-231f-f011-9989-6045bd01886a}</rhs>
+              </setattribute>
+            </record>
+          </records>
+        </upsertrecords>
+      </action>
+    </rule>
+  </rules>
+</decision>

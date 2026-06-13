@@ -1,0 +1,6 @@
+#Template file for CI Build variables
+variables:
+    EnableSigning: true
+    PackageName: boilerplatePackage.zip
+    NuGetPackageName: Microsoft.Dynamics.XrmSolutions.boilerplatePackage
+    NuGetFeed: "XrmSolutions"

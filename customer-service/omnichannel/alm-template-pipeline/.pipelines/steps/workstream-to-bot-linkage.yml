@@ -1,0 +1,23 @@
+parameters:
+- name: orgUrl
+  type: string
+- name: TenantId
+  type: string
+- name: AppUserClientId
+  type: string
+- name: AppUserSecret
+  type: string
+
+steps:
+    - task: PowerShell@2
+      env:
+        SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+      inputs:
+        targetType: 'filePath'
+        filePath: $(System.DefaultWorkingDirectory)\Omnichannel.ALM\build\config\WorkstreamToBotLinkage.ps1
+        arguments: > # Use this to avoid newline characters in multiline string
+            -OrgURL ${{ parameters.orgUrl }}
+            -ClientId ${{ parameters.AppUserClientId }}
+            -ClientSecret ${{ parameters.AppUserSecret }}
+            -TenantId ${{ parameters.TenantId }}
+      displayName: 'Perform Workstream to Bot Mapping'
