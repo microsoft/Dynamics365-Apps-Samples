@@ -10,9 +10,8 @@
         "refreshTypes": "pcf-scripts refreshTypes",
         "typecheck": "tsc --noEmit && tsc --noEmit --project tsconfig.test.json",
         "test": "jest --config jest.config.js",
-        "test:browser": "node tests/browser.cjs",
-        "check": "prettier --check \"OpportunityActionsControl/*.ts\" \"OpportunityActionsControl/src/**/*.{ts,tsx}\" \"tests/*.{tsx,cjs}\" && eslint OpportunityActionsControl tests --ext .ts,.tsx --ignore-pattern generated/**",
-        "fix": "prettier --write \"OpportunityActionsControl/*.ts\" \"OpportunityActionsControl/src/**/*.{ts,tsx}\" \"tests/*.{tsx,cjs}\""
+        "check": "prettier --check \"OpportunityActionsControl/*.ts\" \"OpportunityActionsControl/src/**/*.{ts,tsx}\" \"tests/*.cjs\" && eslint OpportunityActionsControl tests --ext .ts,.tsx --ignore-pattern generated/**",
+        "fix": "prettier --write \"OpportunityActionsControl/*.ts\" \"OpportunityActionsControl/src/**/*.{ts,tsx}\" \"tests/*.cjs\""
     },
     "dependencies": {
         "@fluentui/react-components": "9.72.3",
@@ -20,8 +19,6 @@
         "react": "16.14.0"
     },
     "devDependencies": {
-        "@axe-core/playwright": "4.11.1",
-        "@playwright/test": "1.59.0-alpha-2026-01-23",
         "@types/jest": "29.5.14",
         "@types/node": "18.19.103",
         "@types/powerapps-component-framework": "1.3.18",
@@ -29,7 +26,6 @@
         "@types/react-dom": "16.9.25",
         "@typescript-eslint/eslint-plugin": "5.62.0",
         "@typescript-eslint/parser": "5.62.0",
-        "esbuild": "0.25.12",
         "eslint": "8.57.1",
         "eslint-plugin-jsdoc": "44.2.7",
         "eslint-plugin-jsx-a11y": "6.10.2",

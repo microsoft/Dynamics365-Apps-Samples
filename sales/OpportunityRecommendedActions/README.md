@@ -75,7 +75,7 @@ Only Web has live pilot evidence. Device registration or automated narrow-layout
 
 ## Build from source
 
-The sample has its own npm workspace and public npm/NuGet feed configuration. It does not require the internal product repository. For development, use Node.js 22, npm and Microsoft Edge for synthetic browser tests. Solution packaging also requires a compatible .NET/MSBuild installation for the checked-in Power Apps packages and .NET Framework 4.6.2 reference assemblies.
+The sample has its own npm workspace and public npm/NuGet feed configuration. It does not require the internal product repository. For development, use Node.js 22 and npm. Solution packaging also requires a compatible .NET/MSBuild installation for the checked-in Power Apps packages and .NET Framework 4.6.2 reference assemblies.
 
 From this sample directory:
 
@@ -85,7 +85,7 @@ npm run verify
 npm run build:solution
 ```
 
-`verify` generates manifest types, type-checks production and test code, checks formatting/lint, runs Jest, builds the production bundle, and runs synthetic Edge component/layout/accessibility tests. The browser suite uses localhost fixtures, not a live Dataverse environment. `build:solution` creates a local unmanaged solution package without importing or publishing anything.
+`verify` generates manifest types, type-checks production and test code, checks formatting/lint, runs Jest, and builds the production bundle. `build:solution` creates a local unmanaged solution package without importing or publishing anything.
 
 **Source-build status:** a clean public-feed restore and standalone test/build run have not yet completed for this contribution because registry access was unavailable during preparation. Direct versions are pinned; a reviewed transitive lockfile is still pending. Do not infer that the included historical pilot ZIP is a new standalone build. Before redistributing a rebuilt package, validate import/upgrade and assign a distinct release version if its contents differ.
 

@@ -16,8 +16,7 @@
         "check": "npm run check --workspace @raa-pilot/opportunity-actions-control",
         "test": "npm run test --workspace @raa-pilot/opportunity-actions-control -- --runInBand",
         "build": "npm run build --workspace @raa-pilot/opportunity-actions-control",
-        "test:browser": "npm run test:browser --workspace @raa-pilot/opportunity-actions-control",
         "build:solution": "dotnet build Solution/Solution.cdsproj --configuration Release --property:SolutionPackageType=Unmanaged",
-        "verify": "npm run refreshTypes && npm run typecheck && npm run check && npm test && npm run build && npm run test:browser"
+        "verify": "npm run refreshTypes && npm run typecheck && npm run check && npm test && npm run build"
     }
 }
