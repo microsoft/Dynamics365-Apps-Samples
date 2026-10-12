@@ -1,0 +1,15 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "lib": ["ES2017", "dom", "dom.iterable"],
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true
+    },
+    "include": ["OpportunityActionsControl/**/*.ts", "OpportunityActionsControl/**/*.tsx"],
+    "exclude": ["node_modules", "dist", "coverage", "**/*.test.ts", "**/*.test.tsx"]
+}

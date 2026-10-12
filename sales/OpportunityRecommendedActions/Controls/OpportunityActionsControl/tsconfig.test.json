@@ -1,0 +1,6 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": { "module": "commonjs", "types": ["jest", "node", "powerapps-component-framework"] },
+    "include": ["OpportunityActionsControl/**/*.ts", "OpportunityActionsControl/**/*.tsx", "tests/**/*.tsx"],
+    "exclude": ["node_modules", "dist", "coverage"]
+}

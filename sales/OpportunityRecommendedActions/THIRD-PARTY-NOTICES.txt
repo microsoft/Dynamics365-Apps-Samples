@@ -1,0 +1,46 @@
+Opportunity recommended actions PCF sample
+
+Microsoft-authored sample code follows the repository's MIT LICENSE.
+Third-party dependencies retain their own licenses.
+
+Runtime dependencies declared by the sample:
+- React 16.14.0: MIT; https://github.com/facebook/react
+- Fluent UI React Components 9.72.3: MIT;
+  https://github.com/microsoft/fluentui
+- Fluent UI MDL2 React Icons 1.4.7: MIT;
+  https://github.com/microsoft/fluentui
+
+The supplied solution ZIP preserves the notices emitted by its original build at:
+Controls/Raa.Pilot.OpportunityActionsControl/bundle.js.LICENSE.txt
+
+Those notices identify Microsoft-authored code and the React/React JSX runtime.
+The React notice retained in that build is:
+
+Copyright (c) Facebook, Inc. and its affiliates.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+This file is not a complete generated SBOM or license clearance. Before public
+release or redistribution of a rebuilt bundle, review the resolved dependency
+tree and actual bundled modules, retain their required notices, and complete the
+owning team's license/security process. Development dependencies (including
+Power Apps build tooling, Jest, Playwright and axe-core) also require review under
+their own licenses; their package archives are not committed in this sample.

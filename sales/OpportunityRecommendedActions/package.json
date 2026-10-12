@@ -1,0 +1,23 @@
+{
+    "name": "dynamics365-sales-recommendedactions-pcf",
+    "version": "0.1.0",
+    "private": true,
+    "license": "MIT",
+    "description": "Dynamics 365 Sales Opportunity recommended actions PCF sample.",
+    "engines": {
+        "node": ">=22 <23"
+    },
+    "workspaces": [
+        "Controls/OpportunityActionsControl"
+    ],
+    "scripts": {
+        "refreshTypes": "npm run refreshTypes --workspace @raa-pilot/opportunity-actions-control",
+        "typecheck": "npm run typecheck --workspace @raa-pilot/opportunity-actions-control",
+        "check": "npm run check --workspace @raa-pilot/opportunity-actions-control",
+        "test": "npm run test --workspace @raa-pilot/opportunity-actions-control -- --runInBand",
+        "build": "npm run build --workspace @raa-pilot/opportunity-actions-control",
+        "test:browser": "npm run test:browser --workspace @raa-pilot/opportunity-actions-control",
+        "build:solution": "dotnet build Solution/Solution.cdsproj --configuration Release --property:SolutionPackageType=Unmanaged",
+        "verify": "npm run refreshTypes && npm run typecheck && npm run check && npm test && npm run build && npm run test:browser"
+    }
+}
