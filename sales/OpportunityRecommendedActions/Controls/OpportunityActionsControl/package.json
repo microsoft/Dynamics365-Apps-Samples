@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "license": "MIT",
-    "description": "Standalone Opportunity recommendations pilot with server-authorized Done and Dismiss actions; not included in product solutions.",
+    "description": "Sample PCF control showing Opportunity recommendations with Done and Dismiss actions.",
     "scripts": {
         "build": "pcf-scripts build --buildMode production",
         "clean": "pcf-scripts clean",

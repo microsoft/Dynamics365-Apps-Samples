@@ -21,7 +21,6 @@ node_modules/
 *.key
 *.snk
 *.zip
-!download/RAAOpportunityActionsPilot-1.0.6.0.zip
 *.cab
 .vscode/
 .idea/

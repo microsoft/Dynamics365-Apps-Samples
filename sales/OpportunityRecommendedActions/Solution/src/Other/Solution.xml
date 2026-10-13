@@ -22,7 +22,7 @@
       </LocalizedNames>
       <Descriptions>
         <!-- Description of Cds Publisher in language code -->
-        <Description description="Provisional publisher for the RAA Opportunity Actions pilot. Replace with the approved publisher before customer delivery." languagecode="1033" />
+        <Description description="Sample publisher for the Opportunity recommended actions sample. Replace it with your own publisher before adopting the control." languagecode="1033" />
       </Descriptions>
       <EMailAddress xsi:nil="true"></EMailAddress>
       <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>

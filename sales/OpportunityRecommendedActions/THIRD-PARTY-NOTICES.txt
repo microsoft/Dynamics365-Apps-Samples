@@ -10,11 +10,11 @@ Runtime dependencies declared by the sample:
 - Fluent UI MDL2 React Icons 1.4.7: MIT;
   https://github.com/microsoft/fluentui
 
-The supplied solution ZIP preserves the notices emitted by its original build at:
-Controls/Raa.Pilot.OpportunityActionsControl/bundle.js.LICENSE.txt
+A solution built from this sample bundles the notices emitted by the build in
+Controls/Raa.Pilot.OpportunityActionsControl/bundle.js.LICENSE.txt.
 
 Those notices identify Microsoft-authored code and the React/React JSX runtime.
-The React notice retained in that build is:
+The React notice is:
 
 Copyright (c) Facebook, Inc. and its affiliates.
 

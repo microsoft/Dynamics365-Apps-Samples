@@ -18,19 +18,17 @@ This Power Apps Component Framework (PCF) control displays existing Recommended 
 
 The parent Sales index describes older C# samples. Use this sample's instructions instead: this is a TypeScript PCF for Dynamics 365 Sales online, not a Visual Studio F5 or on-premises sample.
 
-## Download the solution
+## Get the solution
 
-Download [RAAOpportunityActionsPilot-1.0.6.0.zip](download/RAAOpportunityActionsPilot-1.0.6.0.zip) using **Download raw file** on its GitHub file page. Do not import the repository's **Download ZIP** archive; that contains source code, not a Dataverse solution.
+This sample is source-only. Build the solution package yourself as described in [Build from source](#build-from-source); `npm run build:solution` writes an unmanaged solution ZIP under `Solution/bin/Release/`.
 
 | Item | Value |
 | --- | --- |
-| Solution | `RAAOpportunityActionsPilot`, version `1.0.6.0`, unmanaged |
-| Control | `Raa.Pilot.OpportunityActionsControl`, version `0.1.7` |
-| Publisher | `RAAOpportunityPilot`, prefix `raapilot` |
-| Download size | 49,198 bytes |
-| SHA-256 | `52c862b0bfaa340bda56762f6c52a94ac2af23fa1f09a0fcd36bb1a2fb83f173` |
+| Solution | `RAAOpportunityActionsPilot`, unmanaged |
+| Control | `Raa.Pilot.OpportunityActionsControl` |
+| Publisher | `RAAOpportunityPilot`, prefix `raapilot` (sample publisher; replace it with your own publisher before adopting the control) |
 
-The ZIP contains **only the control**. It has no Opportunity form, security role, table or backend API. Importing it does not change the Opportunity form layout or create recommendations; form placement is a separate step below. The publisher identity is retained from the pilot and must be agreed with the environment owner before adoption.
+The solution contains **only the control**. It has no Opportunity form, security role, table or backend API. Importing it does not change the Opportunity form layout or create recommendations; form placement is a separate step below.
 
 ## Prerequisites
 
@@ -43,7 +41,7 @@ The ZIP contains **only the control**. It has no Opportunity form, security role
 ## Import and configure
 
 1. Back up the target form and customizations through your normal change process. Start with a sandbox, not production.
-2. Open [Power Apps](https://make.powerapps.com), select the correct environment, then **Solutions > Import solution**. Import the solution ZIP linked above and publish customizations after the import completes.
+2. Open [Power Apps](https://make.powerapps.com), select the correct environment, then **Solutions > Import solution**. Import the solution ZIP you built from this sample and publish customizations after the import completes.
 3. Open the Opportunity main form used by the intended model-driven app and users, preferably from your own customization solution.
 4. Add a one-column section where the panel should appear, for example below **Up next**. Keep the existing sections and fields intact.
 5. Add **Opportunity recommended actions (pilot)**. Bind **Anchor column** (`anchorField`) to a single-line text column such as **Topic**. It is an anchor only; the control returns no changed column values. Keep the original editable Topic field where sellers need it.
@@ -67,7 +65,7 @@ Only Web has live pilot evidence. Device registration or automated narrow-layout
 ## Known limitations
 
 - **Record binding:** version `0.1.7` retains a fallback to the undocumented `context.mode.contextInfo` property when explicit inputs are empty. Configure and validate explicit inputs; the fallback is not a supported portability guarantee.
-- **Property help:** the historical pilot's anchor-field help says the current Opportunity is read automatically. That wording describes the fallback, not a supported alternative to configuring `entityId` and `entityName` as above.
+- **Property help:** the control's anchor-field help says the current Opportunity is read automatically. That wording describes the fallback, not a supported alternative to configuring `entityId` and `entityName` as above.
 - **Authorization:** native caller-scoped Dataverse reads are not certified equivalent to RAA assignment/target-ownership filtering. Seller visibility and lifecycle authorization require an owner-approved decision and testing.
 - **Host APIs:** the existing lifecycle adapter uses the model-driven host's same-origin session. Its PCF surface compatibility requires owner review before broader use.
 - **Accessibility:** automated component/layout/accessibility tests are not complete screen-reader or customer-environment certification. Keyboard focus after successful Done/Dismiss refresh also needs live validation.
@@ -87,7 +85,7 @@ npm run build:solution
 
 `verify` generates manifest types, type-checks production and test code, checks formatting/lint, runs Jest, and builds the production bundle. `build:solution` creates a local unmanaged solution package without importing or publishing anything.
 
-**Source-build status:** a clean public-feed restore and standalone test/build run have not yet completed for this contribution because registry access was unavailable during preparation. Direct versions are pinned; a reviewed transitive lockfile is still pending. Do not infer that the included historical pilot ZIP is a new standalone build. Before redistributing a rebuilt package, validate import/upgrade and assign a distinct release version if its contents differ.
+**Source-build status:** direct dependency versions are pinned; a reviewed transitive lockfile is not included yet. Validate import and upgrade in a sandbox, and give your build a distinct release version if you change its contents.
 
 ## Remove the sample
 
@@ -95,6 +93,6 @@ Remove the component from every affected form and publish. **Deleting an unmanag
 
 ## License, notices and support
 
-The source contribution follows the repository's [MIT license](../../LICENSE). Third-party packages retain their own licenses; the solution ZIP retains its embedded bundle-license notices. See [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt).
+The source contribution follows the repository's [MIT license](../../LICENSE). Third-party packages retain their own licenses; a solution you build bundles their notices with the control. See [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt).
 
 For contributions and security reporting, follow the repository [contribution guidance](../../README.md#contributing) and [security policy](../../SECURITY.md). Do not post credentials or customer data in public issues. This sample does not establish a production support commitment or replace the owner's release, security and privacy approvals.
