@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.PowerApps.MSBuild.Solution" Version="1.32.6" />
+    <PackageVersion Include="Microsoft.PowerApps.MSBuild.Pcf" Version="1.37.4" />
+    <PackageVersion Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" />
+  </ItemGroup>
+</Project>

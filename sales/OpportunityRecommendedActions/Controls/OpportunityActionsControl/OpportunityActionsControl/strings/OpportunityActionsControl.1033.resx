@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="OpportunityActions_DisplayName" xml:space="preserve"><value>Opportunity recommended actions (pilot)</value><comment>Control name in the form maker's component picker.</comment></data>
+  <data name="OpportunityActions_Description" xml:space="preserve"><value>Active recommendations for the current Opportunity, with reasons and action controls.</value><comment>Component description for form makers.</comment></data>
+  <data name="OpportunityActions_AnchorField" xml:space="preserve"><value>Anchor column</value><comment>Maker-facing label for the text column the control is attached to on the form.</comment></data>
+  <data name="OpportunityActions_AnchorFieldDescription" xml:space="preserve"><value>Attach the control to any single-line text column on the Opportunity form. The value is only an anchor; the control reads the current Opportunity automatically.</value><comment>Maker instruction explaining the anchor column has no functional value.</comment></data>
+  <data name="OpportunityActions_EntityId" xml:space="preserve"><value>Opportunity ID</value><comment>Maker-facing label for the current record's unique-identifier input.</comment></data>  <data name="OpportunityActions_EntityIdDescription" xml:space="preserve"><value>Bind to the current Opportunity record identifier.</value><comment>Maker instruction for the record-identifier input.</comment></data>
+  <data name="OpportunityActions_EntityName" xml:space="preserve"><value>Entity name</value><comment>Maker-facing label for the logical table-name input.</comment></data>
+  <data name="OpportunityActions_EntityNameDescription" xml:space="preserve"><value>Configure the logical table name as opportunity.</value><comment>Maker instruction; the lowercase logical name opportunity is a literal configuration value.</comment></data>
+  <data name="OpportunityActions_Title" xml:space="preserve"><value>Recommended actions</value><comment>Seller-facing list heading and accessible section name.</comment></data>
+  <data name="OpportunityActions_Refresh" xml:space="preserve"><value>Refresh</value><comment>Accessible name and tooltip for the icon-only button that reloads the current record's recommendations.</comment></data>
+  <data name="OpportunityActions_List" xml:space="preserve"><value>Recommendations</value><comment>Accessible name for the keyboard-focusable scrolling recommendation list.</comment></data>
+  <data name="OpportunityActions_Loading" xml:space="preserve"><value>Loading recommendations...</value><comment>Seller-facing live status while a page request is pending.</comment></data>
+  <data name="OpportunityActions_Empty" xml:space="preserve"><value>No active recommendations are available for this Opportunity.</value><comment>Successful empty result after no continuation remains; not an access-error message.</comment></data>
+  <data name="OpportunityActions_Error" xml:space="preserve"><value>Recommendations could not be loaded. Check access or try again.</value><comment>Generic seller-facing initial-load failure; never include raw service errors.</comment></data>
+  <data name="OpportunityActions_PartialError" xml:space="preserve"><value>Some recommendations are shown, but more could not be loaded. Refresh to try again.</value><comment>Automatic paging failure with previous rows retained; Refresh names the icon-only retry action.</comment></data>
+  <data name="OpportunityActions_SaveFirst" xml:space="preserve"><value>Save the Opportunity and verify the record-ID binding before loading recommendations.</value><comment>Missing or invalid current-record binding, including an unsaved form.</comment></data>
+  <data name="OpportunityActions_WrongEntity" xml:space="preserve"><value>Configure this control on an Opportunity form with entity name opportunity.</value><comment>Configuration error; the final lowercase opportunity is a literal logical table name.</comment></data>
+  <data name="OpportunityActions_LoadedCount" xml:space="preserve"><value>{0} recommendations loaded</value><comment>Seller-facing live status; {0} is the number of loaded rows, not a verified total.</comment></data>
+  <data name="OpportunityActions_Unavailable" xml:space="preserve"><value>Recommendation details unavailable</value><comment>Fallback row heading when stored display data cannot be safely interpreted.</comment></data>
+  <data name="OpportunityActions_Active" xml:space="preserve"><value>Active</value><comment>Recommendation UI-status badge, not a command.</comment></data>
+  <data name="OpportunityActions_Done" xml:space="preserve"><value>Done</value><comment>Badge for a recommendation marked as done, not a command.</comment></data>
+  <data name="OpportunityActions_Dismissed" xml:space="preserve"><value>Dismissed</value><comment>Badge for a dismissed recommendation, not a command.</comment></data>
+  <data name="OpportunityActions_Inactive" xml:space="preserve"><value>Inactive</value><comment>Badge for an inactive Dataverse PAC row.</comment></data>
+  <data name="OpportunityActions_Removed" xml:space="preserve"><value>Removed</value><comment>Badge for an inactive PAC row with the Removed status reason; the row still exists.</comment></data>
+  <data name="OpportunityActions_UnknownStatus" xml:space="preserve"><value>Status unavailable</value><comment>Badge when the stored recommendation UI status is missing or unknown.</comment></data>
+  <data name="OpportunityActions_Score" xml:space="preserve"><value>Priority score: {0}</value><comment>Read-only row metadata; {0} is a localized numeric score.</comment></data>
+  <data name="OpportunityActions_MarkDone" xml:space="preserve"><value>Mark as done</value><comment>Marks this recommendation complete using the lifecycle API.</comment></data>
+  <data name="OpportunityActions_Dismiss" xml:space="preserve"><value>Dismiss</value><comment>Dismisses a recommendation as not relevant.</comment></data>
+  <data name="OpportunityActions_OpenAction" xml:space="preserve"><value>Open recommendation: {0}</value><comment>Accessible card action name; {0} is the recommendation title.</comment></data>
+  <data name="OpportunityActions_Updating" xml:space="preserve"><value>Working on the recommendation...</value><comment>Live status while an action operation is pending.</comment></data>
+  <data name="OpportunityActions_ActionError" xml:space="preserve"><value>The action could not be completed. Check access and try again, or refresh the list.</value><comment>Generic operation failure; no raw service details.</comment></data>
+  <data name="OpportunityActions_WhyRecommended" xml:space="preserve"><value>Why recommended</value><comment>Heading for the stored scoring explanation and impact.</comment></data>
+  <data name="OpportunityActions_ReasonUnavailable" xml:space="preserve"><value>A recommendation reason is not available.</value><comment>Shown when score details have no safe text explanation.</comment></data>
+  <data name="OpportunityActions_ShowMore" xml:space="preserve"><value>Show more</value><comment>Expands this card's full text and distinct details; does not show a score or load another page.</comment></data>
+  <data name="OpportunityActions_ShowLess" xml:space="preserve"><value>Show less</value><comment>Collapses this recommendation back to its short summary.</comment></data>
+</root>

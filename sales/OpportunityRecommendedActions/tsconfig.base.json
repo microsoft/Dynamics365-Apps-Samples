@@ -1,0 +1,12 @@
+{
+    "extends": "./node_modules/pcf-scripts/tsconfig_base.json",
+    "compilerOptions": {
+        "typeRoots": ["./node_modules/@types"],
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "esModuleInterop": true,
+        "inlineSourceMap": true,
+        "skipLibCheck": true
+    }
+}

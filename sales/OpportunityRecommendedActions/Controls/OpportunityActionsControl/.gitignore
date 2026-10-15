@@ -1,0 +1,6 @@
+dist/
+coverage/
+test-results/
+/tests/preview-real.cjs
+OpportunityActionsControl/generated/
+*.tsbuildinfo

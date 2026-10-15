@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <control namespace="Raa.Pilot" constructor="OpportunityActionsControl" version="0.1.7"
+    display-name-key="OpportunityActions_DisplayName" description-key="OpportunityActions_Description" control-type="virtual">
+    <property name="anchorField" display-name-key="OpportunityActions_AnchorField" description-key="OpportunityActions_AnchorFieldDescription" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="entityId" display-name-key="OpportunityActions_EntityId" description-key="OpportunityActions_EntityIdDescription" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="entityName" display-name-key="OpportunityActions_EntityName" description-key="OpportunityActions_EntityNameDescription" of-type="SingleLine.Text" usage="input" required="false" />
+    <resources>
+      <code path="index.ts" order="1" />
+      <resx path="strings/OpportunityActionsControl.1033.resx" version="1.0.2" />
+      <platform-library name="React" version="16.14.0" />
+    </resources>
+    <feature-usage>
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+  </control>
+</manifest>

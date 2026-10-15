@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    {
+      "files": ["OpportunityActionsControl/src/OpportunityActionsApp.tsx"],
+      "rules": {
+        "jsx-a11y/no-noninteractive-tabindex": ["error", { "roles": ["tabpanel", "region"] }]
+      }
+    }
+  ]
+}
