@@ -1,0 +1,17 @@
+﻿<!-- PLEASE SEE THE README IN THE /Controls DIRECTORY FOR MORE INFORMATION ABOUT THIS FILE -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{76731E6A-F488-4AAD-99F5-E04D4345BDE3}</ProjectGuid>
+    <RootNamespace>SecondboilerplateControl</RootNamespace>
+    <OutputPath>$(WSRoot)\target\$(BuildConfiguration)\$(BuildPlatform)\$(MSBuildProjectName)</OutputPath>
+  </PropertyGroup>
+  <!--ProjectOutputPath should include the path containing controls to be placed in Solution metadata area.
+  It can point to the extracted Controls Nuget package folder e.g. $(PKG_CONTROLS)\contents\controls -->
+  <Target Name="GetProjectOutputPath" Returns="@(ProjectOutputPath)">
+    <ItemGroup>
+      <ProjectOutputPath Include="$(WSRoot)\Controls\SecondboilerplateControl\out\controls" >
+        <PowerAppsComponentType>Pcf</PowerAppsComponentType>
+      </ProjectOutputPath>
+    </ItemGroup>
+  </Target>
+</Project>

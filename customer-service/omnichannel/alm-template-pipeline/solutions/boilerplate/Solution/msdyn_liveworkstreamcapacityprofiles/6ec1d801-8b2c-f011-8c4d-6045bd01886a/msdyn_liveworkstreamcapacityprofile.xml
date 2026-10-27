@@ -1,0 +1,12 @@
+<msdyn_liveworkstreamcapacityprofile msdyn_liveworkstreamcapacityprofileid="6ec1d801-8b2c-f011-8c4d-6045bd01886a">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_capacityprofile_id>
+    <msdyn_uniquename>new_3518dc8a-0571-3ba6-179f-d087097274f3</msdyn_uniquename>
+  </msdyn_capacityprofile_id>
+  <msdyn_name>ALM Test Chat Capacity Profile-3518dc8a-0571-3ba6-179f-d087097274f3</msdyn_name>
+  <msdyn_workstream_id>
+    <msdyn_liveworkstreamid>f12b5631-adfa-b334-6902-0acd706fa93a</msdyn_liveworkstreamid>
+  </msdyn_workstream_id>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</msdyn_liveworkstreamcapacityprofile>

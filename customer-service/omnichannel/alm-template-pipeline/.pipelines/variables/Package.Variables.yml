@@ -1,0 +1,41 @@
+variables:
+  # Package variables required for by publish pipeline. For more details on where to find these details, see this wiki: https://dev.azure.com/dynamicscrm/OneCRM/_wiki/wikis/OneCRM.wiki/33993/Nuget-Package-Variables
+  packageType: ""
+  feed: ""
+  view: ""
+  package: ""
+  packageName: ""
+  packageFilePath: ""
+  ApplicationId: ""
+  PackageUniqueName: ""
+
+  # Flag to specify if approval is needed at the beginning of each stage OR at the beginning of the pipeline
+  RequireApprovalPerStation: false
+
+  # Package owner to create new environment where approvals are set up. See this wiki on how to set this up: https://dynamicscrm.visualstudio.com/OneCRM/_wiki/wikis/OneCRM.wiki/29505/Canonical-Solution-Delivery?anchor=step-2%3A-set-up-approvals
+  EnvironmentName: ""
+
+  # Service connection to successfully publish the package using VSO task provided by the TPS team. To create one, see this wiki link: https://dev.azure.com/dynamicscrm/OneCRM/_wiki/wikis/OneCRM.wiki/29505/Canonical-Solution-Delivery?anchor=step-4%3A-create-service-connection-for-tps
+  PublishServiceConnection: ""
+  
+  # Variables required for Tusted Publisher System (TPS). See this wiki on how to set this up: https://dev.azure.com/dynamicscrm/OneCRM/_wiki/wikis/OneCRM.wiki/29681/Partner-Center
+  serviceTreeId: "" # service tree identifier (taken from aka.ms/serviceTree)
+  applicationConfigurationURI: "" # optional. HTTPS endpoint towards application's single page application (SPA)
+  assetId: ""  # Product/offer asset identifier
+  productName: "" # Product/offer name as it appears in PartnerCenter
+  publisherId: "" # optional. publisher identifier
+  publisherDisplayName: "" # optional. publisher display name
+  useCertBasedAuth: "Yes"
+
+  # Fill the below fields for engineering contact and support contact as provided in the partner center.
+  # The same is part of the json shared in process of onboarding.
+  engineeringEmail: "" #required
+  engineeringName: "" # optional
+  engineeringPhone: "" # optional
+
+  supportEmail: "" #required
+  supportName: "" # optional
+  supportPhone: "" # optional
+  
+  #ICM Path
+  icmQueuePath: "" #icm queue path in the format 'service/team'

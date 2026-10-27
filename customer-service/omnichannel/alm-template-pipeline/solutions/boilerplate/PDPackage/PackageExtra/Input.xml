@@ -1,0 +1,286 @@
+<?xml version="1.0"?>
+<PvsPackageData>
+  <ProviderName>Microsoft</ProviderName>
+  <PackageFile>boilerplate.PackageDeployer.zip</PackageFile>
+  <Flights>
+    <Flight>Previews_UpcomingFeature</Flight>
+  </Flights>
+  <SolutionAnchorName>boilerplateAnchor_managed.zip</SolutionAnchorName>
+  <StartDate>01/01/2019</StartDate>
+  <EndDate>01/01/2050</EndDate>
+  <MinimumProductVersion>9.1</MinimumProductVersion>
+  <SupportedCountries>US</SupportedCountries>
+  <LearnMoreLink>http://go.microsoft.com/fwlink/?LinkID=773454</LearnMoreLink>
+  <Locales>
+	  <PackageLocale Code="1033" IsDefault="true">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="en-US\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1025" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="ar-SA\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1026" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="bg-BG\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1027" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="ca-ES\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1028" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="zh-TW\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1029" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="cs-CZ\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1030" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="da-DK\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1031" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="de-DE\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1032" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="el-GR\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1035" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="fi-FI\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1036" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="fr-FR\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1037" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="he-IL\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1038" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="hu-HU\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1040" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="it-IT\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1041" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="ja-JP\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1042" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="ko-KR\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1043" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="nl-NL\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1044" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="nb-NO\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1045" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="pl-PL\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1046" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="pt-BR\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1048" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="ro-RO\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1049" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="ru-RU\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1050" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="hr-HR\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1051" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="sk-SK\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1053" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="sv-SE\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1054" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="th-TH\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1055" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="tr-TR\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1057" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="id-ID\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1058" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="uk-UA\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1060" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="sl-SI\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1061" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="et-EE\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1062" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="lv-LV\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1063" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="lt-LT\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1066" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="vi-VN\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1069" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="eu-ES\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1081" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="hi-IN\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1086" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="ms-MY\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1087" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="kk-KZ\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="1110" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="gl-ES\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="2052" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="zh-CN\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="2070" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="pt-PT\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="2074" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="sr-Latn-CS\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="3076" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="zh-HK\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="3082" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="es-ES\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+	  <PackageLocale Code="3098" IsDefault="false">
+		  <Logo>logo.png</Logo>
+		  <Terms>
+			  <PackageTerm File="sr-Cyrl-CS\Supplemental_Software_License_Terms_Microsoft_Dynamics_365.htm" />
+		  </Terms>
+	  </PackageLocale>
+  </Locales>
+</PvsPackageData>

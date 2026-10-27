@@ -1,0 +1,11 @@
+{
+  "extends": "../../../tsconfig/tsconfig.base.uciandclassicweb.json",
+  "include": [
+    "ResourceStringProvider.ts"
+  ],
+  "compilerOptions": {
+    "outFile": "ResourceStringProvider.js",
+    "declaration": true,
+    "composite": true
+  }
+}

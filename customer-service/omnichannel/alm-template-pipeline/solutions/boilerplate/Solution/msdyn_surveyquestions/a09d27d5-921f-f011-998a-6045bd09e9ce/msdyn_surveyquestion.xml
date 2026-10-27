@@ -1,0 +1,11 @@
+<msdyn_surveyquestion msdyn_surveyquestionid="a09d27d5-921f-f011-998a-6045bd09e9ce">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_answertype>192350002</msdyn_answertype>
+  <msdyn_liveworkstreamtochatquestion>
+    <msdyn_liveworkstreamid>2edf72a6-dd2a-2abd-cdd5-96a718e31c46</msdyn_liveworkstreamid>
+  </msdyn_liveworkstreamtochatquestion>
+  <msdyn_name>ALMTestChatQuestionOne</msdyn_name>
+  <msdyn_questiontext>ALM Test Chat Question 1</msdyn_questiontext>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</msdyn_surveyquestion>

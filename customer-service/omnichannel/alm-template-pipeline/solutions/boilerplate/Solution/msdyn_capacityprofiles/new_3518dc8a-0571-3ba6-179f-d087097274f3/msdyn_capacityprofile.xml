@@ -1,0 +1,11 @@
+<msdyn_capacityprofile msdyn_uniquename="new_3518dc8a-0571-3ba6-179f-d087097274f3">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_blockassignment>1</msdyn_blockassignment>
+  <msdyn_defaultmaxunits>6</msdyn_defaultmaxunits>
+  <msdyn_name default="ALM Test Chat Capacity Profile">
+    <label description="ALM Test Chat Capacity Profile" languagecode="1033" />
+  </msdyn_name>
+  <msdyn_resetduration>192350000</msdyn_resetduration>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</msdyn_capacityprofile>

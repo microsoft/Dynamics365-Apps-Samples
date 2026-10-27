@@ -1,0 +1,19 @@
+{
+  "$kind": "BotConfiguration",
+  "channels": [
+    {
+      "$kind": "ChannelDefinition",
+      "id": "Omnichannel",
+      "channelId": "Omnichannel"
+    },
+    {
+      "$kind": "ChannelDefinition",
+      "id": "Telephony",
+      "channelId": "Telephony"
+    }
+  ],
+  "settings": {
+    "TelephonyInitialized": true
+  },
+  "isTelephonyEnabled": true
+}

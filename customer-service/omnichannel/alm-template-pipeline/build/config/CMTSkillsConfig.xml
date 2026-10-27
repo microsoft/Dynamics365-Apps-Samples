@@ -1,0 +1,26 @@
+<entities >
+  <entity name="characteristic" displayname="Characteristic" etc="1141" primaryidfield="characteristicid" primarynamefield="name" disableplugins="false">
+    <fields>
+      <field displayname="Characteristic" name="characteristicid" type="guid" primaryKey="true" />
+      <field displayname="Characteristic Type" name="characteristictype" type="optionsetvalue" />
+      <field displayname="Description" name="description" type="string" />
+      <field displayname="Name" name="name" type="string" />
+    </fields>
+  </entity>
+  <entity name="ratingmodel" displayname="Rating Model" etc="1144" primaryidfield="ratingmodelid" primarynamefield="name" disableplugins="false">
+    <fields>
+      <field displayname="Max Rating Value" name="maxratingvalue" type="number" />
+      <field displayname="Min Rating Value" name="minratingvalue" type="number" />
+      <field displayname="Name" name="name" type="string" />
+      <field displayname="Rating Model" name="ratingmodelid" type="guid" primaryKey="true" />
+    </fields>
+  </entity>
+  <entity name="ratingvalue" displayname="Rating Value" etc="1142" primaryidfield="ratingvalueid" primarynamefield="name" disableplugins="false">
+    <fields>
+      <field displayname="Name" name="name" type="string" />
+      <field displayname="Rating Model" name="ratingmodel" type="entityreference" lookupType="ratingmodel" />
+      <field displayname="Rating Value" name="ratingvalueid" type="guid" primaryKey="true" />
+      <field displayname="Value" name="value" type="number" />
+    </fields>
+  </entity>
+</entities>

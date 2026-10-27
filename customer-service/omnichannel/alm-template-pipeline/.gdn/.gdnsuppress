@@ -1,0 +1,748 @@
+{
+  "version": "latest",
+  "suppressionSets": {
+    "default": {
+      "name": "default",
+      "createdDate": "2022-03-23 10:54:56Z",
+      "lastUpdatedDate": "2022-03-23 10:54:56Z"
+    }
+  },
+  "results": {
+    "043a0387f326030714c6c30e19f96c7a76603af5a20bd6b8beb615acbb2f0f57": {
+      "signature": "043a0387f326030714c6c30e19f96c7a76603af5a20bd6b8beb615acbb2f0f57",
+      "alternativeSignatures": [
+        "45b3cabb1f3e82fa13d563f608f5bd395bd73b02cae1a6cb8d0d6636efc252e6"
+      ],
+      "target": "drop/release/AnyCPU/Plugins/Microsoft.Dynamics.FirstParty.Plugins.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "binskim",
+      "ruleId": "BA2004",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "6a283455948e2c1240faf79f70e34e528bc912cc137f65337a1ca201a5e52098": {
+      "signature": "6a283455948e2c1240faf79f70e34e528bc912cc137f65337a1ca201a5e52098",
+      "alternativeSignatures": [
+        "016467e95d7839d4ac82e53f19b4325d521214a63949c4ba8f9e314f8e9c1f4b"
+      ],
+      "target": "drop/release/AnyCPU/Plugins/Microsoft.Dynamics.boilerplate.Plugins.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "binskim",
+      "ruleId": "BA2004",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "fdbbce98f726ef7128889e57870aae216644aa97b39d42c6bdf2001abae53664": {
+      "signature": "fdbbce98f726ef7128889e57870aae216644aa97b39d42c6bdf2001abae53664",
+      "alternativeSignatures": [
+        "3cfb918b3a3a8522ace3f5d22360abea8bd3d8a4ac0e67d8b11d8d2a3a030ef2"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.IntegrationTests/Castle.Core.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "76de49ab1f77f309bb7d7555652e5fc558c2729d545238634dfcd0f70f02e121": {
+      "signature": "76de49ab1f77f309bb7d7555652e5fc558c2729d545238634dfcd0f70f02e121",
+      "alternativeSignatures": [
+        "18d1bc1d0aaa1d033ae6eddb4000461b57a733dea15308810bf425de16bd5706"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.IntegrationTests/FluentAssertions.Core.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "fff8c216d38446e0c40d2536491f3efa785736ffcfad76d4f350974544f41617": {
+      "signature": "fff8c216d38446e0c40d2536491f3efa785736ffcfad76d4f350974544f41617",
+      "alternativeSignatures": [
+        "da3dd0fe0c16937801e75db7a6216b110f786437abdc9185149c0fab612712ad"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.IntegrationTests/FluentAssertions.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "8875dc868af0b6fa3bc0855e8b295288c67a1a992cf8bfed7e0af1597983d643": {
+      "signature": "8875dc868af0b6fa3bc0855e8b295288c67a1a992cf8bfed7e0af1597983d643",
+      "alternativeSignatures": [
+        "b74d773ec61f888fffd8deca2bea7202905e0c43b6a96d5cc8e20bef0e3b60b1"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.IntegrationTests/Microsoft.Dynamics.boilerplate.Common.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "5ddea7cf93f687361fabd723c2843208be35462396766e4f98202355676b8206": {
+      "signature": "5ddea7cf93f687361fabd723c2843208be35462396766e4f98202355676b8206",
+      "alternativeSignatures": [
+        "96586bd2e097f8cb76828e9d7fc50cebf1deea561d4c2f2ee1f708f8ef3b61d1"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.IntegrationTests/Microsoft.Dynamics.boilerplate.TestCommon.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "1fa682d1c8f19699382ea8826ab9d86b08690b32c8c8cbf7f50e82af884154cc": {
+      "signature": "1fa682d1c8f19699382ea8826ab9d86b08690b32c8c8cbf7f50e82af884154cc",
+      "alternativeSignatures": [
+        "78912137380b86d83054ce1e1ebd0e20cd4b535171343b8b85f3b965c43f17cf"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.IntegrationTests/Microsoft.Xrm.Tools.Sdk.CDSConnection.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "607246a17839dae7b6b747a1ebfc4ef55f6f0ac44633adfa81f5684e4b9911a4": {
+      "signature": "607246a17839dae7b6b747a1ebfc4ef55f6f0ac44633adfa81f5684e4b9911a4",
+      "alternativeSignatures": [
+        "ef7d723f58a2123af76f96e5e8b479824af40a9c47155d5ee24b79fbed7d89c2"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.IntegrationTests/Moq.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "73aec534b3997ad18273b763aecdeb9c36e778bb06b490819347076595a26b5f": {
+      "signature": "73aec534b3997ad18273b763aecdeb9c36e778bb06b490819347076595a26b5f",
+      "alternativeSignatures": [
+        "edea55ca21f97d5faba90bc3954009469f248d7a2ee41051fd2fcf13470bea60"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.IntegrationTests/NauManTest.Xrm.IntegrationTests.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "17c448c10b38b59f454544df19e408af365ccba0afa3729f0eb87a57255982e0": {
+      "signature": "17c448c10b38b59f454544df19e408af365ccba0afa3729f0eb87a57255982e0",
+      "alternativeSignatures": [
+        "f248bf2da98d701fc8b7eeaab8b8bba74ddf1e1aab4a5dc17ddd3d1d58dd935c"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.IntegrationTests/Newtonsoft.Json.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.NoMatchingPolicy",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "ba0386a227a503d177c23580a2173025e4c6ec2764808d807b2fdd62e85276ec": {
+      "signature": "ba0386a227a503d177c23580a2173025e4c6ec2764808d807b2fdd62e85276ec",
+      "alternativeSignatures": [
+        "0484a7023211fcc9d4a30843e481b5c8689f6ca9c70a5f167361e3d202ed1201"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.IntegrationTests/boilerplate.Xrm.IntegrationTests.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "d58d0de507db9b70ebda719fc07acb49c144737c41082a33d0845183c7607627": {
+      "signature": "d58d0de507db9b70ebda719fc07acb49c144737c41082a33d0845183c7607627",
+      "alternativeSignatures": [
+        "377472c4705235c4391b9197e213224b33ed5e749c4711509b48121ab0f815b0"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.UnitTests/Castle.Core.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "5ddba0b82faf475360dd417a7a5257687021dca76d26e59a391577d935a26013": {
+      "signature": "5ddba0b82faf475360dd417a7a5257687021dca76d26e59a391577d935a26013",
+      "alternativeSignatures": [
+        "2b96783d514cba200fc48c660dfd63f4693cb05b429f1b259eab4a78d01ec6ce"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.UnitTests/FluentAssertions.Core.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "7684118ec1c2ebecb13f66df3a5a2e8ef91cb549b81e53ae75b488701f767dde": {
+      "signature": "7684118ec1c2ebecb13f66df3a5a2e8ef91cb549b81e53ae75b488701f767dde",
+      "alternativeSignatures": [
+        "fadf9b496a7cf77a974fecd5afd776ef9ee1ad69d841aaf9585914b8754d3080"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.UnitTests/FluentAssertions.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "5f905d543e14aed4f48d4f2e16ad5be3006cfd98378f82e9cc3d1bd03fdaeab8": {
+      "signature": "5f905d543e14aed4f48d4f2e16ad5be3006cfd98378f82e9cc3d1bd03fdaeab8",
+      "alternativeSignatures": [
+        "885c7c987ad8adab4df18e217a11de1bdfb0ab70acbd9765221cead4207dd70e"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.UnitTests/Moq.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "2f5948d16965ceb7743bd20e8e661f832a935c9a41012ce09fcea04f664e93e9": {
+      "signature": "2f5948d16965ceb7743bd20e8e661f832a935c9a41012ce09fcea04f664e93e9",
+      "alternativeSignatures": [
+        "a33b5249653a052fd89b7d6596c9e70c78476974832be44a4e15b2a5ec17380e"
+      ],
+      "target": "release/AnyCPU/Tests/Xrm.UnitTests/boilerplate.Xrm.UnitTests.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "016ce3f56c1fb7b281b0621e51ecd0b8d64480d74b1779c05f9818d7a666a718": {
+      "signature": "016ce3f56c1fb7b281b0621e51ecd0b8d64480d74b1779c05f9818d7a666a718",
+      "alternativeSignatures": [
+        "c4f96abb7e31a5701fe498826d9e081ad9c9f9cdb933f2761d924793bac04704"
+      ],
+      "target": "target/release/AnyCPU/Plugins/Microsoft.Dynamics.boilerplate.Plugins.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "binskim",
+      "ruleId": "BA2004",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "b071a25513750a6447a67754c6212a78c4e1a26b2a4ad5e6c9bed6a5efa373c3": {
+      "signature": "b071a25513750a6447a67754c6212a78c4e1a26b2a4ad5e6c9bed6a5efa373c3",
+      "alternativeSignatures": [
+        "f986690631495b663400add213deba84d45274a403efca8a7c72aa8c4fabe7f6"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.IntegrationTests/Castle.Core.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "e726692de3abda644166cc47319aadad20c2bffe66d610e6816ed625641cf885": {
+      "signature": "e726692de3abda644166cc47319aadad20c2bffe66d610e6816ed625641cf885",
+      "alternativeSignatures": [
+        "1885ee58b96c106c7989f28fdfb865d900dd172fe0d1b257df71da19c222bfc2"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.IntegrationTests/FluentAssertions.Core.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "2fecc656d8a1bbcdc3262caadbb82399e8a91d250230a7ebda5cd6f2695ab513": {
+      "signature": "2fecc656d8a1bbcdc3262caadbb82399e8a91d250230a7ebda5cd6f2695ab513",
+      "alternativeSignatures": [
+        "5445ac04a1793440ba161b4530b00c62d4385c405144071a75172c48ee5cd77a"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.IntegrationTests/FluentAssertions.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "c821f9aefe21b5cb0aec4d91ab55a70fd484fe209b457a508e67ee936797d3b4": {
+      "signature": "c821f9aefe21b5cb0aec4d91ab55a70fd484fe209b457a508e67ee936797d3b4",
+      "alternativeSignatures": [
+        "d49624481e3275547f9de302a587608e3c1db78098e16a6cdfe4a8cf1d8c5e79"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.IntegrationTests/Microsoft.Dynamics.boilerplate.Common.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "7bd41346bdacfb8b23c8f40399cebe7147621281c27cf413fd059d1e54d5dc77": {
+      "signature": "7bd41346bdacfb8b23c8f40399cebe7147621281c27cf413fd059d1e54d5dc77",
+      "alternativeSignatures": [
+        "996951f94fa78e23be03842336bb35870d0a61df78235afddd69b08d6680c81e"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.IntegrationTests/Microsoft.Dynamics.boilerplate.TestCommon.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "30666f933a2a24f8d2ff25ffd118273ac4e31ec538c7d2767a47bec49117822e": {
+      "signature": "30666f933a2a24f8d2ff25ffd118273ac4e31ec538c7d2767a47bec49117822e",
+      "alternativeSignatures": [
+        "51a9bea44965166e68c235d6c093e6cce78247c527ba1e3723a9891dc87f5b4a"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.IntegrationTests/Microsoft.Xrm.Tools.Sdk.CDSConnection.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "1ba7243284b6f2d493bb75f258f57135dbd6f5a02c5c3392a45b34bd649944c5": {
+      "signature": "1ba7243284b6f2d493bb75f258f57135dbd6f5a02c5c3392a45b34bd649944c5",
+      "alternativeSignatures": [
+        "f3b7adb2a887ebc01c0be7970c0083b9abd57e621650d066d687a0f28aa4c827"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.IntegrationTests/Moq.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "4dd97eb0afcaef0e874ea8016b9e8727af4b4fb92c6dea82d139f47b50a85beb": {
+      "signature": "4dd97eb0afcaef0e874ea8016b9e8727af4b4fb92c6dea82d139f47b50a85beb",
+      "alternativeSignatures": [
+        "3a085841f1853689995b53d06dcfa50d7cdd4addd1361aaffc43c98e88d53d9b"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.IntegrationTests/NauManTest.Xrm.IntegrationTests.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "13661759381f708efebf34f63062ce08cb301b626f09addc8cf994c2a9d0bb95": {
+      "signature": "13661759381f708efebf34f63062ce08cb301b626f09addc8cf994c2a9d0bb95",
+      "alternativeSignatures": [
+        "7a7cfed0036973cef25227bdb1022a6282c189e25629cd63da2dbf2a8b068cb4"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.IntegrationTests/Newtonsoft.Json.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.NoMatchingPolicy",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "83012080821cdf8a4880786e00f124addaa511ca7623a86ae79a22d02dfda835": {
+      "signature": "83012080821cdf8a4880786e00f124addaa511ca7623a86ae79a22d02dfda835",
+      "alternativeSignatures": [
+        "f07478827ba54c564751cdb7ba761d7ba3eb11db3c1ddc96f11a0ba8f2a40702"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.IntegrationTests/boilerplate.Xrm.IntegrationTests.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "0bc61ec016ecd2d94be035db6e775d6d84b4b90a8b2440098d3c0464c46305bc": {
+      "signature": "0bc61ec016ecd2d94be035db6e775d6d84b4b90a8b2440098d3c0464c46305bc",
+      "alternativeSignatures": [
+        "4fd0c4a8111ba5c49a2390cc880302ae3e22970d72c075824133bffd52b8ec85"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.UnitTests/Castle.Core.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "6b378e2e97a9aa5a2632039355995babff43208a36aa80f973298a7317882fbf": {
+      "signature": "6b378e2e97a9aa5a2632039355995babff43208a36aa80f973298a7317882fbf",
+      "alternativeSignatures": [
+        "79f4022266ae29e9bc4b60fd3e024b9bd086e792a735098fb654db1e3eeeb5bc"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.UnitTests/FluentAssertions.Core.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "7f74688406ec2a911da2de758ba7d4b5a5a8b9cfb9d28996ba3b2a5b147223d8": {
+      "signature": "7f74688406ec2a911da2de758ba7d4b5a5a8b9cfb9d28996ba3b2a5b147223d8",
+      "alternativeSignatures": [
+        "23f3b3bd376176f0576eb8dff33411c05952063f12f6d303ad69745051d8c8a7"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.UnitTests/FluentAssertions.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "20cfde41c3aa62d3563f4cddac4597f1dfdab8a482ada91e7e9b41a68e096906": {
+      "signature": "20cfde41c3aa62d3563f4cddac4597f1dfdab8a482ada91e7e9b41a68e096906",
+      "alternativeSignatures": [
+        "e5e9f79298f13e2b18e6c06c2d1d05730ebc239870252b3f339ceac6ec02cb46"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.UnitTests/Moq.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "4554eb1cc9104b980311cd6de628afe70b888880c0fb3900537f020c8a48a79b": {
+      "signature": "4554eb1cc9104b980311cd6de628afe70b888880c0fb3900537f020c8a48a79b",
+      "alternativeSignatures": [
+        "ff400b5c76d2653a2423526cb254cc8443ed5a79cfd19e1865cd1a86f2e057b5"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/lib/net472/Tests/Xrm.UnitTests/boilerplate.Xrm.UnitTests.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "f4b650e8861ed84b72014a66c6ba14d2539094f633e0b0422401176dc913f04e": {
+      "signature": "f4b650e8861ed84b72014a66c6ba14d2539094f633e0b0422401176dc913f04e",
+      "alternativeSignatures": [
+        "e307fba30d28e436f09b9a74b2318226ea8d9c923c77ebad5dbff1fd01c917c6"
+      ],
+      "target": "solutions/FirstParty/Plugins/bin/release/Microsoft.Dynamics.FirstParty.Plugins.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "binskim",
+      "ruleId": "BA2004",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "3714f4112cc16abe4a78d48fd8fbb83d3e74636e9e189006ee0c38d65e8f496b": {
+      "signature": "3714f4112cc16abe4a78d48fd8fbb83d3e74636e9e189006ee0c38d65e8f496b",
+      "alternativeSignatures": [
+        "c16d35dd5b4ea799e1919a637c81f2119d4f68675b670d5f87ab41de3cb7977b"
+      ],
+      "target": "solutions/boilerplate/Client.UnitTests/bin/release/boilerplate.Client.UnitTests.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "binskim",
+      "ruleId": "BA2004",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "758f0d0b418f730cc541ab5aaa3dfbd51beca064564ca3dc44467a8e11323c5f": {
+      "signature": "758f0d0b418f730cc541ab5aaa3dfbd51beca064564ca3dc44467a8e11323c5f",
+      "alternativeSignatures": [
+        "815407242cea3c3c5364536f94dffdad1caa038ed67d89458c86e8c2d472901f"
+      ],
+      "target": "solutions/boilerplate/Client.UnitTests/obj/release/boilerplate.Client.UnitTests.dll",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "binskim",
+      "ruleId": "BA2004",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "82d46f1d78676fff586c7ab3107d71d0ba846f7144b596a9f9bfa4fabf77ddef": {
+      "signature": "82d46f1d78676fff586c7ab3107d71d0ba846f7144b596a9f9bfa4fabf77ddef",
+      "alternativeSignatures": [
+        "c8a8c6527ec7d075aebc53be97134f5fe2cdaf86dc468eaa08438ec716836969"
+      ],
+      "target": "release/AnyCPU/Solutions/gdn-boilerplate.zip/Controls/msdyn_boilerplateControl.boilerplateControl/bundle.js",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "5a0494480bd5fb80e1eba4b4a67d55494ae0d23aafa747749452babf64bac6a2": {
+      "signature": "5a0494480bd5fb80e1eba4b4a67d55494ae0d23aafa747749452babf64bac6a2",
+      "alternativeSignatures": [
+        "27ff9b5ac84ff03ca397776ce9ccb00e4213e185382425c439318e50504d161b"
+      ],
+      "target": "release/AnyCPU/Solutions/gdn-boilerplate.zip/Controls/msdyn_SecondboilerplateControl.SecondboilerplateControl/bundle.js",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "93336c5cbe8a637c44ec9477a5fac7f81ae15343a898090d91fadd436f6c9549": {
+      "signature": "93336c5cbe8a637c44ec9477a5fac7f81ae15343a898090d91fadd436f6c9549",
+      "alternativeSignatures": [
+        "cd9fd6fae64bfdebce9b11e100781c1fd4915442b0f33a8b69e69b35d6ff6bb2"
+      ],
+      "target": "release/AnyCPU/Solutions/gdn-boilerplate_managed.zip/Controls/msdyn_boilerplateControl.boilerplateControl/bundle.js",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "5635e59fd1d5f5423e3b17ced5e7a88a8c4b3c1f535dee125919b2986782cf65": {
+      "signature": "5635e59fd1d5f5423e3b17ced5e7a88a8c4b3c1f535dee125919b2986782cf65",
+      "alternativeSignatures": [
+        "02e534dcba9d9b33e57cdd2874c7f0d171a5862f669d163138cae77d47d3cd12"
+      ],
+      "target": "release/AnyCPU/Solutions/gdn-boilerplate_managed.zip/Controls/msdyn_SecondboilerplateControl.SecondboilerplateControl/bundle.js",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "ceeebb07015dd826cfd61e83c3f233dbcdb90b3285f4e9e5b198645cf4f09811": {
+      "signature": "ceeebb07015dd826cfd61e83c3f233dbcdb90b3285f4e9e5b198645cf4f09811",
+      "alternativeSignatures": [
+        "64466519e2e4960c1604bf7f53eb71c5aa7686ac2ad568fb6950774ac969d39e"
+      ],
+      "target": "release/AnyCPU/PDPackages/gdn-boilerplate.PackageDeployer.zip/boilerplate/gdn-boilerplate_managed.zip/Controls/msdyn_boilerplateControl.boilerplateControl/bundle.js",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "d20b83c757cd35577682fdb489b9c6279f8db1fa1e21f4bc67feefd0bdcdc258": {
+      "signature": "d20b83c757cd35577682fdb489b9c6279f8db1fa1e21f4bc67feefd0bdcdc258",
+      "alternativeSignatures": [
+        "03d7d5ee41266f42890d2ecee9979870d774ff216d710b2a0406086f54fa6672"
+      ],
+      "target": "release/AnyCPU/PDPackages/gdn-boilerplate.PackageDeployer.zip/boilerplate/gdn-boilerplate_managed.zip/Controls/msdyn_SecondboilerplateControl.SecondboilerplateControl/bundle.js",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "ebedb27302ed18e8826b34a8d58026629415cbe7dd68a9fed2694b36629a953b": {
+      "signature": "ebedb27302ed18e8826b34a8d58026629415cbe7dd68a9fed2694b36629a953b",
+      "alternativeSignatures": [
+        "a4f270a93eda019ab722199f65da70261dbf58818138ffe1c4a58a02ccc1945d"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/content/PVSPackages/gdn-boilerplatePackage.zip/gdn-boilerplate.PackageDeployer.zip/boilerplate/gdn-boilerplate_managed.zip/Controls/msdyn_boilerplateControl.boilerplateControl/bundle.js",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "b3ff81e275410388df7f40b321beef5d03af8ec0da109cbe1d99140db3040630": {
+      "signature": "b3ff81e275410388df7f40b321beef5d03af8ec0da109cbe1d99140db3040630",
+      "alternativeSignatures": [
+        "048d1196563a73b316debce3c579ff6d95ca243fdeb63225ec2d9f05cea6594c"
+      ],
+      "target": "gdn-Microsoft.Dynamics.XrmSolutions.boilerplatePackage.1.2.3.1586.nupkg/content/PVSPackages/gdn-boilerplatePackage.zip/gdn-boilerplate.PackageDeployer.zip/boilerplate/gdn-boilerplate_managed.zip/Controls/msdyn_SecondboilerplateControl.SecondboilerplateControl/bundle.js",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "f968cc823ba27a604a2f5418259a12153ee8b7da6370cf3391113c9249492b65": {
+      "signature": "f968cc823ba27a604a2f5418259a12153ee8b7da6370cf3391113c9249492b65",
+      "alternativeSignatures": [
+        "6edf8eb5513d5129796f1170d1716b192f8e1e2a7de25521ce6322dd0210efdf"
+      ],
+      "target": "release/AnyCPU/PVSPackages/gdn-boilerplatePackage.zip/gdn-boilerplate.PackageDeployer.zip/boilerplate/gdn-boilerplate_managed.zip/Controls/msdyn_boilerplateControl.boilerplateControl/bundle.js",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    },
+    "f285e3fd5c92972215b8aa198a5cb6bb674cdb2ca85f239d95767b987aafa7b6": {
+      "signature": "f285e3fd5c92972215b8aa198a5cb6bb674cdb2ca85f239d95767b987aafa7b6",
+      "alternativeSignatures": [
+        "087b9f708a69b0c563185f810922bae619eeab92e089f8350f3fe80d58f9dea0"
+      ],
+      "target": "release/AnyCPU/PVSPackages/gdn-boilerplatePackage.zip/gdn-boilerplate.PackageDeployer.zip/boilerplate/gdn-boilerplate_managed.zip/Controls/msdyn_SecondboilerplateControl.SecondboilerplateControl/bundle.js",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "codesign",
+      "ruleId": "CodeSign.MissingSigningCert",
+      "justification": null,
+      "createdDate": "2022-03-23 10:54:56Z",
+      "expirationDate": null,
+      "type": null
+    }
+  }
+}

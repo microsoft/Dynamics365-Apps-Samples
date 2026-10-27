@@ -1,0 +1,110 @@
+steps:
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Downloading Artifacts from drop'
+      inputs:
+        artifact: drop_Solution_Build_Stage_SolutionBuild
+        path: '$(Pipeline.Workspace)'
+
+    - task: CopyFiles@2
+      displayName: 'Publish artifacts from "drop" folder'
+      inputs:
+        SourceFolder: '$(Pipeline.Workspace)'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)\drop'
+      continueOnError: true  
+
+    - pwsh: |
+        $outDir = '$(Build.ArtifactStagingDirectory)/cabs/'
+        New-Item -ItemType Directory -Path $outDir -Force
+        Get-ChildItem "$(Build.ArtifactStagingDirectory)/drop/Debug/AnyCPU/Solutions/*.zip" | %{
+            $cabName = $_.fullname -replace ".zip$", ".cab"
+            Write-Host "Creating cab version of $($_.fullname) -> $cabName"
+            makecab $_.fullname $cabName | Out-Null
+            Copy-Item $cabName $outDir
+        }
+      displayName: Create Cab Files
+        
+    - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
+      displayName: "Sign Certify application solutions"
+      inputs:
+        ConnectedServiceName: 'DVEsrpConnectionPME'
+        UseMSIAuthentication: true
+        AppRegistrationClientId: 'fc323dd6-944c-45fd-bdf2-0f84b4e9edf5'
+        AppRegistrationTenantId: '975f013f-7f24-47e8-a7d3-abc4752bf346'
+        EsrpClientId: 'b9168bee-488b-4d02-ae87-c7b2d65a6df9'
+        AuthAKVName: KvEsrp
+        AuthSignCertName: DVEsrpPKI
+        FolderPath: $(Build.ArtifactStagingDirectory)/drop/Debug/AnyCPU/Solutions/
+        Pattern: '*.cab'
+        signConfigType: inlineSignParams
+        inlineOperation: >-
+            [
+            {
+                "KeyCode": "CP-230012",
+                "OperationCode": "SigntoolSign",
+                "Parameters": {
+                    "OpusName": "Microsoft",
+                    "OpusInfo": "http://www.microsoft.com",
+                    "FileDigest": "/fd \"SHA256\"",
+                    "PageHash": "/NPH",
+                    "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+                },
+                "ToolName": "sign",
+                "ToolVersion": "1.0"
+            },
+            {
+                "KeyCode": "CP-230012",
+                "OperationCode": "SigntoolVerify",
+                "Parameters": {},
+                "ToolName": "sign",
+                "ToolVersion": "1.0"
+            }
+            ]
+        SessionTimeout: 120
+        ServiceEndpointUrl: https://api.esrp.microsoft.com/api/v1
+    
+        # Installs default Power Platform Build Tools
+    - task: microsoft-IsvExpTools.PowerPlatform-BuildTools.tool-installer.PowerPlatformToolInstaller@2
+      displayName: 'Install Power Platform Build Tools'
+
+    - task: microsoft-IsvExpTools.PowerPlatform-BuildTools.whoami.PowerPlatformWhoAmi@2
+      displayName: 'Power Platform WhoAmI'
+      inputs: 
+    #   Service Principal/client secret (supports MFA)
+        authenticationType: PowerPlatformSPN
+        PowerPlatformSPN: $(Dev Service Connection)
+
+    - pwsh: |
+        $pacExePath = $env:POWERPLATFORMTOOLS_PACCLIPATH + "\pac\tools\pac.exe"  
+        echo "##vso[task.setvariable variable=PACEXEPATH]$pacExePath"
+      displayName: 'Set Pac.Exe path'
+
+    - checkout: self
+      persistCredentials: true 
+      fetchDepth: 0
+    
+    - task: NuGetAuthenticate@1
+      displayName: 'NuGet Authentication'        
+    
+    - task: PowerShell@2
+      displayName: 'Register Feed as PSRepository and Install Packages'
+      env:
+        SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+      inputs:
+        pwsh: true # This will use PowerShell 7
+        targetType: inline
+        script: |
+            
+            # Create a credential object using the system access token.
+            $MachineAccessTokenSecureString = $env:SYSTEM_ACCESSTOKEN | ConvertTo-SecureString -AsPlainText -Force
+            $myCredentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $MachineAccessTokenSecureString)
+            
+            # Clear the variable once it's finished being used
+            $MachineAccessTokenSecureString = $null
+
+            # Register the Azure Artifacts feed as a repository
+            $feedUri = "https://pkgs.dev.azure.com/dynamicscrm/_packaging/OneCRM.OmniChannel/nuget/v3/index.json" # Replace with your Azure Artifacts feed url
+            Register-PSResourceRepository -Name "PSGalleryUpstream" -Uri $feedUri -Trusted
+            
+            Get-PSResourceRepository
+            # Install your desired module. Here, we are using PSSCriptAnalyzer as an example.
+            Install-PSResource -Name PSScriptAnalyzer -Repository "PSGalleryUpstream" -Credential $myCredentialsObject

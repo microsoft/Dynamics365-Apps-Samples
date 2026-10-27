@@ -1,0 +1,43 @@
+parameters:
+- name: sourceOrgUrl
+  type: string
+- name: destinationOrgUrl
+  type: string
+- name: AppUserClientId
+  type: string
+- name: AppUserSecret
+  type: string
+- name: ConfigFileName
+  type: string
+- name: DataFileName
+  type: string
+
+steps:
+    - task: PowerShell@2
+      env:
+        SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+      inputs:
+        targetType: 'filePath'
+        filePath: $(System.DefaultWorkingDirectory)\Omnichannel.ALM\build\config\CMTExport.ps1
+        arguments: > # Use this to avoid newline characters in multiline string
+            -OrgURL ${{ parameters.sourceOrgUrl }}
+            -ConfigFolder $(System.DefaultWorkingDirectory)/Omnichannel.ALM/build/config/
+            -ConfigFileName ${{ parameters.ConfigFileName }}
+            -DataFileName ${{ parameters.DataFileName }}
+            -AppUserClientId  ${{ parameters.AppUserClientId }}
+            -AppUserSecret ${{ parameters.AppUserSecret}}
+      displayName: 'Export data using CMT'
+
+    - task: PowerShell@2
+      env:
+        SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+      inputs:
+        targetType: 'filePath'
+        filePath: $(System.DefaultWorkingDirectory)\Omnichannel.ALM\build\config\CMTImport.ps1
+        arguments: > # Use this to avoid newline characters in multiline string
+            -OrgURL ${{ parameters.destinationOrgUrl }}
+            -ConfigFolder $(System.DefaultWorkingDirectory)/Omnichannel.ALM/build/config/
+            -DataFileName ${{ parameters.DataFileName }}
+            -AppUserClientId  ${{ parameters.AppUserClientId }}
+            -AppUserSecret ${{ parameters.AppUserSecret}}
+      displayName: 'Import data using CMT'

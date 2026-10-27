@@ -1,0 +1,12 @@
+{
+  "sdk": {
+    "allowPrerelease": false,
+    "Description": "On server builds, the exact match is used to pick the SDK. On local builds, rollForward settings are respected as per https://docs.microsoft.com/en-us/dotnet/core/tools/global-json",
+    "version": "8.0.115",
+    "rollForward": "latestFeature"
+  },
+  "msbuild-sdks": {
+    "Microsoft.Build.Traversal": "4.1.0",
+    "Microsoft.Build.NoTargets": "3.7.56"
+  }
+}

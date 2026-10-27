@@ -1,0 +1,12 @@
+<msdyn_routingconfiguration msdyn_uniquename="new_1edeca90412c4a6fabdb5f548ba08e94">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_isactiveconfiguration>1</msdyn_isactiveconfiguration>
+  <msdyn_liveworkstreamid>
+    <msdyn_liveworkstreamid>2edf72a6-dd2a-2abd-cdd5-96a718e31c46</msdyn_liveworkstreamid>
+  </msdyn_liveworkstreamid>
+  <msdyn_name default="ALM Test Chat Work Classification Ruleset">
+    <label description="ALM Test Chat Work Classification Ruleset" languagecode="1033" />
+  </msdyn_name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</msdyn_routingconfiguration>

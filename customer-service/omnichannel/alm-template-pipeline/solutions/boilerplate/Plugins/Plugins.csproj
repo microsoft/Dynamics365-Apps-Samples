@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Common target file that includes things to faciliate keeping all repo project builds in sync -->
+  <PropertyGroup>
+    <PowerAppsTargetsPath>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\PowerApps</PowerAppsTargetsPath>
+    <ProjectGuid>{86BDB44B-7FD5-4882-BB36-3D8AA5870C33}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Dynamics.boilerplate.Plugins</RootNamespace>
+    <AssemblyName>Microsoft.Dynamics.boilerplate.PluginsImplementation</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFramework>net471</TargetFramework>
+    <nowarn>0618,2008</nowarn>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(WSRoot)\build\config\mssharedlibsn1024.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
+
+  <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.props" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.props')" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerApps.MSBuild.Plugin" />
+    <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.ILRepack" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(EnableStyleCopCheck)' == 'true' ">
+    <PackageReference Include="StyleCop.MSBuild" Version="6.1.0" />  
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{1609da28-3e03-4d48-ba4b-9550869f6276}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+
+   <!--This item group is used by the ILRepack targets to determine which dlls to include in the merge-->
+  <ItemGroup>
+    <InputAssemblies Include="$(OutputPath)$(AssemblyName).dll" />
+    <InputAssemblies Include="$(OutputPath)Microsoft.Dynamics.boilerplate.Common.dll" />
+  </ItemGroup>
+
+  <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.targets" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.targets')" />
+</Project>

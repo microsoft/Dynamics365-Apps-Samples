@@ -1,0 +1,22 @@
+<msdyn_decisionruleset msdyn_uniquename="new_f3b3319184d248f1b1ade91a4dd88de2">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_authoringmode>192350000</msdyn_authoringmode>
+  <msdyn_description default="ALM Test Chat Route-to-queues Ruleset">
+    <label description="ALM Test Chat Route-to-queues Ruleset" languagecode="1033" />
+  </msdyn_description>
+  <msdyn_inputcontractid>
+    <msdyn_uniquename>new_316ca32a_7dfd_4848_aa47_ced2461a671f</msdyn_uniquename>
+  </msdyn_inputcontractid>
+  <msdyn_isinputcollection>0</msdyn_isinputcollection>
+  <msdyn_name default="ALM Test Chat Route-to-queues Ruleset">
+    <label description="ALM Test Chat Route-to-queues Ruleset" languagecode="1033" />
+  </msdyn_name>
+  <msdyn_outputcontractid>
+    <msdyn_uniquename>msdyn_demandqueueidentificationoutput</msdyn_uniquename>
+  </msdyn_outputcontractid>
+  <msdyn_persistoutputdata>0</msdyn_persistoutputdata>
+  <msdyn_refreshinputdata>0</msdyn_refreshinputdata>
+  <msdyn_rulesettype>192350000</msdyn_rulesettype>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</msdyn_decisionruleset>

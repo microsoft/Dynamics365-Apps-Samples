@@ -1,0 +1,38 @@
+<decision hit-policy="first" version="1">
+  <rules>
+    <rule id="11f510ce-bcce-4733-bfa7-7e175a77cb59" name="ALM Chat Work Classification Rule">
+      <logical operator="AND">
+        <condition operator="not-null">
+          <lhs type="attribute">msdyn_ocliveworkitem.msdyn_createdon</lhs>
+        </condition>
+      </logical>
+      <action>
+        <upsertrecords>
+          <target>msdyn_ocliveworkitemcharacteristic</target>
+          <records>
+            <record>
+              <setattribute>
+                <lhs type="attribute">msdyn_characteristic.characteristicid</lhs>
+                <rhs type="staticvalue">{748416d5-221f-f011-9989-6045bd01886a}</rhs>
+              </setattribute>
+              <setattribute>
+                <lhs type="attribute">msdyn_ratingvalue.ratingvalueid</lhs>
+                <rhs type="staticvalue">{0b08f97b-8014-ed11-b83d-000d3a3bb008}</rhs>
+              </setattribute>
+            </record>
+            <record>
+              <setattribute>
+                <lhs type="attribute">msdyn_characteristic.characteristicid</lhs>
+                <rhs type="staticvalue">{75684d89-231f-f011-9989-6045bd01886a}</rhs>
+              </setattribute>
+              <setattribute>
+                <lhs type="attribute">msdyn_ratingvalue.ratingvalueid</lhs>
+                <rhs type="staticvalue">{144b5d8f-8014-ed11-b83d-000d3a3bb008}</rhs>
+              </setattribute>
+            </record>
+          </records>
+        </upsertrecords>
+      </action>
+    </rule>
+  </rules>
+</decision>

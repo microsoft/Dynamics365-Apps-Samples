@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.Build.Traversal">
+  <ItemGroup>
+    <ProjectReference Include="PDPackage\boilerplatePDPackage.csproj" Targets="CreatePDPackageZip" />
+    <ProjectReference Include="PDPackage\boilerplatePDPackage.csproj" Targets="CreatePVSPackageZip" />
+  </ItemGroup>
+</Project>

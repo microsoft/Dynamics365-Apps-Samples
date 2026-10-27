@@ -1,0 +1,16 @@
+<msdyn_routingconfigurationstep msdyn_uniquename="new_69cb4a0c8cec45e7b17f464a1fa1bf5e">
+  <iscustomizable>1</iscustomizable>
+  <msdyn_name default="ALM Chat Route To Queue">
+    <label description="ALM Chat Route To Queue" languagecode="1033" />
+  </msdyn_name>
+  <msdyn_routingconfigurationid>
+    <msdyn_uniquename>new_ea6ee41511014c2bbcd960672d9062a3</msdyn_uniquename>
+  </msdyn_routingconfigurationid>
+  <msdyn_rulesetid>
+    <msdyn_uniquename>new_9bac34a9602647249d9cec11de974d82</msdyn_uniquename>
+  </msdyn_rulesetid>
+  <msdyn_steporder>2</msdyn_steporder>
+  <msdyn_type>192350002</msdyn_type>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</msdyn_routingconfigurationstep>

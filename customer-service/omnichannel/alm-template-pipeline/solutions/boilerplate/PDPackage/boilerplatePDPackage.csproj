@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+    <ProjectGuid>{2138730c-724b-4a55-8d97-c63a3b48e37d}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Dynamics.boilerplate.PackageExtension</RootNamespace>
+    <AssemblyName>Microsoft.Dynamics.boilerplate.PackageExtension</AssemblyName>
+    <TargetFramework>net472</TargetFramework>
+    <SolutionName>boilerplate</SolutionName>
+    <PDPackageName>boilerplate.PackageDeployer</PDPackageName>
+    <DllName>$(AssemblyName).dll</DllName>
+    <PackageExtraFolder>$(WSRoot)solutions\boilerplate\PDPackage\PackageExtra</PackageExtraFolder>
+    <PackageArtifactsFolder>boilerplate</PackageArtifactsFolder>
+    <DropFolder>boilerplatePDPackage</DropFolder>
+    <BuildPVS>true</BuildPVS>
+    <CopyNuGetImplementations>false</CopyNuGetImplementations>
+    <UseAsPipelineBuildVersion Condition="'$(UseAsPipelineBuildVersion)'==''">True</UseAsPipelineBuildVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <TreatWarningsAsErrors Condition="'$(Configuration)'=='debug'">true</TreatWarningsAsErrors>
+  </PropertyGroup>
+	<PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\build\config\mssharedlibsn1024.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>  
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.AssemblyAutoVersion" />
+    <PackageReference Include="Dynamics.Solutions.Tools.Targets.DeploymentPackage" />
+    <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" />
+    <PackageReference Include="Microsoft.CrmSdk.Deployment" />
+    <PackageReference Include="Microsoft.CrmSdk.UII.CommonAssemblies" />
+    <PackageReference Include="Microsoft.CrmSdk.Workflow" />
+    <PackageReference Include="Microsoft.CrmSdk.XrmTooling.CoreAssembly" />
+    <PackageReference Include="Microsoft.CrmSdk.XrmTooling.PackageDeployment" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="System.Runtime" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" />
+    <PackageReference Include="System.Security.Cryptography.X509Certificates" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Composition" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="boilerplate\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="boilerplate\ImportConfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+		<None Include="..\..\..\build\config\mssharedlibsn1024.snk">
+      <Link>mssharedlibsn1024.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <SolutionCabs Include="$(WSRoot)drop\$(Configuration)\$(Platform)\Solutions\msdyn_boilerplate_managed.zip" />
+    <SolutionCabs Include="$(WSRoot)drop\$(Configuration)\$(Platform)\Solutions\msdyn_boilerplateAnchor_managed.zip" />
+    <PackageExtensionCode Include="$(WSRoot)drop\$(Configuration)\$(Platform)\PackageExtensionCode\$(AssemblyName).dll" />
+  </ItemGroup>
+</Project>
