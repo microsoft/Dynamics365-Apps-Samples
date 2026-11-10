@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Recommended Actions - get your table package</title>
+<style>
+ body{font-family:Segoe UI,Arial,sans-serif;max-width:640px;margin:40px auto;padding:0 16px;color:#242424}
+ h1{font-size:22px} label{display:block;margin:18px 0 6px;font-weight:600}
+ input,select{width:100%;padding:8px;font-size:15px;box-sizing:border-box}
+ button{margin-top:22px;padding:10px 22px;font-size:15px;background:#0f6cbd;color:#fff;border:0;border-radius:4px;cursor:pointer}
+ .hint{color:#616161;font-size:13px;margin-top:4px} #msg{margin-top:18px;font-weight:600}
+</style>
+</head>
+<body>
+<h1>Get the package for your table</h1>
+<p>Choose the table your agent sends actions for. You'll get one file to import in Power Apps. Nothing is installed from this page.</p>
+
+<label for="pick">Table</label>
+<select id="pick">
+ <option value="">Choose…</option>
+ <option value="account|Account|Account">Account</option>
+ <option value="incident|Incident|Case">Case</option>
+ <option value="email|Email|Email">Email</option>
+ <option value="other">Another table (including your own)</option>
+</select>
+
+<div id="otherBox" style="display:none">
+ <label for="tbl">Table name</label>
+ <input id="tbl" placeholder="for example cr123_project">
+ <div class="hint">In Power Apps, open <b>Tables</b>, select your table, then <b>Properties</b>. Copy the value under <b>Logical name</b>.</div>
+ <label for="disp">Display name (optional)</label>
+ <input id="disp" placeholder="for example Project">
+</div>
+
+<div id="rankBox" style="display:none">
+ <div class="hint">Ranking signals (value and due-date columns) are not part of this file. After importing it, add them with <b>Set-RaaTableSignals.ps1</b>.</div>
+</div>
+
+<button id="go">Download package</button>
+<div id="msg"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+$('pick').onchange=()=>{const v=$('pick').value;$('otherBox').style.display=v==='other'?'block':'none';$('rankBox').style.display=(v&&!v.startsWith('account'))?'block':'none'};
+
+const crcTable=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+const crc32=b=>{let c=0xFFFFFFFF;for(const x of b)c=crcTable[(c^x)&255]^(c>>>8);return(c^0xFFFFFFFF)>>>0};
+function zip(files){
+ const enc=new TextEncoder(),parts=[],central=[];let off=0;
+ for(const [name,text] of files){
+  const n=enc.encode(name),d=enc.encode(text),crc=crc32(d);
+  const h=new DataView(new ArrayBuffer(30));
+  h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(8,0,true);
+  h.setUint32(14,crc,true);h.setUint32(18,d.length,true);h.setUint32(22,d.length,true);h.setUint16(26,n.length,true);
+  parts.push(new Uint8Array(h.buffer),n,d);
+  const c=new DataView(new ArrayBuffer(46));
+  c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);
+  c.setUint32(16,crc,true);c.setUint32(20,d.length,true);c.setUint32(24,d.length,true);c.setUint16(28,n.length,true);c.setUint32(42,off,true);
+  central.push(new Uint8Array(c.buffer),n);
+  off+=30+n.length+d.length;
+ }
+ const size=central.reduce((s,p)=>s+p.length,0),e=new DataView(new ArrayBuffer(22));
+ e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,size,true);e.setUint32(16,off,true);
+ return new Blob([...parts,...central,new Uint8Array(e.buffer)],{type:'application/zip'});
+}
+async function stableGuid(seed){
+ const h=new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode('raa-onboarding/'+seed))).slice(0,16);
+ h[6]=(h[6]&15)|0x40;h[8]=(h[8]&63)|0x80;
+ const x=[...h].map(b=>b.toString(16).padStart(2,'0')).join('');
+ return `${x.slice(0,8)}-${x.slice(8,12)}-${x.slice(12,16)}-${x.slice(16,20)}-${x.slice(20)}`;
+}
+const esc=s=>s.replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&apos;'}[c]));
+const types='<?xml version="1.0" encoding="utf-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="xml" ContentType="application/octet-stream" /><Default Extension="json" ContentType="application/octet-stream" /></Types>';
+function solutionXml(unique,label,rootXml){return `<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.1.0.643" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SolutionManifest>
+    <UniqueName>${unique}</UniqueName>
+    <LocalizedNames><LocalizedName description="Recommended Actions onboarding - ${label}" languagecode="1033" /></LocalizedNames>
+    <Descriptions><Description description="Connects ${label} to Recommended Actions." languagecode="1033" /></Descriptions>
+    <Version>1.0.0.0</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>RAAOnboarding</UniqueName>
+      <LocalizedNames><LocalizedName description="Recommended Actions Onboarding" languagecode="1033" /></LocalizedNames>
+      <Descriptions />
+      <CustomizationPrefix>raa</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>74152</CustomizationOptionValuePrefix>
+      <Addresses />
+    </Publisher>
+    <RootComponents>${rootXml}</RootComponents>
+    <MissingDependencies />
+  </SolutionManifest>
+</ImportExportXml>`}
+function customizations(entityXml,rels,extra=''){return `<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Entities>${entityXml}</Entities>
+  <Roles /><Workflows>${extra.workflows||''}</Workflows><FieldSecurityProfiles /><Templates /><EntityMaps />
+  <EntityRelationships>${rels}</EntityRelationships>
+  <OrganizationSettings /><optionsets /><CustomControls /><SolutionPluginAssemblies /><SdkMessageProcessingSteps /><EntityDataProviders />
+  ${extra.connrefs||''}
+</ImportExportXml>`}
+const ACTIVITY_TABLES=['email','appointment','phonecall','task','letter','fax','serviceappointment','recurringappointmentmaster','socialactivity'];
+const CONNREF='raa_recommendedactions_dataverse';
+// Minimum ranking entry, modelled on the shipped opportunity config (Chaitanya: signals + prefilter rules + benchmark).
+// The value signal is the mandatory floor signal (like shipped F-6) and feeds the carousel's impact check;
+// the due-date signal feeds its time-sensitivity check.
+function rankingEntry(t,isActivity,valCol,dateCol){
+ const signals=[{name:'record_state',type:'number',source:t,dimension_influence:{confidence:'weak'},
+   fetch_info:{fetch_type:'entity_field',crm_entity:t,crm_field:'statecode'}}];
+ const floor=[isActivity
+    ?{id:'F-RAA-STATE',reason:'Activity was canceled',expression:{field:'record_state',op:'eq',value:2}}
+    :{id:'F-RAA-STATE',reason:'Record is no longer active',expression:{field:'record_state',op:'gt',value:0}}];
+ if(valCol){
+  signals.push({name:'record_value',type:'number',source:t,dimension_influence:{impact:'strong'},
+   interpretation:'Compare against org benchmarks. Higher-value records increase impact.',reliability:'high',required:true,
+   fetch_info:{fetch_type:'entity_field',crm_entity:t,crm_field:valCol}});
+  floor.push({id:'F-RAA-VALUE',reason:'Record has no value assigned - impact is not material',expression:{field:'record_value',op:'lte',value:0}});
+ }
+ if(dateCol){
+  signals.push({name:'due_date_days',type:'number',source:'derived',dimension_influence:{urgency:'strong'},
+   interpretation:'Negative = overdue. Low positive = deadline pressure. >30 = low urgency.',reliability:'high',
+   fetch_info:{fetch_type:'derived',crm_entity:t,crm_field:dateCol,derivation:'days_until_date'}});
+ }
+ return {signals,prefilter_rules:{floor,ceiling:[]}};
+}
+function benchmarks(t,valCol){
+ return valCol?[{id:`${t}_estimated_value`,target_entity:t,crm_entity:t,crm_field:valCol,base_filter:{field:'statecode',op:'eq',value:0},
+  lookback_days:365,min_count:10,fallback:{P10:5000,P50:50000,P75:250000,P90:1000000}}]:[];
+}
+function flowJson(t,isActivity,valCol,dateCol){
+ const entry=JSON.stringify(rankingEntry(t,isActivity,valCol,dateCol)).replace(/'/g,"''");
+ const bench=JSON.stringify(benchmarks(t,valCol)).replace(/'/g,"''");
+ const cfg="first(outputs('Get_Recommended_Actions_settings')?['body/value'])?['msdyn_microagentconfiguration']";
+ const host={apiId:'/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps',connectionName:'shared_commondataserviceforapps'};
+ return JSON.stringify({properties:{
+  connectionReferences:{shared_commondataserviceforapps:{api:{name:'shared_commondataserviceforapps'},connection:{connectionReferenceLogicalName:CONNREF},runtimeSource:'embedded'}},
+  definition:{
+   $schema:'https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#',
+   contentVersion:'1.0.0.0',
+   parameters:{$connections:{defaultValue:{},type:'Object'},$authentication:{defaultValue:{},type:'SecureObject'}},
+   triggers:{Recurrence:{type:'Recurrence',recurrence:{frequency:'Day',interval:1}}},
+   actions:{
+    Get_Recommended_Actions_settings:{type:'OpenApiConnection',runAfter:{},
+     inputs:{host:{...host,operationId:'ListRecords'},parameters:{entityName:'msdyn_salesagentconfigurationsv2',$select:'msdyn_salesagentconfigurationv2id,msdyn_microagentconfiguration',$filter:'msdyn_microagenttype eq 11',$top:1},authentication:"@parameters('$authentication')"}},
+    Add_minimum_rule_if_missing:{type:'If',runAfter:{Get_Recommended_Actions_settings:['Succeeded']},
+     expression:{and:[
+      {not:{equals:[`@empty(${cfg})`,true]}},
+      {equals:[`@empty(json(${cfg})?['salesconfig']?['${t}'])`,true]}]},
+     actions:{Save_settings_with_minimum_rule:{type:'OpenApiConnection',runAfter:{},
+      inputs:{host:{...host,operationId:'UpdateRecord'},parameters:{
+       entityName:'msdyn_salesagentconfigurationsv2',
+       recordId:"@first(outputs('Get_Recommended_Actions_settings')?['body/value'])?['msdyn_salesagentconfigurationv2id']",
+       'item/msdyn_microagentconfiguration':`@string(setProperty(json(${cfg}),'salesconfig',setProperty(setProperty(json(${cfg})?['salesconfig'],'${t}',json('${entry}')),'benchmark_definitions',union(coalesce(json(${cfg})?['salesconfig']?['benchmark_definitions'],json('[]')),json('${bench}')))))`},
+       authentication:"@parameters('$authentication')"}}},
+     else:{actions:{}}}
+   }
+  },
+  templateName:''},schemaVersion:'1.0.0.0'},null,2);
+}
+function flowParts(t,label,flowId){
+ const file=`Workflows/RecommendedActionsMinimumRule${t.replace(/[^a-z0-9]/g,'')}-${flowId.toUpperCase()}.json`;
+ return {file,
+  workflows:`
+    <Workflow WorkflowId="{${flowId}}" Name="Recommended Actions - minimum rule for ${label}">
+      <JsonFileName>/${file}</JsonFileName>
+      <Type>1</Type><Subprocess>0</Subprocess><Category>5</Category><Mode>0</Mode><Scope>4</Scope><OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate><TriggerOnDelete>0</TriggerOnDelete><AsyncAutodelete>0</AsyncAutodelete><SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode><StatusCode>2</StatusCode><RunAs>1</RunAs><IsTransacted>1</IsTransacted><IntroducedVersion>1.0.0.0</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable><BusinessProcessType>0</BusinessProcessType><IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <ModernFlowType>0</ModernFlowType><PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames><LocalizedName languagecode="1033" description="Recommended Actions - minimum rule for ${label}" /></LocalizedNames>
+    </Workflow>`,
+  connrefs:`<connectionreferences>
+    <connectionreference connectionreferencelogicalname="${CONNREF}">
+      <connectionreferencedisplayname>Dataverse connection for Recommended Actions onboarding</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps</connectorid>
+      <iscustomizable>1</iscustomizable><promptingbehavior>0</promptingbehavior><statecode>0</statecode><statuscode>1</statuscode>
+    </connectionreference>
+  </connectionreferences>`};
+}
+function rel(name,referencing,attr,nav,t,schema){return `
+    <EntityRelationship Name="${name}">
+      <EntityRelationshipType>OneToMany</EntityRelationshipType>
+      <IsCustomizable>1</IsCustomizable>
+      <IntroducedVersion>1.0.0.0</IntroducedVersion>
+      <IsHierarchical>0</IsHierarchical>
+      <ReferencingEntityName>${referencing}</ReferencingEntityName>
+      <ReferencedEntityName>${schema}</ReferencedEntityName>
+      <CascadeAssign>NoCascade</CascadeAssign><CascadeDelete>RemoveLink</CascadeDelete><CascadeArchive>RemoveLink</CascadeArchive>
+      <CascadeReparent>NoCascade</CascadeReparent><CascadeShare>NoCascade</CascadeShare><CascadeUnshare>NoCascade</CascadeUnshare><CascadeRollupView>NoCascade</CascadeRollupView>
+      <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
+      <ReferencingAttributeName>${attr}</ReferencingAttributeName>
+      <RelationshipDescription />
+      <EntityRelationshipRoles>
+        <EntityRelationshipRole><NavPaneDisplayOption>DoNotDisplay</NavPaneDisplayOption><NavPaneArea>Details</NavPaneArea><NavPaneOrder>10000</NavPaneOrder><NavigationPropertyName>${nav}_${t}</NavigationPropertyName><RelationshipRoleType>1</RelationshipRoleType></EntityRelationshipRole>
+        <EntityRelationshipRole><NavigationPropertyName>${name}</NavigationPropertyName><RelationshipRoleType>0</RelationshipRoleType></EntityRelationshipRole>
+      </EntityRelationshipRoles>
+    </EntityRelationship>`}
+const card=(t,id,skill,name)=>`<aiinsightcard uniquename="sales_nba_insightcard_${t}" aiinsightcardid="{${id}}">
+  <aiskillid><uniquename>${skill}</uniquename></aiskillid>
+  <controlconfig>{"DiscoveryApi":"msdyn_RAAgent_RecommendedActionsAiInsightCardDiscoveryAPI"}</controlconfig>
+  <entityid><logicalname>${t}</logicalname></entityid>
+  <iscustomizable>1</iscustomizable>
+  <name>${name}</name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <surface>[-1,0,-1]</surface>
+</aiinsightcard>`;
+
+async function build(t,schema,label,isActivity,valCol,dateCol){
+ if(t==='account'){
+  return [['[Content_Types].xml',types],
+   ['solution.xml',solutionXml('RAAOnboarding_account','Account','')],
+   ['customizations.xml',customizations('','')],
+   ['aiinsightcards/sales_nba_insightcard_account/aiinsightcard.xml',card('account','fce1c745-4a87-4793-95ac-a13423f6d8ba','sales_nba_skillconfig_account','Sales RAA Insight Cards for Account')]];
+ }
+ const short=t.slice(0,40);
+ return [['[Content_Types].xml',types],
+  ['solution.xml',solutionXml('RAAOnboarding_'+t.replace(/[^a-z0-9]/g,''),label,`<RootComponent type="1" schemaName="${t}" behavior="1" />`)],
+  ['customizations.xml',customizations(`<Entity><Name LocalizedName="${label}" OriginalName="${label}">${schema}</Name><RibbonDiffXml /></Entity>`,
+     rel(`raa_rawaction_${short}_target`,'msdyn_rawactioncatalogue','msdyn_TargetentityId','msdyn_TargetentityId',t,schema)+
+     rel(`raa_prioritizedaction_${short}_target`,'msdyn_prioritizedactioncatalogue','msdyn_targetentity','msdyn_targetentity',t,schema))],
+  [`aiskillconfigs/sales_nba_skillconfig_${t}/aiskillconfig.xml`,`<aiskillconfig uniquename="sales_nba_skillconfig_${t}" aiskillconfigid="{${await stableGuid('skill/'+t)}}">
+  <aiskill>Sales RAA insight cards</aiskill>
+  <entity><logicalname>${t}</logicalname></entity>
+  <iscustomizable>1</iscustomizable>
+  <scope>0</scope>
+  <sdkmessageid><sdkmessageid>be384796-0fc1-4481-8fdc-6d7b214797ca</sdkmessageid></sdkmessageid>
+  <description>Recommended actions insight cards for ${label}</description>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</aiskillconfig>`],
+  [`aiinsightcards/sales_nba_insightcard_${t}/aiinsightcard.xml`,card(t,await stableGuid('card/'+t),'sales_nba_skillconfig_'+t,'Recommended actions for '+label)]];
+}
+
+$('go').onclick=async()=>{
+ const v=$('pick').value,msg=$('msg');msg.textContent='';
+ let t,schema,label;
+ if(!v){msg.textContent='Choose a table first.';return}
+ if(v==='other'){
+  t=$('tbl').value.trim().toLowerCase();
+  if(!/^[a-z][a-z0-9_]{1,63}$/.test(t)){msg.textContent='Enter the table\'s logical name, for example cr123_project.';return}
+  if(['opportunity','lead','contact'].includes(t)){msg.textContent='This table is ready already. No package needed.';return}
+  schema=t;label=esc($('disp').value.trim()||t);
+  if(t==='account'||t==='incident'){[t,schema,label]=v==='other'&&t==='incident'?['incident','Incident','Case']:['account','Account','Account']}
+ } else [t,schema,label]=v.split('|');
+ const blob=zip(await build(t,schema,label));
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`RecommendedActions_${t}.zip`;a.click();
+ msg.textContent=`Downloaded RecommendedActions_${t}.zip. Import it in Power Apps, then add ranking signals with Set-RaaTableSignals.ps1.`;
+};
+</script>
+</body>
+</html>
