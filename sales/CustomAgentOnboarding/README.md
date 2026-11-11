@@ -4,14 +4,13 @@ This sample shows how to connect your own agent to Recommended Actions in Dynami
 
 ## Get started
 
-1. Read the [quickstart](docs/quickstart.md). It covers the three steps: register your agent, enable your table, and connect your agent.
-1. For architecture, ranking signals, custom tables, Power Automate, code samples, and two-way sync, see the [detailed guide](docs/detailed-guide.md).
+1. Read [Connect a custom agent to Recommended Actions](https://learn.microsoft.com/dynamics365/sales/connect-custom-agent-recommended-actions). It covers the three steps: register your agent, enable your table, and connect your agent.
+1. For architecture, ranking signals, custom tables, Power Automate, code samples, and two-way sync, see [Custom agent onboarding for Recommended Actions](https://learn.microsoft.com/dynamics365/sales/custom-agent-onboarding-recommended-actions-detailed-guide).
 
 ## Contents
 
 | Folder | Contents | When you need it |
 |---|---|---|
-| [docs](docs) | Quickstart and detailed guide | Always |
 | [solutions](solutions) | Managed solutions that enable Account, Case, Email, Appointment, Task, Phone Call, Quote, Order, and Invoice. `RecommendedActions_SendSuggestion.zip` is an optional Power Automate helper flow. | Only for tables other than Opportunity, Lead, and Contact |
 | [scripts](scripts) | `Set-Table-Signals.js` (adds ranking signals), `Restore-Signals-Backup.js` (undoes a signals change), and `Set-RaaTableSignals.ps1` (PowerShell alternative) | After you import a table solution |
 | [tools](tools) | `Get-Your-Package.html`, which generates a solution for a custom table | Only for a custom table |
@@ -35,5 +34,7 @@ Try the sample in a test environment first.
 
 ## Related information
 
+- [Connect a custom agent to Recommended Actions](https://learn.microsoft.com/dynamics365/sales/connect-custom-agent-recommended-actions)
+- [Custom agent onboarding for Recommended Actions](https://learn.microsoft.com/dynamics365/sales/custom-agent-onboarding-recommended-actions-detailed-guide)
 - [Configure Recommended Actions agent](https://learn.microsoft.com/dynamics365/sales/configure-recommended-actions)
 - [Integrate custom agents with Recommended Actions Agent](https://learn.microsoft.com/dynamics365/sales/developer/recommended-actions-api)
